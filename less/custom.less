@@ -1,5 +1,14 @@
 /* GENERAL *****************/
 
+body{
+    height: 100%;
+    background: none !important;
+}
+
+a{
+    cursor: pointer;
+}
+
 .right{
   float: right;
 }
@@ -11,6 +20,24 @@
 .margin-bottom{
     margin-bottom: 20px;
 }
+
+.small-margin{
+    margin: 5px;
+}
+
+#menu-principal{
+    h4{
+        margin-top: 10px;
+    }
+}
+
+//---BOTONES---//
+
+.botones-centro{
+    margin: 10px auto;
+}
+
+//------------//
 
 /*****************************/
 
@@ -196,8 +223,9 @@
         text-align: center;
         border-top: solid 1px @brand-primary;
         box-sizing: padding-box;
-        padding-top: 10px;
+        padding: 10px 0 0 0;
         margin-bottom: 30px;
+        margin-top: 0;
     }
     .logo-main{
         padding: 20px;
@@ -208,15 +236,366 @@
     }
 }
 
+
+
+
+//2-PERMISOS-FACEBOOK*********************************
+
+.permisos-facebook{
+    height: 250px;
+    overflow-y: scroll;
+    border: solid 1px @gray;
+    background-color: @white;
+    margin-top: 30px;
+    padding: 15px;
+}
+
+.aceptar-permisos{
+    margin-top: 50px;
+    padding: 5px 20px;
+}
+
+//****************************************************
+
+
+
+
+//3-HOME***********************************************
+.home{
+    h3{
+        border: none;
+    }
+    h4{
+        text-align: center;
+    }
+}
+.user-photo{
+    width: 100%;
+    height: auto;
+    border: solid 4px @white;
+}
+
+.main-buttons{
+    a{
+        width: 48%;
+        margin: 0 1%;
+        padding: 10px 5px;
+        float: left;
+    }
+}
+
+.invitaciones-contenedor, .actividad-contenedor{
+    height: 150px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    list-style: none;
+    padding: 10px;
+    box-shadow: inset 1px 1px 5px #aaa;
+    border-radius: 5px;
+}
+
+.invitacion-intercambio, .actividad-aviso{
+    
+    border-bottom: solid 1px @brand-primary;
+    padding: 10px 0;
+
+    &:last-child{ border: none; }
+
+    img{ 
+        border-radius: 50%;
+    }
+
+    a{
+       width: 40%;
+        margin: 0 5%;
+        padding: 10px 5px;
+        float: left; 
+    }
+}
+
+//*****************************************************
+
+
+
+
+
+//CUPON************************************************
+
+
+
+//*****************************************************
+
+
+
+
+
+//AMIGO SECRETO************************************************
+
+.amigo-secreto{
+    h3{
+        margin-bottom: 10px;
+    }
+
+    p{
+        text-align: center;
+    }
+}
+
+//*****************************************************
+
+
+
+//CREAR INTERCAMBIO ***********************************
+
 .invite-friends{
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+}
+
+.select-friends{
     overflow-y: scroll;
     overflow-x: hidden;
     height: 150px;
-    background-color: rgba(0, 0, 0, 0.3);
+
     ul{
         padding: 15px;
-    }
-    li{
-        list-style: none;
+        li{
+            list-style: none;
+            background-color: @brand-primary;
+            margin: 10px 0;
+            padding: 10px 0; 
+            color: @white;
+            img{
+                width: 20%;
+                vertical-align: middle;  
+            }
+            input[type="checkbox"]{ margin-right: 15px; }
+
+             p {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0 10px;
+                width: 80%;
+                margin-bottom: 0;
+            }
+        }
     }
 }
+
+//*********************************************************************
+
+
+
+
+
+//AGREGAR-AMIGOS ***********************************
+
+.agregar-amigos{
+    .select-friends{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 350px;
+        box-shadow: inset 1px 1px 5px #333;
+        border-radius: 5px;
+
+        ul{
+            padding: 15px;
+            li{
+                list-style: none;
+                background-color: @brand-primary;
+                margin: 10px 0;
+                padding: 10px 0; 
+                color: @white;
+
+                img{ 
+                    width: 20%;
+                    vertical-align: middle;
+                }
+            }
+        }    
+    }
+    div ul li p {
+        display: inline-block;
+        vertical-align: middle;
+        padding: 0 10px;
+        width: 80%;
+    }
+}
+
+//**************************************************
+
+
+
+
+//CATALOGO******************************************
+
+.catalogo{
+    .prenda{
+        margin: 10px auto;
+
+        a{
+            img{
+                width: 100%;
+            }
+            p{
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+//**************************************************
+
+
+
+
+
+//YOUR MOMENTS******************************************
+
+.your-moments{
+    .botones-juntos{
+        a{
+            width: 48%;
+            margin: 0 1%;
+            float: left;
+        }
+    }
+}
+
+//**************************************************
+
+
+
+
+
+//MENSAJES-SECRETOS******************************************
+
+.mensajes-secretos{
+    .mensajes-contenedor{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 350px;
+        box-shadow: inset 1px 1px 5px #aaa;
+        border-radius: 5px;
+        background-color: @white;
+
+        ul{
+            padding: 15px;
+            li{
+                list-style: none;
+                margin: 10px 0;
+                padding: 10px 0; 
+                color: #333;
+                img{
+                    width: 20%;
+                    vertical-align: middle;  
+                }
+                input[type="checkbox"]{ margin-right: 15px; }
+
+                p {
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: 0 10px;
+                    width: 80%;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+
+    .amigos-contenedor{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        height: 350px;
+        box-shadow: inset 1px 1px 5px #aaa;
+        border-radius: 5px;
+        background-color: @white;
+        p{
+            padding: 10px;
+        }
+
+        ul{
+            padding: 15px;
+            li{
+                list-style: none;
+                margin: 10px 0;
+                padding: 10px 0; 
+                color: #333;
+                a{
+                    img{
+                        width: 20%;
+                        vertical-align: middle;  
+                    }
+                    input[type="checkbox"]{ margin-right: 15px; }
+
+                    p {
+                        display: inline-block;
+                        vertical-align: middle;
+                        padding: 0 10px;
+                        width: 80%;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .datos-amigo{
+        h3, p{
+            text-align: center;
+            margin-bottom: 5px;
+        }
+    }
+
+    .enviar-mensaje{
+        a{
+            text-align: center;
+        }
+    }
+}
+
+//**************************************************
+
+
+
+
+
+//EDITAR-INTERCAMBIO*********************************
+
+.confirmados-contenedor, .pendientes-contenedor{
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 150px;
+    box-shadow: inset 1px 1px 5px #aaa;
+    border-radius: 5px;
+    background-color: @white;
+
+    ul{
+        padding: 15px;
+        li{
+            list-style: none;
+            margin: 10px 0;
+            padding: 10px 0; 
+            color: #333;
+            img{
+                width: 20%;
+                vertical-align: middle;  
+            }
+            input[type="checkbox"]{ margin-right: 15px; }
+
+            p {
+                display: inline-block;
+                vertical-align: middle;
+                padding: 0 10px;
+                width: 80%;
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+//***************************************************
+
+
+
+
