@@ -68,25 +68,31 @@ class Facebook_user extends User {
 	}// validate_user
 
 	/**
-	 * Get a user from the database using it's Facebook id
+	 * Get a Facebook_user from the database using it's Facebook id
 	 *
-	 * @param array $facebook_user_id
-	 * @return void
+	 * @param array $fb_user_id
+	 * @return mixed $fb_user_data;
 	 * @author Miguel Cabral
 	 **/
-	function get_fb_user($facebook_user_id)
+	function get_fb_user($fb_user_id)
 	{
-		$query = $this->db->get_where('Facebook_Users', array('fb_user_id' => $facebook_user_id));
-		if ($query->num_rows() > 0)
-		{
-		   $row = $query->row(); 
+		$query = $this->db->get_where('Facebook_Users', array('fb_user_id' => $fb_user_id));
+		if ($query->num_rows() < 1)
+			return 0;
 
-		   echo $row->title;
-		   echo $row->name;
-		   echo $row->body;
-		}
-		
+		$row = $query->row(); 
 
+		$fb_user_data = array(
+			'user_id' 		=> $row->user_id,
+			'fb_user_id' 	=> $fb_user_id,
+			'gender' 		=> $row->gender,
+		);
+		$user_data = parent::get_user($row->user_id);
+
+		$fb_user_data['first_name'] = $user_data['first_name'];
+		$fb_user_data['last_name'] = $user_data['last_name'];
+
+		return $fb_user_data;
 	}// get_user
 
 	

@@ -5,13 +5,13 @@
         <script src="<?php echo base_url().'assets/js/plugins.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/functions.js' ?>"></script>
         <script>
-            // Add site's base url to local storage to use in Javascript
+            // Add site's base url and current view to local storage to use in Javascript
             localStorage.setItem('base_url', '<?php echo $base_url ?>');
+            localStorage.setItem('current_view', '<?php echo $current_view ?>');
 
-            <?php if($current_view == 'login') { ?>
-                facebookInit();
-            <?php } ?>
-
+            toggleMainMenu();
+            facebookInit();
+            
         </script>
     </body>
 </html>

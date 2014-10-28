@@ -4,7 +4,9 @@
         <img src="<?php echo base_url() ?>assets/images/piernas.jpg" alt="" class="[ user-photo ]">
     </div>
 
-    <h4 class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">Nombre de usuario</h4>
+    <h4 class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">
+        <?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?>
+    </h4>
     <div class="[ col-xs-12 ] [ margin-bottom clearfix ] [ main-buttons ]">
         <a class="[ btn btn-primary ]">Crear intercambio</a>
         <a class="[ btn btn-primary ]">Completar mi perfil</a>

@@ -20,15 +20,34 @@ class Dashboard extends CI_Controller {
 	 **/
 	public function index($user_id)
 	{
-		// Get user info 
-		$this->load->model('facebook_user');
-		
-		// Set up variables for view
+		// Set up general variables for view
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'dashboard';
 
-		$this->load->view('header');
-		$this->load->view('dashboard');
+		// Get user data
+		$this->load->model('facebook_user');
+		$data['fb_user'] = $this->facebook_user->get_fb_user($user_id);
+
+		$this->load->view('header', $data);
+		$this->load->view('dashboard', $data);
 		$this->load->view('footer', $data);
 	}// index
+
+	/**
+	 * Let's the user create a new exchange group
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function new_exchange_group()
+	{
+		// Set up general variables for view
+		$data['base_url'] = base_url();
+		$data['current_view'] = 'new_exchange_group';
+
+		$this->load->view('header', $data);
+		$this->load->view('new_exchange_group', $data);
+		$this->load->view('footer', $data);
+		
+	}// new_exchange_group
 }// class Dashboard

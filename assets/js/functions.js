@@ -1,5 +1,3 @@
-toggleMainMenu();
-
 /*****************************
 	UI functions
  *****************************/
@@ -11,7 +9,7 @@ toggleMainMenu();
 function toggleMainMenu() {
     $("#menu-toggle, #menu-toggle2").click(function(e) {
 		e.preventDefault();
-		$("#wrapper").toggleClass("toggled");
+		$(".wrapper").toggleClass("toggled");
 	});
 }// toggleMainMenu
 
@@ -74,27 +72,37 @@ function loadFacebookSdk(){
  * @return void
  */
 function statusChangeCallback(response) {
-	console.log('Running statusChangeCallback');
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
+	console.log('Checking user connected status');
+
     if (response.status === 'connected') {
-        // This user is already logged in to the app, redirect to dashboard
         console.log('User is connected to app.');
 
-        // Redirect to dashboard
-        var dashboard_url = localStorage.getItem('base_url') + 'index.php/dashboard/index/' + response.authResponse.userID;
+        // Redirect to dashboard if already logged in 
+        if(localStorage.getItem('current_view') == 'login'){
+        	var dashboard_url = localStorage.getItem('base_url') + 'index.php/dashboard/index/' + response.authResponse.userID;
+        	window.location = dashboard_url;
+        }
         
-        window.location = dashboard_url;
         //getUserData(response.authResponse.userID, response.authResponse.accessToken);
-    } else if (response.status === 'not_authorized') {
-        // The person is logged into Facebook, but not your app.
-        // show Facebook login
+    } 
+
+    if (response.status === 'not_authorized') {
         console.log('User is connected to Facebook but not to app.');
-    } else {
+        if(localStorage.getItem('current_view') != 'login'){
+	        var login_url = localStorage.getItem('base_url');
+	        window.location = login_url;
+	    }
+    } 
+
+    if (response.status === 'unknown') {
         // The person is not logged into Facebook.
-        // show Facebook login
         console.log('User is not connected to Facebook.');
+        if(localStorage.getItem('current_view') != 'login'){
+	        var login_url = localStorage.getItem('base_url');
+	        window.location = login_url;
+	    }
     }
+
 }// statusChangeCallback
 
  /**

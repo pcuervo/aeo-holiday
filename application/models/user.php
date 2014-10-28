@@ -65,19 +65,29 @@ abstract class User extends CI_Model {
 	}// validate_user
 
 	/**
-	 * Gets user id from database
+	 * Get a User from the database using it's id
 	 *
-	 * @return void
-	 * @author 
+	 * @param array $user_id
+	 * @return $mixed $user_data
+	 * @author Miguel Cabral
 	 **/
-	function get_user_id ()
+	function get_user($user_id)
 	{
-		$query = $this->db->get_where('Users', array('email' => $email));
-		
-		if($query->num_rows() > 0)
-			return 1;
-		
-		return 0; 
-	}// get_user_id
+		$query = $this->db->get_where('Users', array('id' => $user_id));
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$row = $query->row(); 
+
+		$user_data = array(
+			'first_name' 	=> $row->first_name,
+			'last_name' 	=> $row->last_name,
+			'email' 		=> $row->email,
+		);
+
+		return $user_data;
+	}// get_user
+
+
 		
 }// clase User
