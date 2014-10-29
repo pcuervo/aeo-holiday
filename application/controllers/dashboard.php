@@ -50,4 +50,31 @@ class Dashboard extends CI_Controller {
 		$this->load->view('footer', $data);
 		
 	}// new_exchange_group
+
+	/**
+	 * Let's the user create a new exchange group
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function create_exchange_group()
+	{
+		// Set up general variables for view
+		// Create a facebook user
+		$this->load->model('exchange_group');
+
+		// Get user data
+		$group_data = array();
+		$group_data['name'] = $_POST['name'];
+		$group_data['description'] = $_POST['description'];
+		$group_data['exchange_date'] = $_POST['exchange_date'];
+		$group_data['join_deadline'] = $_POST['join_deadline'];
+		$group_data['place'] = $_POST['place'];
+		$group_data['budget'] = $_POST['budget'];
+		$group_data['invited_friends'] = $_POST['invited_friends'];
+
+		$this->exchange_group->create_group($group_data);
+		
+	}// create_group
+
 }// class Dashboard

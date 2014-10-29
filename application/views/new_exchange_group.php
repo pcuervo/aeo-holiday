@@ -1,26 +1,26 @@
 <div class="[ contenido ] [ content ] [ margin-bottom ] [ clearfix ]">
 
     <h3 class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">Crea tu intercambio</h3>
-    <form role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
+    <form role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ j_group_form ]">
         <div class="[ form-group ]">
-            <label class="[ center-block ]" for="nombre-intercambio">Nombre del intercambio</label>
-            <input type="text" class="[ form-control ]" id="nombre-intercambio">
+            <label class="[ center-block ]" for="name">Nombre del intercambio</label>
+            <input type="text" class="[ form-control ]" id="nombre-intercambio" name="name">
         </div>
         <div class="[ form-group ]">
-            <label class="center-block" for="fecha-intercambio">Fecha del intercambio</label>
-            <input type="date" class="form-control" id="fecha-intercambio">
+            <label class="center-block" for="exchange_date">Fecha del intercambio</label>
+            <input type="date" class="form-control" id="fecha-intercambio" name="exchange_date" >
         </div>
         <div class="[ form-group ]">
-            <label class="center-block" for="fecha-limite">Fecha límite de inscripción</label>
-            <input type="date" class="form-control" id="fecha-limite">
+            <label class="center-block" for="join_deadline">Fecha límite de inscripción</label>
+            <input type="date" class="form-control" id="fecha-limite" name="join_deadline">
         </div>
         <div class="[ form-group ]">
-            <label class="[ center-block ]" for="lugar-intercambio">Lugar</label>
-            <input type="text" class="[ form-control ]" id="lugar-intercambio">
+            <label class="[ center-block ]" for="place">Lugar</label>
+            <input type="text" class="[ form-control ]" id="lugar-intercambio" name="place">
         </div>
         <div class="[ form-group ]">
-            <label class="[ center-block ]" for="precio-intercambio">Monto del regalo</label>
-            <select class="[ form-control ]" id="precio-intercambio">
+            <label class="[ center-block ]" for="budget">Monto del regalo</label>
+            <select class="[ form-control ]" id="precio-intercambio" name="budget">
                 <option value="50">$50</option>
                 <option value="100">$100</option>
                 <option value="200">$200</option>
@@ -32,37 +32,11 @@
             </select>
         </div>
         <div class="[ form-group ]">
-            <label class="[ center-block ]" for="descripcion-intercambio">Descripción</label>
-            <textarea class="form-control" rows="6" id="descripcion-intercambio"></textarea>
+            <label class="[ center-block ]" for="description">Descripción</label>
+            <textarea class="form-control" rows="6" id="descripcion-intercambio" name="description"></textarea>
         </div>
+        <a href="#" class="[ btn btn-primary ] [ center-block ] [ j_invite_friends ]">Invitar amigos</a><br/>
         <button class="[ btn btn-primary ] [ center-block ]">Crear intercambio</button>
     </form>
 
-
-
-        <!--   <form role="form" class="[ center-block ] [ invite-friends ] [ margin-bottom clearfix ]">
-            <div class="[ form-group ] [ center-block ] [ clearfix ]">
-              <label class="[ center-block ]" for="nombre-intercambio">Invita a tus amigos</label>
-              <div class="[ input-group ] [ margin-bottom ]">
-                  <input type="text" class="[ form-control ]" placeholder="Search" name="q">
-                  <div class="[ input-group-btn ]">
-                      <button class="[ btn btn-primary ]" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                  </div>
-              </div>        
-              <div class="[ select-friends ] [ center-block ]">
-                <ul>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                  <li><img src="images/piernas.jpg" /><p>Nombre 1 <i class="fa fa-plus-square right"></i></p></li>
-                </ul>
-              </div>
-            </div>
-            </div>
-          </form> -->
 </div><!-- CONTENIDO -->

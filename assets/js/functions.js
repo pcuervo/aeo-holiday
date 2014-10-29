@@ -1,7 +1,6 @@
 /*****************************
 	UI functions
  *****************************/
-
 /**
  * Toggles on/off main menu
  * @return void
@@ -14,9 +13,33 @@ function toggleMainMenu() {
 }// toggleMainMenu
 
 /*****************************
+	AJAX functions
+ *****************************/
+/**
+ * Create exchange group using AJAX
+ * @return void
+ */
+function createExchangeGroup(){
+    $('.j_group_form button').on('click', function(e){
+        e.preventDefault();
+        console.log('creating group....');
+
+        var group_data = $('.j_group_form').serialize();
+        var url = localStorage.getItem('base_url') + 'index.php/dashboard/create_exchange_group';
+
+        $.post(
+            url,
+            group_data,
+            function(response){
+                console.log(response);
+            }// response
+        );
+    });
+}// createExchangeGroup
+
+/*****************************
 	Facebook API functions
  *****************************/
-
 /**
  * Initialize Facebook SDK
  * @return void
@@ -158,7 +181,8 @@ function addFacebookUser(user_data){
  * Invite friends to the app using Facebook
  * @return void
  */
-function invitedFriends(){
+function inviteFriends(){
+	console.log('invite friends ready');
     $('.j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
             message: 'Participa en nuestro grupo de intercambio.'
@@ -169,28 +193,9 @@ function invitedFriends(){
             });
         });
     });
-}// addFacebookUser
+}// inviteFriends
 
-/**
- * Create exchange group using AJAX
- * @return void
- */
-function createGroup(){
-    $('input[type="submit"]').on('click', function(e){
-        e.preventDefault();
 
-        var group_data = $('.j_group_form').serialize();
-        var url = localStorage.getItem('base_url') + 'index.php/iteration_1_test/create_exchange_group';
-
-        $.post(
-            url,
-            group_data,
-            function(response){
-                console.log(response);
-            }// response
-        );
-    });
-}// addFacebookUser
 
 
 // PENDING TESTS - Do not use.

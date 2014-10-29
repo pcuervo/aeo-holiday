@@ -23,7 +23,7 @@ class Login extends CI_Controller {
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'login';
 
-		$this->load->view('header');
+		$this->load->view('header', $data);
 		$this->load->view('login');
 		$this->load->view('footer', $data);
 	}// index

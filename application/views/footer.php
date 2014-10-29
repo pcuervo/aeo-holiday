@@ -11,6 +11,11 @@
 
             toggleMainMenu();
             facebookInit();
+
+            <?php if($current_view == 'new_exchange_group') { ?>
+                inviteFriends();
+                createExchangeGroup();
+            <?php } ?>
             
         </script>
     </body>
