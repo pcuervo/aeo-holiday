@@ -20,15 +20,9 @@ class Group_invitation extends CI_Model {
 	 * @return void
 	 * @author 
 	 **/
-	public function __construct($group_id, $invited_fb_user_id)
+	public function __construct()
 	{
 		$this->load->database();
-
-		$this->group_id = $group_id;
-		$this->invited_fb_user_id = $invited_fb_user_id;
-		$this->sent_date = date("Y-m-d H:i:s");
-		$this->create_invitation();
-
 	}// constructor
 
 	/**
@@ -37,14 +31,14 @@ class Group_invitation extends CI_Model {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	function create_invitation()
+	function create_invitation($invitation_data)
 	{
 		if($this->has_pending_invitation())
 			return;
 
 		$insert_data = array(
-			'group_id' 				=> $this->group_id,
-			'invited_fb_user_id' 	=> $this->invited_fb_user_id,
+			'group_id' 				=> $invitation_data['group_id'],
+			'invited_fb_user_id' 	=> $invitation_data['invited_fb_user_id'],
 			'created_at' 			=> date("Y-m-d H:i:s")
 			);
 
@@ -70,7 +64,6 @@ class Group_invitation extends CI_Model {
 			return 1;
 
 		return 0;
-	}// has_pending_invitation
-	
+	}// has_pending_invitation	
 		
 }// clase Group_invitation

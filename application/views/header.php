@@ -31,9 +31,12 @@
 							<li class="[ sidebar-brand ]">
 							<a href="#">Mis Intercambios</a>
 						</li>
-						<li>
-							<a href="#">Grupo 1</a>
-						</li>
+						<?php foreach ($exchange_groups as $key => $group) { ?>
+						<?php $group_url = base_url().'index.php/dashboard/view_group/'.$group['id']?>
+							<li>
+								<a href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
+							</li>
+						<?php } ?>
 						<li class="[ sidebar-brand ]">
 							<a href="#">Salir</a>
 							<img src="<?php echo base_url() ?>assets/images/aeo-logo-white.png" alt="">

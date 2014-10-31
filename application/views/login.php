@@ -3,5 +3,6 @@
     <h3>Best Gift Ever</h3>
     <img class="col-xs-10 col-sm-8 col-md-5 center-block logo-main" src="<?php echo base_url().'assets/images/be.png' ?>" alt="">
     <p class="col-xs-9 col-sm-8 col-md-5 center-block">El primer intercambio donde todos reciben lo que quieren</p>
-    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" class="btn btn-primary center-block"></fb:login-button>
+    <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" class="btn btn-primary center-block"></fb:login-button> -->
+    <a href="<?php echo $fb_login_url ?>" class="btn btn-primary center-block">Conect with facebook</a>
 </div><!-- login -->

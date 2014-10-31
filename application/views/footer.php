@@ -10,7 +10,7 @@
             localStorage.setItem('current_view', '<?php echo $current_view ?>');
 
             toggleMainMenu();
-            facebookInit();
+            //facebookInit();
 
             <?php if($current_view == 'new_exchange_group') { ?>
                 inviteFriends();

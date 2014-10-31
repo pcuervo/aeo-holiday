@@ -35,6 +35,7 @@
             <label class="[ center-block ]" for="description">Descripción</label>
             <textarea class="form-control" rows="6" id="descripcion-intercambio" name="description"></textarea>
         </div>
+        <input type="hidden" name="admin_id" value="<?php echo $fb_user_id ?>">
         <a href="#" class="[ btn btn-primary ] [ center-block ] [ j_invite_friends ]">Invitar amigos</a><br/>
         <button class="[ btn btn-primary ] [ center-block ]">Crear intercambio</button>
     </form>

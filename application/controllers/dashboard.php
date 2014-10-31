@@ -10,6 +10,9 @@ class Dashboard extends CI_Controller {
 	 **/
 	function __construct(){
 		parent::__construct();
+		session_start();
+		$this->load->library('facebook');
+		$this->load->model('facebook_user');
 	}// constructor
 
 	/**
@@ -18,15 +21,31 @@ class Dashboard extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	public function index($user_id)
+	public function index()
 	{
 		// Set up general variables for view
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'dashboard';
+		//$data['fb_user_id'] = $_SESSION['fb_user_id'];
 
-		// Get user data
-		$this->load->model('facebook_user');
-		$data['fb_user'] = $this->facebook_user->get_fb_user($user_id);
+		// Get user data and insert to database if it doesn't exist
+		$current_fb_user = $this->facebook->get_user();
+		if(!$this->facebook_user->exists($current_fb_user['id']))
+			$this->facebook_user->create_user($current_fb_user);
+
+		$data['fb_user'] = $this->facebook_user->get_by_fb_id($current_fb_user['id']);
+		$data['fb_user_pic'] = $this->facebook->get_user_profile_pic();
+
+		// Get user's groups
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
+		// TODO: Get user's pending invitations
+		$data['pending_invitations'] = $this->exchange_group->get_pending_invitation_by_user($current_fb_user['id']);
+
+		var_dump($data['pending_invitations']);
+
+		// TODO: Get user's activity
 
 		$this->load->view('header', $data);
 		$this->load->view('dashboard', $data);
@@ -44,6 +63,7 @@ class Dashboard extends CI_Controller {
 		// Set up general variables for view
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'new_exchange_group';
+		$data['fb_user_id'] = $_SESSION['fb_user_id'];
 
 		$this->load->view('header', $data);
 		$this->load->view('new_exchange_group', $data);
@@ -71,6 +91,7 @@ class Dashboard extends CI_Controller {
 		$group_data['join_deadline'] = $_POST['join_deadline'];
 		$group_data['place'] = $_POST['place'];
 		$group_data['budget'] = $_POST['budget'];
+		$group_data['admin_id'] = $_POST['admin_id'];
 		$group_data['invited_friends'] = $_POST['invited_friends'];
 
 		$this->exchange_group->create_group($group_data);

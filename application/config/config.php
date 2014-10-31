@@ -224,7 +224,7 @@ $config['cache_path'] = '';
 | MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'ae_holiday_exchange';
 
 /*
 |--------------------------------------------------------------------------
@@ -356,6 +356,27 @@ $config['rewrite_short_tags'] = FALSE;
 |
 */
 $config['proxy_ips'] = '';
+
+/*
+|--------------------------------------------------------------------------
+| Facebook related config
+|--------------------------------------------------------------------------
+|
+| If your server is behind a reverse proxy, you must whitelist the proxy IP
+| addresses from which CodeIgniter should trust the HTTP_X_FORWARDED_FOR
+| header in order to properly identify the visitor's IP address.
+| Comma-delimited, e.g. '10.0.1.200,10.0.1.201'
+|
+*/
+$config['facebook']['api_id'] = '293592524173381';
+$config['facebook']['app_secret'] = 'be99647c6b8d064da39df203610b78c2';
+$config['facebook']['redirect_url'] = $config['base_url'].'index.php/dashboard';
+$config['facebook']['permissions'] = array(
+  'email',
+  'user_friends',
+  'user_birthday',
+  'public_profile',
+);
 
 
 /* End of file config.php */
