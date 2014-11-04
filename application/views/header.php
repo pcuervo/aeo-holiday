@@ -44,7 +44,6 @@
 						</li>
 					</ul>
 	        	</div> <!-- #sidebar-wrapper -->
-
 		        <div id="menu-principal" class="[ col-xs-12 clearfix ]">
 		            <img class="[ col-xs-3 col-sm-2 col-md-1 center-block logo-home ]" src="<?php echo base_url() ?>assets/images/aeo-logo.png" alt="">
 		            <a href="#menu-toggle" class="[ hidden-sm hidden-md hidden-lg ]" id="menu-toggle">
@@ -52,8 +51,6 @@
 		            </a>
 		            <a href="#menu-toggle" class="[ hidden-xs ] [ right ]" id="menu-toggle2">Menú</a>
 		        </div><!-- #menu-principal -->
-
 			</header>
 		<? } ?>
-
 		<div class="wrapper">

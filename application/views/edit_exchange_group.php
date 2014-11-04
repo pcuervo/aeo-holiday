@@ -67,5 +67,4 @@
             <button class="[ btn btn-primary ]">Editar intercambio</button>
         </div>
     </form>
-
 </div><!-- CONTENIDO -->
