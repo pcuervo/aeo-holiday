@@ -9,7 +9,7 @@
     <p class="[ center-block ]" for="name">Monto del regalo: $<?php echo $group_details['budget'] ?></p>
     <p class="[ center-block ]" for="name">Descripción: <?php echo $group_details['description'] ?></p>
     <p class="[ center-block ]" for="name">Amigos en el grupo:</p>
-    <ul>
+    <ul class="list-unstyled">
     <?php foreach($group_friends as $key => $friend) { ?>
         <li class="[ clearfix ]">
             <img class="[ col-xs-3 ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]">

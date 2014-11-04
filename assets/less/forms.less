@@ -123,11 +123,10 @@ output {
   color: @input-color;
   background-color: @input-bg;
   background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
-  border: none;
+  border: 1px solid #ccc;
   border-radius: @input-border-radius;
   .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
   .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
-
   &:focus{ outline: none; }
 
   // Customize the `:focus` state to imitate native WebKit styles.

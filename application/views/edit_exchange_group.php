@@ -55,28 +55,32 @@
             <input type="hidden" name="group_id" value="<?php echo $group_details['group_id'] ?>">
         </div>
         <label class="[ center-block ]" for="description">Amigos en el grupo</label>
-        <ul>
+        <ul class="list-unstyled">
+        <div class="row">
         <?php foreach($group_friends as $key => $friend) { ?>
-            <li class="[ clearfix ]">
-                <img class="[ col-xs-3 ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]">
-                <p class="[ col-xs-9 ]"><?php echo $friend['friend_name'] ?></p>
+            <li class="[ clearfix ] [ col-xs-3 ]">
+                <img class="[ img-responsive ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]">
+                <p class="[ ]"><?php echo $friend['friend_name'] ?></p>
             </li>
         <?php } ?>
+        </div>
         </ul>
-        
         <?php if($pending_friends != 0) { ?>
             <label class="[ center-block ]" for="description">Amigos que no han confirmado</label>
-            <ul>
+            <ul class="list-unstyled">
+            <div class="row">
             <?php foreach($pending_friends as $key => $friend) { ?>
-                <li class="[ clearfix ]">
-                    <img class="[ col-xs-3 ]" src="<?php echo $friend['profile_picture'] ?>" alt="" class="[ user-photo ]">
-                    <p class="[ col-xs-9 ]"><?php echo $friend['name'] ?></p>
+                <li class="[ clearfix ] [ col-xs-3 ]">
+                    <img class="[ img-responsive ]" src="<?php echo $friend['profile_picture'] ?>" alt="" class="[ user-photo ]">
+                    <p class="[  ]"><?php echo $friend['name'] ?></p>
                 </li>
             <?php }// foreach ?>
+            </div>
         <?php }// if ?>
         </ul>
-        <a href="#" class="[ btn btn-primary ] [ center-block ] [ j_invite_friends ]">Invitar mas amigos</a><br/>
-        <button class="[ btn btn-primary ] [ center-block ]">Editar intercambio</button>
+        <div class="text-center">
+            <a href="#" class="[ btn btn-primary ] [ j_invite_friends ] [ margin-bottom ]">Invitar mas amigos</a><br/>
+            <button class="[ btn btn-primary ]">Editar intercambio</button>
+        </div>
     </form>
-
 </div><!-- CONTENIDO -->

@@ -1,35 +1,42 @@
-<div class="[ contenido home ] [ content ] [ margin-bottom ] [ clearfix ]">
-
-    <div class="[ col-xs-4 center-block ]">
+<div class="[ container ] [ contenido home ] [ margin-bottom ] [ clearfix ]">
+    <div class="[ col-xs-6 col-md-3 ] [ center-block margin-bottom ]">
         <img src="<?php echo $fb_user_pic ?>" alt="" class="[ user-photo ]">
     </div>
-
-    <h4 class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">
-        <?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?>
-    </h4>
-    <div class="[ col-xs-12 ] [ margin-bottom clearfix ] [ main-buttons ]">
-        <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary ]">Crear intercambio</a>
-        <?php if(!$has_perfect_fit){ ?>
-            <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary ]">Completar "Perfect Fit"</a>
-        <?php } ?>
-    </div>
-
-    <?php if($pending_invitations != '') { ?>
-    <div class="[ col-xs-12 ] [ clearfix ][ solicitudes-intercambio ]">
-        <h3>Solicitudes</h3>
-        <?php foreach ($pending_invitations as $key => $invitation) { ?>
-        <div class="[ invitaciones-contenedor ] [ margin-bottom clearfix ]">
-            <div class="[ invitacion-intercambio ] [ margin-bottom clearfix ]">
-                <img src="<?php echo $invitation['admin_profile_picture']  ?>" alt="" class="[ col-xs-4 ]">
-                 <p class="[ col-xs-8 ] [ margin-bottom ]">
-                    <?php echo $invitation['admin_first_name'].' '.$invitation['admin_last_name'] ?> te ha invitado al intercambio <a href="<?php echo base_url().'dashboard/view_group/'.$invitation['group_id'] ?>"><?php echo $invitation['name'] ?></a>
-                </p>
-                <a href="<?php echo base_url().'dashboard/accept_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default ]">Aceptar</a>
-                <a href="<?php echo base_url().'dashboard/decline_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default ]">Rechazar</a>
-            </div>
+    <h4 class="[ text-center ] [ margin-bottom ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
+    <div class="row">
+        <div class="[ col-xs-12 col-md-6 ] [ center-block margin-bottom ] [ text-center ] [ main-buttons ]">
+            <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary ] [ margin-bottom ]">Crear intercambio</a>
+            <?php if(!$has_perfect_fit){ ?>
+                <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary ]">Completar "Perfect Fit"</a>
+            <?php } ?>
         </div>
-        <? } ?>
-    </div><!--SOLICITUDES DE INTERCAMBIO-->
+    </div><!-- row -->
+    <?php if($pending_invitations != '') { ?>
+    <div class="row">
+        <div class="[ col-xs-12 col-md-6 ] [ center-block ] [ clearfix ] [ solicitudes-intercambio ]">
+            <h3>Solicitudes</h3>
+            <?php foreach ($pending_invitations as $key => $invitation) { ?>
+            <div class="[ invitaciones-contenedor ] [ margin-bottom clearfix ]">
+                <div class="[ invitacion-intercambio ] [ margin-bottom clearfix ]">
+                    <div class="row">
+                         <div class="[ col-xs-4 col-sm-2 ]">
+                            <img class="[ img-responsive ]" src="<?php echo $invitation['admin_profile_picture']  ?>" alt="">
+                        </div>
+                        <div class="[ col-xs-8 col-sm-10 ]">
+                            <p class="[ margin-bottom ]">
+                                <?php echo $invitation['admin_first_name'].' '.$invitation['admin_last_name'] ?> te ha invitado al intercambio <a class="[ ]" href="<?php echo base_url().'dashboard/view_group/'.$invitation['group_id'] ?>"><?php echo $invitation['name'] ?></a>
+                            </p>
+                            <div class="[ text-center ]">
+                                <a href="<?php echo base_url().'dashboard/accept_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default ] [ margin-bottom ]">Aceptar</a>
+                                <a href="<?php echo base_url().'dashboard/decline_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default ] [ margin-bottom ]">Rechazar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div><!--SOLICITUDES DE INTERCAMBIO-->
+    </div><!-- row -->
     <?php } ?>
 
     <div class="[ col-xs-12 ] [ clearfix ] [ actividad ] [ hide ]">

@@ -11,24 +11,25 @@
 		<!--FONT AWESOME-->
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	</head>
-
 	<body>
-
 		<?php if($current_view != 'login') { ?>
 			<header class="wrapper">
-		
 	        	<div id="sidebar-wrapper" class="[ clearfix ]">
 					<ul class="[ sidebar-nav ]">
 						<li class="[ sidebar-brand ]">
 							<a href="#menu-toggle" id="menu-toggle">
 							<i class="[ fa fa-chevron-right ] [ right ]"></i>
-							</a> 
-							<a href="#">MENU</a>                 
+							</a>
+							<a href="#">MENU</a>
+						</li>
+						<li>
+							<a href="<?php echo base_url().'dashboard' ?>">Inicio</a>
+						</li>
 						</li>
 						<li>
 							<a href="#">Cupón 20%</a>
-							</li>
-							<li class="[ sidebar-brand ]">
+						</li>
+						<li class="[ sidebar-brand ]">
 							<a href="#">Mis Intercambios</a>
 						</li>
 						<?php foreach ($exchange_groups as $key => $group) { ?>
@@ -43,7 +44,6 @@
 						</li>
 					</ul>
 	        	</div> <!-- #sidebar-wrapper -->
-	       
 		        <div id="menu-principal" class="[ col-xs-12 clearfix ]">
 		            <img class="[ col-xs-3 col-sm-2 col-md-1 center-block logo-home ]" src="<?php echo base_url() ?>assets/images/aeo-logo.png" alt="">
 		            <a href="#menu-toggle" class="[ hidden-sm hidden-md hidden-lg ]" id="menu-toggle">
@@ -51,8 +51,6 @@
 		            </a>
 		            <a href="#menu-toggle" class="[ hidden-xs ] [ right ]" id="menu-toggle2">Menú</a>
 		        </div><!-- #menu-principal -->
-	        
 			</header>
 		<? } ?>
-		
 		<div class="wrapper">
