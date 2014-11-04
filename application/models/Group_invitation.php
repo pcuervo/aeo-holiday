@@ -42,8 +42,8 @@ class Group_invitation extends CI_Model {
 			'created_at' 			=> date("Y-m-d H:i:s")
 			);
 
-		$this->db->insert('Group_invitations', $insert_data);
-	}// create_user
+		$this->db->insert('group_invitations', $insert_data);
+	}// create_invitation
 
 	/**
 	 * Check if invited user was previously invited to the group.
@@ -58,12 +58,28 @@ class Group_invitation extends CI_Model {
 			'group_id' => $this->group_id,
 			'invited_fb_user_id' => $this->invited_fb_user_id
 			);
-		$query = $this->db->get_where('Group_invitations', $group_data);
+		$query = $this->db->get_where('group_invitations', $group_data);
 
 		if($query->num_rows() > 0)
 			return 1;
 
 		return 0;
 	}// has_pending_invitation	
+
+	/**
+	 * Removes a Group_invitation from the database.
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function remove_invitation($invitation_data)
+	{
+		$delete_data = array(
+			'group_id' 				=> $invitation_data['group_id'],
+			'invited_fb_user_id' 	=> $invitation_data['invited_fb_user_id'],
+			);
+
+		$this->db->delete('group_invitations', $delete_data);
+	}// remove_invitation
 		
 }// clase Group_invitation

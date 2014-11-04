@@ -46,7 +46,7 @@ class Facebook_user extends User {
 			'gender' 			=> $user_data['gender'],
 			'created_at' 		=> date("Y-m-d H:i:s")
 			);
-			$this->db->insert('Facebook_Users', $insert_data);
+			$this->db->insert('facebook_users', $insert_data);
 
 			return;
 		}// if
@@ -62,7 +62,7 @@ class Facebook_user extends User {
 	 **/
 	function get_by_fb_id($fb_user_id)
 	{
-		$query = $this->db->get_where('Facebook_Users', array('fb_user_id' => $fb_user_id));
+		$query = $this->db->get_where('facebook_users', array('fb_user_id' => $fb_user_id));
 		if ($query->num_rows() < 1)
 			return 0;
 
@@ -91,7 +91,7 @@ class Facebook_user extends User {
 	 **/
 	function exists($fb_user_id)
 	{
-		$query = $this->db->get_where('Facebook_Users', array('fb_user_id' => $fb_user_id));
+		$query = $this->db->get_where('facebook_users', array('fb_user_id' => $fb_user_id));
 		if ($query->num_rows() > 0) return TRUE;
 
 		return FALSE;

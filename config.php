@@ -26,7 +26,7 @@ $config['base_url']	= 'http://localhost:8888/aeo-holiday/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = '';
+$config['index_page'] = 'index.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -368,15 +368,14 @@ $config['proxy_ips'] = '';
 | Comma-delimited, e.g. '10.0.1.200,10.0.1.201'
 |
 */
-$config['facebook']['api_id'] = '297868607079106';
-$config['facebook']['app_secret'] = 'bd99a4f0c5adec6cb3adb06db6e950e1';
-$config['facebook']['redirect_url'] = $config['base_url'].'dashboard';
+$config['facebook']['api_id'] = '293592524173381';
+$config['facebook']['app_secret'] = 'be99647c6b8d064da39df203610b78c2';
+$config['facebook']['redirect_url'] = $config['base_url'].'index.php/dashboard';
 $config['facebook']['permissions'] = array(
-	'email',
-	'user_friends',
-	'user_birthday',
-	'public_profile',
-	'publish_actions',
+  'email',
+  'user_friends',
+  'user_birthday',
+  'public_profile',
 );
 
 

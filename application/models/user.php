@@ -43,21 +43,21 @@ abstract class User extends CI_Model {
 			'created_at'	=> date("Y-m-d H:i:s")
 			);
 
-		$this->db->insert('Users', $insert_data);
+		$this->db->insert('users', $insert_data);
 		$user_id = $this->db->insert_id();
 
 		return $user_id;
 	}// create_user
 
 	/**
-	 * Check if user exists in Users table
+	 * Check if user exists in users table
 	 *
 	 * @param string $email
 	 * @return int $user_id or 0 
 	 * @author 
 	 **/
 	private function validate_user($email){
-		$query = $this->db->get_where('Users', array('email' => $email));
+		$query = $this->db->get_where('users', array('email' => $email));
 		
 		if($query->num_rows() > 0) return $query->first_row()->id;
 		
@@ -73,7 +73,7 @@ abstract class User extends CI_Model {
 	 **/
 	function get_user($user_id)
 	{
-		$query = $this->db->get_where('Users', array('id' => $user_id));
+		$query = $this->db->get_where('users', array('id' => $user_id));
 		if ($query->num_rows() < 1)
 			return 0;
 

@@ -25,20 +25,70 @@ function createExchangeGroup(){
         console.log('creating group....');
 
         var group_data = $('.j_group_form').serialize();
-        var url = localStorage.getItem('base_url') + 'index.php/dashboard/create_exchange_group';
-
+        var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
+        console.log(group_data);
         $.post(
             url,
             group_data,
             function(response){
             	// TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
             	alert('!Grupo de intercambio creado!');
-                var dashboard_url = localStorage.getItem('base_url') + 'index.php/dashboard/index/';
+                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
         		window.location = dashboard_url;
             }// response
         );
     });
 }// createExchangeGroup
+
+/**
+ * Edit exchange group using AJAX
+ * @return void
+ */
+function editExchangeGroup(){
+    $('.j_edit_group_form button').on('click', function(e){
+        e.preventDefault();
+        console.log('editing group....');
+
+        var group_data = $('.j_edit_group_form').serialize();
+        var url = localStorage.getItem('base_url') + 'dashboard/edit_exchange_group';
+
+        $.post(
+            url,
+            group_data,
+            function(response){
+                // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
+                console.log(response);
+                alert('!Grupo de intercambio editado!');
+                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
+                window.location = dashboard_url;
+            }// response
+        );
+    });
+}// editExchangeGroup
+
+/**
+ * Updates user's perfect fit using AJAX
+ * @return void
+ */
+function updatePerfectFit(){
+    $('.j_update_perfect_fit button').on('click', function(e){
+        e.preventDefault();
+
+        var perfect_fit_data = $('.j_update_perfect_fit').serialize();
+        var url = localStorage.getItem('base_url') + 'dashboard/create_perfect_fit';
+
+        $.post(
+            url,
+            perfect_fit_data,
+            function(response){
+                // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
+                console.log(response);
+                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
+                window.location = dashboard_url;
+            }// response
+        );
+    });
+}// editExchangeGroup
 
 function add_hidden_input(form, name, value){
 	$(form).append('<input type="hidden" name="' + name + '" value="' + value + '"');
@@ -67,12 +117,12 @@ function loadFacebookSdk(){
  * Invite friends to the app using Facebook
  * @return void
  */
-function inviteFriends(){
+function inviteFriends(form){
     loadFacebookSdk();
 
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '293592524173381',
+            appId      : '297868607079106',
             cookie     : true,  
             xfbml      : true,  
             version    : 'v2.1' 
@@ -80,13 +130,13 @@ function inviteFriends(){
     };
 
 	console.log('invite friends ready');
-    $('.j_invite_friends').on('click', function(){
+    $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
             message: 'Participa en nuestro grupo de intercambio.'
         }, function(response){
 
             $.each(response.to, function(i, friend_id){
-                $('.j_group_form').append('<input type="hidden" name="invited_friends[]" value="' + friend_id + '">');
+                $(form).append('<input type="hidden" name="invited_friends[]" value="' + friend_id + '">');
             });
         });
     });

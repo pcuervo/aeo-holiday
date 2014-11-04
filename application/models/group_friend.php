@@ -37,9 +37,10 @@ class Group_friend extends CI_Model {
 			'group_id' 			=> $friend_data['group_id'],
 			'facebook_users_id' => $friend_data['facebook_users_id'],
 			'is_admin' 			=> $friend_data['is_admin'],
+			'created_at' 		=> date("Y-m-d H:i:s"),
 			);
 
-		$this->db->insert('Group_friends', $insert_data);
+		$this->db->insert('group_friends', $insert_data);
 		// TODO: quitar invitación pendiente 
 	}// add_group_friend
 

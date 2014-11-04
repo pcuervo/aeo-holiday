@@ -8,6 +8,7 @@ if ( session_status() == PHP_SESSION_NONE ) {
 require_once( APPPATH . 'libraries/facebook/vendor/autoload.php' );
  
 use Facebook\FacebookRedirectLoginHelper;
+use Facebook\FacebookCanvasLoginHelper;
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\GraphUser;
@@ -31,10 +32,11 @@ class Facebook {
 
         // Create the login helper and replace REDIRECT_URI with your URL
         $this->helper = new FacebookRedirectLoginHelper( $this->ci->config->item('redirect_url', 'facebook') );
+        //$this->helper = new FacebookCanvasLoginHelper();  
 
         if ( $this->ci->session->userdata('fb_token') ) {
-            $this->session = new FacebookSession( $this->ci->session->userdata('fb_token') );
 
+            $this->session = new FacebookSession( $this->ci->session->userdata('fb_token') );
             // Validate the access_token to make sure it's still valid
             try {
                 if ( ! $this->session->validate() ) {
@@ -42,22 +44,27 @@ class Facebook {
                 }
             } catch ( Exception $e ) {
                 // Catch any exceptions
-                $this->session = null;
+                // $this->session = null;
+                $this->session = $this->helper->getSessionFromRedirect();
             }
         } else {
             // No session exists
             try {
                 $this->session = $this->helper->getSessionFromRedirect();
+                //$this->session = $this->helper->getSession();
             } catch( FacebookRequestException $ex ) {
                 // When Facebook returns an error
             } catch( Exception $ex ) {
                 // When validation fails or other local issues
             }// try
         }
+        
 
         if ( $this->session ) {
             $this->ci->session->set_userdata( 'fb_token', $this->session->getToken() );
             $this->session = new FacebookSession( $this->session->getToken() );
+        } else {
+
         }
     }// constructor
 

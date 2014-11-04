@@ -32,7 +32,7 @@
 							<a href="#">Mis Intercambios</a>
 						</li>
 						<?php foreach ($exchange_groups as $key => $group) { ?>
-						<?php $group_url = base_url().'index.php/dashboard/view_group/'.$group['id']?>
+						<?php $group_url = base_url().'dashboard/view_group/'.$group['id']?>
 							<li>
 								<a href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
 							</li>
