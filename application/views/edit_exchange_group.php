@@ -39,7 +39,7 @@
             <input type="hidden" name="group_id" value="<?php echo $group_details['group_id'] ?>">
         </div>
         <label class="[ center-block ]" for="description">Amigos en el grupo</label>
-        <ul>
+        <ul class="list-unstyled">
         <?php foreach($group_friends as $key => $friend) { ?>
             <li class="[ clearfix ]">
                 <img class="[ col-xs-3 ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]">

@@ -26,9 +26,13 @@
 							<a href="#">MENU</a>                 
 						</li>
 						<li>
+							<a href="#">Inicio</a>
+						</li>
+						</li>
+						<li>
 							<a href="#">Cupón 20%</a>
-							</li>
-							<li class="[ sidebar-brand ]">
+						</li>
+						<li class="[ sidebar-brand ]">
 							<a href="#">Mis Intercambios</a>
 						</li>
 						<?php foreach ($exchange_groups as $key => $group) { ?>
