@@ -39,6 +39,33 @@
     </div><!-- row -->
     <?php } ?>
 
+    <?php if($secret_friends != '') { ?>
+    <div class="row">
+        <div class="[ col-xs-12 col-md-6 ] [ center-block ] [ clearfix ] [ solicitudes-intercambio ]">
+            <h3>Amigos secretos</h3>
+            <?php foreach ($secret_friends as $key => $friend) { ?>
+            <div class="[ invitaciones-contenedor ] [ margin-bottom clearfix ]">
+                <div class="[ invitacion-intercambio ] [ margin-bottom clearfix ]">
+                    <div class="row">
+                         <div class="[ col-xs-4 col-sm-2 ]">
+                            <img class="[ img-responsive ]" src="<?php echo $friend['friend_picture']  ?>" alt="">
+                        </div>
+                        <div class="[ col-xs-8 col-sm-10 ]">
+                            <p class="[ margin-bottom ]">
+                                <?php echo $friend['name'] ?> 
+                            </p>
+                            <p class="[ margin-bottom ]">
+                                <?php echo $friend['group'] ?> 
+                            </p>               
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
+        </div><!--SOLICITUDES DE INTERCAMBIO-->
+    </div><!-- row -->
+    <?php } ?>
+
     <div class="[ col-xs-12 ] [ clearfix ] [ actividad ] [ hide ]">
         <h3>Actividad</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">

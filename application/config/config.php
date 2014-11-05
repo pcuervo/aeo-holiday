@@ -374,9 +374,7 @@ $config['facebook']['redirect_url'] = $config['base_url'].'dashboard';
 $config['facebook']['permissions'] = array(
 	'email',
 	'user_friends',
-	'user_birthday',
 	'public_profile',
-	'publish_actions',
 );
 
 

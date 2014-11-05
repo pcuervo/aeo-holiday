@@ -8,10 +8,6 @@
  **/
 class Group_friend extends CI_Model {
 
-	private $group_id;
-	private $fb_user_id;
-	private $is_admin;
-
 	/**
 	 * Constructor for Group_friend
 	 *
@@ -41,7 +37,36 @@ class Group_friend extends CI_Model {
 			);
 
 		$this->db->insert('group_friends', $insert_data);
-		// TODO: quitar invitación pendiente 
 	}// add_group_friend
+
+	/**
+	 * Returns a group friend
+	 *
+	 * @param $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function get_group_friend($group_friend_id)
+	{
+		$this->db->select('first_name, last_name, fb_user_id');
+		$this->db->from('group_friends');
+		$this->db->join('facebook_users', 'group_friends.facebook_users_id = facebook_users.fb_user_id');
+		$this->db->join('users', 'users.id = facebook_users.user_id');
+		$this->db->where('group_friends.id', $group_friend_id);
+		$query = $this->db->get();
+
+		$this->load->library('facebook');
+		$group_friend = array();
+		foreach ($query->result() as $row) {
+			$friend_picture = $this->facebook->get_user_profile_pic_by_id($row->fb_user_id);
+			$group_friend = array(
+				'name'				=> $row->first_name.' '.$row->last_name,
+				'fb_user_id'		=> $row->fb_user_id,
+				'friend_picture'	=> $friend_picture, 
+				);
+		}
+
+		return $group_friend;
+	}// get_group_friend
 
 }// clase Group_friend
