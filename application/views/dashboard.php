@@ -60,7 +60,8 @@
                             </p>
                             <p class="[ margin-bottom ]">
                                 <?php echo $friend['group'] ?> 
-                            </p>               
+                            </p>
+                            <a href="<?php echo base_url().'secret_friend/view/'.$friend['group_friend_id'] ?>">Ver</a>               
                         </div>
                     </div>
                 </div>

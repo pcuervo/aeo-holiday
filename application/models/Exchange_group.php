@@ -370,6 +370,9 @@ class Exchange_group extends CI_Model {
 		$user_groups = $this->get_groups_by_user($fb_user_id);
 		$pending_groups = array();
 
+		if($user_groups == 0)
+			return 0;
+
 		foreach ($user_groups as $group)
 		{
 			if($this->has_secret_friends($group['id']))

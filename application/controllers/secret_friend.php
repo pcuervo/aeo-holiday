@@ -20,7 +20,7 @@ class Secret_friend extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	public function index()
+	public function view($group_friend_id)
 	{
 		// Set up general variables for view
 		$data['current_view'] = 'secret_friend';

@@ -5,7 +5,7 @@
 			<label class="[ center-block ]" for="<?php echo $question['question'] ?>"><?php echo $question['question'] ?></label>
 			<select class="[ form-control ]" name="<?php echo $question['question'] ?>">
 				<?php foreach ($question['answers'] as $key => $answer) { ?>
-				<option value="<?php echo $question['question_id'].'-'.$answer['id'] ?>"><?php echo $answer['answer'] ?></option>
+				<option value="<?php echo $answer['id'] ?>"><?php echo $answer['answer'] ?></option>
 				<?php } ?>
 			</select>
 			<?php } ?>

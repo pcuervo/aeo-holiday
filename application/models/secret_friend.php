@@ -46,7 +46,7 @@ class Secret_friend extends CI_Model {
 	 **/
 	function get_secret_friends_by_user($fb_user_id)
 	{
-		$this->db->select('to_group_friend_id, name');
+		$this->db->select('to_group_friend_id, name, group_friends.id AS id');
 		$this->db->from('group_friends');
 		$this->db->join('secret_friends', 'group_friends.id = secret_friends.from_group_friend_id');
 		$this->db->join('exchange_groups', 'group_friends.group_id = exchange_groups.id');
@@ -61,6 +61,7 @@ class Secret_friend extends CI_Model {
 		foreach ($query->result() as $key => $row) {
 			$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
 			$secret_friends[$key] = array(
+				'group_friend_id'	=> $row->id,
 				'fb_user_id'		=> $group_friend['fb_user_id'],
 				'name'				=> $group_friend['name'],
 				'friend_picture'	=> $group_friend['friend_picture'],
@@ -69,7 +70,6 @@ class Secret_friend extends CI_Model {
 		}
 
 		return $secret_friends;
-		
 	}// get_secret_friends_by_user
 
 }// clase Secret_friend
