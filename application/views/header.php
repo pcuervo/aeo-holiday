@@ -13,7 +13,7 @@
 	</head>
 	<body>
 		<?php if($current_view != 'login') { ?>
-			<header class="wrapper">
+			<header class="">
 	        	<div id="sidebar-wrapper" class="[ clearfix ]">
 					<ul class="[ sidebar-nav ]">
 						<li class="[ sidebar-brand ]">
@@ -44,10 +44,10 @@
 						</li>
 					</ul>
 	        	</div> <!-- #sidebar-wrapper -->
-		        <div id="menu-principal" class="[ col-xs-12 clearfix ]">
-		            <img class="[ col-xs-3 col-sm-2 col-md-1 center-block logo-home ]" src="<?php echo base_url() ?>assets/images/aeo-logo.png" alt="">
+		        <div id="menu-principal" class="[ col-xs-11 clearfix ] [ center-block ]">
+		            <img class="[ col-xs-3 col-sm-2 col-md-1 center-block logo-home ]" src="<?php echo base_url() ?>assets/images/logo-aeo-white.png" alt="">
 		            <a href="#menu-toggle" class="[ hidden-sm hidden-md hidden-lg ]" id="menu-toggle">
-		            	<i class="[ fa fa-bars ]"></i>
+		            	<img src="<?php echo base_url() ?>assets/images/icon-hamburger.png">
 		            </a>
 		            <a href="#menu-toggle" class="[ hidden-xs ] [ right ]" id="menu-toggle2">Menú</a>
 		        </div><!-- #menu-principal -->

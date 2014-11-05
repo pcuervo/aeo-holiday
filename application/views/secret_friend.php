@@ -1,17 +1,22 @@
 <div class="[ contenido ] [ container ]">
-    <div class="[ row ] [ login ]">
+    <h2 class="text-center">Mi amigo secreto</h2>
+    <div class="[ row ]">
+        <div class="[ col-xs-11] [ center-block ] [  ]">
+            <img class="[ img-circle ]" src="<?php echo base_url() ?>assets/images/piernas.png" alt="">
+        </div>
+    </div><!-- row -->
+    <h3 class="[ text-center ]">Liz Arellano Mena</h3>
+    <h3 class="[ text-center ]">(Grupo 3)</h3>
+    <div class="[ row ]">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
-            <div class="[ margin-bottom ]">
-                <h1>
-                    <a href="#">
-                        <img class="[ img-responsive ]" src="<?php echo base_url().'assets/images/logo-bge-white.png' ?>" alt="American Eagle Best Gift Ever" title="American Eagle Best Gift Ever" />
-                    </a>
-                </h1>
-            </div><!-- row -->
-            <h3 class="[ text-center ] [ margin-bottom-big ]">El primer intercambio donde todos reciben lo que quieren</h3>
-            <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" class="btn btn-primary center-block"></fb:login-button> -->
-            <div class="[ text-center ]">
-                <a href="<?php echo $fb_login_url ?>" target="_top" class="btn btn-primary">Conecta con tu facebook <i></i> <img src="<?php echo base_url().'assets/images/icon-fb.png' ?>" alt="go"></a>
+            <div class="[ text-center ] [ margin-bottom ]">
+                <a href="<?php echo '#' ?>" target="_top" class="btn btn-primary">Grabar dedicatoria <i></i> <img src="<?php echo base_url().'assets/images/icon-go.png' ?>" alt="go"></a>
+            </div>
+             <div class="[ text-center ] [ margin-bottom ]">
+                <a href="<?php echo '#' ?>" target="_top" class="btn btn-primary">Ver perfect fit <i></i> <img src="<?php echo base_url().'assets/images/icon-go.png' ?>" alt="go"></a>
+            </div>
+             <div class="[ text-center ] [ margin-bottom ]">
+                <a href="<?php echo '#' ?>" target="_top" class="btn btn-primary">Enviar mensaje <i></i> <img src="<?php echo base_url().'assets/images/icon-go.png' ?>" alt="go"></a>
             </div>
         </div>
     </div>

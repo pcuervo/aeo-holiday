@@ -8,7 +8,7 @@
 function toggleMainMenu() {
     $("#menu-toggle, #menu-toggle2").click(function(e) {
 		e.preventDefault();
-		$(".wrapper").toggleClass("toggled");
+		$("#sidebar-wrapper").toggleClass("toggled");
 	});
 }// toggleMainMenu
 
@@ -123,9 +123,9 @@ function inviteFriends(form){
     window.fbAsyncInit = function() {
         FB.init({
             appId      : '297868607079106',
-            cookie     : true,  
-            xfbml      : true,  
-            version    : 'v2.1' 
+            cookie     : true,
+            xfbml      : true,
+            version    : 'v2.1'
         });
     };
 

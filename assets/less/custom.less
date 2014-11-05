@@ -39,7 +39,7 @@ a{ cursor: pointer; }
 .small-margin{ margin: 5px; }
 
 h1{ margin: 0 0 10px 0; color: @white; }
-h2{}
+h2{ margin: 0 0 10px 0; font-size: 18px; color: @white; text-transform: uppercase; }
 h3{ margin: 0; font-size: 14px; line-height: 20px; text-transform: uppercase; }
 h4{ margin-top: 10px; }
 
@@ -57,26 +57,16 @@ h4{ margin-top: 10px; }
 
 
 
- /* CSS FOR LATERAL MENU***********************************
-/* Toggle Styles */
-.wrapper { height: 100%;
+ /* CSS FOR LATERAL MENU***********************************/
+#sidebar-wrapper {
+    width: 250px;
+    height: 100%;
     color: @white;
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-}
-.wrapper.toggled {
-    margin-right: 0;
-}
-#sidebar-wrapper {
     z-index: 1000;
     position: fixed;
-    right: 250px;
-    width: 0;
+    right: -250px;
     height: 100%;
-    margin-right: -250px;
     overflow-y: auto;
     background-color: @white;
     -webkit-transition: all 0.5s ease;
@@ -88,22 +78,19 @@ h4{ margin-top: 10px; }
         top: 10px;
     }
 }
-.wrapper.toggled #sidebar-wrapper {
-    width: 250px;
-}
-#menu-principal {
-    width: 100%;
-    padding: 15px 15px 0 15px;
 
+/* Toggle Styles */
+#sidebar-wrapper.toggled { right: 0; }
+
+
+#menu-principal { padding: 15px 15px 0 15px; border-bottom: 2px solid @white;
     a{
         position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 1.5em;
+        top: 15px;
+        right: 0px;
         text-decoration: none;
         &:hover, &:focus{
             outline: none;
-
             i{
                 color: @white;
             }
@@ -194,10 +181,6 @@ h4{ margin-top: 10px; }
 
 .wrapper.toggled {
     padding-right: 0;
-}
-
-#sidebar-wrapper {
-    width: 0;
 }
 
 .wrapper.toggled #sidebar-wrapper {
