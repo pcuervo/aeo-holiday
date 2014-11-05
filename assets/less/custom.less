@@ -1,38 +1,52 @@
+/* FONT FACE *****************/
+@font-face {
+  font-family: 'Gotham medium';
+  src: url('@{icon-font-path}gotham-medium.eot');
+  src: url('@{icon-font-path}gotham-medium.eot?#iefix') format('embedded-opentype'),
+       url('@{icon-font-path}gotham-medium.woff') format('woff'),
+       url('@{icon-font-path}gotham-medium.ttf') format('truetype'),
+       url('@{icon-font-path}gotham-medium.svg#gotham-medium') format('svg');
+}
+
+@font-face {
+  font-family: 'Gotham bold';
+  src: url('@{icon-font-path}gotham-bold.eot');
+  src: url('@{icon-font-path}gotham-bold.eot?#iefix') format('embedded-opentype'),
+       url('@{icon-font-path}gotham-bold.woff') format('woff'),
+       url('@{icon-font-path}gotham-bold.ttf') format('truetype'),
+       url('@{icon-font-path}gotham-bold.svg#gotham-bold') format('svg');
+}
+
+@font-face {
+  font-family: 'Trade';
+  src: url('@{icon-font-path}trade.eot');
+  src: url('@{icon-font-path}trade.eot?#iefix') format('embedded-opentype'),
+       url('@{icon-font-path}trade.woff') format('woff'),
+       url('@{icon-font-path}trade.ttf') format('truetype'),
+       url('@{icon-font-path}trade.svg#trade') format('svg');
+}
+
 /* GENERAL *****************/
 
-body{
-    height: 100%;
-    background: none !important;
-}
+html, body{ height: 100%; }
+body{ background: @brand-primary; }
+a{ cursor: pointer; }
 
-a{
-    cursor: pointer;
-}
+.right{ float: right; }
+.center-block{ float: none; }
+.margin-bottom{ margin-bottom: 20px; }
+.margin-bottom-big{ margin-bottom: 40px; }
+.small-margin{ margin: 5px; }
 
-.right{
-  float: right;
-}
-
-.center-block{
-    float: none;
-}
-
-.margin-bottom{
-    margin-bottom: 20px;
-}
-
-.small-margin{
-    margin: 5px;
-}
-
-#menu-principal{
-    h4{
-        margin-top: 10px;
-    }
-}
+h1{ margin: 0 0 10px 0; color: @white; }
+h2{}
+h3{ margin: 0; font-size: 14px; line-height: 20px; text-transform: uppercase; }
+h4{ margin-top: 10px; }
 
 //---BOTONES---//
 
+.btn i{ display: inline-block; width: 1px; height: 0.9em; background: @white; position: relative; top: 1px; }
+.btn img{ position: relative; top: -2px; }
 .botones-centro{
     margin: 10px auto;
 }
@@ -44,24 +58,18 @@ a{
 
 
  /* CSS FOR LATERAL MENU***********************************
-
-
 /* Toggle Styles */
-
-
-.wrapper {
-    color: @brand-primary;
+.wrapper { height: 100%;
+    color: @white;
     padding-left: 0;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
 }
-
 .wrapper.toggled {
     margin-right: 0;
 }
-
 #sidebar-wrapper {
     z-index: 1000;
     position: fixed;
@@ -70,22 +78,19 @@ a{
     height: 100%;
     margin-right: -250px;
     overflow-y: auto;
-    background-color: @brand-primary;
+    background-color: @white;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
     transition: all 0.5s ease;
-
     #menu-toggle{
         position: absolute;
         top: 10px;
     }
 }
-
 .wrapper.toggled #sidebar-wrapper {
     width: 250px;
 }
-
 #menu-principal {
     width: 100%;
     padding: 15px 15px 0 15px;
@@ -100,7 +105,7 @@ a{
             outline: none;
 
             i{
-                color: @brand-primary;
+                color: @white;
             }
         }
     }
@@ -213,28 +218,22 @@ a{
 
 //PAGE CONTENT***********************************************************
 
-.contenido{
-    padding-top: 20px;
-
-    h3{}
-
-    h3{
-        color: @brand-primary;
-        text-align: center;
-        border-top: solid 1px @brand-primary;
-        box-sizing: padding-box;
-        padding: 10px 0 0 0;
-        margin-bottom: 30px;
-        margin-top: 0;
-    }
+.contenido { height: 100%; padding: 20px;
     .logo-main{
         padding: 20px;
-        border-top: solid 1px @brand-primary;
-        border-bottom: solid 1px @brand-primary;
+        border-top: solid 1px @white;
+        border-bottom: solid 1px @white;
         margin-top: 20px;
         margin-bottom: 20px;
     }
 }
+
+
+
+
+
+//1-LOGIN*********************************
+.login{ padding-top: 20%; }
 
 
 
@@ -262,7 +261,7 @@ a{
 
 //3-HOME***********************************************
 .home{
-    h3{
+    h1{
         border: none;
     }
     h4{
@@ -285,7 +284,7 @@ a{
 }
 
 .invitacion-intercambio, .actividad-aviso{
-    border-bottom: solid 1px @brand-primary;
+    border-bottom: solid 1px @white;
     padding: 10px 0;
     &:last-child{ border: none; }
     img{ border-radius: 50%; }
@@ -310,7 +309,7 @@ a{
 //AMIGO SECRETO************************************************
 
 .amigo-secreto{
-    h3{
+    h1{
         margin-bottom: 10px;
     }
 
@@ -339,7 +338,7 @@ a{
         padding: 15px;
         li{
             list-style: none;
-            background-color: @brand-primary;
+            background-color: @white;
             margin: 10px 0;
             padding: 10px 0;
             color: @white;
@@ -380,7 +379,7 @@ a{
             padding: 15px;
             li{
                 list-style: none;
-                background-color: @brand-primary;
+                background-color: @white;
                 margin: 10px 0;
                 padding: 10px 0;
                 color: @white;
@@ -519,7 +518,7 @@ a{
     }
 
     .datos-amigo{
-        h3, p{
+        h1, p{
             text-align: center;
             margin-bottom: 5px;
         }
