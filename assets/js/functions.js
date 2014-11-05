@@ -83,6 +83,7 @@ function updatePerfectFit(){
             function(response){
                 // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
                 console.log(response);
+                alert(1);
                 var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
                 window.location = dashboard_url;
             }// response

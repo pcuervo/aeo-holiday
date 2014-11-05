@@ -62,13 +62,10 @@ class User_perfect_fit extends CI_Model {
 	function save_male_perfect_fit($perfect_fit_data, $user_data)
 	{
 		foreach ($perfect_fit_data as $key => $value) {
-			$respuestas = explode('-', $value);
-			$pregunta = $respuestas[0];
-			$respuesta = $respuestas[1];
+			$respuesta = $value;
 
 			$insert_data = array(
 			'fb_user_id' 	=> $user_data['fb_user']['id'],
-			'question_id' 	=> $pregunta,
 			'answer_id' 	=> $respuesta,
 			);
 			$this->db->insert('user_answers', $insert_data);
@@ -90,7 +87,7 @@ class User_perfect_fit extends CI_Model {
 		if ($query->num_rows() > 0)
 			return TRUE;
 
-		return FALSE;
+		return 0;
 	}// has_perfect_fit
 		
 }// clase User_perfect_fit

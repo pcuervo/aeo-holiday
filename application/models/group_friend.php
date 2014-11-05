@@ -48,7 +48,7 @@ class Group_friend extends CI_Model {
 	 **/
 	function get_group_friend($group_friend_id)
 	{
-		$this->db->select('first_name, last_name, fb_user_id');
+		$this->db->select('group_friends.id, first_name, last_name, fb_user_id, group_id');
 		$this->db->from('group_friends');
 		$this->db->join('facebook_users', 'group_friends.facebook_users_id = facebook_users.fb_user_id');
 		$this->db->join('users', 'users.id = facebook_users.user_id');
@@ -60,9 +60,11 @@ class Group_friend extends CI_Model {
 		foreach ($query->result() as $row) {
 			$friend_picture = $this->facebook->get_user_profile_pic_by_id($row->fb_user_id);
 			$group_friend = array(
+				'group_friend_id'	=> $row->id,
 				'name'				=> $row->first_name.' '.$row->last_name,
 				'fb_user_id'		=> $row->fb_user_id,
 				'friend_picture'	=> $friend_picture, 
+				'group_id'			=> $row->group_id, 
 				);
 		}
 

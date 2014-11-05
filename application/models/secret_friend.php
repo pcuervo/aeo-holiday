@@ -61,7 +61,7 @@ class Secret_friend extends CI_Model {
 		foreach ($query->result() as $key => $row) {
 			$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
 			$secret_friends[$key] = array(
-				'group_friend_id'	=> $row->id,
+				'group_friend_id'	=> $row->to_group_friend_id,
 				'fb_user_id'		=> $group_friend['fb_user_id'],
 				'name'				=> $group_friend['name'],
 				'friend_picture'	=> $group_friend['friend_picture'],
@@ -70,6 +70,41 @@ class Secret_friend extends CI_Model {
 		}
 
 		return $secret_friends;
+	}// get_secret_friends_by_user
+
+	/**
+	 * Returns a secret friends
+	 *
+	 * @param int fb_user_id
+	 * @return mixed $secret_friend or 0
+	 * @author Miguel Cabral
+	 **/
+	function get_secret_friend_by_user($fb_user_id)
+	{
+		$this->db->select('to_group_friend_id, name');
+		$this->db->from('group_friends');
+		$this->db->join('secret_friends', 'group_friends.id = secret_friends.from_group_friend_id');
+		$this->db->join('exchange_groups', 'group_friends.group_id = exchange_groups.id');
+		$this->db->where('facebook_users_id', $fb_user_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$secret_friends = array();
+		$this->load->model('group_friend');
+		foreach ($query->result() as $key => $row) {
+			$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
+			$secret_friends[$key] = array(
+				'group_friend_id'	=> $group_friend['group_friend_id'],
+				'fb_user_id'		=> $group_friend['fb_user_id'],
+				'name'				=> $group_friend['name'],
+				'friend_picture'	=> $group_friend['friend_picture'],
+				'group'				=> $row->name,
+				);
+		}
+
+		return $get_secret_friend_by_user;
 	}// get_secret_friends_by_user
 
 }// clase Secret_friend

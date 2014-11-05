@@ -23,7 +23,6 @@ class Dashboard extends CI_Controller {
 	 **/
 	public function index()
 	{
-		// Set up general variables for view
 		$data['current_view'] = 'dashboard';
 
 		$current_fb_user = $this->facebook->get_user();
