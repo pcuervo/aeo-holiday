@@ -26,8 +26,10 @@ class Dashboard extends CI_Controller {
 		// Set up general variables for view
 		$data['current_view'] = 'dashboard';
 
-		// Get user data and insert to database if it doesn't exist
 		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
 		if(!$this->facebook_user->exists($current_fb_user['id']))
 			$this->facebook_user->create_user($current_fb_user);
 
