@@ -7,14 +7,14 @@
         <script src="<?php echo base_url().'assets/js/functions.js' ?>"></script>
         <script>
             addthisevent.settings({
-                license   : "aao8iuet5zp9iqw5sm9z",
+                license   : "al7dliedlzlnbpbh0mbm",
                 mouse     : false,
                 css       : true,
-                outlook   : {show:true, text:"Outlook Calendar"},
+                outlook   : {show:false, text:"Outlook Calendar"},
                 google    : {show:true, text:"Google Calendar"},
                 ical      : {show:true, text:"iCal Calendar"},
-                facebook  : {show:true, text:"Facebook Event"},
-                dropdown  : {order:"outlook,google,ical, facebook"},
+                facebook  : {show:false, text:"Facebook Event"},
+                dropdown  : {order:"outlook,google,ical"},
                 callback  : ""
             });
             // Add current view to local storage to use in Javascript

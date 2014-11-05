@@ -25,14 +25,13 @@ class Dashboard extends CI_Controller {
 	{
 		// Set up general variables for view
 		$data['current_view'] = 'dashboard';
-		//$data['fb_user_id'] = $_SESSION['fb_user_id'];
 
 		// Get user data and insert to database if it doesn't exist
 		$current_fb_user = $this->facebook->get_user();
-		
 		if(!$this->facebook_user->exists($current_fb_user['id']))
 			$this->facebook_user->create_user($current_fb_user);
 
+		// Get user's information
 		$data['fb_user'] = $this->facebook_user->get_by_fb_id($current_fb_user['id']);
 		$data['fb_user_pic'] = $this->facebook->get_user_profile_pic();
 
@@ -42,6 +41,10 @@ class Dashboard extends CI_Controller {
 
 		// Get user's pending invitations
 		$data['pending_invitations'] = $this->exchange_group->get_pending_invitation_by_user($current_fb_user['id']);
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
 		// Check if user has completed "Perfect Fit" quiz
 		$this->load->model('user_perfect_fit');
@@ -100,7 +103,6 @@ class Dashboard extends CI_Controller {
 		$group_data['invited_friends'] = $_POST['invited_friends'];
 
 		$this->exchange_group->create_group($group_data);
-		
 	}// create_exchange_group
 
 	/**

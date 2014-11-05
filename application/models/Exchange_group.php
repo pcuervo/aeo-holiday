@@ -16,7 +16,6 @@ class Exchange_group extends CI_Model {
 	private $join_deadline;
 	private $pending_invitations = array();
 	private $group_friends = array();
-	// Add all attributes later....
 
 	/**
 	 * Constructor for Exchange_group
@@ -28,6 +27,9 @@ class Exchange_group extends CI_Model {
 	{
 		$this->load->database();
 		$this->load->library('facebook');
+
+		// Check if it's past the deadline of the user's groups
+		$this->check_groups_status();
 	}// constructor
 
 	/**
@@ -88,6 +90,7 @@ class Exchange_group extends CI_Model {
 			$friend_picture = $this->facebook->get_user_profile_pic_by_id($row->facebook_users_id);
 		    
 		    $group_friends[$key] = array(
+		    	'id'				=> $row->id,
 				'friend_name'		=> $friend_info['first_name'].' '.$friend_info['last_name'],
 				'friend_picture'	=> $friend_picture,
 				'is_admin' 			=> $row->is_admin,
@@ -216,7 +219,6 @@ class Exchange_group extends CI_Model {
 	 **/
 	function get_groups_by_user($fb_user_id)
 	{
-
 		$this->db->select('*');
 		$this->db->from('exchange_groups');
 		$this->db->join('group_friends', 'group_friends.group_id = exchange_groups.id');
@@ -329,6 +331,103 @@ class Exchange_group extends CI_Model {
 			);
 		
 		return $group_admin;
-	}// get_pending_invitation_by_user
+	}// get_group_admin
+
+	/**
+	 * Checks the status of a user's groups and takes action accordingly.
+	 *
+	 * @param int $fb_user_id
+	 * @author Miguel Cabral
+	 **/
+	private function check_groups_status()
+	{
+		$current_user = $this->facebook->get_user();
+		$pending_groups = $this->get_groups_with_pending_deadline($current_user['id']);
+
+		$this->db->select('id');
+		$this->db->where_in('id', $pending_groups);
+		$this->db->where('join_deadline <', date('Y-m-d'));
+		$query = $this->db->get('exchange_groups');
+
+		if ($query->num_rows() < 1)
+			return;
+
+		foreach ($query->result() as $key => $row)
+		{
+			$this->randomize_secret_friends($row->id);
+		}
+	}// check_groups_status
+
+	/**
+	 * Get groups with pending deadlines for the current user
+	 *
+	 * @param int $fb_user_id
+	 * @return array $pending_groups or 0
+	 * @author Miguel Cabral
+	 **/
+	private function get_groups_with_pending_deadline($fb_user_id)
+	{
+		$user_groups = $this->get_groups_by_user($fb_user_id);
+		$pending_groups = array();
+
+		foreach ($user_groups as $group)
+		{
+			if($this->has_secret_friends($group['id']))
+				break;
+
+			array_push($pending_groups, $group['id']);
+		}
+
+		if(count($pending_groups) == 0)
+			return 0;
+
+		return $pending_groups;		
+	}// get_groups_with_pending_deadline
+
+	/**
+	 * Check if a group has secret friends
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	private function has_secret_friends($group_id)
+	{
+		$this->db->select('group_friends.id');
+		$this->db->from('group_friends');
+		$this->db->join('secret_friends', 'group_friends.id = secret_friends.from_group_friend_id');
+		$this->db->where('group_id', $group_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return FALSE;
+
+		return TRUE;
+	}// has_secret_friends
+
+	/**
+	 * Randomize friends in an exchange group
+	 *
+	 * @param int $group_id
+	 * @author Miguel Cabral
+	 **/
+	private function randomize_secret_friends($group_id)
+	{
+		$group_friends = $this->get_group_friends($group_id);
+		$from_friends = array();
+		$to_friends = array();
+		
+		foreach ($group_friends as $key => $friend) {
+			array_push($from_friends, $friend['id']);
+			if($key == 0) $admin_id = $friend['id'];
+			if($key > 0) array_push($to_friends, $friend['id']);
+		}
+		array_push($to_friends, $admin_id);
+
+		// Add secret friends
+		$this->load->model('secret_friend');
+		$this->secret_friend->add_secret_friends($from_friends, $to_friends);
+	}// has_secret_friends
+
 		
 }// clase Exchange_group
