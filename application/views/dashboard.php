@@ -70,13 +70,14 @@
     </div><!-- row -->
     <?php } ?>
 
-    <div class="[ col-xs-12 ] [ clearfix ] [ actividad ] [ hide ]">
+    <div class="[ col-xs-12 ] [ clearfix ] [ actividad ]">
         <h3>Actividad</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
-            <div class="[ actividad-aviso ] [ margin-bottom clearfix ]">
+            <!-- <div class="[ actividad-aviso ] [ margin-bottom clearfix ]">
                 <img src="<?php echo base_url() ?>/assets/images/piernas.jpg" alt="" class="[ col-xs-4 ]">
                 <p class="[ col-xs-8 ] [ margin-bottom ]">Fulanito de tal te ha invitado al intercambio bla bla bla.</p>
-            </div>
+            </div> -->
+            <p>No tienes actividad todavía... </p>
         </div>
     </div><!--ACTIVIDAD-->
 
