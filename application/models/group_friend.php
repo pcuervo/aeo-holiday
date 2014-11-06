@@ -13,7 +13,7 @@ class Group_friend extends CI_Model {
 	 *
 	 * @param int $group_id, string $invited_fb_user_id
 	 * @return void
-	 * @author 
+	 * @author
 	 **/
 	public function __construct()
 	{
@@ -63,8 +63,8 @@ class Group_friend extends CI_Model {
 				'group_friend_id'	=> $row->id,
 				'name'				=> $row->first_name.' '.$row->last_name,
 				'fb_user_id'		=> $row->fb_user_id,
-				'friend_picture'	=> $friend_picture, 
-				'group_id'			=> $row->group_id, 
+				'friend_picture'	=> $friend_picture,
+				'group_id'			=> $row->group_id,
 				);
 		}
 
@@ -89,7 +89,7 @@ class Group_friend extends CI_Model {
 
 		$row = $query->row();
 		$id = $row->id;
-		
+
 		return $id;
 	}// get_group_friend_by_fb_id
 
@@ -119,8 +119,8 @@ class Group_friend extends CI_Model {
 				'group_name'			=> $row->name,
 				'from_group_friend_id'	=> $row->from_group_friend_id,
 				'message_text'			=> $row->message_text,
-				'was_read'				=> $row->was_read, 
-				'created_at'			=> $row->created_at, 
+				'was_read'				=> $row->was_read,
+				'created_at'			=> $row->created_at,
 				);
 		}
 
@@ -136,6 +136,9 @@ class Group_friend extends CI_Model {
 	 **/
 	function get_message_senders($message_senders)
 	{
+		var_dump($message_senders);
+		if ( count($message_senders) == 0)
+			return 0;
 		$this->db->select('id, facebook_users_id');
 		$this->db->from('group_friends');
 		$this->db->where_in('id', $message_senders);

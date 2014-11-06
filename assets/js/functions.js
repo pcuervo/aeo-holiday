@@ -2,15 +2,30 @@
 	UI functions
  *****************************/
 /**
- * Toggles on/off main menu
- * @return void
- */
+* Toggles on/off main menu
+* @return void
+**/
 function toggleMainMenu() {
-    $("#menu-toggle, #menu-toggle2").click(function(e) {
+    $('#menu-toggle, #menu-toggle2').click(function(e) {
 		e.preventDefault();
 		$("#sidebar-wrapper").toggleClass("toggled");
 	});
 }// toggleMainMenu
+
+/**
+* Toggles disabled button
+* @return void
+**/
+function toggleButton(){
+    $('.js-acepto').on('change', function(){
+        if ( $('.js-login').hasClass('js-disabled') ){
+            $('.js-login').removeAttr('disabled').removeClass('js-disabled').addClass('js-enabled');
+        } else if ( $('.js-login').hasClass('js-enabled') ){
+            $('.js-login').attr('disabled', 'disabled').removeClass('js-enabled').addClass('js-disabled');
+        }
+    });
+}
+
 
 /*****************************
 	AJAX functions
