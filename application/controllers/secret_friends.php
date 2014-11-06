@@ -163,6 +163,83 @@ class Secret_friends extends CI_Controller {
 		$this->load->view('header', $data);
 		$this->load->view('view_video', $data);
 		$this->load->view('footer', $data);
-	}// create_video
+	}// view_video
+
+	/**
+	 * Creates a message for a secret friend.
+	 *
+	 * @param string $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function create_message($group_friend_id)
+	{
+		// Set up general variables for view
+		$data['current_view'] = 'send_message';
+
+		// Get secret friend's data
+		$this->load->model('secret_friend');
+		$current_user = $this->facebook->get_user();
+		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_user['id'], $group_friend_id);
+
+		$this->load->view('header', $data);
+		$this->load->view('send_message', $data);
+		$this->load->view('footer', $data);
+	}// create_message
+
+	/**
+	 * Sends a message to a secret friend
+	 *
+	 * @param string $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function send_message()
+	{
+		// Get POST data
+		$secret_friend_id = $_POST['secret_friend_id'];
+		$message = $_POST['message'];
+
+		$this->load->model('secret_friend');
+		$secret_friend_data = $this->secret_friend->get_secret_friend($secret_friend_id);
+
+		// Send message
+		$this->load->model('message');
+		$this->message->save($secret_friend_data['from_group_friend_id'],
+			$secret_friend_data['to_group_friend_id'],
+			$message
+			);
+
+		$this->view($secret_friend_data['to_group_friend_id']);
+	}// send_message
+
+	/**
+	 * View the user's messages
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function view_messages()
+	{
+		$data['current_view'] = 'view_messages';
+
+		$current_user = $this->facebook->get_user();
+		$this->load->model('group_friend');
+		$group_friend_id = $this->group_friend->get_group_friend_id_by_fb_id($current_user['id']);
+
+		$data['messages'] = $this->group_friend->get_messages_by_group_friend($group_friend_id);
+
+		$message_senders_group_id = array();
+		foreach ($data['messages'] as $key => $message) {
+			array_push($message_senders_group_id, $message['from_group_friend_id']);
+		}
+		$unique_message_senders_group_id = array_unique($message_senders_group_id);
+
+		$data['message_sender_data'] = $this->group_friend->get_message_senders($unique_message_senders_group_id);
+
+		$this->load->view('header', $data);
+		$this->load->view('view_messages', $data);
+		$this->load->view('footer', $data);
+	}// view_messages
 
 }// class Secret_friend

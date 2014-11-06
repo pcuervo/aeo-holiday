@@ -31,7 +31,7 @@ class Secret_friend extends CI_Model {
 			$secret_friend_data = array(
 				'from_group_friend_id' 	=> $from_friend,
 				'to_group_friend_id' 	=> $to_friends[$key],
-				'created_at' 		=> date("Y-m-d H:i:s"),
+				'created_at' 			=> date("Y-m-d H:i:s"),
 				);
 			$this->db->insert('secret_friends', $secret_friend_data);
 		}
@@ -159,5 +159,31 @@ class Secret_friend extends CI_Model {
 		$row = $query->row(); 
 		return $row->video_url;
 	}// get_video
+
+	/**
+	 * Returns secret friend
+	 *
+	 * @param int $secret_friend_id
+	 * @return mixed $secret_friend_data
+	 * @author Miguel Cabral
+	 **/
+	function get_secret_friend($secret_friend_id)
+	{
+		$this->db->select('*');
+		$this->db->from('secret_friends');
+		$this->db->where('id', $secret_friend_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$row = $query->row();
+		$secret_friend_data = array(
+			'from_group_friend_id' => $row->from_group_friend_id,
+			'to_group_friend_id' => $row->to_group_friend_id,
+			);
+		
+		return $secret_friend_data;
+	}// get_secret_friend
 
 }// clase Secret_friend

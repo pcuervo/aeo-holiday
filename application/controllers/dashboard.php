@@ -32,8 +32,6 @@ class Dashboard extends CI_Controller {
 		if(!$this->facebook_user->exists($current_fb_user['id']))
 			$this->facebook_user->create_user($current_fb_user);
 
-		//$this->facebook->send_notification();
-
 		// Get user's information
 		$data['fb_user'] = $this->facebook_user->get_by_fb_id($current_fb_user['id']);
 		$data['fb_user_pic'] = $this->facebook->get_user_profile_pic();
