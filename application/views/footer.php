@@ -39,6 +39,10 @@
             <?php if($current_view == 'perfect_fit') { ?>
                 updatePerfectFit();
             <?php } ?>
+
+            <?php if($current_view == 'view_messages') { ?>
+                showSecretFriends();
+            <?php } ?>
             
         </script>
     </body>
