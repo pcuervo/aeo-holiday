@@ -1,5 +1,5 @@
         </div><!-- /#wrapper -->
-        
+
         <script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
         <script src="<?php echo base_url().'assets/js/jquery.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/bootstrap.js' ?>"></script>
@@ -7,7 +7,7 @@
         <script src="<?php echo base_url().'assets/js/functions.js' ?>"></script>
 
         <script>
-            
+
             addthisevent.settings({
                 license   : "al7dliedlzlnbpbh0mbm",
                 mouse     : false,
@@ -39,7 +39,15 @@
             <?php if($current_view == 'perfect_fit') { ?>
                 updatePerfectFit();
             <?php } ?>
-            
+
+            <?php if($current_view == 'view_messages') { ?>
+                showSecretFriends();
+            <?php } ?>
+
+            <?php if($current_view == 'login') { ?>
+                toggleButton();
+            <?php } ?>
+
         </script>
     </body>
 </html>

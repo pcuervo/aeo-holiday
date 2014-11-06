@@ -18,4 +18,8 @@
         <p>Mensaje: <?php echo $message['message_text'] ?></p>
         <?php } ?>
     </div>
+    <div>
+        <p>Escribir un mensaje para un amigo secreto</p>
+          <a href=""  class="btn btn-primary j-secret-friends" data-user-id="<?php echo $group_friend_id ?>">Mensaje nuevo </a>
+    </div>
 </div><!-- login -->

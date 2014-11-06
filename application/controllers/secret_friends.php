@@ -226,11 +226,9 @@ class Secret_friends extends CI_Controller {
 		$current_user = $this->facebook->get_user();
 		var_dump($current_user);
 		$this->load->model('group_friend');
-		$group_friend_id = $this->group_friend->get_group_friend_id_by_fb_id($current_user['id']);
+		$data['group_friend_id'] = $this->group_friend->get_group_friend_id_by_fb_id($current_user['id']);
 
-		$data['messages'] = $this->group_friend->get_messages_by_group_friend($group_friend_id);
-		echo $group_friend_id;
-		var_dump($data['messages']);
+		$data['messages'] = $this->group_friend->get_messages_by_group_friend($data['group_friend_id']);
 
 		$message_senders_group_id = array();
 		foreach ($data['messages'] as $key => $message) {

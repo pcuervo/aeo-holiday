@@ -40,7 +40,7 @@ a{ cursor: pointer; }
 
 h1{ margin: 0 0 10px 0; color: @white; }
 h2{ margin: 0 0 10px 0; font-size: 18px; color: @white; text-transform: uppercase; }
-h3{ margin: 0; font-size: 14px; line-height: 20px; text-transform: uppercase; color: @white; }
+h3{ margin: 0; font-size: 18px; line-height: 22px; text-transform: uppercase; color: @white; }
 h4{ margin-top: 10px; }
 
 //---BOTONES---//
@@ -51,6 +51,17 @@ h4{ margin-top: 10px; }
     margin: 10px auto;
 }
 
+//------------//
+
+//---COLORES---//
+form, input, p, a{
+    &.white{ color: @white; }
+}
+//------------//
+
+//---FORMA---//
+form{ }
+form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.75em; letter-spacing: 0.1em; text-transform: uppercase; }
 //------------//
 
 /*****************************/
@@ -216,7 +227,7 @@ h4{ margin-top: 10px; }
 
 
 //1-LOGIN*********************************
-.login{ padding-top: 20%; }
+.login{ padding-top: 25%; }
 
 
 

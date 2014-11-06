@@ -2,15 +2,30 @@
 	UI functions
  *****************************/
 /**
- * Toggles on/off main menu
- * @return void
- */
+* Toggles on/off main menu
+* @return void
+**/
 function toggleMainMenu() {
-    $("#menu-toggle, #menu-toggle2").click(function(e) {
+    $('#menu-toggle, #menu-toggle2').click(function(e) {
 		e.preventDefault();
 		$("#sidebar-wrapper").toggleClass("toggled");
 	});
 }// toggleMainMenu
+
+/**
+* Toggles disabled button
+* @return void
+**/
+function toggleButton(){
+    $('.js-acepto').on('change', function(){
+        if ( $('.js-login').hasClass('js-disabled') ){
+            $('.js-login').removeAttr('disabled').removeClass('js-disabled').addClass('js-enabled');
+        } else if ( $('.js-login').hasClass('js-enabled') ){
+            $('.js-login').attr('disabled', 'disabled').removeClass('js-enabled').addClass('js-disabled');
+        }
+    });
+}
+
 
 /*****************************
 	AJAX functions
@@ -89,7 +104,33 @@ function updatePerfectFit(){
             }// response
         );
     });
-}// editExchangeGroup
+}// updatePerfectFit
+
+/**
+ * Show all secret friends
+ * @return void
+ */
+function showSecretFriends(){
+    $('a.j-secret-friends').on('click', function(e){
+        e.preventDefault();
+
+        var user_id = $(this).data('user-id');
+       /* var perfect_fit_data = $('.j_update_perfect_fit').serialize();
+        var url = localStorage.getItem('base_url') + 'dashboard/create_perfect_fit';
+
+        $.post(
+            url,
+            perfect_fit_data,
+            function(response){
+                // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
+                console.log(response);
+                alert(1);
+                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
+                window.location = dashboard_url;
+            }// response
+        );*/
+    });
+}// showSecretFriends
 
 function add_hidden_input(form, name, value){
 	$(form).append('<input type="hidden" name="' + name + '" value="' + value + '"');
