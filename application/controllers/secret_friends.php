@@ -242,4 +242,23 @@ class Secret_friends extends CI_Controller {
 		$this->load->view('footer', $data);
 	}// view_messages
 
+	/**
+	 * Get current user's secret friends
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function get_secret_friends()
+	{
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$secret_friends = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		echo json_encode($secret_friends);
+	}// view_messages
+
 }// class Secret_friend

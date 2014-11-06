@@ -60,6 +60,7 @@ class Secret_friend extends CI_Model {
 		$this->load->model('group_friend');
 		foreach ($query->result() as $key => $row) {
 			$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
+			
 			$secret_friends[$key] = array(
 				'group_friend_id'	=> $row->to_group_friend_id,
 				'fb_user_id'		=> $group_friend['fb_user_id'],
@@ -96,7 +97,7 @@ class Secret_friend extends CI_Model {
 		$this->load->model('group_friend');
 		foreach ($query->result() as $key => $row) {
 			$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
-			$secret_friends = array(
+			$secret_friends[$key] = array(
 				'secret_friend_id'	=> $row->secret_friend_id,
 				'group_friend_id'	=> $group_friend['group_friend_id'],
 				'fb_user_id'		=> $group_friend['fb_user_id'],

@@ -83,7 +83,6 @@ function updatePerfectFit(){
             function(response){
                 // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
                 console.log(response);
-                alert(1);
                 var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
                 window.location = dashboard_url;
             }// response
@@ -92,28 +91,22 @@ function updatePerfectFit(){
 }// updatePerfectFit
 
 /**
- * Show all secret friends
+ * Show all secret friends for a given user
  * @return void
  */
 function showSecretFriends(){
     $('a.j-secret-friends').on('click', function(e){
         e.preventDefault();
 
-        var user_id = $(this).data('user-id');
-       /* var perfect_fit_data = $('.j_update_perfect_fit').serialize();
-        var url = localStorage.getItem('base_url') + 'dashboard/create_perfect_fit';
+        var group_friend_id = $(this).data('user-id');
+        var url = localStorage.getItem('base_url') + 'secret_friends/get_secret_friends/'+group_friend_id;
 
-        $.post(
+        $.get(
             url,
-            perfect_fit_data,
             function(response){
-                // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
                 console.log(response);
-                alert(1);
-                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-                window.location = dashboard_url;
             }// response
-        );*/
+        );
     });
 }// showSecretFriends
 
