@@ -22,7 +22,8 @@
 
             <?php if($has_perfect_fit) { ?>
                 <div class="[ text-center ] [ margin-bottom ]">
-                    <a href="<?php echo '#' ?>" target="_top" class="btn btn-primary">Ver perfect fit <i></i> <img src="<?php echo base_url().'assets/images/icon-go.png' ?>" alt="go"></a>
+                    <a href="<?php echo base_url().'secret_friends/view_perfect_fit/'.$group_friend_id ?>" target="_top" class="btn btn-primary">Ver perfect fit <i></i> <img src="<?php echo base_url().'assets/images/icon-go.png' ?>" alt="go"></a>
+
                 </div>
             <?php } ?>
              <div class="[ text-center ] [ margin-bottom ]">
