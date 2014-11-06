@@ -52,5 +52,5 @@
 		            <a href="#menu-toggle" class="[ hidden-xs ] [ right ]" id="menu-toggle2">Menú</a>
 		        </div><!-- #menu-principal -->
 			</header>
-		<? } ?>
+		<?php } ?>
 		<div class="wrapper">
