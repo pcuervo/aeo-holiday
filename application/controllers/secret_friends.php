@@ -59,10 +59,10 @@ class Secret_friends extends CI_Controller {
 
 		// Get user's "perfect fit"
 		$this->load->model('user_perfect_fit');
-		
+
 		$data['user_answers']= $this->user_perfect_fit->get_perfect_fit_by_user($data['group_friend']['fb_user_id']);
 		$data['group_friend_id'] = $group_friend_id;
-		
+
 		$this->load->view('header', $data);
 		$this->load->view('show_perfect_fit', $data);
 		$this->load->view('footer', $data);
@@ -132,7 +132,7 @@ class Secret_friends extends CI_Controller {
 
 			// relative video upload path
 			$video_url = explode('/', $data['upload']['full_path']);
-			
+
 			// inserta anuncio a bd
 			$this->load->model('secret_friend_video');
 			$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
@@ -224,10 +224,13 @@ class Secret_friends extends CI_Controller {
 		$data['current_view'] = 'view_messages';
 
 		$current_user = $this->facebook->get_user();
+		var_dump($current_user);
 		$this->load->model('group_friend');
 		$group_friend_id = $this->group_friend->get_group_friend_id_by_fb_id($current_user['id']);
 
 		$data['messages'] = $this->group_friend->get_messages_by_group_friend($group_friend_id);
+		echo $group_friend_id;
+		var_dump($data['messages']);
 
 		$message_senders_group_id = array();
 		foreach ($data['messages'] as $key => $message) {
