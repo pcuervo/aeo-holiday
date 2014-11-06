@@ -15,7 +15,7 @@ class Secret_friends extends CI_Controller {
 	}// constructor
 
 	/**
-	 * This controller takes care of a user's secret friends
+	 * Display a user's secret friend view
 	 *
 	 * @param string $group_friend_id
 	 * @return void
@@ -27,20 +27,117 @@ class Secret_friends extends CI_Controller {
 		$data['current_view'] = 'secret_friend';
 
 		// Get secret friend's data
-		$this->load->model('group_friend');
-		$data['friend_info'] = $this->group_friend->get_group_friend($group_friend_id);
-		$this->load->model('exchange_group');
-		$data['group'] = $this->exchange_group->get_group_details($data['friend_info']['group_id']);
+		$this->load->model('secret_friend');
+		$current_user = $this->facebook->get_user();
+		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_user['id'], $group_friend_id);
 
 		// Check if user completed his/her "perfect fit"
 		$this->load->model('user_perfect_fit');
 		$data['has_perfect_fit'] = FALSE;
-		if($this->user_perfect_fit->has_perfect_fit($data['friend_info']['fb_user_id']))
+		if($this->user_perfect_fit->has_perfect_fit($data['secret_friend']['fb_user_id']))
 			$data['has_perfect_fit'] = TRUE;
+
+		// Check if user has recorded a video
+		$data['video'] = $this->secret_friend->has_video($current_user['id'], $data['secret_friend']['group_friend_id']);
 
 		$this->load->view('header', $data);
 		$this->load->view('secret_friend', $data);
 		$this->load->view('footer', $data);
 	}// index
+
+	/**
+	 * Create a video for a secret friend
+	 *
+	 * @param string $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function create_video($group_friend_id)
+	{
+		// Set up general variables for view
+		$data['current_view'] = 'create_secret_friend_video';
+
+		// load form helper
+		$this->load->helper(array('form', 'url'));
+
+		// Get secret friend's data
+		$this->load->model('secret_friend');
+		$current_user = $this->facebook->get_user();
+		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_user['id'], $group_friend_id);
+
+		$this->load->view('header', $data);
+		$this->load->view('create_video', $data);
+		$this->load->view('footer', $data);
+	}// create_video
+
+	/**
+	 * Upload secret friend's video to server
+	 *
+	 * @param string $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function upload_video($group_friend_id)
+	{
+		$secret_friend_id = $_POST['secret_friend_id'];
+		$group_friend_id = $_POST['group_friend_id'];
+
+		// CAMBIAR A CONSTANTE
+		$config['upload_path'] =  './uploads/';
+
+		// file upload constraints
+		$config['allowed_types'] = 'mp4|mpeg|mov';
+		$config['max_size']	= '10000';
+		$config['max_width'] = '';
+		$config['max_height'] = '';
+
+		// upload file!
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		if ( ! $this->upload->do_upload())
+		{
+			// There's been an error
+			$data['error'] = $this->upload->display_errors();
+			var_dump($data['error']);
+		}
+		else
+		{
+			// Save video in server
+			$data['upload'] = $this->upload->data();
+
+			// relative video upload path
+			$video_url = explode('/', $data['upload']['full_path']);
+			
+			// inserta anuncio a bd
+			$this->load->model('secret_friend_video');
+			$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
+		}
+		// send TEMPORARY NOTIFICATION
+		$this->facebook->send_notification($video_id);
+
+		// return to secret friend's home
+		$this->view($group_friend_id);
+	}// upload_video
+
+	/**
+	 * View a secret friend's video
+	 *
+	 * @param string $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function view_video($secret_friend_id)
+	{
+		// Set up general variables for view
+		$data['current_view'] = 'view_secret_friend_video';
+
+		// Get secret friend's data
+		$this->load->model('secret_friend');
+		$data['video_url'] = base_url().'/uploads/'.$this->secret_friend->get_video($secret_friend_id);
+
+		$this->load->view('header', $data);
+		$this->load->view('view_video', $data);
+		$this->load->view('footer', $data);
+	}// create_video
 
 }// class Secret_friend

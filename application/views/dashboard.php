@@ -2,6 +2,7 @@
     <div class="[ col-xs-6 col-md-3 ] [ center-block margin-bottom ]">
         <img src="<?php echo $fb_user_pic ?>" alt="" class="[ user-photo ]">
     </div>
+
     <h4 class="[ text-center ] [ margin-bottom ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
     <div class="row">
         <div class="[ col-xs-12 col-md-6 ] [ center-block margin-bottom ] [ text-center ] [ main-buttons ]">

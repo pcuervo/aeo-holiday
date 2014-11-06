@@ -11,6 +11,7 @@ use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookCanvasLoginHelper;
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
+use Facebook\FacebookResponse;
 use Facebook\GraphUser;
  
  
@@ -146,6 +147,20 @@ class Facebook {
         }
 
         return FALSE;
+    }// get_user
+
+
+    // THIS IS A TEST
+    public function send_notification($video_id) {
+        if ( $this->session ) {
+            $response = ( new FacebookRequest($this->session, 'POST', '/825788887309/notifications',  array(
+                    'template' => 'Tu amigo secreto te acaba de enviar un video.',
+                    'href' => 'https://dev-aeo-holiday.flockos.com/secret_friends/view_video/'.$video_id,
+                    'access_token' => '297868607079106|bd99a4f0c5adec6cb3adb06db6e950e1'
+                ) ) )->execute();
+        }
+
+        return $response;
     }// get_user
 
 }// Facebook

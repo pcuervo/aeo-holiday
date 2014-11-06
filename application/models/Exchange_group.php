@@ -375,8 +375,9 @@ class Exchange_group extends CI_Model {
 
 		foreach ($user_groups as $group)
 		{
+
 			if($this->has_secret_friends($group['id']))
-				break;
+				continue;
 
 			array_push($pending_groups, $group['id']);
 		}
@@ -419,6 +420,8 @@ class Exchange_group extends CI_Model {
 		$group_friends = $this->get_group_friends($group_id);
 		$from_friends = array();
 		$to_friends = array();
+
+		
 		
 		foreach ($group_friends as $key => $friend) {
 			array_push($from_friends, $friend['id']);
