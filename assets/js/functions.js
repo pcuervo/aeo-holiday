@@ -196,6 +196,7 @@ function inviteFriends(form){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" name="invited_friends[]" value="' + friend_id + '">');
             });
+            $(form).append('<p>Se han agregado amigos al grupo</p>');
         });
     });
 }// inviteFriends
