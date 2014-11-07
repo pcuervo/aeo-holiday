@@ -11,6 +11,10 @@
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
             toggleMainMenu();
 
+            <?php if($current_view == 'view_video') { ?>
+                videoPost();
+            <?php } ?>
+
             <?php if($current_view == 'new_exchange_group') { ?>
                 inviteFriends('.j_group_form');
                 createExchangeGroup();

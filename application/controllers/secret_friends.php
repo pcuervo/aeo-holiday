@@ -186,7 +186,7 @@ class Secret_friends extends CI_Controller {
 	public function view_video($group_friend_id)
 	{
 		// Set up general variables for view
-		$data['current_view'] = 'view_secret_friend_video';
+		$data['current_view'] = 'view_video';
 
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
@@ -198,12 +198,10 @@ class Secret_friends extends CI_Controller {
 
 		// Get secret friend's data
 		$this->load->model('secret_friend');
-		$current_fb_user = $this->facebook->get_user();
 		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
 
-		// Get secret friend's data
-		$this->load->model('secret_friend');
-		$data['video_url'] = base_url().'/uploads/'.$this->secret_friend->get_video($group_friend_id);
+
+
 
 
 		$this->load->view('header', $data);

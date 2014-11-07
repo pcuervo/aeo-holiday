@@ -95,7 +95,7 @@ class User_perfect_fit extends CI_Model {
 	 * Returns a secret friends
 	 *
 	 * @param int fb_user_id
-	 * @return mixed $secret_friend or 0
+	 * @return array $perfect_fit_data
 	 * @author Zurol
 	 **/
 	function get_perfect_fit_by_user($fb_user_id)
