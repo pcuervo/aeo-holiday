@@ -208,11 +208,11 @@ class Dashboard extends CI_Controller {
 
 		// Get user's secret friends
 		$this->load->model('secret_friend');
-		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($data['current_fb_user']['id']);
 
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
-		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['fb_user_id']);
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['current_fb_user']['id']);
 
 		$this->load->model('perfect_fit_quiz');
 		$this->perfect_fit_quiz->create_quiz($data['current_fb_user']['gender']);
