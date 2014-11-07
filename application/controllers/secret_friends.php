@@ -57,6 +57,10 @@ class Secret_friends extends CI_Controller {
 		// Set up general variables for view
 		$data['current_view'] = 'show_perfect_fit';
 
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
