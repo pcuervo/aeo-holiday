@@ -57,15 +57,17 @@
                 <?php } ?>
             </ul>
         </div>
-        <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
-            <p class="[ center-block ] [ trade ]" for="name">PENDIENTES</p>
-            <ul class="list-unstyled">
-                <?php foreach($group_friends as $key => $friend) { ?>
-                    <li>
-                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?></p>
-                    </li>
-                <?php } ?>
-            </ul>
-        </div>
+        <?php if($pending_friends != 0) { ?>
+            <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
+                <p class="[ center-block ] [ trade ]" for="name">PENDIENTES</p>
+                <ul class="list-unstyled">
+                    <?php foreach($pending_friends as $key => $friend) { ?>
+                        <li>
+                            <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['profile_picture'] ?>" alt=""><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['name'] ?></p>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </div>
+        <?php }// if ?>
     </div>
 </div><!-- CONTENIDO -->
