@@ -1,7 +1,5 @@
 <div class="[ contenido ] [ container ]">
-    <h2 class="text-center">Mensajes</h2>
-    <h3>Mensajes de mis amigos secretos.</h3>
-
+    <h2 class="[ text-center ] [ margin-bottom ]">Mensajes de mis amigos secretos.</h2>
     <?php if($messages != 0) { ?>
     <div class="[ row ]">
         <?php foreach ($messages as $key => $message) { ?>
