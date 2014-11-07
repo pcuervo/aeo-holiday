@@ -16,6 +16,7 @@
     <?php } ?>
     <div>
         <p>Escribir un mensaje para un amigo secreto</p>
-          <a href=""  class="btn btn-primary j-secret-friends">Mensaje nuevo </a>
+        <a href=""  class="btn btn-primary j-secret-friends">Mensaje nuevo </a>
     </div>
+    <div class="j-modal"></div>
 </div><!-- login -->

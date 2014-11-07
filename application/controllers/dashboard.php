@@ -70,8 +70,13 @@ class Dashboard extends CI_Controller {
 		// Set up general variables for view
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'new_exchange_group';
+
 		$current_user = $this->facebook->get_user();
 		$data['fb_user_id'] = $current_user['id'];
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
@@ -116,6 +121,17 @@ class Dashboard extends CI_Controller {
 	function edit_exchange_group()
 	{
 		$this->load->model('exchange_group');
+
+		$current_user = $this->facebook->get_user();
+		$data['fb_user_id'] = $current_user['id'];
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['fb_user_id']);
 
 		// Get user data
 		$group_data = array();

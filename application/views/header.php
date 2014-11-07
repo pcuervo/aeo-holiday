@@ -28,6 +28,11 @@
 						<li>
 							<a class="[ text-center ]" href="#">Cupón 20%</a>
 						</li>
+						<?php if($secret_friends != '') { ?>
+						<li>
+							<a class="[ text-center ]" href="<?php echo base_url().'secret_friends/view_messages'?>">Mensajes de amigos secretos</a>
+						</li>
+						<?php } ?>
 						<li class="[ sidebar-brand ]">
 							<a class="[ text-center ]" href="#">Mis Intercambios</a>
 						</li>

@@ -260,13 +260,16 @@ class Secret_friends extends CI_Controller {
 	{
 		$data['current_view'] = 'view_messages';
 
-		// Get user's groups to display in the menu
-		$this->load->model('exchange_group');
-
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
 			redirect('/login');
 
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
 
 		$this->load->model('group_friend');
