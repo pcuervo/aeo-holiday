@@ -34,6 +34,14 @@
        url('@{icon-font-path}trade-18.ttf') format('truetype'),
        url('@{icon-font-path}trade-18.svg#trade-18') format('svg');
 }
+@font-face {
+  font-family: 'Trade bd2';
+  src: url('@{icon-font-path}trade-bd2.eot');
+  src: url('@{icon-font-path}trade-bd2.eot?#iefix') format('embedded-opentype'),
+       url('@{icon-font-path}trade-bd2.woff') format('woff'),
+       url('@{icon-font-path}trade-bd2.ttf') format('truetype'),
+       url('@{icon-font-path}trade-bd2.svg#trade-bd2') format('svg');
+}
 
 /* GENERAL *****************/
 
@@ -81,6 +89,7 @@ form, input, p, a{
 form{ }
 form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.75em; letter-spacing: 0.1em; text-transform: uppercase; }
 form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-size: 18px; }
+form .form-group label + p{ text-transform: uppercase; font-family: 'Trade bd2'; font-size: 20px; letter-spacing: 0.1em; }
 //------------//
 
 //---GRID---//
@@ -103,6 +112,21 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 
 //---TIPOGRAFÍA---//
 .trade{ font-family: 'Trade'; }
+//------------//
+
+//---CALENDARIO---//
+.addthisevent-drop span > span { margin: 0 1%; padding: 0 1%; }
+.addthisevent-drop span > span + span { margin-left: 0; padding-left: 2%; border-left: 1px solid @white; }
+//------------//
+
+//---SCROLL---//
+.scroll-box{ padding: 10px; background: darken(@brand-primary, 10%); }
+.scroll-box > p{ font-size: 18px; }
+.scroll-box ul{ height: 150px; overflow-y: scroll; }
+.scroll-box ul li{ margin-bottom: 20px; }
+.scroll-box ul li > img{ position: relative; z-index: 2; }
+.scroll-box ul li > p{ margin: 0; padding: 10px 10px 10px 24px; background: lighten(@brand-primary, 30%); position: relative; left: -20px; z-index: 1; }
+.scroll-box ul li.is-admin > p{  background: lighten(@brand-primary, 10%); }
 //------------//
 
 /*****************************/
@@ -138,13 +162,14 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 
  /* CSS FOR LATERAL MENU***********************************/
 #sidebar-wrapper { background: @brand-info;
-    width: 250px;
+    width: 280px;
     height: 100%;
     color: @white;
     padding-left: 0;
     z-index: 1000;
     position: fixed;
-    right: -250px;
+    right: -280px;
+    top: 0;
     height: 100%;
     overflow-y: auto;
     background-color: @white;
@@ -161,7 +186,7 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 /* Toggle Styles */
 #sidebar-wrapper.toggled { right: 0; }
 
-.sidebar-nav { width: 250px; height: 100%; margin: 0; padding: 0; list-style: none; position: absolute; top: 0; }
+.sidebar-nav { width: 280px; height: 100%; margin: 0; padding: 0; list-style: none; position: absolute; top: 0; }
 .sidebar-nav h4{ margin: 0; padding: 11px 0 9px 0; color: @brand-primary; font-family: 'Trade'; font-size: 24px; }
 .sidebar-nav li { border-bottom: solid 1px @brand-primary;
     &:last-child{ border-bottom: none; }
@@ -176,13 +201,8 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 
 .sidebar-nav > .sidebar-brand { padding: 10px 0; text-align: center; }
 .sidebar-nav > .sidebar-brand a { margin-right: 0; font-size: 24px; padding: 30px 0 0 0; font-family: 'Trade'; color: @brand-primary; text-transform: uppercase; }
-.sidebar-nav > .sidebar-brand a:hover {
-    color: @white;
-    background: none;
-}
-.wrapper {
-    padding-right: 0;
-}
+.sidebar-nav > .sidebar-brand a:hover { }
+.wrapper { padding-right: 0; }
 
 .wrapper.toggled {
     padding-right: 0;

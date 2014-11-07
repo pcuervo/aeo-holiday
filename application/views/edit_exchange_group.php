@@ -1,7 +1,7 @@
 <div class="[ contenido ] [ content ] [ margin-bottom ] [ clearfix ]">
 
     <h3 class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">Edita tu intercambio</h3>
-    
+
     <div class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">
         <a href="http://example.com/link-to-your-event" title="Add to Calendar" class="addthisevent">Agregar a mi calendario
             <span class="_start"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
@@ -16,7 +16,7 @@
             <span class="_date_format">DD/MM/YYYY</span>
         </a>
     </div>
-    
+
     <form action="" method="POST" role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ j_edit_group_form ]">
         <div class="[ form-group ]">
             <label class="[ center-block ]" for="name">Nombre del intercambio</label>
@@ -80,7 +80,7 @@
         </ul>
         <div class="text-center">
             <a href="#" class="[ btn btn-primary ] [ j_invite_friends ] [ margin-bottom ]">Invitar mas amigos</a><br/>
-            <button class="[ btn btn-primary ]">Editar intercambio</button>
+            <button class="[ btn btn-primary btn-go ]">Editar intercambio</button>
         </div>
     </form>
 </div><!-- CONTENIDO -->
