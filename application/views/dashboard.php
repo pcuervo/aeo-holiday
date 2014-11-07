@@ -7,8 +7,6 @@
                 <div class="[ col-xs-5 ]">
                     <h4 class="[ margin-bottom ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
                     <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary btn-go ] [ margin-bottom ]"><span>Crear nuevo intercambio</span></a>
-                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]">Completar mi perfil</a>
-
                      <?php if(!$has_perfect_fit){ ?>
                         <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]">Completar mi perfil</a>
                     <?php } ?>
