@@ -182,7 +182,7 @@ class Secret_friends extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	public function view_video($secret_friend_id)
+	public function view_video($group_friend_id)
 	{
 		// Set up general variables for view
 		$data['current_view'] = 'view_secret_friend_video';
@@ -202,7 +202,7 @@ class Secret_friends extends CI_Controller {
 
 		// Get secret friend's data
 		$this->load->model('secret_friend');
-		$data['video_url'] = base_url().'/uploads/'.$this->secret_friend->get_video($secret_friend_id);
+		$data['video_url'] = base_url().'/uploads/'.$this->secret_friend->get_video($group_friend_id);
 
 		$this->load->view('header', $data);
 		$this->load->view('view_video', $data);

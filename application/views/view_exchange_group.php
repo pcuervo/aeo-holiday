@@ -8,7 +8,7 @@
             </div><!-- form-group -->
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Nombre del intercambio</label>
-                <p></p>
+                <p><?php echo $group_details['name'] ?></p>
             </div><!-- form-group -->
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Fecha del intercambio</label>
