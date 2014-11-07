@@ -4,7 +4,7 @@
             <div class="[ margin-bottom-big ]">
                 <h1>
                     <a href="#">
-                        <img class="[ img-responsive ]" src="<?php echo base_url().'assets/images/logo-bge-white.png' ?>" alt="American Eagle Best Gift Ever" title="American Eagle Best Gift Ever" />
+                        <img class="[ img-responsive ] [ center-block ]" src="<?php echo base_url().'assets/images/logo-bge-white.png' ?>" alt="American Eagle Best Gift Ever" title="American Eagle Best Gift Ever" />
                     </a>
                 </h1>
             </div><!-- row -->
@@ -16,7 +16,7 @@
                         <input class="js-acepto" type="checkbox"> <a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones" >Acepto términos y condiciones</a>
                     </fieldset>
                 </form>
-                <a href="<?php echo $fb_login_url; ?>" class="[ btn btn-primary btn-fb ] [ js-login js-disabled ]"><span>Conecta con tu facebook</span></a>
+                <a href="<?php echo $fb_login_url; ?>" class="[ btn btn-primary btn-fb ] [ js-login js-disabled ]" disabled><span>Conecta con tu facebook</span></a>
             </div>
         </div>
     </div>
