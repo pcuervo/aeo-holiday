@@ -93,20 +93,21 @@ class Secret_friend extends CI_Model {
 		if ($query->num_rows() < 1)
 			return 0;
 
+		$row = $query->row();
+
 		$secret_friends = array();
 		$this->load->model('group_friend');
-		foreach ($query->result() as $key => $row) {
-			$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
-			$secret_friends[$key] = array(
-				'secret_friend_id'	=> $row->secret_friend_id,
-				'group_friend_id'	=> $group_friend['group_friend_id'],
-				'fb_user_id'		=> $group_friend['fb_user_id'],
-				'name'				=> $group_friend['name'],
-				'friend_picture'	=> $group_friend['friend_picture'],
-				'group_id'			=> $row->group_id,
-				'group'				=> $row->name,
-				);
-		}
+
+		$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
+		$secret_friends = array(
+			'secret_friend_id'	=> $row->secret_friend_id,
+			'group_friend_id'	=> $group_friend['group_friend_id'],
+			'fb_user_id'		=> $group_friend['fb_user_id'],
+			'name'				=> $group_friend['name'],
+			'friend_picture'	=> $group_friend['friend_picture'],
+			'group_id'			=> $row->group_id,
+			'group'				=> $row->name,
+			);
 
 		return $secret_friends;
 	}// get_secret_friends_by_user
