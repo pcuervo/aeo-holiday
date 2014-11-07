@@ -72,7 +72,7 @@ class Dashboard extends CI_Controller {
 		$data['current_view'] = 'new_exchange_group';
 
 		$current_fb_user = $this->facebook->get_user();
-		$data['fb_user_id'] = $current_user['id'];
+		$data['fb_user_id'] = $current_fb_user['id'];
 
 		// Get user's secret friends
 		$this->load->model('secret_friend');
@@ -122,8 +122,8 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->model('exchange_group');
 
-		$current_user = $this->facebook->get_user();
-		$data['fb_user_id'] = $current_user['id'];
+		$current_fb_user = $this->facebook->get_user();
+		$data['fb_user_id'] = $current_fb_user['id'];
 
 		// Get user's secret friends
 		$this->load->model('secret_friend');
@@ -235,16 +235,16 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->model('user_perfect_fit');
 
-		$current_user = $this->facebook->get_user();
+		$current_fb_user = $this->facebook->get_user();
 
 		$perfect_fit_data = array();
 		$perfect_fit_data['Talla top'] = $_POST['Talla_top'];
 		$perfect_fit_data['Talla jeans'] = $_POST['Talla_jeans'];
 		$perfect_fit_data['Color'] = $_POST['Color'];
 		$perfect_fit_data['Largo jeans'] = ''; 
-		if($current_user['gender'] == 'male')
+		if($current_fb_user['gender'] == 'male')
 			$perfect_fit_data['Largo jeans'] = $_POST['Largo_jeans'];
-		$user_data['fb_user'] = $current_user;
+		$user_data['fb_user'] = $current_fb_user;
 
 		$this->user_perfect_fit->create_perfect_fit($perfect_fit_data, $user_data);
 		
@@ -259,18 +259,18 @@ class Dashboard extends CI_Controller {
 	 **/
 	function accept_invitation($group_id)
 	{
-		$current_user = $this->facebook->get_user();
+		$current_fb_user = $this->facebook->get_user();
 
 		$this->load->model('group_invitation');
 		$invitation_data = array(
-			'invited_fb_user_id' 	=> $current_user['id'], 
+			'invited_fb_user_id' 	=> $current_fb_user['id'], 
 			'group_id' 			=> $group_id,
 			);
 		$this->group_invitation->remove_invitation($invitation_data);
 
 		$this->load->model('group_friend');
 		$friend_data = array(
-			'facebook_users_id' => $current_user['id'], 
+			'facebook_users_id' => $current_fb_user['id'], 
 			'group_id' 			=> $group_id,
 			'is_admin'			=> FAlSE,
 			);
@@ -288,11 +288,11 @@ class Dashboard extends CI_Controller {
 	 **/
 	function decline_invitation($group_id)
 	{
-		$current_user = $this->facebook->get_user();
+		$current_fb_user = $this->facebook->get_user();
 
 		$this->load->model('group_invitation');
 		$invitation_data = array(
-			'invited_fb_user_id' 	=> $current_user['id'], 
+			'invited_fb_user_id' 	=> $current_fb_user['id'], 
 			'group_id' 				=> $group_id,
 			);
 		$this->group_invitation->remove_invitation($invitation_data);
