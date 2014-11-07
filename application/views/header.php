@@ -18,28 +18,28 @@
 					<ul class="[ sidebar-nav ]">
 						<li class="[ sidebar-brand ]">
 							<a href="#menu-toggle" id="menu-toggle">
-							<i class="[ fa fa-chevron-right ] [ right ]"></i>
+								<img class="[ right ]" src="<?php echo base_url() ?>assets/images/icon-hamburger-rojo.png">
 							</a>
-							<a href="#">MENU</a>
+							<h4 href="#">MENU</h4>
 						</li>
 						<li>
-							<a href="<?php echo base_url().'dashboard' ?>">Inicio</a>
+							<a class="[ text-center ]" href="<?php echo base_url().'dashboard' ?>">Inicio</a>
 						</li>
 						</li>
 						<li>
-							<a href="#">Cupón 20%</a>
+							<a class="[ text-center ]" href="#">Cupón 20%</a>
 						</li>
 						<li class="[ sidebar-brand ]">
-							<a href="#">Mis Intercambios</a>
+							<a class="[ text-center ]" href="#">Mis Intercambios</a>
 						</li>
 						<?php foreach ($exchange_groups as $key => $group) { ?>
 						<?php $group_url = base_url().'dashboard/view_group/'.$group['id']?>
 							<li>
-								<a href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
+								<a class="[ text-center ]" href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
 							</li>
 						<?php } ?>
 						<li class="[ sidebar-brand ]">
-							<a href="#">Salir</a>
+							<a class="[ text-center ]" href="#">Salir</a>
 							<img src="<?php echo base_url() ?>assets/images/aeo-logo-white.png" alt="">
 						</li>
 					</ul>

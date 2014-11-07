@@ -26,6 +26,15 @@
        url('@{icon-font-path}trade.svg#trade') format('svg');
 }
 
+@font-face {
+  font-family: 'Trade 18';
+  src: url('@{icon-font-path}trade-18.eot');
+  src: url('@{icon-font-path}trade-18.eot?#iefix') format('embedded-opentype'),
+       url('@{icon-font-path}trade-18.woff') format('woff'),
+       url('@{icon-font-path}trade-18.ttf') format('truetype'),
+       url('@{icon-font-path}trade-18.svg#trade-18') format('svg');
+}
+
 /* GENERAL *****************/
 
 html, body{ height: 100%; }
@@ -67,33 +76,6 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
 /*****************************/
 
 
-
- /* CSS FOR LATERAL MENU***********************************/
-#sidebar-wrapper {
-    width: 250px;
-    height: 100%;
-    color: @white;
-    padding-left: 0;
-    z-index: 1000;
-    position: fixed;
-    right: -250px;
-    height: 100%;
-    overflow-y: auto;
-    background-color: @white;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    #menu-toggle{
-        position: absolute;
-        top: 10px;
-    }
-}
-
-/* Toggle Styles */
-#sidebar-wrapper.toggled { right: 0; }
-
-
 #menu-principal { padding: 15px 15px 0 15px; border-bottom: 2px solid @white;
     a{
         position: absolute;
@@ -122,44 +104,51 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
     margin-right: 250px;
 }
 
-/* Sidebar Styles */
-
-.sidebar-nav {
-    position: absolute;
-    top: 0;
+ /* CSS FOR LATERAL MENU***********************************/
+#sidebar-wrapper { background: @brand-info;
     width: 250px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
+    height: 100%;
+    color: @white;
+    padding-left: 0;
+    z-index: 1000;
+    position: fixed;
+    right: -250px;
+    height: 100%;
+    overflow-y: auto;
+    background-color: @white;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    -webkit-box-shadow: inset 10px 0px 14px 0px rgba(180,171,160,1);
+    -moz-box-shadow: inset 10px 0px 14px 0px rgba(180,171,160,1);
+    box-shadow: inset 10px 0px 14px 0px rgba(180,171,160,1);
+    #menu-toggle{
+        position: absolute;
+        top: 6px;
+    }
 }
 
-.sidebar-nav li {
-    text-indent: 20px;
-    line-height: 40px;
-    border-bottom: solid 1px @white;
+/* Toggle Styles */
+#sidebar-wrapper.toggled { right: 0; }
 
+.sidebar-nav { width: 250px; height: 100%; margin: 0; padding: 0; list-style: none; font-family: 'Trade'; position: absolute; top: 0; }
+.sidebar-nav h4{ margin: 0; padding: 10px 0; color: @brand-primary; font-size: 26px; }
+.sidebar-nav li { text-indent: 20px; line-height: 40px; border-bottom: solid 1px @brand-primary;
     &:last-child{
         border-bottom: none;
     }
-
     img{
         width: 100%;
         padding: 10px;
     }
 }
-
-.sidebar-nav li a {
-    display: block;
-    text-decoration: none;
-    color: @white;
-}
-
+.sidebar-nav li a { display: block; text-decoration: none; color: @brand-primary; }
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.2);
 }
-
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
@@ -170,22 +159,12 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
     line-height: 60px;
     padding: 10px 0;
     text-align: center;
-    a{
-        text-transform: uppercase;
-        margin-right: 20px;
-    }
 }
-
-.sidebar-nav > .sidebar-brand a {
-    color: @white;
-}
-
+.sidebar-nav > .sidebar-brand a { margin-right: 20px; color: @brand-primary; text-transform: uppercase; }
 .sidebar-nav > .sidebar-brand a:hover {
     color: @white;
     background: none;
 }
-
-
 .wrapper {
     padding-right: 0;
 }
