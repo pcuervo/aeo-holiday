@@ -187,7 +187,7 @@ function inviteFriends(form){
         });
     };
 
-	console.log('invite friends ready');
+	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
             message: 'Participa en nuestro grupo de intercambio.'
@@ -196,7 +196,7 @@ function inviteFriends(form){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" name="invited_friends[]" value="' + friend_id + '">');
             });
-            $(form).append('<p>Se han agregado amigos al grupo</p>');
+            $('.j_invite_friends').after('<p>Se han agregado amigos al grupo</p>');
         });
     });
 }// inviteFriends
@@ -211,7 +211,7 @@ function getInvitedFriendData(fb_id){
         console.log(name);
         return name;
     });
-    
+
 }// getInvitedFriendName
 
 function getInvitedFriendPic(fb_id){
