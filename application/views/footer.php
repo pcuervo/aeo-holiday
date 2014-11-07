@@ -8,23 +8,8 @@
 
         <script>
 
-            addthisevent.settings({
-                license   : "al7dliedlzlnbpbh0mbm",
-                mouse     : false,
-                css       : true,
-                outlook   : {show:false, text:"Outlook Calendar"},
-                google    : {show:true, text:"Google Calendar"},
-                ical      : {show:true, text:"iCal Calendar"},
-                facebook  : {show:false, text:"Facebook Event"},
-                dropdown  : {order:"outlook,google,ical"},
-                callback  : ""
-            });
-            // Add current view to local storage to use in Javascript
-            //localStorage.setItem('current_view', '<?php echo $current_view ?>');
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
-
             toggleMainMenu();
-            //facebookInit();
 
             <?php if($current_view == 'new_exchange_group') { ?>
                 inviteFriends('.j_group_form');
@@ -32,6 +17,7 @@
             <?php } ?>
 
             <?php if($current_view == 'view_exchange_group') { ?>
+                addGroupToCalendar();
                 inviteFriends('.j_edit_group_form');
                 editExchangeGroup();
             <?php } ?>
@@ -47,6 +33,7 @@
             <?php if($current_view == 'login') { ?>
                 toggleButton();
             <?php } ?>
+
 
         </script>
     </body>

@@ -12,6 +12,20 @@ function toggleMainMenu() {
 	});
 }// toggleMainMenu
 
+function addGroupToCalendar(){
+    addthisevent.settings({
+        license   : "al7dliedlzlnbpbh0mbm",
+        mouse     : false,
+        css       : true,
+        outlook   : {show:false, text:"Outlook Calendar"},
+        google    : {show:true, text:"Google Calendar"},
+        ical      : {show:true, text:"iCal Calendar"},
+        facebook  : {show:false, text:"Facebook Event"},
+        dropdown  : {order:"google,ical"},
+        callback  : ""
+    });
+}
+
 /**
 * Toggles disabled button
 * @return void
