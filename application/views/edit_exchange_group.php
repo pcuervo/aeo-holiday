@@ -1,17 +1,17 @@
 <div class="[ contenido ] [ content ] [ margin-bottom ] [ clearfix ]">
 
     <h3 class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">Edita tu intercambio</h3>
+    
     <div class="[ col-xs-11 col-sm-10 col-md-6 center-block ]">
-        <a href="http://example.com/link-to-your-event" title="Add to Calendar" class="addthisevent">Agregar al calendario
-            <span class="_start">10-05-2014 11:38:46</span>
-            <span class="_end">11-05-2014 11:38:46</span>
+        <a href="http://example.com/link-to-your-event" title="Add to Calendar" class="addthisevent">Agregar a mi calendario
+            <span class="_start"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
+            <span class="_end"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
             <span class="_zonecode">12</span>
-            <span class="_summary">Summary of the event</span>
-            <span class="_description">Description of the event</span>
-            <span class="_location">Location of the event</span>
+            <span class="_summary">Grupo de intercambio <?php echo $group_details['name'] ?></span>
+            <span class="_description"><?php echo $group_details['description'] ?></span>
+            <span class="_location"><?php echo $group_details['place'] ?></span>
             <span class="_organizer">Organizer</span>
             <span class="_organizer_email">Organizer e-mail</span>
-            <span class="_facebook_event">http://www.facebook.com/events/160427380695693</span>
             <span class="_all_day_event">true</span>
             <span class="_date_format">DD/MM/YYYY</span>
         </a>

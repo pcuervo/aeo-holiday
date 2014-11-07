@@ -70,8 +70,13 @@ class Dashboard extends CI_Controller {
 		// Set up general variables for view
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'new_exchange_group';
+
 		$current_user = $this->facebook->get_user();
 		$data['fb_user_id'] = $current_user['id'];
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
@@ -117,6 +122,17 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->model('exchange_group');
 
+		$current_user = $this->facebook->get_user();
+		$data['fb_user_id'] = $current_user['id'];
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['fb_user_id']);
+
 		// Get user data
 		$group_data = array();
 		$group_data['group_id'] = $_POST['group_id'];
@@ -145,21 +161,30 @@ class Dashboard extends CI_Controller {
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'view_exchange_group';
 
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+		$data['fb_user_id'] = $current_fb_user['id'];
+
 		// Get group data
 		$this->load->model('exchange_group');
 		$data['group_details'] = $this->exchange_group->get_group_details($group_id);
 		$data['group_friends'] = $this->exchange_group->get_group_friends($group_id);
 		$data['pending_friends'] = $this->exchange_group->get_pending_invitations_by_group($group_id);
 
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['fb_user_id']);
+
 		// ¿Is current user the group admin?
 		$is_admin = FALSE;
 		$data['current_fb_user'] = $this->facebook->get_user();
 		if($data['current_fb_user']['id'] == $data['group_details']['admin_id'])
 			$is_admin = TRUE;
-
-		// Get user's groups to display in the menu
-		$this->load->model('exchange_group');
-		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['current_fb_user']['id']);
 
 		// load views
 		$this->load->view('header', $data);

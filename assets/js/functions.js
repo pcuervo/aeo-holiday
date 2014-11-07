@@ -12,6 +12,20 @@ function toggleMainMenu() {
 	});
 }// toggleMainMenu
 
+function addGroupToCalendar(){
+    addthisevent.settings({
+        license   : "al7dliedlzlnbpbh0mbm",
+        mouse     : false,
+        css       : true,
+        outlook   : {show:false, text:"Outlook Calendar"},
+        google    : {show:true, text:"Google Calendar"},
+        ical      : {show:true, text:"iCal Calendar"},
+        facebook  : {show:false, text:"Facebook Event"},
+        dropdown  : {order:"google,ical"},
+        callback  : ""
+    });
+}
+
 /**
 * Toggles disabled button
 * @return void
@@ -106,20 +120,29 @@ function updatePerfectFit(){
 }// updatePerfectFit
 
 /**
- * Show all secret friends for a given user
+ * Show all secret friends for the current user
  * @return void
  */
 function showSecretFriends(){
     $('a.j-secret-friends').on('click', function(e){
         e.preventDefault();
 
-        var group_friend_id = $(this).data('user-id');
-        var url = localStorage.getItem('base_url') + 'secret_friends/get_secret_friends/'+group_friend_id;
+        var url = localStorage.getItem('base_url') + 'secret_friends/get_secret_friends/';
 
         $.get(
             url,
             function(response){
-                console.log(response);
+                var secret_friends_json = $.parseJSON(response);
+                $.each(secret_friends_json, function(i, friend){
+                    console.log(friend);
+                    var friend_url = localStorage.getItem('base_url') + 'secret_friends/create_message/' + friend.group_friend_id;
+                    var secret_friend_html = '<a href="' + friend_url + '">';
+                    secret_friend_html += '<img src="' + friend.friend_picture + '" />';
+                    secret_friend_html += '<p>' + friend.name + '</p>';
+                    secret_friend_html += '<p>' + friend.group + '</p>';
+                    secret_friend_html += '</a>';
+                    $(secret_friend_html).appendTo('.j-modal');
+                });
             }// response
         );
     });
