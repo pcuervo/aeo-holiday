@@ -48,17 +48,19 @@ a{ cursor: pointer; }
 .small-margin{ margin: 5px; }
 
 h1{ margin: 0 0 10px 0; color: @white; }
-h2{ margin: 0 0 10px 0; font-size: 18px; color: @white; text-transform: uppercase; }
-h3{ margin: 0; font-size: 18px; line-height: 22px; text-transform: uppercase; color: @white; }
-h4{ margin-top: 10px; }
+h2{ margin: 0 0 10px 0; font-size: 24px; line-height: 30px; letter-spacing: 0.1em; color: @white; text-transform: uppercase; }
+h3{ margin: 0; font-size: 20px; line-height: 24px; text-transform: uppercase; color: @white; }
+h4{ margin-top: 10px; font-size: 16px; line-height: 20px; text-transform: uppercase; color: @white; }
 
 //---BOTONES---//
 
-.btn i{ display: inline-block; width: 1px; height: 0.9em; background: @white; position: relative; top: 1px; }
-.btn img{ position: relative; top: -2px; }
-.botones-centro{
-    margin: 10px auto;
-}
+.btn { padding: 13px 40px 11px 13px; }
+.btn.btn-go { background: url('../images/icon-go.png') no-repeat right 13px center; }
+.btn.btn-fb { background: url('../images/icon-fb.png') no-repeat right 13px center; }
+.btn span{ display: block; padding-right: 10px; border-right: 1px solid @white; line-height: 18px; }
+.btn i { display: inline-block; width: 1px; height: 0.9em; background: @white; position: relative; top: 1px; }
+.btn img { position: relative; top: -2px; }
+.botones-centro { margin: 10px auto; }
 
 //------------//
 
@@ -71,6 +73,11 @@ form, input, p, a{
 //---FORMA---//
 form{ }
 form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.75em; letter-spacing: 0.1em; text-transform: uppercase; }
+//------------//
+
+//---GRID---//
+.container{ padding: 10px 0; }
+.row{ margin-left: 0; margin-right: 0; }
 //------------//
 
 /*****************************/
@@ -123,27 +130,19 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
     -webkit-box-shadow: inset 10px 0px 14px 0px rgba(180,171,160,1);
     -moz-box-shadow: inset 10px 0px 14px 0px rgba(180,171,160,1);
     box-shadow: inset 10px 0px 14px 0px rgba(180,171,160,1);
-    #menu-toggle{
-        position: absolute;
-        top: 6px;
-    }
+    #menu-toggle{ padding: 0; position: absolute; top: 6px; }
 }
 
 /* Toggle Styles */
 #sidebar-wrapper.toggled { right: 0; }
 
-.sidebar-nav { width: 250px; height: 100%; margin: 0; padding: 0; list-style: none; font-family: 'Trade'; position: absolute; top: 0; }
-.sidebar-nav h4{ margin: 0; padding: 10px 0; color: @brand-primary; font-size: 26px; }
-.sidebar-nav li { text-indent: 20px; line-height: 40px; border-bottom: solid 1px @brand-primary;
-    &:last-child{
-        border-bottom: none;
-    }
-    img{
-        width: 100%;
-        padding: 10px;
-    }
+.sidebar-nav { width: 250px; height: 100%; margin: 0; padding: 0; list-style: none; position: absolute; top: 0; }
+.sidebar-nav h4{ margin: 0; padding: 11px 0 9px 0; color: @brand-primary; font-family: 'Trade'; font-size: 24px; }
+.sidebar-nav li { border-bottom: solid 1px @brand-primary;
+    &:last-child{ border-bottom: none; }
+    img{ padding: 10px; }
 }
-.sidebar-nav li a { display: block; text-decoration: none; color: @brand-primary; }
+.sidebar-nav li a { display: block; padding: 10px 0 4px 0; text-decoration: none; font-family: 'Trade 18'; font-size: 20px; color: @brand-primary; text-transform: uppercase; }
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
@@ -154,13 +153,8 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
     text-decoration: none;
 }
 
-.sidebar-nav > .sidebar-brand {
-    font-size: 18px;
-    line-height: 60px;
-    padding: 10px 0;
-    text-align: center;
-}
-.sidebar-nav > .sidebar-brand a { margin-right: 20px; color: @brand-primary; text-transform: uppercase; }
+.sidebar-nav > .sidebar-brand { padding: 10px 0; text-align: center; }
+.sidebar-nav > .sidebar-brand a { margin-right: 0; font-size: 24px; padding: 30px 0 0 0; font-family: 'Trade'; color: @brand-primary; text-transform: uppercase; }
 .sidebar-nav > .sidebar-brand a:hover {
     color: @white;
     background: none;
@@ -191,7 +185,7 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
 
 //PAGE CONTENT***********************************************************
 
-.contenido { height: 100%; padding: 20px;
+.contenido { height: 100%;
     .logo-main{
         padding: 20px;
         border-top: solid 1px @white;
@@ -206,7 +200,7 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
 
 
 //1-LOGIN*********************************
-.login{ padding-top: 25%; }
+.login{ padding-top: 20%; }
 #modalTerminosYCondiciones{
     .modal-dialog{ width: 100%; height: 100%; margin: 0; }
     .modal-content{ border-radius: 0; color: @white; background: rgba(0,0,0,0.8); }
@@ -243,19 +237,7 @@ form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.7
 
 
 //3-HOME***********************************************
-.home{
-    h1{
-        border: none;
-    }
-    h4{
-        text-align: center;
-    }
-}
-.user-photo{
-    width: 100%;
-    height: auto;
-    border: solid 4px @white;
-}
+.user-photo{ padding: 0; border: solid 4px @white;  }
 .invitaciones-contenedor, .actividad-contenedor{
     height: 200px;
     overflow-y: scroll;

@@ -16,7 +16,7 @@
                         <input class="js-acepto" type="checkbox"> <a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones" >Acepto términos y condiciones</a>
                     </fieldset>
                 </form>
-                <a href="<?php echo $fb_login_url ?>" target="_top" class="[ btn btn-primary ] [ js-login js-disabled ]" disabled>Conecta con tu facebook <i></i> <img src="<?php echo base_url().'assets/images/icon-fb.png' ?>" alt="go"></a>
+                <a href="<?php echo $fb_login_url; ?>" class="[ btn btn-primary btn-fb ] [ js-login js-disabled ]"><span>Conecta con tu facebook</span></a>
             </div>
         </div>
     </div>
