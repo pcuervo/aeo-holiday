@@ -22,7 +22,7 @@
         <?php } ?>
     <?php } else { ?>
      <div class="[ row ]">
-        No tienes mensajes.
+        <p class="[ text-center ]">No tienes mensajes.</p>
     </div>
     <?php } ?>
 </div><!-- login -->
