@@ -79,5 +79,4 @@
             <p class="[ text-center ]">No tienes actividad todavía... </p>
         </div>
     </div><!--ACTIVIDAD-->
-
 </div><!-- CONTENIDO -->

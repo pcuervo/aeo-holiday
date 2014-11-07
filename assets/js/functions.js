@@ -61,7 +61,7 @@ function createExchangeGroup(){
             group_data,
             function(response){
             	// TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-            	alert('!Grupo de intercambio creado!');
+                swal("OK", "!Grupo de intercambio creado!", "success");
                 var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
         		window.location = dashboard_url;
             }// response

@@ -3,7 +3,7 @@
         <script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
         <script src="<?php echo base_url().'assets/js/jquery.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/bootstrap.js' ?>"></script>
-        <script src="<?php echo base_url().'assets/js/plugins.js' ?>"></script>
+        <script src="<?php echo base_url().'assets/js/plugins.min.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/functions.js' ?>"></script>
 
         <script>
