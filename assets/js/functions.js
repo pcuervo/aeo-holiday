@@ -200,4 +200,25 @@ function inviteFriends(form){
     });
 }// inviteFriends
 
+function getInvitedFriendData(fb_id){
+    var user_data = {};
+    FB.api('/'+ fb_id + '?access_token=CAAEO6PCDwsIBAOCpWHhPxQ8pSfTz973A1y0nZB4oG0lbe4bPHDNkbVR1YWHzbPWZBAylkqGpUTqr0LGZBllJGmefEB535Ime0c9yN8OZBp4s45QLDCrwuZBrTdUoRuY3j7EnaBLAgiVj6bud1i51x194zr8ccm0eLa3t4oF76qABB18oCTOZCrhkpxCh2ECbfQiPBZAtW0mP3tZAFg4EUj7R', function(response) {
+
+        if(response.id){
+            var name = response.first_name + response.last_name;
+        }
+        console.log(name);
+        return name;
+    });
+    
+}// getInvitedFriendName
+
+function getInvitedFriendPic(fb_id){
+    FB.api('/'+ fb_id + '/picture?access_token=CAAEO6PCDwsIBAOCpWHhPxQ8pSfTz973A1y0nZB4oG0lbe4bPHDNkbVR1YWHzbPWZBAylkqGpUTqr0LGZBllJGmefEB535Ime0c9yN8OZBp4s45QLDCrwuZBrTdUoRuY3j7EnaBLAgiVj6bud1i51x194zr8ccm0eLa3t4oF76qABB18oCTOZCrhkpxCh2ECbfQiPBZAtW0mP3tZAFg4EUj7R', function(response) {
+        if(response){
+            return response.url;
+        }
+    });
+}// getInvitedFriendName
+
 
