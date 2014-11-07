@@ -36,11 +36,13 @@
 						<li class="[ sidebar-brand ]">
 							<a class="[ text-center ]" href="#">Mis Intercambios</a>
 						</li>
-						<?php foreach ($exchange_groups as $key => $group) { ?>
-						<?php $group_url = base_url().'dashboard/view_group/'.$group['id']?>
-							<li>
-								<a class="[ text-center ]" href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
-							</li>
+						<?php if($exchange_groups != 0) { ?>
+							<?php foreach ($exchange_groups as $key => $group) { ?>
+							<?php $group_url = base_url().'dashboard/view_group/'.$group['id']?>
+								<li>
+									<a class="[ text-center ]" href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
+								</li>
+							<?php } ?>
 						<?php } ?>
 						<li class="[ sidebar-brand ]">
 							<a class="[ text-center ] [ margin-bottom-big ]" href="#">Salir</a>
