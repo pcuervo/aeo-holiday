@@ -2,10 +2,10 @@
     <h2 class="[ margin-bottom ] [ text-center ] [ center-block ]">Datos del intercambio</h2>
     <div class="row">
         <form role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
-            <div class="[ form-group ] [ margin-bottom ]">
+            <!-- <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Administrador del intercambio</label>
                 <p><?php echo $current_fb_user['first_name'].' '.$current_fb_user['last_name'] ?></p>
-            </div><!-- form-group -->
+            </div> --><!-- form-group -->
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Nombre del intercambio</label>
                 <p><?php echo $group_details['name'] ?></p>
