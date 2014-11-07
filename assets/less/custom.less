@@ -57,8 +57,9 @@ h4{ margin-top: 10px; font-size: 16px; line-height: 20px; text-transform: upperc
 //---BOTONES---//
 
 .btn { padding: 10px 40px 8px 11px; }
-.btn.btn-go { background: url('../images/icon-go.png') no-repeat right 13px center; }
-.btn.btn-fb { background: url('../images/icon-fb.png') no-repeat right 13px center; }
+.btn.btn-go { background: url('../images/icon-go.png') no-repeat right 13px center; .img-retina('../images/icon-go.png'; '../images/icon-go@2x.png'; 14px; 14px); }
+.btn.btn-fb { background: url('../images/icon-fb.png') no-repeat right 13px center; .img-retina('../images/icon-fb.png'; '../images/icon-fb@2x.png'; 14px; 14px); }
+.btn.btn-no { background: url('../images/icon-no.png') no-repeat right 13px center; .img-retina('../images/icon-no.png'; '../images/icon-no@2x.png'; 14px; 14px); }
 .btn span{ display: block; padding-right: 10px; border-right: 1px solid @white; line-height: 18px; }
 .btn i { display: inline-block; width: 1px; height: 0.9em; background: @white; position: relative; top: 1px; }
 .btn img { position: relative; top: -2px; }
@@ -544,10 +545,29 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
         }
     }
 }
-
 //***************************************************
 
 
+
+
+
+//RETINA*********************************
+// @media
+//   only screen and (-webkit-min-device-pixel-ratio: 2),
+//   only screen and (   min--moz-device-pixel-ratio: 2),
+//   only screen and (     -o-min-device-pixel-ratio: 2/1),
+//   only screen and (        min-device-pixel-ratio: 2),
+//   only screen and (                min-resolution: 192dpi),
+//   only screen and (                min-resolution: 2dppx) {
+//     background-image: url("@{file-2x}");
+//     background-size: @width-1x @height-1x;
+//   }
+//***************************************************
+
+
+
+
+//SWEET-ALERT*********************************
 .sweet-overlay {
   background-color: rgba(0, 0, 0, 0.4);
   position: fixed;
@@ -1152,4 +1172,4 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
   -webkit-animation: pulseWarningIns 0.75s infinite alternate;
   -moz-animation: pulseWarningIns 0.75s infinite alternate;
   animation: pulseWarningIns 0.75s infinite alternate; }
-
+//***************************************************
