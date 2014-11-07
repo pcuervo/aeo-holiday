@@ -37,9 +37,8 @@
             </div>
             <input type="hidden" name="admin_id" value="<?php echo $fb_user_id ?>">
             <div class="text-center">
-                <a href="#" class="[ btn btn-primary btn-go ] [ j_invite_friends ]"><span>Invitar amigos</span></a>
+                <a href="#" class="[ btn btn-primary btn-go ]  [ margin-bottom ] [ j_invite_friends ]"><span>Invitar amigos</span></a>
             </div><!-- text-center -->
-            <br/>
             <div class="text-center">
                 <button class="[ btn btn-primary btn-go ]"><span>Crear intercambio</span></button>
             </div><!-- text-center -->
@@ -48,7 +47,6 @@
 </div><!-- CONTENIDO -->
 
 <div class="sweet-overlay"></div>
-
 
 <!-- SweetAlert box -->
 <div class="sweet-alert">
