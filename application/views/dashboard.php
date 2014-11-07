@@ -6,18 +6,14 @@
                 <img class="[ col-xs-5 ] [ user-photo ] [ img-circle ]" src="<?php echo $fb_user_pic ?>" alt="Usuario">
                 <div class="[ col-xs-5 ]">
                     <h4 class="[ margin-bottom ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
-                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]"><span>Crear nuevo intercambio</span></a>
-                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]"><span>Completar mi perfil</span></a>
+                    <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary btn-go ] [ margin-bottom ]"><span>Crear nuevo intercambio</span></a>
+                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]">Completar mi perfil</a>
+
+                     <?php if(!$has_perfect_fit){ ?>
+                        <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]">Completar mi perfil</a>
+                    <?php } ?>
                 </div>
             </div>
-        </div>
-    </div><!-- row -->
-    <div class="row">
-        <div class="[ col-xs-12 col-md-6 ] [ center-block margin-bottom ] [ text-center ] [ main-buttons ]">
-            <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary ] [ margin-bottom ]">Crear intercambio</a>
-            <?php if(!$has_perfect_fit){ ?>
-                <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary ]">Completar "Perfect Fit"</a>
-            <?php } ?>
         </div>
     </div><!-- row -->
 
