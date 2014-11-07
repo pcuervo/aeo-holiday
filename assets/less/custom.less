@@ -105,6 +105,21 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 .trade{ font-family: 'Trade'; }
 //------------//
 
+//---CALENDARIO---//
+.addthisevent-drop span > span { margin: 0 1%; padding: 0 1%; }
+.addthisevent-drop span > span + span { margin-left: 0; padding-left: 2%; border-left: 1px solid @white; }
+//------------//
+
+//---SCROLL---//
+.scroll-box{ padding: 10px; background: darken(@brand-primary, 10%); }
+.scroll-box > p{ font-size: 18px; }
+.scroll-box ul{ height: 150px; overflow-y: scroll; }
+.scroll-box ul li{ margin-bottom: 20px; }
+.scroll-box ul li > img{ position: relative; z-index: 2; }
+.scroll-box ul li > p{ margin: 0; padding: 10px 10px 10px 24px; background: lighten(@brand-primary, 30%); position: relative; left: -20px; z-index: 1; }
+.scroll-box ul li.is-admin > p{  background: lighten(@brand-primary, 10%); }
+//------------//
+
 /*****************************/
 
 
@@ -177,13 +192,8 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 
 .sidebar-nav > .sidebar-brand { padding: 10px 0; text-align: center; }
 .sidebar-nav > .sidebar-brand a { margin-right: 0; font-size: 24px; padding: 30px 0 0 0; font-family: 'Trade'; color: @brand-primary; text-transform: uppercase; }
-.sidebar-nav > .sidebar-brand a:hover {
-    color: @white;
-    background: none;
-}
-.wrapper {
-    padding-right: 0;
-}
+.sidebar-nav > .sidebar-brand a:hover { }
+.wrapper { padding-right: 0; }
 
 .wrapper.toggled {
     padding-right: 0;

@@ -16,7 +16,7 @@ function addGroupToCalendar(){
     addthisevent.settings({
         license   : "al7dliedlzlnbpbh0mbm",
         mouse     : false,
-        css       : true,
+        css       : false,
         outlook   : {show:false, text:"Outlook Calendar"},
         google    : {show:true, text:"Google Calendar"},
         ical      : {show:true, text:"iCal Calendar"},
