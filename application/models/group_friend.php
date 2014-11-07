@@ -75,10 +75,10 @@ class Group_friend extends CI_Model {
 	 * Returns a group friend id
 	 *
 	 * @param $fb_user_id
-	 * @return int $id
+	 * @return array $group_friend_ids
 	 * @author Miguel Cabral
 	 **/
-	function get_group_friend_id_by_fb_id($fb_user_id)
+	function get_group_friend_ids_by_fb_id($fb_user_id)
 	{
 		$this->db->select('id');
 		$this->db->where('facebook_users_id', $fb_user_id);
@@ -87,26 +87,26 @@ class Group_friend extends CI_Model {
 		if ($query->num_rows() < 1)
 			return 0;
 
-		$row = $query->row();
-		$id = $row->id;
+		$group_friend_ids = array();
+		foreach ($query->result() as $key => $row) array_push($group_friend_ids, $row->id);
 
-		return $id;
+		return $group_friend_ids;
 	}// get_group_friend_id_by_fb_id
 
 	/**
 	 * Returns messages for a group friend
 	 *
-	 * @param string $group_friend_id
+	 * @param string $group_friend_ids
 	 * @return mixed $messages_data or 0
 	 * @author Miguel Cabral
 	 **/
-	function get_messages_by_group_friend($group_friend_id)
+	function get_messages_by_group_friends($group_friend_ids)
 	{
 		$this->db->select('name, from_group_friend_id, message_text, was_read, messages.created_at');
 		$this->db->from('group_friends');
 		$this->db->join('messages', 'group_friends.id = messages.to_group_friend_id');
 		$this->db->join('exchange_groups', 'exchange_groups.id = group_friends.group_id');
-		$this->db->where('group_friends.id', $group_friend_id);
+		$this->db->where_in('group_friends.id', $group_friend_ids);
 		$this->db->order_by('messages.created_at');
 		$query = $this->db->get();
 

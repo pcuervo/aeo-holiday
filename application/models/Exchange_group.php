@@ -420,15 +420,17 @@ class Exchange_group extends CI_Model {
 		$group_friends = $this->get_group_friends($group_id);
 		$from_friends = array();
 		$to_friends = array();
+		
+		if(count($group_friends) < 2)
+			return;
 
-		
-		
 		foreach ($group_friends as $key => $friend) {
 			array_push($from_friends, $friend['id']);
 			if($key == 0) $admin_id = $friend['id'];
 			if($key > 0) array_push($to_friends, $friend['id']);
 		}
 		array_push($to_friends, $admin_id);
+
 
 		// Add secret friends
 		$this->load->model('secret_friend');
