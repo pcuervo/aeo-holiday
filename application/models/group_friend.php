@@ -91,7 +91,7 @@ class Group_friend extends CI_Model {
 		$id = $row->id;
 
 		return $id;
-	}// get_group_friend_by_fb_id
+	}// get_group_friend_id_by_fb_id
 
 	/**
 	 * Returns messages for a group friend
@@ -136,7 +136,6 @@ class Group_friend extends CI_Model {
 	 **/
 	function get_message_senders($message_senders)
 	{
-		var_dump($message_senders);
 		if ( count($message_senders) == 0)
 			return 0;
 		$this->db->select('id, facebook_users_id');

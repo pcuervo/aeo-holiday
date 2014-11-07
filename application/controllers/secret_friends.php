@@ -26,10 +26,17 @@ class Secret_friends extends CI_Controller {
 		// Set up general variables for view
 		$data['current_view'] = 'secret_friend';
 
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
 		// Get secret friend's data
 		$this->load->model('secret_friend');
-		$current_user = $this->facebook->get_user();
-		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_user['id'], $group_friend_id);
+		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
 
 		// Check if user completed his/her "perfect fit"
 		$this->load->model('user_perfect_fit');
@@ -37,7 +44,7 @@ class Secret_friends extends CI_Controller {
 		if($this->user_perfect_fit->has_perfect_fit($data['secret_friend']['fb_user_id']))
 			$data['has_perfect_fit'] = TRUE;
 		// Check if user has recorded a video
-		$data['video'] = $this->secret_friend->has_video($current_user['id'], $data['secret_friend']['group_friend_id']);
+		$data['video'] = $this->secret_friend->has_video($current_fb_user['id'], $data['secret_friend']['group_friend_id']);
 
 		$this->load->view('header', $data);
 		$this->load->view('secret_friend', $data);
@@ -49,6 +56,10 @@ class Secret_friends extends CI_Controller {
 	{
 		// Set up general variables for view
 		$data['current_view'] = 'show_perfect_fit';
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
 
 		// Get secret friend's data
 		$this->load->model('group_friend');
@@ -68,8 +79,6 @@ class Secret_friends extends CI_Controller {
 		$this->load->view('footer', $data);
 	}// view
 
-
-
 	/**
 	 * Create a video for a secret friend
 	 *
@@ -82,13 +91,17 @@ class Secret_friends extends CI_Controller {
 		// Set up general variables for view
 		$data['current_view'] = 'create_secret_friend_video';
 
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
 		// load form helper
 		$this->load->helper(array('form', 'url'));
 
 		// Get secret friend's data
 		$this->load->model('secret_friend');
-		$current_user = $this->facebook->get_user();
-		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_user['id'], $group_friend_id);
+		$current_fb_user = $this->facebook->get_user();
+		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
 
 		$this->load->view('header', $data);
 		$this->load->view('create_video', $data);
@@ -156,6 +169,10 @@ class Secret_friends extends CI_Controller {
 		// Set up general variables for view
 		$data['current_view'] = 'view_secret_friend_video';
 
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
 		// Get secret friend's data
 		$this->load->model('secret_friend');
 		$data['video_url'] = base_url().'/uploads/'.$this->secret_friend->get_video($secret_friend_id);
@@ -177,10 +194,14 @@ class Secret_friends extends CI_Controller {
 		// Set up general variables for view
 		$data['current_view'] = 'send_message';
 
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
 		// Get secret friend's data
 		$this->load->model('secret_friend');
-		$current_user = $this->facebook->get_user();
-		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_user['id'], $group_friend_id);
+		$current_fb_user = $this->facebook->get_user();
+		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
 
 		$this->load->view('header', $data);
 		$this->load->view('send_message', $data);
@@ -223,10 +244,17 @@ class Secret_friends extends CI_Controller {
 	{
 		$data['current_view'] = 'view_messages';
 
-		$current_user = $this->facebook->get_user();
-		var_dump($current_user);
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
 		$this->load->model('group_friend');
-		$data['group_friend_id'] = $this->group_friend->get_group_friend_id_by_fb_id($current_user['id']);
+		$data['group_friend_id'] = $this->group_friend->get_group_friend_id_by_fb_id($current_fb_user['id']);
 
 		$data['messages'] = $this->group_friend->get_messages_by_group_friend($data['group_friend_id']);
 
@@ -242,5 +270,24 @@ class Secret_friends extends CI_Controller {
 		$this->load->view('view_messages', $data);
 		$this->load->view('footer', $data);
 	}// view_messages
+
+	/**
+	 * Get current user's secret friends
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function get_secret_friends()
+	{
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$secret_friends = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		echo json_encode($secret_friends);
+	}// get_secret_friends
 
 }// class Secret_friend

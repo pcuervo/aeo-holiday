@@ -23,6 +23,7 @@ class Dashboard extends CI_Controller {
 	 **/
 	public function index()
 	{
+		//var_dump($_SERVER["REMOTE_ADDR"]);
 		$data['current_view'] = 'dashboard';
 
 		$current_fb_user = $this->facebook->get_user();
