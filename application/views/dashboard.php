@@ -58,7 +58,7 @@
                             </div><!-- row -->
                             <div class="[ text-center ] [ ]">
                                 <a href="<?php echo base_url().'dashboard/accept_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-go ] [ margin-bottom ]"><span>Aceptar</span></a>
-                                <a href="<?php echo base_url().'dashboard/decline_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-go ] [ margin-bottom ]"><span>Rechazar</span></a>
+                                <a href="<?php echo base_url().'dashboard/decline_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-no ] [ margin-bottom ]"><span>Rechazar</span></a>
                             </div>
                         </div><!-- invitacion-intercambio -->
                     <?php } ?>
