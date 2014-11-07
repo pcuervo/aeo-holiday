@@ -120,7 +120,7 @@ class Facebook {
     public function get_user_profile_pic() {
         if ( $this->session ) {
             // Graph API to request user data
-            $request = ( new FacebookRequest( $this->session, 'GET', '/me/picture?redirect=false&type=large' ) )->execute();
+            $request = ( new FacebookRequest( $this->session, 'GET', '/me/picture?redirect=false&height=350&type=square&width=350' ) )->execute();
 
             // Get response as an array
             $user = $request->getGraphObject()->asArray();
@@ -138,7 +138,7 @@ class Facebook {
     public function get_user_profile_pic_by_id($fb_user_id) {
         if ( $this->session ) {
             // Graph API to request user data
-            $request = ( new FacebookRequest( $this->session, 'GET', '/'.$fb_user_id.'/picture?redirect=false&type=large' ) )->execute();
+            $request = ( new FacebookRequest( $this->session, 'GET', '/'.$fb_user_id.'/picture?redirect=false&height=350&type=square&width=350' ) )->execute();
 
             // Get response as an array
             $user = $request->getGraphObject()->asArray();
