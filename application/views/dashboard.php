@@ -1,9 +1,17 @@
 <div class="[ container ] [ contenido home ] [ margin-bottom ] [ clearfix ]">
-    <div class="[ col-xs-6 col-md-3 ] [ center-block margin-bottom ]">
-        <img src="<?php echo $fb_user_pic ?>" alt="" class="[ user-photo ]">
-    </div>
-
-    <h4 class="[ text-center ] [ margin-bottom ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
+    <h2 class="[ text-center ]">Best gift ever</h2>
+    <div class="row">
+        <div class="[ col-xs-12 col-md-6 ] [ center-block margin-bottom ]">
+            <div class="row">
+                <img class="[ col-xs-5 ] [ user-photo ] [ img-circle ]" src="<?php echo $fb_user_pic ?>" alt="Usuario">
+                <div class="[ col-xs-5 ]">
+                    <h4 class="[ margin-bottom ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
+                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]"><span>Crear nuevo intercambio</span></a>
+                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]"><span>Completar mi perfil</span></a>
+                </div>
+            </div>
+        </div>
+    </div><!-- row -->
     <div class="row">
         <div class="[ col-xs-12 col-md-6 ] [ center-block margin-bottom ] [ text-center ] [ main-buttons ]">
             <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary ] [ margin-bottom ]">Crear intercambio</a>
@@ -12,7 +20,7 @@
             <?php } ?>
         </div>
     </div><!-- row -->
-    
+
     <div class="row">
         <div class="[ col-xs-12 col-md-6 ] [ center-block ] [ clearfix ] [ solicitudes-intercambio ]">
             <h3>Solicitudes</h3>
@@ -42,7 +50,7 @@
             <?php } ?>
         </div><!--SOLICITUDES DE INTERCAMBIO-->
     </div><!-- row -->
-    
+
 
     <?php if($secret_friends != '') { ?>
     <div class="row">
@@ -57,12 +65,12 @@
                         </div>
                         <div class="[ col-xs-8 col-sm-10 ]">
                             <p class="[ margin-bottom ]">
-                                <?php echo $friend['name'] ?> 
+                                <?php echo $friend['name'] ?>
                             </p>
                             <p class="[ margin-bottom ]">
-                                <?php echo $friend['group'] ?> 
+                                <?php echo $friend['group'] ?>
                             </p>
-                            <a href="<?php echo base_url().'secret_friends/view/'.$friend['group_friend_id'] ?>">Ver</a>               
+                            <a href="<?php echo base_url().'secret_friends/view/'.$friend['group_friend_id'] ?>">Ver</a>
                         </div>
                     </div>
                 </div>
