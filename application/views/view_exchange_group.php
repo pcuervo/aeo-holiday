@@ -18,7 +18,7 @@
     </div>
 
     <p class="[ center-block ]" for="name">Administrador del intercambio: <?php echo $current_fb_user['first_name'].' '.$current_fb_user['last_name'] ?></p>
-    <p class="[ center-block ]" for="name">Nombre del intercambio: </p>
+    <p class="[ center-block ]" for="name">Nombre del intercambio: <?php echo $group_details['name'] ?></p>
     <p class="[ center-block ]" for="name">Fecha del intercambio: <?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></p>
     <p class="[ center-block ]" for="name">Fecha límite de inscripción: <?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?></p>
     <p class="[ center-block ]" for="name">Lugar: <?php echo $group_details['place'] ?></p>
