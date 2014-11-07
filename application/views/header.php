@@ -25,7 +25,6 @@
 						<li>
 							<a class="[ text-center ]" href="<?php echo base_url().'dashboard' ?>">Inicio</a>
 						</li>
-						</li>
 						<li>
 							<a class="[ text-center ]" href="#">Cupón 20%</a>
 						</li>
@@ -39,8 +38,8 @@
 							</li>
 						<?php } ?>
 						<li class="[ sidebar-brand ]">
-							<a class="[ text-center ]" href="#">Salir</a>
-							<img src="<?php echo base_url() ?>assets/images/aeo-logo-white.png" alt="">
+							<a class="[ text-center ] [ margin-bottom-big ]" href="#">Salir</a>
+							<img class="[ col-xs-6 ] [ center-block ]" src="<?php echo base_url() ?>assets/images/logo-aeo-red.png" alt="">
 						</li>
 					</ul>
 	        	</div> <!-- #sidebar-wrapper -->
