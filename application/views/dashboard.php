@@ -64,19 +64,19 @@
                     <?php } ?>
                 </div><!-- invitaciones-contenedor -->
             <?php } else { ?>
-                <p>No tienes solicitudes pendientes.</p>
+                <p class="[ text-center ]">No tienes solicitudes pendientes.</p>
             <?php } ?>
         </div><!--SOLICITUDES DE INTERCAMBIO-->
     </div><!-- row -->
-    <hr class="[ center-block ]">
+    <!-- <hr class="[ center-block ]">
     <div class="[ col-xs-12 ] [ clearfix ] [ actividad ]">
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
-            <!-- <div class="[ actividad-aviso ] [ margin-bottom clearfix ]">
+             <div class="[ actividad-aviso ] [ margin-bottom clearfix ]">
                 <img src="<?php echo base_url() ?>/assets/images/piernas.jpg" alt="" class="[ col-xs-4 ]">
                 <p class="[ col-xs-8 ] [ margin-bottom ]">Fulanito de tal te ha invitado al intercambio bla bla bla.</p>
-            </div> -->
+            </div>
             <p class="[ text-center ]">No tienes actividad todavía... </p>
         </div>
-    </div><!--ACTIVIDAD-->
+    </div>ACTIVIDAD-->
 </div><!-- CONTENIDO -->
