@@ -5,7 +5,9 @@
         <script src="<?php echo base_url().'assets/js/bootstrap.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/plugins.min.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/functions.js' ?>"></script>
+
         <script>
+            insertGoogleAnalytics();
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
             toggleMainMenu();
 

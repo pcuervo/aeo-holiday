@@ -169,7 +169,8 @@ class Secret_friends extends CI_Controller {
 			$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
 		}
 		// send TEMPORARY NOTIFICATION
-		//$this->facebook->send_notification($video_id);
+		/*$current_fb_user = $this->facebook->get_user();
+		$this->facebook->send_notification($video_url[count($video_url)-1], $current_fb_user['id']);*/
 
 		// return to secret friend's home
 		$this->view($group_friend_id);

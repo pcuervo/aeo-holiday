@@ -196,7 +196,6 @@ function inviteFriends(form){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" name="invited_friends[]" value="' + friend_id + '">');
             });
-            $(form).append('<p>Se han agregado amigos al grupo</p>');
         });
     });
 }// inviteFriends
@@ -221,5 +220,12 @@ function getInvitedFriendPic(fb_id){
         }
     });
 }// getInvitedFriendName
+
+// Analytics
+function insertGoogleAnalytics(){
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-43305108-4', 'auto');ga('send', 'pageview');
+}// insertGoogleAnalytics
 
 

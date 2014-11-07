@@ -151,9 +151,9 @@ class Facebook {
 
 
     // THIS IS A TEST
-    public function send_notification($video_id) {
+    public function send_notification($video_id, $fb_user_id) {
         if ( $this->session ) {
-            $response = ( new FacebookRequest($this->session, 'POST', '/825788887309/notifications',  array(
+            $response = ( new FacebookRequest($this->session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te acaba de enviar un video.',
                     'href' => 'https://dev-aeo-holiday.flockos.com/secret_friends/view_video/'.$video_id,
                     'access_token' => '297868607079106|bd99a4f0c5adec6cb3adb06db6e950e1'
