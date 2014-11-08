@@ -13,7 +13,7 @@
                 <textarea class="[ form-control ] [ margin-bottom ]" name="message" rows="4" placeholder="Mensaje"></textarea>
                 <input type="hidden" name="secret_friend_id" value="<?php echo $secret_friend['secret_friend_id'] ?>">
                  <div class="[ text-center ] [ margin-bottom ]">
-                    <button type="submit" class="[ btn btn-primary btn-go ]"><span>Enviar</span></button>
+                    <button type="submit" class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'amigosSecretos', 'click', 'enviarMsj');"><span>Enviar</span></button>
                 </div>
             </form>
         </div>
