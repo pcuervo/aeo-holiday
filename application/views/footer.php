@@ -67,6 +67,7 @@
 
             <?php if($current_view == 'dashboard') { ?>
                 getUnreadMessages();
+                getUserActiviy();
             <?php } ?>
 
             <?php if($current_view == 'view_video') { ?>

@@ -198,6 +198,35 @@ function getUnreadMessages(){
     );
 }// getUnreadMessages
 
+/**
+ * Get user's activity
+ * @return void
+ */
+function getUserActiviy(){
+    var url = localStorage.getItem('base_url') + 'dashboard/get_user_activity/';
+    $.get(
+        url,
+        function(response){
+            var activity_json = $.parseJSON(response);
+            $.each(activity_json, function(i, activity){
+                var html_activity;
+                switch(activity.activity_type){
+                    case '1':
+                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';
+                        break;
+                    case '2':
+                        /*html_activity = '<p>' + activity.action + '</p>';
+                        html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';*/
+                        break;
+                }
+                 
+                $(html_activity).appendTo('.actividad-grupo');
+            });
+        }// response
+    );
+}// getUserActiviy
+
 function add_hidden_input(form, name, value){
 	$(form).append('<input type="hidden" name="' + name + '" value="' + value + '"');
 }// add_hidden_input

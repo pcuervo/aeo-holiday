@@ -124,6 +124,11 @@ class Exchange_group extends CI_Model {
 		$this->set_group_admin($group_data['admin_id']);
 		$this->create_pending_invitations($group_data['invited_friends']);
 
+		echo 'cargando model user activiy';
+		$this->load->model('user_activity');
+		$this->user_activity->group_created($group_data['admin_id'], $this->group_id, 1);
+		echo 'despues de insertar...';
+
 		$respuesta = array(
 				'error' 	=> '0',
 				'message'	=> 'Group created successfully!');
@@ -325,6 +330,7 @@ class Exchange_group extends CI_Model {
 		$group_admin_picture = $this->facebook->get_user_profile_pic_by_id($row->facebook_users_id);
 
 		$group_admin = array(
+			'fb_user_id'		=> $row->facebook_users_id,
 			'first_name' 		=> $group_admin_info['first_name'],
 			'last_name' 		=> $group_admin_info['last_name'],	
 			'profile_picture' 	=> $group_admin_picture,
