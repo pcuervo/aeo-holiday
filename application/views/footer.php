@@ -1,15 +1,17 @@
             <footer class="[ clearfix ]">
-                <div class="row">
-                    <div class="[ col-xs-4 ]">
-                        <p class="[ ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
-                    </div><!-- col-xs-4 -->
-                    <div class="[ col-xs-4 ]">
-                        <p class="[ text-center ]">AEO Management 2014</p>
-                    </div><!-- col-xs-4 -->
-                    <div class="[ col-xs-4 ]">
-                        <p class="[ text-right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
-                    </div><!-- col-xs-4 -->
-                </div>
+                <?php if($current_view != 'login') { ?>
+                    <div class="row">
+                        <div class="[ col-xs-4 ]">
+                            <p class="[ ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
+                        </div><!-- col-xs-4 -->
+                        <div class="[ col-xs-4 ]">
+                            <p class="[ text-center ]">AEO Management 2014</p>
+                        </div><!-- col-xs-4 -->
+                        <div class="[ col-xs-4 ]">
+                            <p class="[ text-right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
+                        </div><!-- col-xs-4 -->
+                    </div>
+                <?php } ?>
             </footer>
         </div><!-- /.wrapper -->
         <!-- Modal -->
@@ -67,6 +69,7 @@
 
             <?php if($current_view == 'dashboard') { ?>
                 getUnreadMessages();
+                getUserActiviy();
             <?php } ?>
 
             <?php if($current_view == 'view_video') { ?>
@@ -74,8 +77,8 @@
             <?php } ?>
 
             <?php if($current_view == 'new_exchange_group') { ?>
+                formValidation('.j_group_form');
                 inviteFriends('.j_group_form');
-                createExchangeGroup();
             <?php } ?>
 
             <?php if($current_view == 'view_exchange_group') { ?>
@@ -95,17 +98,6 @@
             <?php if($current_view == 'login') { ?>
                 toggleButton();
             <?php } ?>
-<<<<<<< HEAD
-
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-            ga('create', 'UA-43305108-4', 'auto');
-            ga('send', 'pageview');
-
-=======
->>>>>>> 966d4a6d5cdbf7a89fedfe98612671e20a392f29
         </script>
     </body>
 </html>

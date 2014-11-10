@@ -40,9 +40,29 @@ function toggleButton(){
     });
 }
 
+/**
+* Footer space
+* @return void
+**/
 function footerBottom(){
-    var alturaFooter = $('footer').outerHeight();
-    $('.wrapper').css('padding-bottom', alturaFooter );
+    var footerHeight = $('footer').outerHeight();
+    $('.wrapper').css('padding-bottom', footerHeight );
+}
+
+/**
+* Form Validation
+* @return void
+**/
+function formValidation(forma){
+    $(forma).validate({
+        submitHandler:function(){
+            switch(forma){
+                case '.j_group_form':
+                    createExchangeGroup();
+                    break;
+            }
+        }
+    });
 }
 
 /*****************************
@@ -53,24 +73,19 @@ function footerBottom(){
  * @return void
  */
 function createExchangeGroup(){
-    $('.j_group_form button').on('click', function(e){
-        e.preventDefault();
-        console.log('creating group....');
-
-        var group_data = $('.j_group_form').serialize();
-        var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
-        console.log(group_data);
-        $.post(
-            url,
-            group_data,
-            function(response){
-            	// TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-                swal("OK", "!Grupo de intercambio creado!", "success");
-                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-        		window.location = dashboard_url;
-            }// response
-        );
-    });
+    var group_data = $('.j_group_form').serialize();
+    var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
+    console.log(group_data);
+    $.post(
+        url,
+        group_data,
+        function(response){
+            // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
+            swal("OK", "!Grupo de intercambio creado!", "success");
+            var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
+            window.location = dashboard_url;
+        }// response
+    );
 }// createExchangeGroup
 
 /**
@@ -197,6 +212,35 @@ function getUnreadMessages(){
         }// response
     );
 }// getUnreadMessages
+
+/**
+ * Get user's activity
+ * @return void
+ */
+function getUserActiviy(){
+    var url = localStorage.getItem('base_url') + 'dashboard/get_user_activity/';
+    $.get(
+        url,
+        function(response){
+            var activity_json = $.parseJSON(response);
+            $.each(activity_json, function(i, activity){
+                var html_activity;
+                switch(activity.activity_type){
+                    case '1':
+                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';
+                        break;
+                    case '2':
+                        /*html_activity = '<p>' + activity.action + '</p>';
+                        html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';*/
+                        break;
+                }
+                 
+                $(html_activity).appendTo('.actividad-grupo');
+            });
+        }// response
+    );
+}// getUserActiviy
 
 function add_hidden_input(form, name, value){
 	$(form).append('<input type="hidden" name="' + name + '" value="' + value + '"');
