@@ -110,6 +110,7 @@ class Dashboard extends CI_Controller {
 		$group_data['invited_friends'] = $_POST['invited_friends'];
 
 		$this->exchange_group->create_group($group_data);
+
 	}// create_exchange_group
 
 	/**
@@ -279,7 +280,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('group_invitation');
 		$invitation_data = array(
 			'invited_fb_user_id' 	=> $current_fb_user['id'], 
-			'group_id' 			=> $group_id,
+			'group_id' 				=> $group_id,
 			);
 		$this->group_invitation->remove_invitation($invitation_data);
 
@@ -290,6 +291,12 @@ class Dashboard extends CI_Controller {
 			'is_admin'			=> FAlSE,
 			);
 		$this->group_friend->add_group_friend($friend_data);
+
+		// Add to user's activity
+		$this->load->model('exchange_group');
+		$group_admin = $this->exchange_group->get_group_admin($group_id);
+		$this->load->model('user_activity');
+		$this->user_activity->invitation_accepted($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 2);
 
 		$this->index();	
 	}// accept_invitation
@@ -331,5 +338,21 @@ class Dashboard extends CI_Controller {
 
 		echo json_encode($messages);
 	}// get_unread_messages
+
+	/**
+	 * Gets the last entries of user's activity
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function get_user_activity()
+	{
+		$current_fb_user = $this->facebook->get_user();
+
+		$this->load->model('user_activity');
+		$user_activity = $this->user_activity->get_user_activity_by_fb_id($current_fb_user['id']);
+
+		echo json_encode($user_activity);
+	}// get_user_activity
 
 }// class Dashboard
