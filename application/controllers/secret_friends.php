@@ -205,7 +205,6 @@ class Secret_friends extends CI_Controller {
 		$this->load->model('secret_friend');
 		$data['video_url'] = base_url().'/uploads/'.$this->secret_friend->get_video($group_friend_id);
 
-
 		$this->load->view('header', $data);
 		$this->load->view('view_video', $data);
 		$this->load->view('footer', $data);

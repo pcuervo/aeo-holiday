@@ -113,6 +113,21 @@ class Dashboard extends CI_Controller {
 	}// create_exchange_group
 
 	/**
+	 * Displays the user's coupon
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function view_coupon()
+	{
+		$data['current_view'] = 'view_coupon';
+
+		$this->load->view('header', $data);
+		$this->load->view('view_coupon', $data);
+		$this->load->view('footer', $data);
+	}// create_exchange_group
+
+	/**
 	 * Edits a new exchange group
 	 *
 	 * @return void

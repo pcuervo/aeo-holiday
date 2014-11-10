@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost:8888/aeo-holiday/';
+//$config['base_url']	= 'http://localhost:8888/aeo-holiday/';
+$config['base_url']	= 'https://dev-aeo-holiday.flockos.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -368,9 +369,10 @@ $config['proxy_ips'] = '';
 | Comma-delimited, e.g. '10.0.1.200,10.0.1.201'
 |
 */
+$config['app_url'] = 'https://www.facebook.com/TestingVis/app_293571087508858';
 $config['facebook']['api_id'] = '297868607079106';
 $config['facebook']['app_secret'] = 'bd99a4f0c5adec6cb3adb06db6e950e1';
-$config['facebook']['redirect_url'] = $config['base_url'].'dashboard';
+$config['facebook']['redirect_url'] = $config['base_url'].'redirect/login';
 $config['facebook']['permissions'] = array(
 	'email',
 	'user_friends',

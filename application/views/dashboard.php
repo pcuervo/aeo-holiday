@@ -13,6 +13,9 @@
                     <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]"><span>Completar mi perfil</span></a>
                 </div>
             <?php } ?>
+            <div class="text-center">
+                <a href="<?php echo base_url() ?>dashboard/view_coupon" class="[ btn btn-primary btn-go ]"><span>Ver mi cupón</span></a>
+            </div>
         </div>
     </div><!-- row -->
     <hr class="[ center-block ]" >

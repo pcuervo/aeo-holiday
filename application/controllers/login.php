@@ -11,6 +11,7 @@ class Login extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		session_start();
+		$this->load->library('facebook');
 	}// constructor
 
 	/**
@@ -21,6 +22,16 @@ class Login extends CI_Controller {
 	 **/
 	public function index()
 	{
+
+		$current_fb_user = $this->facebook->get_user();
+		if(!empty($current_fb_user))
+			redirect('/dashboard');
+
+		/*$signed_request = $this->facebook->get_signed_request();
+		if( ($signed_request && isset($signed_request['app_data']) && $signed_request['app_data'] == 'dashboard') ){
+			redirect('/dashboard');
+		}*/
+
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'login';
 
