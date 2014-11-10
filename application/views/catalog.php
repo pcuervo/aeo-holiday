@@ -21,19 +21,19 @@
     	</form>
     </div>
     <div class="[ row ] [ margin-bottom ]">
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="hombre" data-categoria="top">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/ropa.png">
 			<p>Nombre</p>
     	</div>
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/ropa.png">
 			<p>Nombre</p>
     	</div>
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="hombre" data-categoria="accesorio">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/ropa.png">
 			<p>Nombre</p>
     	</div>
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/ropa.png">
 			<p>Nombre</p>
     	</div>
