@@ -329,7 +329,7 @@ class Dashboard extends CI_Controller {
 		$group_friend_ids = $this->group_friend->get_group_friend_ids_by_fb_id($current_fb_user['id']);
 		$messages = $this->group_friend->get_messages_by_group_friends($group_friend_ids);
 
-		echo $messages;
+		echo json_encode($messages);
 	}// get_unread_messages
 
 }// class Dashboard
