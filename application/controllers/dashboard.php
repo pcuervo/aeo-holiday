@@ -319,6 +319,12 @@ class Dashboard extends CI_Controller {
 			);
 		$this->group_invitation->remove_invitation($invitation_data);
 
+		// Add to user's activity
+		$this->load->model('exchange_group');
+		$group_admin = $this->exchange_group->get_group_admin($group_id);
+		$this->load->model('user_activity');
+		$this->user_activity->invitation_rejected($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 3);
+
 		$this->index();
 	}// decline_invitation
 

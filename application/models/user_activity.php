@@ -59,6 +59,18 @@ class User_activity extends CI_Model {
 	}// invitation_accepted
 
 	/**
+	 * Saves the activity that a group invitation has been rejected
+	 *
+	 * @param int $fb_user_id, int $group_id, int $friend_fb_id, int $activity_type
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function invitation_rejected($fb_user_id, $group_id, $friend_fb_id, $activity_type)
+	{
+		$this->invitation_accepted($fb_user_id, $group_id, $friend_fb_id, $activity_type);
+	}// invitation_rejected
+
+	/**
 	 * Gets the user's activity by Facebook id
 	 *
 	 * @param int $fb_user_id
