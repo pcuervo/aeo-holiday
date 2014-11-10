@@ -12,9 +12,8 @@
 						<?php } ?>
 					</select>
 				</div>
-				<?php } ?>
-				<button class="[ btn btn-primary btn-go ] [ center-block ]" onclick="ga('send', 'event', 'perfil', 'click', 'perfilListo');"><span>Actualizar Perfect Fit</span></button>
-			</div>
+			<?php } ?>
+			<button class="[ btn btn-primary btn-go ] [ center-block ]" onclick="ga('send', 'event', 'perfil', 'click', 'perfilListo');"><span>Actualizar Perfect Fit</span></button>
 		</form>
 	</div>
 </div><!-- contenido -->

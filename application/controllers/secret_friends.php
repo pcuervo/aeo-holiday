@@ -200,8 +200,7 @@ class Secret_friends extends CI_Controller {
 		$this->load->model('secret_friend');
 		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
 
-
-
+		
 
 		$this->load->view('header', $data);
 		$this->load->view('view_video', $data);

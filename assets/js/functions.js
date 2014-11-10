@@ -95,10 +95,8 @@ function createExchangeGroup(){
         url,
         group_data,
         function(response){
-            // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-            swal("OK", "!Grupo de intercambio creado!", "success");
-            var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-            window.location = dashboard_url;
+            var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
+            window.location = coupon_url;
         }// response
     );
 }// createExchangeGroup
@@ -118,7 +116,6 @@ function editExchangeGroup(){
         function(response){
             // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
             console.log(response);
-            alert('!Grupo de intercambio editado!');
             var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
             window.location = dashboard_url;
         }// response
