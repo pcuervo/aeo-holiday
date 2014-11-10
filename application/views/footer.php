@@ -63,6 +63,7 @@
             insertGoogleAnalytics();
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
             toggleMainMenu();
+            footerBottom();
 
             <?php if($current_view == 'dashboard') { ?>
                 getUnreadMessages();

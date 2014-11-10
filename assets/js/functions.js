@@ -40,6 +40,10 @@ function toggleButton(){
     });
 }
 
+function footerBottom(){
+    var alturaFooter = $('footer').height();
+    $('.container').css('padding-bottom', alturaFooter );
+}
 
 /*****************************
 	AJAX functions
