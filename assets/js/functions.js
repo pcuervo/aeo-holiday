@@ -253,19 +253,18 @@ function getUserActiviy(){
                 console.log('activity: ' + activity);
                 switch(activity.activity_type){
                     case '1':
-                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity = '<h4>' + activity.action + '</h4>';
                         html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';
                         break;
                     case '2':
-                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity = '<h4>' + activity.action + '</h4>';
                         html_activity += '<p>' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
                         break;
                     case '3':
-                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity = '<h4>' + activity.action + '</h4>';
                         html_activity += '<p>' + activity.friend_name + ' ha rechazado la invitación al grupo : ' + activity.group_name + '</p>';
                         break;
                 }
-
                 $(html_activity).appendTo('.actividad-grupo');
             });
         }// response
