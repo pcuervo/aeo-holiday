@@ -37,8 +37,9 @@
 
 /* GENERAL *****************/
 
-html, body{ height: 100%; }
-body{ background: @brand-primary; color: @white; }
+//html, body{ height: 100%; }
+html{ min-height: 100%; }
+body{ height: 100%; background: @brand-primary; color: @white; }
 a{ cursor: pointer; }
 
 hr{ width: 91.66666667%; height: 1px; margin: 0 0 20px 0; border: 0; background: @white; }
@@ -80,7 +81,9 @@ form, input, p, a{
 //---FORMA---//
 form{ }
 form input[type='checkbox'] + a{ border-bottom: 1px solid @white; font-size: 0.75em; letter-spacing: 0.1em; text-transform: uppercase; }
+form input[type='file']{ width: 70%; }
 form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-size: 18px; }
+form .form-group label + p{ text-transform: uppercase; font-size: 20px; letter-spacing: 0.1em; }
 //------------//
 
 //---GRID---//
@@ -113,16 +116,20 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 //---SCROLL---//
 .scroll-box{ padding: 10px; background: darken(@brand-primary, 10%); }
 .scroll-box > p{ font-size: 18px; }
-.scroll-box ul{ height: 150px; overflow-y: scroll; }
+.scroll-box ul{ max-height: 150px; overflow-y: scroll; }
 .scroll-box ul li{ margin-bottom: 20px; }
 .scroll-box ul li > img{ position: relative; z-index: 2; }
-.scroll-box ul li > p{ margin: 0; padding: 10px 10px 10px 24px; background: lighten(@brand-primary, 30%); position: relative; left: -20px; z-index: 1; }
+.scroll-box ul li > p{ margin: 0; padding: 10px 10px 10px 24px; background: lighten(@brand-primary, 30%); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; position: relative; left: -20px; z-index: 1; }
 .scroll-box ul li.is-admin > p{  background: lighten(@brand-primary, 10%); }
 //------------//
 
+//---FOOTER---//
+footer{ width: 100%; padding: 10px; position: absolute; bottom: 0px; clear: both;
+    p, ul{ margin: 0; font-size: 0.7em; }
+}
+//------------//
+
 /*****************************/
-
-
 #menu-principal { padding: 15px 15px 0 15px; border-bottom: 2px solid @white;
     a{
         position: absolute;
@@ -140,12 +147,11 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
         margin-bottom: 10px;
     }
 }
-
+.wrapper{ height: 100%; position: relative; }
 .wrapper.toggled #menu-principal {
     position: absolute;
     margin-right: 250px;
 }
-
 .wrapper.toggled #contenido{
     min-width: 250px;
     margin-right: 250px;
@@ -153,13 +159,13 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 
  /* CSS FOR LATERAL MENU***********************************/
 #sidebar-wrapper { background: @brand-info;
-    width: 250px;
+    width: 280px;
     height: 100%;
     color: @white;
     padding-left: 0;
     z-index: 1000;
     position: fixed;
-    right: -250px;
+    right: -280px;
     top: 0;
     height: 100%;
     overflow-y: auto;
@@ -177,7 +183,7 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 /* Toggle Styles */
 #sidebar-wrapper.toggled { right: 0; }
 
-.sidebar-nav { width: 250px; height: 100%; margin: 0; padding: 0; list-style: none; position: absolute; top: 0; }
+.sidebar-nav { width: 280px; height: 100%; margin: 0; padding: 0; list-style: none; position: absolute; top: 0; }
 .sidebar-nav h4{ margin: 0; padding: 11px 0 9px 0; color: @brand-primary; font-family: 'Trade'; font-size: 24px; }
 .sidebar-nav li { border-bottom: solid 1px @brand-primary;
     &:last-child{ border-bottom: none; }
@@ -240,7 +246,7 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
     h3{ margin-bottom: 20px; }
     h4{ text-transform: uppercase; }
     ul{ margin: 0 0 20px 0; list-style: inside; padding: 0; text-align: justify;}
-    p{ text-align: justify; }
+    p{ font-size: 0.8em; text-align: justify; }
     .close{ color: @white; opacity: 0.9; }
 }
 
@@ -293,7 +299,6 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 
 
 //AMIGO SECRETO************************************************
-
 .amigo-secreto{
     h1{
         margin-bottom: 10px;
@@ -309,7 +314,6 @@ form .form-group label{ text-transform: uppercase; font-family: 'Trade'; font-si
 
 
 //CREAR INTERCAMBIO ***********************************
-
 .invite-friends{
     background-color: rgba(0, 0, 0, 0.3);
     padding: 15px;

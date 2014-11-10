@@ -2,13 +2,13 @@
     <h2 class="[ margin-bottom ] [ text-center ] [ center-block ]">Datos del intercambio</h2>
     <div class="row">
         <form role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
-            <div class="[ form-group ] [ margin-bottom ]">
+            <!-- <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Administrador del intercambio</label>
                 <p><?php echo $current_fb_user['first_name'].' '.$current_fb_user['last_name'] ?></p>
-            </div><!-- form-group -->
+            </div> --><!-- form-group -->
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Nombre del intercambio</label>
-                <p></p>
+                <p><?php echo $group_details['name'] ?></p>
             </div><!-- form-group -->
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Fecha del intercambio</label>
@@ -33,7 +33,7 @@
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Agregar a mi calendario</label>
                 <br />
-                <a href="<?php echo base_url(); ?>" title="Add to Calendar" class="addthisevent">
+                <a href="<?php echo base_url(); ?>" title="Add to Calendar" class="addthisevent" onclick="ga('send', 'event', 'solicitudes', 'click', 'agregaraGoogleCalendar');">
                     <span class="_start"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
                     <span class="_end"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
                     <span class="_zonecode">12</span>

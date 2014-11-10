@@ -81,5 +81,17 @@ class Group_invitation extends CI_Model {
 
 		$this->db->delete('group_invitations', $delete_data);
 	}// remove_invitation
+
+	/**
+	 * Removes a all pending invitations for a given group
+	 *
+	 * @param int $group_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function remove_pending_invitation_by_group($group_id)
+	{
+		$this->db->delete('group_invitations', array('id' => $group_id));
+	}// remove_invitation
 		
 }// clase Group_invitation

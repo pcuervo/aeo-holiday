@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>American Eagle Holiday Exchange</title>
 
 		<!-- Bootstrap -->
@@ -26,7 +26,10 @@
 							<a class="[ text-center ]" href="<?php echo base_url().'dashboard' ?>">Inicio</a>
 						</li>
 						<li>
-							<a class="[ text-center ]" href="#">Cupón 20%</a>
+							<a class="[ text-center ]" href="<?php echo base_url() ?>dashboard/view_coupon">Cupón 30%</a>
+						</li>
+						<li>
+							<a class="[ text-center ]" href="<?php echo base_url() ?>/catalog">Catálogo</a>
 						</li>
 						<?php if($secret_friends != '') { ?>
 						<li>
@@ -36,14 +39,15 @@
 						<li class="[ sidebar-brand ]">
 							<a class="[ text-center ]" href="#">Mis Intercambios</a>
 						</li>
-						<?php foreach ($exchange_groups as $key => $group) { ?>
-						<?php $group_url = base_url().'dashboard/view_group/'.$group['id']?>
-							<li>
-								<a class="[ text-center ]" href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
-							</li>
+						<?php if($exchange_groups != 0) { ?>
+							<?php foreach ($exchange_groups as $key => $group) { ?>
+							<?php $group_url = base_url().'dashboard/view_group/'.$group['id']?>
+								<li>
+									<a class="[ text-center ]" href="<?php echo $group_url ?>"><?php echo $group['name'] ?></a>
+								</li>
+							<?php } ?>
 						<?php } ?>
 						<li class="[ sidebar-brand ]">
-							<a class="[ text-center ] [ margin-bottom-big ]" href="#">Salir</a>
 							<img class="[ col-xs-6 ] [ center-block ]" src="<?php echo base_url() ?>assets/images/logo-aeo-red.png" alt="">
 						</li>
 					</ul>

@@ -94,6 +94,35 @@ class Group_friend extends CI_Model {
 	}// get_group_friend_id_by_fb_id
 
 	/**
+	 * Returns a group friend by Facebook id
+	 *
+	 * @param $fb_user_id
+	 * @return array $group_friend_data
+	 * @author Miguel Cabral
+	 **/
+	function get_by_fb_id($fb_user_id)
+	{
+		$this->db->select('id, group_id, is_admin');
+		$this->db->where('facebook_users_id', $fb_user_id);
+		$query = $this->db->get('group_friends');
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$row = $query->row(); 
+
+		foreach ($query->result() as $key => $row){
+			$group_friend_data[$key] = array(
+			'group_friend_id' 	=> $row->id,
+			'group_id'			=> $row->group_id,
+			'is_admin'			=> $row->is_admin,
+			);
+		}
+		
+		return $group_friend_data;
+	}// get_by_fb_id
+
+	/**
 	 * Returns messages for a group friend
 	 *
 	 * @param string $group_friend_ids
@@ -125,7 +154,34 @@ class Group_friend extends CI_Model {
 		}
 
 		return $messages_data;
-	}// get_messages_by_group_friend
+	}// get_messages_by_group_friends
+
+	/**
+	 * Returns unread messages for a group friend
+	 *
+	 * @param string $group_friend_ids
+	 * @return mixed $messages_data or 0
+	 * @author Miguel Cabral
+	 **/
+	function get_unread_messages_by_group_friends($group_friend_ids)
+	{
+		$this->db->select('name');
+		$this->db->from('group_friends');
+		$this->db->join('messages', 'group_friends.id = messages.to_group_friend_id');
+		$this->db->join('exchange_groups', 'exchange_groups.id = group_friends.group_id');
+		$this->db->where_in('group_friends.id', $group_friend_ids);
+		$this->db->where('was_read', 0);
+		$this->db->order_by('messages.created_at');
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$messages_data = array();
+		foreach ($query->result() as $key => $row) $messages_data[$key] = array('group_name' => $row->name);
+
+		return $messages_data;
+	}// get_unread_messages_by_group_friends
 
 	/**
 	 * Returns message sender's Facebook name and profile pic
@@ -160,5 +216,22 @@ class Group_friend extends CI_Model {
 
 		return $message_senders_data;
 	}// get_message_senders
+
+	/**
+	 * Mark read messages of current user as read
+	 *
+	 * @param int $group_friend_data
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function set_messages_as_read($group_friend_data)
+	{
+		$group_friend_ids = array();
+		foreach ($group_friend_data as $group_friend) array_push($group_friend_ids, $group_friend['group_friend_id']);
+
+		$update_data = array('was_read'	=> 1);
+		$this->db->where_in('to_group_friend_id', $group_friend_ids);
+		$this->db->update('messages', $update_data);
+	}// set_messages_as_read
 
 }// clase Group_friend

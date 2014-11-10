@@ -35,13 +35,14 @@ class Facebook {
         $this->helper = new FacebookRedirectLoginHelper( $this->ci->config->item('redirect_url', 'facebook') );
         //$this->helper = new FacebookCanvasLoginHelper();  
 
+        //var_dump($this->helper);
         if ( $this->ci->session->userdata('fb_token') ) {
-
             $this->session = new FacebookSession( $this->ci->session->userdata('fb_token') );
             // Validate the access_token to make sure it's still valid
             try {
                 if ( ! $this->session->validate() ) {
                   $this->session = null;
+                  echo 'invalid session';
                 }
             } catch ( Exception $e ) {
                 // Catch any exceptions
@@ -52,7 +53,6 @@ class Facebook {
             // No session exists
             try {
                 $this->session = $this->helper->getSessionFromRedirect();
-                //$this->session = $this->helper->getSession();
             } catch( FacebookRequestException $ex ) {
                 // When Facebook returns an error
             } catch( Exception $ex ) {
@@ -151,16 +151,23 @@ class Facebook {
 
 
     // THIS IS A TEST
-    public function send_notification($video_id) {
+    public function send_notification($video_id, $fb_user_id) {
         if ( $this->session ) {
-            $response = ( new FacebookRequest($this->session, 'POST', '/825788887309/notifications',  array(
+            $response = ( new FacebookRequest($this->session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te acaba de enviar un video.',
                     'href' => 'https://dev-aeo-holiday.flockos.com/secret_friends/view_video/'.$video_id,
                     'access_token' => '297868607079106|bd99a4f0c5adec6cb3adb06db6e950e1'
                 ) ) )->execute();
         }
-
         return $response;
     }// get_user
+
+    public function get_signed_request(){
+        $session = FacebookSession::newAppSession();
+
+        $signed_request = $session->getSignedRequest();
+        error_log(print_r($session, true));
+        return $signed_request;
+    }
 
 }// Facebook

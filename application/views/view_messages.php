@@ -1,20 +1,28 @@
 <div class="[ contenido ] [ container ]">
-    <h2 class="[ text-center ] [ margin-bottom ]">Mensajes de mis amigos secretos.</h2>
-    <?php if($messages != 0) { ?>
-    <div class="[ row ]">
-        <?php foreach ($messages as $key => $message) { ?>
-        <p>Grupo: <?php echo $message['group_name'] ?></p>
-        <p>Mensaje: <?php echo $message['message_text'] ?></p>
-        <?php } ?>
-    </div>
-    <?php } else { ?>
-     <div class="[ row ]">
-        No tienes mensajes.
-    </div>
-    <?php } ?>
+    <h2 class="[ text-center ] [ margin-bottom ]">Mensajes de mis amigos secretos</h2>
     <div>
-        <p>Escribir un mensaje para un amigo secreto</p>
-        <a href="" class="btn btn-primary j-secret-friends">Mensaje nuevo </a>
+        <div class="row">
+            <div class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
+                <p class="[ text-center ]">Escribir un mensaje para un amigo secreto</p>
+                <a href="" class="[ btn btn-primary btn-go ] [ margin-bottom ] [ j-secret-friends ]">Mensaje nuevo </a>
+                <hr>
+            </div>
+        </div>
     </div>
     <div class="j-modal"></div>
+    <?php if($messages != 0) { ?>
+        <?php foreach ($messages as $key => $message) { ?>
+            <div class="[ row ]">
+                <div class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
+                    <p>Grupo: <?php echo $message['group_name'] ?></p>
+                    <p class="[ margin-bottom ]">Mensaje: <?php echo $message['message_text'] ?></p>
+                    <hr>
+                </div>
+            </div>
+        <?php } ?>
+    <?php } else { ?>
+     <div class="[ row ]">
+        <p class="[ text-center ]">No tienes mensajes.</p>
+    </div>
+    <?php } ?>
 </div><!-- login -->

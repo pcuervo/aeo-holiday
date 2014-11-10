@@ -6,13 +6,16 @@
                 <img class="[ half-width ] [ inline-block middle ] [ user-photo ] [ img-circle ]"src="<?php echo $fb_user_pic ?>" alt="Usuario"><h4 class="[ half-width margin-bottom ] [ inline-block middle ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
             </div>
             <div class="text-center">
-                <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary btn-go ] [ margin-bottom ]"><span>Crear nuevo intercambio</span></a>
+                <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary btn-go ] [ margin-bottom ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intenciónCrearIntercambio');"><span>Crear nuevo intercambio</span></a>
             </div>
              <?php if(!$has_perfect_fit){ ?>
-                <div class="text-center">
-                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]"><span>Completar mi perfil</span></a>
+                <div class="[ text-center ] [ margin-bottom ]">
+                    <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'perfil', 'click', 'CompletarPerfil');"><span>Completar mi perfil</span></a>
                 </div>
             <?php } ?>
+            <div class="text-center">
+                <a href="<?php echo base_url() ?>dashboard/view_coupon" class="[ btn btn-primary btn-go ]"><span>Ver mi cupón</span></a>
+            </div>
         </div>
     </div><!-- row -->
     <hr class="[ center-block ]" >
@@ -30,7 +33,7 @@
                         <div class="[ col-xs-8 col-sm-10 ]">
                             <p class="[  ]"><?php echo $friend['name'] ?> </p>
                             <p class="[  ]"><?php echo $friend['group'] ?> </p>
-                            <a class="[ btn btn-default btn-go ]" href="<?php echo base_url().'secret_friends/view/'.$friend['group_friend_id'] ?>"><span>Ver</span></a>
+                            <a class="[ btn btn-default btn-go ]" href="<?php echo base_url().'secret_friends/view/'.$friend['group_friend_id'] ?>" onclick="ga('send', 'event', 'amigosSecretos', 'click', 'ver');"><span>Ver</span></a>
                         </div>
                     </div>
                 </div><!-- invitacion -->
@@ -57,26 +60,30 @@
                                 </div>
                             </div><!-- row -->
                             <div class="[ text-center ] [ ]">
-                                <a href="<?php echo base_url().'dashboard/accept_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-go ] [ margin-bottom ]"><span>Aceptar</span></a>
-                                <a href="<?php echo base_url().'dashboard/decline_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-no ] [ margin-bottom ]"><span>Rechazar</span></a>
+                                <a href="<?php echo base_url().'dashboard/accept_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-go ] [ margin-bottom ]" onclick="ga('send', 'event', 'solicitudes', 'click', 'aceptarIntercambio');"><span>Aceptar</span></a>
+                                <a href="<?php echo base_url().'dashboard/decline_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-no ] [ margin-bottom ]" onclick="ga('send', 'event', 'solicitudes', 'click', 'rechazarIntercambio');"><span>Rechazar</span></a>
                             </div>
                         </div><!-- invitacion-intercambio -->
                     <?php } ?>
                 </div><!-- invitaciones-contenedor -->
             <?php } else { ?>
-                <p>No tienes solicitudes pendientes.</p>
+                <p class="[ text-center ]">No tienes solicitudes pendientes.</p>
             <?php } ?>
         </div><!--SOLICITUDES DE INTERCAMBIO-->
     </div><!-- row -->
+
     <hr class="[ center-block ]">
+
     <div class="[ col-xs-12 ] [ clearfix ] [ actividad ]">
-        <h3 class="[ text-center ] [ margin-bottom ]">Actividad</h3>
+        <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
-            <!-- <div class="[ actividad-aviso ] [ margin-bottom clearfix ]">
-                <img src="<?php echo base_url() ?>/assets/images/piernas.jpg" alt="" class="[ col-xs-4 ]">
-                <p class="[ col-xs-8 ] [ margin-bottom ]">Fulanito de tal te ha invitado al intercambio bla bla bla.</p>
-            </div> -->
-            <p class="[ text-center ]">No tienes actividad todavía... </p>
+            <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
+                
+            </div>
+            <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
+                
+            </div>
         </div>
-    </div><!--ACTIVIDAD-->
+    </div><!-- actividad -->
+
 </div><!-- CONTENIDO -->

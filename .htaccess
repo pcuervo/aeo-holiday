@@ -1,4 +1,7 @@
 RewriteEngine on
+RewriteCond %{REQUEST_URI} ^/$
+RewriteRule ^(.*)$ https://apps.facebook.com/aeo-bestgiftever [L,R=301]
+
 RewriteCond $1 !^(index\.php|resources|robots\.txt)
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

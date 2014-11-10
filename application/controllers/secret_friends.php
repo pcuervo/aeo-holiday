@@ -169,7 +169,8 @@ class Secret_friends extends CI_Controller {
 			$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
 		}
 		// send TEMPORARY NOTIFICATION
-		//$this->facebook->send_notification($video_id);
+		/*$current_fb_user = $this->facebook->get_user();
+		$this->facebook->send_notification($video_url[count($video_url)-1], $current_fb_user['id']);*/
 
 		// return to secret friend's home
 		$this->view($group_friend_id);
@@ -182,10 +183,10 @@ class Secret_friends extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	public function view_video($secret_friend_id)
+	public function view_video($group_friend_id)
 	{
 		// Set up general variables for view
-		$data['current_view'] = 'view_secret_friend_video';
+		$data['current_view'] = 'view_video';
 
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
@@ -197,12 +198,10 @@ class Secret_friends extends CI_Controller {
 
 		// Get secret friend's data
 		$this->load->model('secret_friend');
-		$current_fb_user = $this->facebook->get_user();
 		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
 
-		// Get secret friend's data
-		$this->load->model('secret_friend');
-		$data['video_url'] = base_url().'/uploads/'.$this->secret_friend->get_video($secret_friend_id);
+
+
 
 		$this->load->view('header', $data);
 		$this->load->view('view_video', $data);
@@ -293,8 +292,11 @@ class Secret_friends extends CI_Controller {
 
 		$this->load->model('group_friend');
 		$data['group_friend_ids'] = $this->group_friend->get_group_friend_ids_by_fb_id($current_fb_user['id']);
-
 		$data['messages'] = $this->group_friend->get_messages_by_group_friends($data['group_friend_ids']);
+		if($data['messages'] != ''){
+			$group_friend_data = $this->group_friend->get_by_fb_id($current_fb_user['id']);
+			$this->group_friend->set_messages_as_read($group_friend_data);
+		}
 
 		$this->load->view('header', $data);
 		$this->load->view('view_messages', $data);
