@@ -60,20 +60,22 @@ function formValidation(forma){
                 case '.j_group_form':
                     createExchangeGroup();
                     break;
+                case 'editExchangeGroup':
+                    editExchangeGroup();
+                    break;
             }
         }
     });
 }
 
 function setLimitDate(){
-    console.log('setLimitDate');
     $('#fecha-intercambio').on('change', function(){
         var val = $(this).val();
         var date = new Date(val);
         var newdate = new Date(date);
         newdate.setDate(newdate.getDate() - 1);
         var nd = new Date(newdate);
-        console.log(nd);
+        //console.log(nd);
         $('#fecha-limite').attr('max', nd);
     });
 }
@@ -106,25 +108,21 @@ function createExchangeGroup(){
  * @return void
  */
 function editExchangeGroup(){
-    $('.j_edit_group_form button').on('click', function(e){
-        e.preventDefault();
-        console.log('editing group....');
+    console.log('editing group....');
+    var group_data = $('.j_edit_group_form').serialize();
+    var url = localStorage.getItem('base_url') + 'dashboard/edit_exchange_group';
 
-        var group_data = $('.j_edit_group_form').serialize();
-        var url = localStorage.getItem('base_url') + 'dashboard/edit_exchange_group';
-
-        $.post(
-            url,
-            group_data,
-            function(response){
-                // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-                console.log(response);
-                alert('!Grupo de intercambio editado!');
-                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-                window.location = dashboard_url;
-            }// response
-        );
-    });
+    $.post(
+        url,
+        group_data,
+        function(response){
+            // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
+            console.log(response);
+            alert('!Grupo de intercambio editado!');
+            var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
+            window.location = dashboard_url;
+        }// response
+    );
 }// editExchangeGroup
 
 /**
