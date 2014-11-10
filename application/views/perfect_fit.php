@@ -13,7 +13,7 @@
 					</select>
 				</div>
 				<?php } ?>
-				<button class="[ btn btn-primary btn-go ] [ center-block ]"><span>Actualizar Perfect Fit</span></button>
+				<button class="[ btn btn-primary btn-go ] [ center-block ]" onclick="ga('send', 'event', 'perfil', 'click', 'perfilListo');"><span>Actualizar Perfect Fit</span></button>
 			</div>
 		</form>
 	</div>

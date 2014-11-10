@@ -31,7 +31,7 @@
 		<input type="hidden" name="fb_users_id" value="3">
 	</fieldset>
 	<fieldset>
-		<a href="#" class="j_invite_friends">Invitar</a><br/>
+		<a href="#" class="j_invite_friends" onclick="ga('send', 'event', 'intercambio', 'click', 'agregarInvitados');">Invitar</a><br/>
 		<input type="submit" value="Enviar">
 	</fieldset>
 </form>
