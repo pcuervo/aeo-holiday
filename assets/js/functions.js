@@ -55,6 +55,20 @@ function footerBottom(){
 **/
 function formValidation(forma){
     $(forma).validate({
+        invalidHandler: function(event, validator) {
+        // 'this' refers to the form
+        var errors = validator.numberOfInvalids();
+        console.log(errors);
+        if (errors) {
+          var message = errors == 1
+            ? 'You missed 1 field. It has been highlighted'
+            : 'You missed ' + errors + ' fields. They have been highlighted';
+          $("div.error span").html(message);
+          $("div.error").show();
+        } else {
+          $("div.error").hide();
+        }
+      },
         submitHandler:function(){
             switch(forma){
                 case '.j_group_form':
@@ -301,9 +315,8 @@ function inviteFriends(form){
         FB.ui({method: 'apprequests',
             message: 'Participa en nuestro grupo de intercambio.'
         }, function(response){
-
             $.each(response.to, function(i, friend_id){
-                $(form).append('<input type="hidden" name="invited_friends[]" value="' + friend_id + '">');
+                $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
             });
             $('.j_invite_friends').after('<p>Se han agregado amigos al grupo</p>');
         });
