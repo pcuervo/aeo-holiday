@@ -1,17 +1,17 @@
-        </div><!-- /#wrapper -->
-        <footer class="[ clearfix ]">
-            <div class="row">
-                <div class="[ col-xs-4 ]">
-                    <p class="[ ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
-                </div><!-- col-xs-4 -->
-                <div class="[ col-xs-4 ]">
-                    <p class="[ text-center ]">AEO Management 2014</p>
-                </div><!-- col-xs-4 -->
-                <div class="[ col-xs-4 ]">
-                    <p class="[ text-right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
-                </div><!-- col-xs-4 -->
-            </div>
-        </footer>
+            <footer class="[ clearfix ]">
+                <div class="row">
+                    <div class="[ col-xs-4 ]">
+                        <p class="[ ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
+                    </div><!-- col-xs-4 -->
+                    <div class="[ col-xs-4 ]">
+                        <p class="[ text-center ]">AEO Management 2014</p>
+                    </div><!-- col-xs-4 -->
+                    <div class="[ col-xs-4 ]">
+                        <p class="[ text-right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
+                    </div><!-- col-xs-4 -->
+                </div>
+            </footer>
+        </div><!-- /.wrapper -->
         <!-- Modal -->
         <div class="modal fade" id="modalTerminosYCondiciones" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog">
