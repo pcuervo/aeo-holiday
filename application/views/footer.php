@@ -1,15 +1,17 @@
             <footer class="[ clearfix ]">
-                <div class="row">
-                    <div class="[ col-xs-4 ]">
-                        <p class="[ ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
-                    </div><!-- col-xs-4 -->
-                    <div class="[ col-xs-4 ]">
-                        <p class="[ text-center ]">AEO Management 2014</p>
-                    </div><!-- col-xs-4 -->
-                    <div class="[ col-xs-4 ]">
-                        <p class="[ text-right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
-                    </div><!-- col-xs-4 -->
-                </div>
+                <?php if($current_view != 'login') { ?>
+                    <div class="row">
+                        <div class="[ col-xs-4 ]">
+                            <p class="[ ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
+                        </div><!-- col-xs-4 -->
+                        <div class="[ col-xs-4 ]">
+                            <p class="[ text-center ]">AEO Management 2014</p>
+                        </div><!-- col-xs-4 -->
+                        <div class="[ col-xs-4 ]">
+                            <p class="[ text-right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
+                        </div><!-- col-xs-4 -->
+                    </div>
+                <?php } ?>
             </footer>
         </div><!-- /.wrapper -->
         <!-- Modal -->
@@ -74,6 +76,7 @@
             <?php } ?>
 
             <?php if($current_view == 'new_exchange_group') { ?>
+                formValidation('.j_group_form');
                 inviteFriends('.j_group_form');
                 createExchangeGroup();
             <?php } ?>

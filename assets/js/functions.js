@@ -40,9 +40,29 @@ function toggleButton(){
     });
 }
 
+/**
+* Footer space
+* @return void
+**/
 function footerBottom(){
-    var alturaFooter = $('footer').outerHeight();
-    $('.wrapper').css('padding-bottom', alturaFooter );
+    var footerHeight = $('footer').outerHeight();
+    $('.wrapper').css('padding-bottom', footerHeight );
+}
+
+/**
+* Form Validation
+* @return void
+**/
+function formValidation(forma){
+    $(forma).validate({
+        submitHandler:function(){
+            switch(forma){
+                case '.j_group_form':
+                    createExchangeGroup();
+                    break;
+            }
+        }
+    });
 }
 
 /*****************************
@@ -53,24 +73,19 @@ function footerBottom(){
  * @return void
  */
 function createExchangeGroup(){
-    $('.j_group_form button').on('click', function(e){
-        e.preventDefault();
-        console.log('creating group....');
-
-        var group_data = $('.j_group_form').serialize();
-        var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
-        console.log(group_data);
-        $.post(
-            url,
-            group_data,
-            function(response){
-            	// TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-                swal("OK", "!Grupo de intercambio creado!", "success");
-                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-        		window.location = dashboard_url;
-            }// response
-        );
-    });
+    var group_data = $('.j_group_form').serialize();
+    var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
+    console.log(group_data);
+    $.post(
+        url,
+        group_data,
+        function(response){
+            // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
+            swal("OK", "!Grupo de intercambio creado!", "success");
+            var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
+            window.location = dashboard_url;
+        }// response
+    );
 }// createExchangeGroup
 
 /**

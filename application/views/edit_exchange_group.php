@@ -4,7 +4,7 @@
         <form action="" method="POST" role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ j_edit_group_form ]">
             <div class="[ form-group ]">
                 <label for="name">Nombre del intercambio</label>
-                <input type="text" class="[ form-control ]" id="nombre-intercambio" name="name" value="<?php echo $group_details['name'] ?>">
+                <input type="text" class="[ form-control ] [ required ]" id="nombre-intercambio" name="name" value="<?php echo $group_details['name'] ?>">
             </div>
             <div class="[ form-group ]">
                 <label for="exchange_date">Fecha del intercambio</label>
@@ -12,7 +12,7 @@
             </div>
             <div class="[ form-group ]">
                 <label for="join_deadline">Fecha límite de inscripción</label>
-                <input type="date" class="form-control" id="fecha-limite" name="join_deadline" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
+                <input type="date" class="form-control" id="fecha-limite" name="join_deadline" min="2014-11-09" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
             </div>
             <div class="[ form-group ]">
                 <label for="place">Lugar</label>

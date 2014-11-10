@@ -29,7 +29,7 @@
 							<a class="[ text-center ]" href="<?php echo base_url() ?>dashboard/view_coupon">Cupón 30%</a>
 						</li>
 						<li>
-							<a class="[ text-center ]" href="<?php echo base_url() ?>/catalog">Catálogo</a>
+							<a class="[ text-center ]" href="<?php echo base_url() ?>catalog">Catálogo</a>
 						</li>
 						<?php if($secret_friends != '') { ?>
 						<li>
