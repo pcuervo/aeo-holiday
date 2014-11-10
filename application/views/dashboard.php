@@ -14,7 +14,7 @@
                 </div>
             <?php } ?>
             <div class="text-center">
-                <a href="<?php echo base_url() ?>dashboard/view_coupon" class="[ btn btn-primary btn-go ]"><span>Ver mi cupón</span></a>
+                <a href="<?php echo base_url() ?>dashboard/view_coupon/m" class="[ btn btn-primary btn-go ]"><span>Ver mi cupón</span></a>
             </div>
         </div>
     </div><!-- row -->

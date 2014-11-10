@@ -9,7 +9,7 @@
             <a href="" class="[ btn btn-primary btn-go ]"><span>enviar al correo</span></a>
         </div>
         <div class="[ text-center ] [ margin-bottom ]">
-            <a href="" class="[ btn btn-primary btn-go ]"><span>guardar imagen</span></a>
+            <a href="<?php echo base_url().'assets/images/cupon.jpg' ?>" class="[ btn btn-primary btn-go ]" download><span>guardar imagen</span></a>
         </div>
     </div><!-- row -->
 </div><!-- login -->

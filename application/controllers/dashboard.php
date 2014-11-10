@@ -119,10 +119,22 @@ class Dashboard extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	function view_coupon()
+	function view_coupon($view)
 	{
 		$data['current_view'] = 'view_coupon';
 
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+		
 		$this->load->view('header', $data);
 		$this->load->view('view_coupon', $data);
 		$this->load->view('footer', $data);
@@ -357,6 +369,14 @@ class Dashboard extends CI_Controller {
 
 		$this->load->model('user_activity');
 		$user_activity = $this->user_activity->get_user_activity_by_fb_id($current_fb_user['id']);
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
 		echo json_encode($user_activity);
 	}// get_user_activity

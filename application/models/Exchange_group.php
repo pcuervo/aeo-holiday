@@ -358,10 +358,10 @@ class Exchange_group extends CI_Model {
 		if ($query->num_rows() < 1)
 			return;
 
-		$this->load->model('pending_invitations');
+		$this->load->model('group_invitation');
 		foreach ($query->result() as $key => $row)
 		{
-			$this->pending_invitations->remove_pending_invitation_by_group($row->id);
+			$this->group_invitation->remove_pending_invitation_by_group($row->id);
 			$this->randomize_secret_friends($row->id);
 		}
 	}// check_groups_status

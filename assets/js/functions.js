@@ -109,10 +109,8 @@ function createExchangeGroup(){
         url,
         group_data,
         function(response){
-            // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-            swal("OK", "!Grupo de intercambio creado!", "success");
-            var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-            window.location = dashboard_url;
+            var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
+            window.location = coupon_url;
         }// response
     );
 }// createExchangeGroup
@@ -132,7 +130,6 @@ function editExchangeGroup(){
         function(response){
             // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
             console.log(response);
-            alert('!Grupo de intercambio editado!');
             var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
             window.location = dashboard_url;
         }// response
@@ -250,7 +247,6 @@ function getUserActiviy(){
             var activity_json = $.parseJSON(response);
             $.each(activity_json, function(i, activity){
                 var html_activity;
-                console.log('activity: ' + activity);
                 switch(activity.activity_type){
                     case '1':
                         html_activity = '<div class="margin-bottom">';
@@ -321,7 +317,7 @@ function inviteFriends(form){
 	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
-            message: 'Participa en nuestro grupo de intercambio.'
+            message: 'te invitó a formar parte del intercambio navideño y recibir un descuento en tus compras.'
         }, function(response){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');

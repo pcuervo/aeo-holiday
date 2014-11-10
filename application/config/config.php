@@ -370,8 +370,8 @@ $config['proxy_ips'] = '';
 |
 */
 $config['app_url'] = 'https://www.facebook.com/TestingVis/app_293571087508858';
-$config['facebook']['api_id'] = '297868607079106';
-$config['facebook']['app_secret'] = 'bd99a4f0c5adec6cb3adb06db6e950e1';
+$config['facebook']['api_id'] = '293571087508858';
+$config['facebook']['app_secret'] = '21d0205237f8a0afec65c14533565773';
 $config['facebook']['redirect_url'] = $config['base_url'].'redirect/login';
 $config['facebook']['permissions'] = array(
 	'email',
