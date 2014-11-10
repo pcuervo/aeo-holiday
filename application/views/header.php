@@ -45,7 +45,6 @@
 							<?php } ?>
 						<?php } ?>
 						<li class="[ sidebar-brand ]">
-							<a class="[ text-center ] [ margin-bottom-big ]" href="#">Salir</a>
 							<img class="[ col-xs-6 ] [ center-block ]" src="<?php echo base_url() ?>assets/images/logo-aeo-red.png" alt="">
 						</li>
 					</ul>
