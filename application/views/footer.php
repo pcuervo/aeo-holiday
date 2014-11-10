@@ -84,7 +84,7 @@
             <?php if($current_view == 'view_exchange_group') { ?>
                 addGroupToCalendar();
                 inviteFriends('.j_edit_group_form');
-                editExchangeGroup();
+                formValidation('.j_edit_group_form');
             <?php } ?>
 
             <?php if($current_view == 'perfect_fit') { ?>
