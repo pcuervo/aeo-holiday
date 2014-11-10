@@ -2,13 +2,13 @@
         <footer class="[ clearfix ]">
             <div class="row">
                 <div class="[ col-xs-4 ]">
-                    <p class="[ left ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
+                    <p class="[ ]"><a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Términos y Condiciones</a></p>
                 </div><!-- col-xs-4 -->
                 <div class="[ col-xs-4 ]">
                     <p class="[ text-center ]">AEO Management 2014</p>
                 </div><!-- col-xs-4 -->
                 <div class="[ col-xs-4 ]">
-                    <p class="[ right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
+                    <p class="[ text-right ]"><a href="http://es.ae.com/web/help/privacy_policy.jsp?topic=7" target="_blank">Aviso de Privacidad</a></p>
                 </div><!-- col-xs-4 -->
             </div>
         </footer>
@@ -63,6 +63,7 @@
             insertGoogleAnalytics();
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
             toggleMainMenu();
+            footerBottom();
 
             <?php if($current_view == 'dashboard') { ?>
                 getUnreadMessages();
