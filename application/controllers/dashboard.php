@@ -315,4 +315,21 @@ class Dashboard extends CI_Controller {
 		$this->index();
 	}// decline_invitation
 
+	/**
+	 * Gets all unread messages by secret friends
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function get_unread_messages()
+	{
+		$current_fb_user = $this->facebook->get_user();
+
+		$this->load->model('group_friend');
+		$group_friend_ids = $this->group_friend->get_group_friend_ids_by_fb_id($current_fb_user['id']);
+		$messages = $this->group_friend->get_messages_by_group_friends($group_friend_ids);
+
+		echo json_encode($messages);
+	}// get_unread_messages
+
 }// class Dashboard

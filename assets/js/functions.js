@@ -148,8 +148,6 @@ function showSecretFriends(){
     });
 }// showSecretFriends
 
-
-
 /**
  * Send Zencoder POST
  * @return void
@@ -163,34 +161,37 @@ function videoPost(){
     }
 
     $.ajax({
-    type: 'POST',
-    url: 'https://app.zencoder.com/api/v2/jobs',
-    headers:{ 'Zencoder-Api-Key' : '83521e9cb52b9f31f41856b28de4c3b1'},
-    dataType: 'json',
-    data: JSON.stringify(request),
-    success: function(response) {
-        console.log(response);
-
-
-
-    },
-    error: function(response){
-        console.log(response);
-    }
+        type: 'POST',
+        url: 'https://app.zencoder.com/api/v2/jobs',
+        headers:{ 'Zencoder-Api-Key' : '83521e9cb52b9f31f41856b28de4c3b1'},
+        dataType: 'json',
+        data: JSON.stringify(request),
+        success: function(response) {
+            console.log(response);
+        },
+        error: function(response){
+            console.log(response);
+        }
     });
-
-
-
 }// videoPost
 
-
-
-
+/**
+ * Get unread messages for current user
+ * @return void
+ */
+function getUnreadMessages(){
+    var url = localStorage.getItem('base_url') + 'dashboard/get_unread_messages/';
+    $.get(
+        url,
+        function(response){
+            console.log(response);
+        }// response
+    );
+}// getUnreadMessages
 
 function add_hidden_input(form, name, value){
 	$(form).append('<input type="hidden" name="' + name + '" value="' + value + '"');
 }// add_hidden_input
-
 
 /*****************************
 	Facebook API functions
