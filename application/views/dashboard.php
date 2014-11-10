@@ -71,17 +71,15 @@
             <?php } ?>
         </div><!--SOLICITUDES DE INTERCAMBIO-->
     </div><!-- row -->
-
     <hr class="[ center-block ]">
-
     <div class="[ col-xs-12 ] [ clearfix ] [ actividad ]">
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
             <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
-                
+
             </div>
             <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
-                
+
             </div>
         </div>
     </div><!-- actividad -->

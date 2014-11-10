@@ -55,6 +55,20 @@ function footerBottom(){
 **/
 function formValidation(forma){
     $(forma).validate({
+        invalidHandler: function(event, validator) {
+        // 'this' refers to the form
+        var errors = validator.numberOfInvalids();
+        console.log(errors);
+        if (errors) {
+          var message = errors == 1
+            ? 'You missed 1 field. It has been highlighted'
+            : 'You missed ' + errors + ' fields. They have been highlighted';
+          $("div.error span").html(message);
+          $("div.error").show();
+        } else {
+          $("div.error").hide();
+        }
+      },
         submitHandler:function(){
             switch(forma){
                 case '.j_group_form':
@@ -235,19 +249,18 @@ function getUserActiviy(){
                 var html_activity;
                 switch(activity.activity_type){
                     case '1':
-                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity = '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';
                         break;
                     case '2':
-                        html_activity = '<p>' + activity.action + '</p>';
-                        html_activity += '<p>' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
+                        html_activity = '<h4 class="[ text-center ]">' + activity.action + '</h4>';
+                        html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
                         break;
                     case '3':
-                        html_activity = '<p>' + activity.action + '</p>';
-                        html_activity += '<p>' + activity.friend_name + ' ha rechazado la invitación al grupo : ' + activity.group_name + '</p>';
+                        html_activity = '<h4 class="[ text-center ]">' + activity.action + '</h4>';
+                        html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
                         break;
                 }
-
                 $(html_activity).appendTo('.actividad-grupo');
             });
         }// response
@@ -297,9 +310,8 @@ function inviteFriends(form){
         FB.ui({method: 'apprequests',
             message: 'te invitó a formar parte del intercambio navideño y recibir un descuento en tus compras.'
         }, function(response){
-
             $.each(response.to, function(i, friend_id){
-                $(form).append('<input type="hidden" name="invited_friends[]" value="' + friend_id + '">');
+                $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
             });
             $('.j_invite_friends').after('<p>Se han agregado amigos al grupo</p>');
         });
