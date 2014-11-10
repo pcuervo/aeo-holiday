@@ -41,7 +41,7 @@ function toggleButton(){
 }
 
 function footerBottom(){
-    var alturaFooter = $('footer').height();
+    var alturaFooter = $('footer').outerHeight();
     $('.wrapper').css('padding-bottom', alturaFooter );
 }
 
