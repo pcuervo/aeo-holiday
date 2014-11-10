@@ -253,19 +253,25 @@ function getUserActiviy(){
                 console.log('activity: ' + activity);
                 switch(activity.activity_type){
                     case '1':
-                        html_activity = '<h4 class="[ text-center ]">' + activity.action + '</h4>';
-                        html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';
-                        html_activity += '<hr class="[ margin-bottom ]">'
+                        html_activity = '<div class="margin-bottom">';
+                        html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
+                        html_activity += '<p class="[ text-center ]">Has creado el grupo: ' + activity.group_name + '</p>';
+                        html_activity += '<hr class="[ margin-bottom ]">';
+                        html_activity += '</div>'
                         break;
                     case '2':
-                        html_activity = '<h4 class="[ text-center ]">' + activity.action + '</h4>';
+                        html_activity = '<div class="margin-bottom">';
+                        html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
-                        html_activity += '<hr class="[ margin-bottom ]">'
+                        html_activity += '<hr class="[ margin-bottom ]">';
+                        html_activity += '</div>'
                         break;
                     case '3':
-                        html_activity = '<h4 class="[ text-center ]">' + activity.action + '</h4>';
+                        html_activity = '<div class="margin-bottom">';
+                        html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
-                        html_activity += '<hr class="[ margin-bottom ]">'
+                        html_activity += '<hr class="[ margin-bottom ]">';
+                        html_activity += '</div>'
                         break;
                 }
                 $(html_activity).appendTo('.actividad-grupo');
