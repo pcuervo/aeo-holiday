@@ -184,7 +184,10 @@ function getUnreadMessages(){
     $.get(
         url,
         function(response){
-            console.log(response);
+            var mensajes_json = $.parseJSON(response);
+            $.each(mensajes_json, function(i, val){
+                console.log(val);
+            });
         }// response
     );
 }// getUnreadMessages

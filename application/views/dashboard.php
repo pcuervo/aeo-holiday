@@ -71,15 +71,19 @@
             <?php } ?>
         </div><!--SOLICITUDES DE INTERCAMBIO-->
     </div><!-- row -->
-    <!-- <hr class="[ center-block ]">
+
+    <hr class="[ center-block ]">
+
     <div class="[ col-xs-12 ] [ clearfix ] [ actividad ]">
-        <h3 class="[ text-center ] [ margin-bottom ]">Actividad</h3>
+        <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
-             <div class="[ actividad-aviso ] [ margin-bottom clearfix ]">
-                <img src="<?php echo base_url() ?>/assets/images/piernas.jpg" alt="" class="[ col-xs-4 ]">
-                <p class="[ col-xs-8 ] [ margin-bottom ]">Fulanito de tal te ha invitado al intercambio bla bla bla.</p>
+            <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
+                
             </div>
-            <p class="[ text-center ]">No tienes actividad todavía... </p>
+            <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
+                
+            </div>
         </div>
-    </div>ACTIVIDAD-->
+    </div><!-- actividad -->
+
 </div><!-- CONTENIDO -->
