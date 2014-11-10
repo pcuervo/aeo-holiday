@@ -44,10 +44,6 @@
 								</li>
 							<?php } ?>
 						<?php } ?>
-						<li class="[ sidebar-brand ]">
-							<a class="[ text-center ] [ margin-bottom-big ]" href="#">Salir</a>
-							<img class="[ col-xs-6 ] [ center-block ]" src="<?php echo base_url() ?>assets/images/logo-aeo-red.png" alt="">
-						</li>
 					</ul>
 	        	</div> <!-- #sidebar-wrapper -->
 		        <div id="menu-principal" class="[ col-xs-11 clearfix ] [ center-block ]">
