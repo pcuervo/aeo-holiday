@@ -79,7 +79,6 @@
             <?php if($current_view == 'new_exchange_group') { ?>
                 formValidation('.j_group_form');
                 inviteFriends('.j_group_form');
-                createExchangeGroup();
             <?php } ?>
 
             <?php if($current_view == 'view_exchange_group') { ?>
