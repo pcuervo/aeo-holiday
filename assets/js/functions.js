@@ -60,8 +60,23 @@ function formValidation(forma){
                 case '.j_group_form':
                     createExchangeGroup();
                     break;
+                case 'editExchangeGroup':
+                    editExchangeGroup();
+                    break;
             }
         }
+    });
+}
+
+function setLimitDate(){
+    $('#fecha-intercambio').on('change', function(){
+        var val = $(this).val();
+        var date = new Date(val);
+        var newdate = new Date(date);
+        newdate.setDate(newdate.getDate() - 1);
+        var nd = new Date(newdate);
+        //console.log(nd);
+        $('#fecha-limite').attr('max', nd);
     });
 }
 
@@ -93,25 +108,21 @@ function createExchangeGroup(){
  * @return void
  */
 function editExchangeGroup(){
-    $('.j_edit_group_form button').on('click', function(e){
-        e.preventDefault();
-        console.log('editing group....');
+    console.log('editing group....');
+    var group_data = $('.j_edit_group_form').serialize();
+    var url = localStorage.getItem('base_url') + 'dashboard/edit_exchange_group';
 
-        var group_data = $('.j_edit_group_form').serialize();
-        var url = localStorage.getItem('base_url') + 'dashboard/edit_exchange_group';
-
-        $.post(
-            url,
-            group_data,
-            function(response){
-                // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-                console.log(response);
-                alert('!Grupo de intercambio editado!');
-                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-                window.location = dashboard_url;
-            }// response
-        );
-    });
+    $.post(
+        url,
+        group_data,
+        function(response){
+            // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
+            console.log(response);
+            alert('!Grupo de intercambio editado!');
+            var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
+            window.location = dashboard_url;
+        }// response
+    );
 }// editExchangeGroup
 
 /**
@@ -225,17 +236,22 @@ function getUserActiviy(){
             var activity_json = $.parseJSON(response);
             $.each(activity_json, function(i, activity){
                 var html_activity;
+                console.log('activity: ' + activity);
                 switch(activity.activity_type){
                     case '1':
                         html_activity = '<p>' + activity.action + '</p>';
                         html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';
                         break;
                     case '2':
-                        /*html_activity = '<p>' + activity.action + '</p>';
-                        html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';*/
+                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity += '<p>' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
+                        break;
+                    case '3':
+                        html_activity = '<p>' + activity.action + '</p>';
+                        html_activity += '<p>' + activity.friend_name + ' ha rechazado la invitación al grupo : ' + activity.group_name + '</p>';
                         break;
                 }
-                 
+
                 $(html_activity).appendTo('.actividad-grupo');
             });
         }// response
@@ -314,13 +330,6 @@ function getInvitedFriendPic(fb_id){
         }
     });
 }// getInvitedFriendName
-
-// Analytics
-function insertGoogleAnalytics(){
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-43305108-4', 'auto');ga('send', 'pageview');
-}// insertGoogleAnalytics
 
 
 
