@@ -225,7 +225,6 @@ function getUserActiviy(){
             var activity_json = $.parseJSON(response);
             $.each(activity_json, function(i, activity){
                 var html_activity;
-                console.log('activity: ' + activity);
                 switch(activity.activity_type){
                     case '1':
                         html_activity = '<p>' + activity.action + '</p>';
@@ -288,7 +287,7 @@ function inviteFriends(form){
 	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
-            message: 'Participa en nuestro grupo de intercambio.'
+            message: 'te invitó a formar parte del intercambio navideño y recibir un descuento en tus compras.'
         }, function(response){
 
             $.each(response.to, function(i, friend_id){
