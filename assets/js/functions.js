@@ -191,7 +191,7 @@ function getUnreadMessages(){
             var mensajes_json = $.parseJSON(response);
             var url_mensajes = localStorage.getItem('base_url') + 'secret_friends/view_messages/';
             $.each(mensajes_json, function(i, val){
-                var html_mensaje = '<p>Tienes un <a href="' + url_mensajes + '"> mensaje</a> de tu amigo secreto del grupo' + val.group_name + '</p>';
+                var html_mensaje = '<p>Tienes un <a href="' + url_mensajes + '"> mensaje</a> de tu amigo secreto del grupo ' + val.group_name + '</p>';
                 $(html_mensaje).appendTo('.actividad-mensajes');
             });
         }// response

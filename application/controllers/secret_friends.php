@@ -293,9 +293,10 @@ class Secret_friends extends CI_Controller {
 		$this->load->model('group_friend');
 		$data['group_friend_ids'] = $this->group_friend->get_group_friend_ids_by_fb_id($current_fb_user['id']);
 		$data['messages'] = $this->group_friend->get_messages_by_group_friends($data['group_friend_ids']);
-		if($data['messages'] != '')
-			$this->group_friend->set_messages_as_read()
-
+		if($data['messages'] != ''){
+			$group_friend_data = $this->group_friend->get_by_fb_id($current_fb_user['id']);
+			$this->group_friend->set_messages_as_read($group_friend_data);
+		}
 
 		$this->load->view('header', $data);
 		$this->load->view('view_messages', $data);
