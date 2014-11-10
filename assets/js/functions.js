@@ -65,6 +65,18 @@ function formValidation(forma){
     });
 }
 
+function setLimitDate(){
+    $('#fecha-intercambio').on('change', function(){
+        var val = $(this).val();
+        var date = new Date(val);
+        var newdate = new Date(date);
+        newdate.setDate(newdate.getDate() - 1);
+        var nd = new Date(newdate);
+        console.log(nd);
+        $('#fecha-limite').attr('max', nd);
+    });
+}
+
 /*****************************
 	AJAX functions
  *****************************/
@@ -235,7 +247,7 @@ function getUserActiviy(){
                         html_activity += '<p>Has creado el grupo: ' + activity.group_name + '</p>';*/
                         break;
                 }
-                 
+
                 $(html_activity).appendTo('.actividad-grupo');
             });
         }// response

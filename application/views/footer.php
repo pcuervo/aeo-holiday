@@ -78,6 +78,7 @@
 
             <?php if($current_view == 'new_exchange_group') { ?>
                 formValidation('.j_group_form');
+                setLimitDate();
                 inviteFriends('.j_group_form');
             <?php } ?>
 
