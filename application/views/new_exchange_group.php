@@ -16,7 +16,7 @@
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="place">Lugar</label>
-                <input type="text" class="[ form-control ] [ required ]" id="lugar-intercambio" name="place">
+                <input type="text" class="[ form-control ]" id="lugar-intercambio" name="place">
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="budget">Monto del regalo</label>
@@ -45,31 +45,3 @@
         </form>
     </div><!-- container -->
 </div><!-- CONTENIDO -->
-
-<div class="sweet-overlay"></div>
-
-<!-- SweetAlert box -->
-<div class="sweet-alert">
-    <div class="icon error">
-        <span class="x-mark">
-            <span class="line left"></span>
-            <span class="line right"></span>
-        </span>
-    </div>
-    <div class="icon warning">
-        <span class="body"></span>
-        <span class="dot"></span>
-    </div>
-    <div class="icon info"></div>
-    <div class="icon success">
-        <span class="line tip"></span>
-        <span class="line long"></span>
-        <div class="placeholder"></div>
-        <div class="fix"></div>
-    </div>
-    <div class="icon custom"></div>
-    <h2>Title</h2>
-    <p>Text</p>
-    <button class="cancel">Cancel</button>
-    <button class="confirm">OK</button>
-</div>
