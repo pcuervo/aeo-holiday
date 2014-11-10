@@ -24,6 +24,10 @@
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
             toggleMainMenu();
 
+            <?php if($current_view == 'dashboard') { ?>
+                getUnreadMessages();
+            <?php } ?>
+
             <?php if($current_view == 'view_video') { ?>
                 videoPost();
             <?php } ?>
