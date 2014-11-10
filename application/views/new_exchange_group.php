@@ -4,15 +4,15 @@
         <form role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ j_group_form ]">
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ] [ ]" for="name">Nombre del intercambio</label>
-                <input type="text" class="[ form-control ]" id="nombre-intercambio" name="name">
+                <input type="text" class="[ form-control ] [ required ]" id="nombre-intercambio" name="name">
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="center-block" for="exchange_date">Fecha del intercambio</label>
-                <input type="date" class="form-control" id="fecha-intercambio" name="exchange_date" >
+                <input type="date" class="[ form-control ] [ required ]" id="fecha-intercambio" name="exchange_date" >
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="center-block" for="join_deadline">Fecha límite de inscripción</label>
-                <input type="date" class="form-control" id="fecha-limite" name="join_deadline">
+                <input type="date" class="[ form-control ] [ required ]" id="fecha-limite" name="join_deadline">
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="place">Lugar</label>
@@ -20,7 +20,7 @@
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="budget">Monto del regalo</label>
-                <select class="[ form-control ]" id="precio-intercambio" name="budget">
+                <select class="[ form-control ] [ required ]" id="precio-intercambio" name="budget">
                     <option value="50">$50</option>
                     <option value="100">$100</option>
                     <option value="200">$200</option>
@@ -45,31 +45,3 @@
         </form>
     </div><!-- container -->
 </div><!-- CONTENIDO -->
-
-<div class="sweet-overlay"></div>
-
-<!-- SweetAlert box -->
-<div class="sweet-alert">
-    <div class="icon error">
-        <span class="x-mark">
-            <span class="line left"></span>
-            <span class="line right"></span>
-        </span>
-    </div>
-    <div class="icon warning">
-        <span class="body"></span>
-        <span class="dot"></span>
-    </div>
-    <div class="icon info"></div>
-    <div class="icon success">
-        <span class="line tip"></span>
-        <span class="line long"></span>
-        <div class="placeholder"></div>
-        <div class="fix"></div>
-    </div>
-    <div class="icon custom"></div>
-    <h2>Title</h2>
-    <p>Text</p>
-    <button class="cancel">Cancel</button>
-    <button class="confirm">OK</button>
-</div>

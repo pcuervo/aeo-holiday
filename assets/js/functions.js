@@ -65,6 +65,19 @@ function formValidation(forma){
     });
 }
 
+function setLimitDate(){
+    console.log('setLimitDate');
+    $('#fecha-intercambio').on('change', function(){
+        var val = $(this).val();
+        var date = new Date(val);
+        var newdate = new Date(date);
+        newdate.setDate(newdate.getDate() - 1);
+        var nd = new Date(newdate);
+        console.log(nd);
+        $('#fecha-limite').attr('max', nd);
+    });
+}
+
 /*****************************
 	AJAX functions
  *****************************/
@@ -239,7 +252,7 @@ function getUserActiviy(){
                         html_activity += '<p>' + activity.friend_name + ' ha rechazado la invitación al grupo : ' + activity.group_name + '</p>';
                         break;
                 }
-                 
+
                 $(html_activity).appendTo('.actividad-grupo');
             });
         }// response
@@ -318,13 +331,6 @@ function getInvitedFriendPic(fb_id){
         }
     });
 }// getInvitedFriendName
-
-// Analytics
-function insertGoogleAnalytics(){
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-43305108-4', 'auto');ga('send', 'pageview');
-}// insertGoogleAnalytics
 
 
 
