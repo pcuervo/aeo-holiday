@@ -161,5 +161,153 @@
             <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/accesorios/gorro-con-copos-de-nieve-aeo.png">
             <p>Gorro con Copos de Nieve AEO</p>
         </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/cardigan-estampado-aeo.png">
+            <p>Cárdigan estampado AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/chaleco-de-plumas-aeo.png">
+            <p>Chaleco de Plumas AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/chamarra-con-gorro-aeo.png">
+            <p>Chamarra con Gorro AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/chamarra-de-mezclilla-aeo.png">
+            <p>Chamarra de Mezclilla AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/chamarra-de-plumas-aeo.png">
+            <p>Chamarra de Plumas AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/parka-aeo.png">
+            <p>Parka AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/polo-aeo.png">
+            <p>Polo AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/sudadera-con-grafico-y-brillo-aeo.png">
+            <p>Sudadera con Gráfico y Brillo AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/sudadera-con-oso-polar-aeo.png">
+            <p>Sudadera con Oso Polar AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/sudadera-merry-bright-aeo.png">
+            <p>Sudadera Merry and Bright AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/sueter-con-capucha-aeo.png">
+            <p>Suéter con Capucha AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/sueter-con-copos-aeo.png">
+            <p>Suéter con Copos AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/sueter-para-jegging-aeo.png">
+            <p>Suéter para Jegging AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/t-shirt-con-encaje-aeo.png">
+            <p>T-Shirt con encaje AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/t-shirt-con-grafico-de-corazon.png">
+            <p>T-Shirt con Gráfico de Corazón</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/t-shirt-con-grafico-de-oso.png">
+            <p>T-Shirt con Gráfico de Oso</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/t-shirt-con-grafico-de-plumas.png">
+            <p>T-Shirt con Gráfico de Plumas</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/t-shirt-con-grafico-love.png">
+            <p>T-Shirt con Gráfico Love</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="top">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/top/vestido-kate-aeo.png">
+            <p>Vestido Kate AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/pantalon/jegging-aeo.png">
+            <p>Jegging AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/pantalon/jegging-x-hi-rise.png">
+            <p>Jegging X Hi-Rise</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/pantalon/pants-aeo.png">
+            <p>Pants AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/pantalon/pants-azules-aeo.png">
+            <p>Pants Azules AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/pantalon/pants-negros-aeo.png">
+            <p>Pants Negros AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/pantalon/sky-high-jegging-gris.png">
+            <p>Sky High Jegging Gris</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="pantalon">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/pantalon/sky-high-jegging.png">
+            <p>Sky High Jegging</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/beanie-aeo.png">
+            <p>Beanie AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/beanie-con-estampado-de-corazones.png">
+            <p>Beanie con Estampado de Corazones</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/beanie-multicolor-aeo.png">
+            <p>Beanie Multicolor AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/bufanda-con-tejido-grueso-aeo.png">
+            <p>Bufanda con Tejido Grueso AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/bufanda-tejida-aeo.png">
+            <p>Bufanda Tejida AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/camisa-escocesa-aeo.png">
+            <p>Camisa Escocesa AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/collar-aeo.png">
+            <p>Collar AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/collar-con-dijes-aeo.png">
+            <p>Collar con Dijes AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/gorro-aeo.png">
+            <p>Gorro AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/lentes-aeo.png">
+            <p>Lentes AEO</p>
+        </div>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="mujer" data-categoria="accesorios">
+            <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/mujer/accesorios/reloj-aeo.png">
+            <p>Reloj AEO</p>
+        </div>
     </div>
 </div>
