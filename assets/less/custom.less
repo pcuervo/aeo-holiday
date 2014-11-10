@@ -37,8 +37,9 @@
 
 /* GENERAL *****************/
 
-html, body{ height: 100%; }
-body{ background: @brand-primary; color: @white; }
+//html, body{ height: 100%; }
+html{ min-height: 100%; }
+body{ height: 100%; background: @brand-primary; color: @white; }
 a{ cursor: pointer; }
 
 hr{ width: 91.66666667%; height: 1px; margin: 0 0 20px 0; border: 0; background: @white; }
@@ -146,7 +147,7 @@ footer{ width: 100%; padding: 10px; position: absolute; bottom: 0px; clear: both
         margin-bottom: 10px;
     }
 }
-.wrapper{ position: relative; }
+.wrapper{ height: 100%; position: relative; }
 .wrapper.toggled #menu-principal {
     position: absolute;
     margin-right: 250px;
