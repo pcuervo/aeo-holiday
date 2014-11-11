@@ -372,7 +372,7 @@ function inviteFriends(form){
 
 function getInvitedFriendData(fb_id){
     var user_data = {};
-    FB.api('/'+ fb_id + '?access_token=CAAELAFhjJXoBANJxcwb0RxZAOgkni7WNhvT6qpxSmFG4vntMnI5H8ese9whs8SkgYzGt9jA1Wlt3YnhO6PjPaA67oLM3WBXVSFWSNHfHgsHXQaqPXCVgcHyCoY52ssKJ7QLinGicNyA2SPZBr1EtrnrbQizZAm4hMeCeyNeB4ICFlI4FJZBVFpWDMh5pC6AYJ0JAsAWtCPyOiTk9HZC5L', function(response) {
+    FB.api('/'+ fb_id + '?access_token=293571087508858|21d0205237f8a0afec65c14533565773', function(response) {
         console.log(response);
         if(response.id){
             var name = response.first_name + ' ' + response.last_name;
@@ -384,7 +384,7 @@ function getInvitedFriendData(fb_id){
 }// getInvitedFriendName
 
 function getInvitedFriendPic(fb_id){
-    FB.api('/'+ fb_id + '/picture?access_token=CAAELAFhjJXoBANJxcwb0RxZAOgkni7WNhvT6qpxSmFG4vntMnI5H8ese9whs8SkgYzGt9jA1Wlt3YnhO6PjPaA67oLM3WBXVSFWSNHfHgsHXQaqPXCVgcHyCoY52ssKJ7QLinGicNyA2SPZBr1EtrnrbQizZAm4hMeCeyNeB4ICFlI4FJZBVFpWDMh5pC6AYJ0JAsAWtCPyOiTk9HZC5L', function(response) {
+    FB.api('/'+ fb_id + '/picture?access_token=293571087508858|21d0205237f8a0afec65c14533565773', function(response) {
         if(response){
             return response.url;
         }
