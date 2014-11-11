@@ -357,7 +357,7 @@ function loadFacebookSdk(){
             xfbml      : true,
             version    : 'v2.1'
         });
-        FB.Canvas.setAutoGrow();
+        FB.Canvas.setAutoGrow(3000);
     };
 }
 
@@ -374,27 +374,29 @@ function inviteFriends(form){
         }, function(response){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
-                getInvitedFriendData();
+                getInvitedFriendData(friend_id);
             });
-            $('.j_invite_friends').after('<p>Se han agregado amigos al grupo</p>');
+            
         });
     });
 }// inviteFriends
 
 function getInvitedFriendData(fb_id){
     var user_data = {};
-    FB.api('/'+ fb_id + '?access_token=CAAEO6PCDwsIBAOCpWHhPxQ8pSfTz973A1y0nZB4oG0lbe4bPHDNkbVR1YWHzbPWZBAylkqGpUTqr0LGZBllJGmefEB535Ime0c9yN8OZBp4s45QLDCrwuZBrTdUoRuY3j7EnaBLAgiVj6bud1i51x194zr8ccm0eLa3t4oF76qABB18oCTOZCrhkpxCh2ECbfQiPBZAtW0mP3tZAFg4EUj7R', function(response) {
+    FB.api('/'+ fb_id + '?access_token=CAAELAFhjJXoBANJxcwb0RxZAOgkni7WNhvT6qpxSmFG4vntMnI5H8ese9whs8SkgYzGt9jA1Wlt3YnhO6PjPaA67oLM3WBXVSFWSNHfHgsHXQaqPXCVgcHyCoY52ssKJ7QLinGicNyA2SPZBr1EtrnrbQizZAm4hMeCeyNeB4ICFlI4FJZBVFpWDMh5pC6AYJ0JAsAWtCPyOiTk9HZC5L', function(response) {
 
+        console.log(response);
         if(response.id){
-            var name = response.first_name + response.last_name;
+            var name = response.first_name + ' ' + response.last_name;
+            $('.j_invite_friends').after('<p>Se agregó: ' + name + ' al intercambio.</p>');
         }
-        console.log(name);
+        
     });
 
 }// getInvitedFriendName
 
 function getInvitedFriendPic(fb_id){
-    FB.api('/'+ fb_id + '/picture?access_token=CAAEO6PCDwsIBAOCpWHhPxQ8pSfTz973A1y0nZB4oG0lbe4bPHDNkbVR1YWHzbPWZBAylkqGpUTqr0LGZBllJGmefEB535Ime0c9yN8OZBp4s45QLDCrwuZBrTdUoRuY3j7EnaBLAgiVj6bud1i51x194zr8ccm0eLa3t4oF76qABB18oCTOZCrhkpxCh2ECbfQiPBZAtW0mP3tZAFg4EUj7R', function(response) {
+    FB.api('/'+ fb_id + '/picture?access_token=CAAELAFhjJXoBANJxcwb0RxZAOgkni7WNhvT6qpxSmFG4vntMnI5H8ese9whs8SkgYzGt9jA1Wlt3YnhO6PjPaA67oLM3WBXVSFWSNHfHgsHXQaqPXCVgcHyCoY52ssKJ7QLinGicNyA2SPZBr1EtrnrbQizZAm4hMeCeyNeB4ICFlI4FJZBVFpWDMh5pC6AYJ0JAsAWtCPyOiTk9HZC5L', function(response) {
         if(response){
             return response.url;
         }
