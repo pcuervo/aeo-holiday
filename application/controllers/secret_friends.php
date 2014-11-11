@@ -182,6 +182,26 @@ class Secret_friends extends CI_Controller {
 	}// upload_video
 
 	/**
+	 * Upload secret friend's video to server
+	 *
+	 * @param string $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function save_webcam_video()
+	{
+		$secret_friend_id = $_POST['secret_friend_id'];
+		$group_friend_id = $_POST['group_friend_id'];
+		$video_url = $_POST['video_url'];
+
+		// inserta anuncio a bd
+		$this->load->model('secret_friend_video');
+		$video_id = $this->secret_friend_video->save_video($video_url, $secret_friend_id);
+
+		echo 'video guardado';
+	}// save_webcam_video
+
+	/**
 	 * View a secret friend's video
 	 *
 	 * @param string $group_friend_id
@@ -206,9 +226,7 @@ class Secret_friends extends CI_Controller {
 		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
 
 		// Get secret friend video
-		$data['video_url'] = base_url().'uploads/'.$this->secret_friend->get_video($data['secret_friend']['secret_friend_id']);
-		echo $data['video_url'];
-
+		$data['video_url'] = $this->secret_friend->get_video($data['secret_friend']['secret_friend_id']);
 
 		$this->load->view('header', $data);
 		$this->load->view('view_video', $data);
