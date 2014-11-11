@@ -36,7 +36,7 @@
                     <option value="400">$400</option>
                     <option value="500">$500</option>
                     <option value="600">$600</option>
-                    <option value="">Sin límite</option>
+                    <option value="sin-limite">Sin límite</option>
                 </select>
             </div>
             <div class="[ form-group ] [ margin-bottom ]">

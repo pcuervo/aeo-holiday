@@ -83,6 +83,11 @@
 
             <?php if($current_view == 'catalog') { ?>
                 runIstitope();
+                <?php if ( $is_mobile == 1 ){ ?>
+                    lightbox();
+                <?php } else { ?>
+                    noLightbox();
+                <?php } ?>
             <?php } ?>
 
             <?php if($current_view == 'view_video') { ?>
@@ -105,6 +110,7 @@
 
             <?php if($current_view == 'perfect_fit') { ?>
                 updatePerfectFit();
+                quitarOption();
             <?php } ?>
 
             <?php if($current_view == 'view_messages') { ?>

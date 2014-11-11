@@ -24,6 +24,11 @@ class Catalog extends CI_Controller {
 	{
 		$data['current_view'] = 'catalog';
 
+		$this->load->library('user_agent');
+		$data['is_mobile'] = FALSE;
+		if($this->agent->is_mobile())
+			$data['is_mobile'] = TRUE;
+
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
 			redirect('/login');

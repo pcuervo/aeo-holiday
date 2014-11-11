@@ -129,6 +129,24 @@ function lightbox(){
     });
 }
 
+//Eliminar Bootstrap Lightbox para desktop
+function noLightbox(){
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+    });
+}
+
+//Eliminar talla 34 de largo para hombres si es escogen talla 38 de jeans
+function quitarOption(){
+    $('.male.talla-jeans').on('change', function(){
+        console.log('change');
+        if ( $(this).val() == '18' ){
+            console.log('18');
+            $('select.largo-jeans option[value"21"]').remove();
+        }
+    });
+}
+
 
 /*****************************
 	AJAX functions
@@ -423,9 +441,9 @@ function getInvitedFriendPic(fb_id){
     });
 }// getInvitedFriendName
 
-// 
+//
 function initWebCam(){
-    $("#webcam").scriptcam({ 
+    $("#webcam").scriptcam({
         path:  localStorage.getItem('base_url') + 'assets/scriptcam/',
         fileReady:fileReady,
         cornerRadius:20,
@@ -467,11 +485,11 @@ function initWebCam(){
         $( "#slider" ).slider( "option", "value", volume );
         $.each(cameraNames, function(index, text) {
             $('#cameraNames').append( $('<option></option>').val(index).html(text) )
-        }); 
+        });
         $('#cameraNames').val(camera);
         $.each(microphoneNames, function(index, text) {
             $('#microphoneNames').append( $('<option></option>').val(index).html(text) )
-        }); 
+        });
         $('#microphoneNames').val(microphone);
     }
 
@@ -525,7 +543,7 @@ function saveWebcamVideo(video_url){
     secret_friend_data['secret_friend_id'] = $('input[name="secret_friend_id"]').val();
     secret_friend_data['group_friend_id'] = $('input[name="group_friend_id"]').val();
     secret_friend_data['video_url'] = video_url;
-    
+
 
     console.log(secret_friend_data);
 
