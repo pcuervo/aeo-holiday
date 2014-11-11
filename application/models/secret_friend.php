@@ -150,7 +150,6 @@ class Secret_friend extends CI_Model {
 	 **/
 	function get_video($secret_friend_id)
 	{
-		echo "get_video";
 		$this->db->select('video_url');
 		$this->db->from('secret_friend_videos');
 		$this->db->where('secret_friend_id', $secret_friend_id);
@@ -160,7 +159,11 @@ class Secret_friend extends CI_Model {
 			return 0;
 
 		$row = $query->row();
-		return $row->video_url;
+
+		if (strpos($row->video_url,'https:') !== false) 
+			return $row->video_url;
+		
+		return base_url().'uploads/'.$row->video_url;
 	}// get_video
 
 	/**

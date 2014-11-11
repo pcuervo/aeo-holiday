@@ -164,7 +164,7 @@ function createExchangeGroup(){
     }
     var group_data = $('.j_group_form').serialize();
     var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
-    console.log(group_data);
+
     $.post(
         url,
         group_data,
@@ -180,7 +180,6 @@ function createExchangeGroup(){
  * @return void
  */
 function editExchangeGroup(){
-    console.log('editing group....');
     var group_data = $('.j_edit_group_form').serialize();
     var url = localStorage.getItem('base_url') + 'dashboard/edit_exchange_group';
 
@@ -189,7 +188,7 @@ function editExchangeGroup(){
         group_data,
         function(response){
             // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-            console.log(response);
+
             var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
             window.location = dashboard_url;
         }// response
@@ -212,7 +211,6 @@ function updatePerfectFit(){
             perfect_fit_data,
             function(response){
                 // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-                console.log(response);
                 var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
                 window.location = dashboard_url;
             }// response
@@ -233,7 +231,7 @@ function showSecretFriends(){
             function(response){
                 var secret_friends_json = $.parseJSON(response);
                 $.each(secret_friends_json, function(i, friend){
-                    console.log(friend);
+
                     var friend_url = localStorage.getItem('base_url') + 'secret_friends/create_message/' + friend.group_friend_id;
                     var secret_friend_html = '<li>';
                         secret_friend_html += '<a href="' + friend_url + '">';
@@ -256,6 +254,11 @@ function showSecretFriends(){
  * @return void
  */
 function videoPost(url){
+    if(url.indexOf('https:')){
+        var html_video = '<video controls><source src="' + url + '" type="video/mp4"></video>';
+        $(html_video).appendTo('.j-video');
+        return;
+    }
 
     var request = {
         input: url
@@ -264,11 +267,11 @@ function videoPost(url){
     $.ajax({
         type: 'POST',
         url: 'https://app.zencoder.com/api/v2/jobs',
-        headers:{ 'Zencoder-Api-Key' : '83521e9cb52b9f31f41856b28de4c3b1'},
+        headers:{ 'Zencoder-Api-Key' : '72d3c165590c75ac744e019d23cc22e1'},
         dataType: 'json',
         data: JSON.stringify(request),
         success: function(response) {
-            console.log(response.outputs[0]);
+
             var html_video = '<video controls><source src="' + response.outputs[0].url + '" type="video/mp4"></video>';
             $(html_video).appendTo('.j-video');
         },
@@ -364,7 +367,7 @@ function removeGroupFriend(){
             url,
             group_friend_data,
             function(response){
-                // borrar <li> de listado
+                console.log(response);
             }// response
         );
     });
@@ -394,7 +397,8 @@ function loadFacebookSdk(){
             xfbml      : true,
             version    : 'v2.1'
         });
-        FB.Canvas.setAutoGrow(3000);
+        FB.Canvas.setSize({height:600});
+        setTimeout("FB.Canvas.setAutoGrow()",500);
     };
 }
 
@@ -462,28 +466,16 @@ function initWebCam(){
         $.scriptcam.startRecording();
     }
     function closeCamera() {
-        $("#slider").slider( "option", "disabled", true );
-        $("#recordPauseResumeButton" ).attr( "disabled", true );
         $("#recordStopButton" ).attr( "disabled", true );
         $.scriptcam.closeCamera();
-        $('#message').html('Please wait for the file conversion to finish...');
+        $('#message').html('Espera un momento, estamos convirtiendo tu video...');
     }
     function fileReady(fileName) {
         $('#recorder').hide();
         fileName2=fileName.replace('mp4','gif');
-        $('#message').html('The MP4 file is now dowloadable for five minutes over <a href="'+fileName+'">here</a>. The animated GIF can be downloaded <a href="'+fileName2+'">here</a>.');
+        $('#message').html('Gracias por grabar un video para tu amigo secreto.');
         var fileNameNoExtension=fileName.replace(".mp4", "");
-        jwplayer("mediaplayer").setup({
-            width:320,
-            height:240,
-            file: fileName,
-            image: fileNameNoExtension+'_0000.jpg',
-            tracks: [{
-                file: fileNameNoExtension+'.vtt',
-                kind: 'thumbnails'
-            }]
-        });
-        $('#mediaplayer').show();
+        convertWebcamVideo(fileName);
     }
     function onError(errorId,errorMsg) {
         alert(errorMsg);
@@ -505,6 +497,66 @@ function initWebCam(){
         console.log('starting camera...');
         startRecording();
     });
+
+    $('#recordStopButton').click(function(){
+        console.log('stopping camera...');
+        closeCamera();
+    });
 }
+
+/**
+ * Send Zencoder POST and convert video url
+ * @return void
+ */
+function convertWebcamVideo(url){
+    console.log('convirtiendo video...');
+    var request = {
+        input: url
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: 'https://app.zencoder.com/api/v2/jobs',
+        headers:{ 'Zencoder-Api-Key' : '72d3c165590c75ac744e019d23cc22e1'},
+        dataType: 'json',
+        data: JSON.stringify(request),
+        success: function(response) {
+            saveWebcamVideo(response.outputs[0]['url']);
+            // GUARDAR ESTA URL VIDEO EN EL SERVIDOR
+
+        },
+        error: function(response){
+            console.log(response);
+        }
+    });
+}// convertWebcamVideo
+
+/**
+ * Send Zencoder POST and save webcam video
+ * @return void
+ */
+function saveWebcamVideo(video_url){
+    console.log('guardando video...');
+
+    var secret_friend_data = {};
+    var url = localStorage.getItem('base_url') + 'secret_friends/save_webcam_video';
+    secret_friend_data['secret_friend_id'] = $('input[name="secret_friend_id"]').val();
+    secret_friend_data['group_friend_id'] = $('input[name="group_friend_id"]').val();
+    secret_friend_data['video_url'] = video_url;
+
+
+    console.log(secret_friend_data);
+
+    $.post(
+        url,
+        secret_friend_data,
+        function(response){
+            var secret_friend_url = localStorage.getItem('base_url') + 'secret_friends/view/' + secret_friend_data['group_friend_id'] ;
+            window.location = secret_friend_url;
+        }// response
+    );
+
+}// saveWebcamVideo
+
 
 
