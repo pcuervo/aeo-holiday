@@ -255,13 +255,12 @@ function videoPost(url){
     if(url.indexOf('https:') > -1){
         var html_video = '<video controls><source src="' + url + '" type="video/mp4"></video>';
         $(html_video).appendTo('.j-video');
+        $('video').after('<div class="[ text-center ]"><a class="[ btn btn-primary btn-no ]" href="/dashboard"><span>Regresar</span></a></div>');
         return;
     }
-
     var request = {
         input: url
     }
-
     $.ajax({
         type: 'POST',
         url: 'https://app.zencoder.com/api/v2/jobs',
@@ -269,7 +268,6 @@ function videoPost(url){
         dataType: 'json',
         data: JSON.stringify(request),
         success: function(response) {
-
             var html_video = '<video controls><source src="' + response.outputs[0].url + '" type="video/mp4"></video>';
             $(html_video).appendTo('.j-video');
         },
@@ -444,7 +442,7 @@ function initWebCam(){
     $("#webcam").scriptcam({
         path:  localStorage.getItem('base_url') + 'assets/scriptcam/',
         fileReady:fileReady,
-        cornerRadius:20,
+        cornerRadius:0,
         cornerColor:'e3e5e2',
         onError:onError,
         showMicrophoneErrors:false,
@@ -453,7 +451,6 @@ function initWebCam(){
         fileName:'demo549066',
         connected:showRecord
     });
-
     function showRecord() {
         $( "#recordStartButton" ).attr( "disabled", false );
     }
@@ -492,12 +489,10 @@ function initWebCam(){
     }
 
     $('#recordStartButton').click(function(){
-        console.log('starting camera...');
         startRecording();
     });
 
     $('#recordStopButton').click(function(){
-        console.log('stopping camera...');
         closeCamera();
     });
 }
@@ -507,7 +502,6 @@ function initWebCam(){
  * @return void
  */
 function convertWebcamVideo(url){
-    console.log('convirtiendo video...');
     var request = {
         input: url
     }
@@ -534,8 +528,6 @@ function convertWebcamVideo(url){
  * @return void
  */
 function saveWebcamVideo(video_url){
-    console.log('guardando video...');
-
     var secret_friend_data = {};
     var url = localStorage.getItem('base_url') + 'secret_friends/save_webcam_video';
     secret_friend_data['secret_friend_id'] = $('input[name="secret_friend_id"]').val();
@@ -547,6 +539,8 @@ function saveWebcamVideo(video_url){
         secret_friend_data,
         function(response){
             var secret_friend_url = localStorage.getItem('base_url') + 'secret_friends/view/' + secret_friend_data['group_friend_id'] ;
+            var url = '/secret_friends/view/'+secret_friend_data['group_friend_id'];
+            $('#message').html('<div class="[ text-center ]"><a class="[ btn btn-primary btn-no ]" href="'+url+'"><span>regresar</span></a></div>');
         }// response
     );
 

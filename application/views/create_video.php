@@ -20,7 +20,7 @@
                     </div>
                 <?php } else { ?>
                     <div id="webcam"></div>
-                    <div class="text-center">
+                    <div class="[ text-center margin-bottom ]">
                         <button id="recordStartButton" class="[ btn btn-primary btn-go ]" disabled><span>Comenzar a grabar</span></button>
                         <button id="recordStopButton" class="[ btn btn-primary btn-go ]" disabled><span>Detener grabación</span></button>
                     </div>
