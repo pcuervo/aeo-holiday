@@ -45,7 +45,7 @@
             </div>
             <input type="hidden" name="admin_id" value="<?php echo $fb_user_id ?>">
             <div class="text-center">
-                <a href="#" class="[ btn btn-primary btn-go ]  [ margin-bottom ] [ j_invite_friends ]"><span>Invitar amigos</span></a>
+                <a href="#" class="[ btn btn-primary btn-go ]  [ margin-bottom ] [ j_invite_friends ]" onclick="ga('send', 'event', 'intercambio', 'click', 'agregarInvitados');"><span>Invitar amigos</span></a>
             </div><!-- text-center -->
             <div class="text-center">
                 <button class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intercambioCreado');"><span>Crear intercambio</span></button>

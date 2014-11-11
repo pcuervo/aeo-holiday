@@ -5,17 +5,17 @@
     		<fieldset class="[ col-xs-6 ] [ margin-bottom ]">
     			<label class="[ text-center ]" for="">HOMBRE</label><br/>
 	    		<select class="[ form-control ]" name="catalogo" id="">
-	    			<option value="">Tops</option>
-	    			<option value="">Pantalones</option>
-	    			<option value="">Accesorios</option>
+	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríahombre', 'click', 'tops');">Tops (Partes de arriba)</option>
+	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríahombre', 'click', 'pantalones');">Pantalones</option>
+	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríahombre', 'click', 'accesorios');">Accesorios</option>
 	    		</select>
     		</fieldset>
     		<fieldset class="[ col-xs-6 ] [ margin-bottom ]">
     			<label class="[ text-center ]" for="">MUJER</label><br/>
 	    		<select class="[ form-control ]" name="catalogo" id="">
-	    			<option value="">Tops</option>
-	    			<option value="">Pantalones</option>
-	    			<option value="">Accesorios</option>
+	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríamujer', 'click', 'tops');">Tops</option>
+	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríamujer', 'click', 'pantalones');">Pantalones</option>
+	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríamujer', 'click', 'accesorios');">Accesorios</option>
 	    		</select>
     		</fieldset>
     	</form>
