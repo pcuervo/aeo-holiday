@@ -194,9 +194,7 @@ function showSecretFriends(){
  * @return void
  */
 function videoPost(url){
-
-    console.log("videoPost");
-
+    
     var request = {
         input: url
     }
@@ -208,10 +206,9 @@ function videoPost(url){
         dataType: 'json',
         data: JSON.stringify(request),
         success: function(response) {
-            console.log(response);
             console.log(response.outputs[0]);
-
-            $("#j-video").attr("src", response.outputs[0].url);
+            var html_video = '<video controls><source src="' + response.outputs[0].url + '" type="video/mp4"></video>';
+            $(html_video).appendTo('.j-video');
         },
         error: function(response){
             console.log(response);
