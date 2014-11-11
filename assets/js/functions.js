@@ -55,20 +55,6 @@ function footerBottom(){
 **/
 function formValidation(forma){
     $(forma).validate({
-        invalidHandler: function(event, validator) {
-            // 'this' refers to the form
-            var errors = validator.numberOfInvalids();
-            console.log(errors);
-            if (errors) {
-              var message = errors == 1
-                ? 'You missed 1 field. It has been highlighted'
-                : 'You missed ' + errors + ' fields. They have been highlighted';
-              $("div.error span").html(message);
-              $("div.error").show();
-            } else {
-              $("div.error").hide();
-            }
-        },
         submitHandler:function(){
             switch(forma){
                 case '.j_group_form':
@@ -147,6 +133,12 @@ function runIstitope(){
  * @return void
  */
 function createExchangeGroup(){
+    
+    var hidden_guests = $('.hidden_guest').length;
+    if(hidden_guests == 0){
+        $('.j_invite_friends').after('<p class="error">Debes invitar al menos a un amigo para crear un grupo</p>');
+        return;
+    }
     var group_data = $('.j_group_form').serialize();
     var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
     console.log(group_data);
@@ -366,7 +358,7 @@ function loadFacebookSdk(){
  * @return void
  */
 function inviteFriends(form){
-
+    
 	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
@@ -375,8 +367,7 @@ function inviteFriends(form){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
                 getInvitedFriendData(friend_id);
-            });
-            
+            });            
         });
     });
 }// inviteFriends
