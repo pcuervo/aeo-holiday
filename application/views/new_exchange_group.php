@@ -8,12 +8,19 @@
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="center-block" for="exchange_date">Fecha del intercambio</label>
-                <input type="date" class="[ form-control ] [ required ]" id="fecha-intercambio" name="exchange_date" >
+                <?php if ( $browser == 'Firefox' OR $is_mobile != 1 ){ ?>
+                    <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-intercambio" name="exchange_date">
+                <?php } else { ?>
+                    <input type="date" class="[ form-control ] [ required ]" id="fecha-intercambio" name="exchange_date" >
+                <?php } ?>
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="center-block" for="join_deadline">Fecha límite de inscripción</label>
-                <input type="date" class="[ form-control ] [ required ]" id="fecha-limite" name="join_deadline">
-                <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-limite" name="join_deadline">
+                <?php if ( $browser == 'Firefox' OR $is_mobile != 1 ){ ?>
+                    <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-limite" name="join_deadline">
+                <?php } else { ?>
+                    <input type="date" class="[ form-control ] [ required ]" id="fecha-limite" name="join_deadline">
+                <?php } ?>
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="place">Lugar</label>
