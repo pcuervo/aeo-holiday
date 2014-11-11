@@ -60,7 +60,7 @@ function formValidation(forma){
                 case '.j_group_form':
                     createExchangeGroup();
                     break;
-                case 'editExchangeGroup':
+                case '.j_edit_group_form':
                     editExchangeGroup();
                     break;
             }
@@ -133,7 +133,7 @@ function runIstitope(){
  * @return void
  */
 function createExchangeGroup(){
-    
+
     var hidden_guests = $('.hidden_guest').length;
     if(hidden_guests == 0){
         $('.j_invite_friends').after('<p class="error">Debes invitar al menos a un amigo para crear un grupo</p>');
@@ -287,31 +287,27 @@ function getUserActiviy(){
                 var html_activity;
                 switch(activity.activity_type){
                     case '1':
-                        html_activity = '<div class="margin-bottom">';
+                        html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Has creado el grupo: ' + activity.group_name + '</p>';
-                        html_activity += '<hr class="[ margin-bottom ]">';
                         html_activity += '</div>'
                         break;
                     case '2':
-                        html_activity = '<div class="margin-bottom">';
+                        html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
-                        html_activity += '<hr class="[ margin-bottom ]">';
                         html_activity += '</div>'
                         break;
                     case '3':
-                        html_activity = '<div class="margin-bottom">';
+                        html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
-                        html_activity += '<hr class="[ margin-bottom ]">';
                         html_activity += '</div>'
                         break;
                     case '5':
-                        html_activity = '<div class="margin-bottom">';
+                        html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';
-                        html_activity += '<hr class="[ margin-bottom ]">';
                         html_activity += '</div>'
                         break;
                 }
@@ -358,7 +354,7 @@ function loadFacebookSdk(){
  * @return void
  */
 function inviteFriends(form){
-    
+
 	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
@@ -367,7 +363,7 @@ function inviteFriends(form){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
                 getInvitedFriendData(friend_id);
-            });            
+            });
         });
     });
 }// inviteFriends
@@ -381,7 +377,7 @@ function getInvitedFriendData(fb_id){
             var name = response.first_name + ' ' + response.last_name;
             $('.j_invite_friends').after('<p>Se agregó: ' + name + ' al intercambio.</p>');
         }
-        
+
     });
 
 }// getInvitedFriendName

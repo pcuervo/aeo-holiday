@@ -22,9 +22,7 @@
     <div class="[ row ] [ margin-bottom ]">
         <div class="[ col-xs-12 col-md-6 ] [ center-block ]">
             <ul id="myTab" class="nav nav-tabs" role="tablist">
-                <?php if($pending_invitations != '') { ?>
-                    <li role="presentation" class="active"><a href="#solicitudes-pendientes" id="solicitudes-pendientes-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">SOLICITUDES PENDIENTES</a></li>
-                <?php } ?>
+                <li role="presentation" class="[ active ]"><a href="#solicitudes-pendientes" id="solicitudes-pendientes-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">SOLICITUDES</a></li>
                 <?php if($secret_friends != '') { ?>
                     <li role="presentation"><a href="#amigos-secretos" role="tab" id="amigos-secretos-tab" data-toggle="tab" aria-controls="profile">AMIGOS SECRETOS</a></li>
                 <?php } ?>
@@ -51,6 +49,10 @@
                                 </div><!-- invitacion-intercambio -->
                             <?php } ?>
                         </div><!-- invitaciones-contenedor -->
+                    </div>
+                <?php } else { ?>
+                    <div role="tabpanel" class="tab-pane fade in active" id="solicitudes-pendientes" aria-labelledby="home-tab">
+                        <p class="[ text-center ]">NO TIENES SOLICITUDES PENDIENTES.</p>
                     </div>
                 <?php } ?>
                 <?php if($secret_friends != '') { ?>
