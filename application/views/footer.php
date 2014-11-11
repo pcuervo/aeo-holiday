@@ -72,6 +72,10 @@
             <?php if($current_view == 'dashboard') { ?>
                 getUnreadMessages();
                 getUserActiviy();
+                $('#myTab a').click(function (e) {
+                  e.preventDefault()
+                  $(this).tab('show')
+                });
             <?php } ?>
 
             <?php if($current_view == 'catalog') { ?>
