@@ -236,7 +236,7 @@ function showSecretFriends(){
  * @return void
  */
 function videoPost(url){
-    if(url.indexOf('https:')){
+    if(url.indexOf('https:') > -1){
         var html_video = '<video controls><source src="' + url + '" type="video/mp4"></video>';
         $(html_video).appendTo('.j-video');
         return;
