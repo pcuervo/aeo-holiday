@@ -49,7 +49,15 @@ class User_perfect_fit extends CI_Model {
 	 **/
 	function save_female_perfect_fit($perfect_fit_data, $user_data)
 	{
-		var_dump($perfect_fit_data);
+		foreach ($perfect_fit_data as $key => $value) {
+			$respuesta = $value;
+
+			$insert_data = array(
+			'fb_user_id' 	=> $user_data['fb_user']['id'],
+			'answer_id' 	=> $respuesta,
+			);
+			$this->db->insert('user_answers', $insert_data);
+		}
 	}// save_female_perfect_fit
 
 	/**
