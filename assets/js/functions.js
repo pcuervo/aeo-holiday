@@ -139,9 +139,7 @@ function noLightbox(){
 //Eliminar talla 34 de largo para hombres si es escogen talla 38 de jeans
 function quitarOption(){
     $('.male.talla-jeans').on('change', function(){
-        console.log('change');
         if ( $(this).val() == '18' ){
-            console.log('18');
             $('select.largo-jeans option[value="21"]').remove();
         }
     });
@@ -544,15 +542,11 @@ function saveWebcamVideo(video_url){
     secret_friend_data['group_friend_id'] = $('input[name="group_friend_id"]').val();
     secret_friend_data['video_url'] = video_url;
 
-
-    console.log(secret_friend_data);
-
     $.post(
         url,
         secret_friend_data,
         function(response){
             var secret_friend_url = localStorage.getItem('base_url') + 'secret_friends/view/' + secret_friend_data['group_friend_id'] ;
-            window.location = secret_friend_url;
         }// response
     );
 
