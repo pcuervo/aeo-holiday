@@ -160,7 +160,7 @@ function send_coupon_email(){
         var email_data = {};
         email_data['email'] = $('.j-send-email input').val();
         var url = '/dashboard/send_coupon_by_email';
-        
+        console.log(email_data);
         $.post(
             url,
             email_data,
@@ -170,6 +170,7 @@ function send_coupon_email(){
                 //window.location = coupon_url;
             }// response
         );
+        ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
     });
 }// send_coupon_email
 
