@@ -68,6 +68,7 @@
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
             toggleMainMenu();
             footerBottom();
+            loadFacebookSdk();
 
             <?php if($current_view == 'dashboard') { ?>
                 getUnreadMessages();
