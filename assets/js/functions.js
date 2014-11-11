@@ -276,6 +276,13 @@ function getUserActiviy(){
                         html_activity += '<hr class="[ margin-bottom ]">';
                         html_activity += '</div>'
                         break;
+                    case '5':
+                        html_activity = '<div class="margin-bottom">';
+                        html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
+                        html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';
+                        html_activity += '<hr class="[ margin-bottom ]">';
+                        html_activity += '</div>'
+                        break;
                 }
                 $(html_activity).appendTo('.actividad-grupo');
             });
@@ -303,14 +310,6 @@ function loadFacebookSdk(){
 		js.src = "//connect.facebook.net/en_US/sdk.js";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-}
-
-/**
- * Invite friends to the app using Facebook
- * @return void
- */
-function inviteFriends(form){
-    loadFacebookSdk();
 
     window.fbAsyncInit = function() {
         FB.init({
@@ -319,7 +318,15 @@ function inviteFriends(form){
             xfbml      : true,
             version    : 'v2.1'
         });
+        FB.Canvas.setAutoGrow();
     };
+}
+
+/**
+ * Invite friends to the app using Facebook
+ * @return void
+ */
+function inviteFriends(form){
 
 	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
@@ -328,6 +335,7 @@ function inviteFriends(form){
         }, function(response){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
+                getInvitedFriendData();
             });
             $('.j_invite_friends').after('<p>Se han agregado amigos al grupo</p>');
         });
@@ -342,7 +350,6 @@ function getInvitedFriendData(fb_id){
             var name = response.first_name + response.last_name;
         }
         console.log(name);
-        return name;
     });
 
 }// getInvitedFriendName

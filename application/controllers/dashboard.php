@@ -150,6 +150,48 @@ class Dashboard extends CI_Controller {
 	}// create_exchange_group
 
 	/**
+	 * Send the coupon by email to current user
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function send_coupon_by_email()
+	{
+		$this->load->library('My_PHPMailer');
+
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
+		$mail = new PHPMailer();
+        $mail->IsSMTP(); // we are going to use SMTP
+        $mail->SMTPAuth   = true; // enabled SMTP authentication
+        //$mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
+        $mail->Host       = "smtp.mandrillapp.com";      // setting GMail as our SMTP server
+        $mail->Port       = 587;                   // SMTP port to connect to GMail
+        $mail->Username   = "ti@wannaflock.com";  // user email address
+        $mail->Password   = "Ipq7HVO-FAELQsgPyeovhQ";            // password in GMail
+        $mail->SetFrom('miguel@pcuervo.com', 'AEO Holiday');  //Who is sending the email
+        $mail->AddReplyTo("response@yourdomain.com","Firstname Lastname");  //email address that receives the response
+        $mail->Subject    = "Email subject";
+        $mail->Body      = "HTML message
+";
+        $mail->AltBody    = "Plain text message";
+        $destino = $current_fb_user['email']; // Who is addressed the email to
+        $mail->AddAddress($destino, "John Doe");
+        $mail->AddAttachment("./assets/images/cupon.jpg"); 
+
+        if(!$mail->Send()) {
+            $data["message"] = "Error: " . $mail->ErrorInfo;
+        } else {
+            $data["message"] = "Message sent correctly!";
+        }
+        
+        $this->view_coupon('m');
+
+	}// create_exchange_group
+
+	/**
 	 * Edits a new exchange group
 	 *
 	 * @return void
