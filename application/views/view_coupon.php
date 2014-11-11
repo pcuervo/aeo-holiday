@@ -12,18 +12,18 @@
             <h3 class="[ text-center ]">¡Acabas de crear un grupo!</h3>
             <h3 class="[ text-center ]">Compartir</h3>
             <div class="[ text-center ] [ margin-bottom ]">
-                <div class="fb-share-button" data-href="<?php echo base_url(); ?>" data-layout="button"></div>
+                <div class="fb-share-button" onclick="ga('send', 'event', 'intercambio', 'click', 'creadoCompartir');" data-href="<?php echo base_url(); ?>" data-layout="button"></div>
             </div>
         <?php } ?>
         <?php if ( $exchange_groups != 0 ){ ?>
             <div class="[ text-center ] [ margin-bottom ]">
                 <form action="" class="[ text-center ] [ j-send-email ]">
                     <input type="text" name="email" value="<?php echo $email ?>">
-                    <a href="<?php echo base_url().'dashboard/send_coupon_by_email' ?>" class="[ btn btn-primary btn-go ]"><span>enviar al correo</span></a>
+                    <a href="<?php echo base_url().'dashboard/send_coupon_by_email' ?>" class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'cupón', 'click', 'enviarCorreo');"><span>enviar al correo</span></a>
                 </form>
             </div>
             <div class="[ text-center ] [ margin-bottom ]">
-                <a href="<?php echo base_url().'assets/images/cupon.jpg' ?>" class="[ btn btn-primary btn-go ]" download><span>guardar imagen</span></a>
+                <a href="<?php echo base_url().'assets/images/cupon.jpg' ?>" class="[ btn btn-primary btn-go ]" download onclick="ga('send', 'event', 'cupón', 'click', 'guardarImagen');"><span>guardar imagen</span></a>
             </div>
         <?php } ?>
     </div><!-- row -->

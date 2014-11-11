@@ -77,7 +77,7 @@
                 </div>
             <?php }// if ?>
             <div class="text-center">
-                <a href="#" class="[ btn btn-primary btn-go ] [ j_invite_friends ] [ margin-bottom ]"><span>Invitar mas amigos</span></a><br/>
+                <a href="#" class="[ btn btn-primary btn-go ] [ j_invite_friends ] [ margin-bottom ]" onclick="ga('send', 'event', 'intercambio', 'click', 'agregarMASInvitados');" ><span>Invitar más amigos</span></a><br/>
                 <button class="[ btn btn-primary btn-go ]"><span>Guardar cambios</span></button>
             </div>
         </form>
