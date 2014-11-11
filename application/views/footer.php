@@ -81,7 +81,7 @@
                 });
             <?php } ?>
 
-            <?php if($current_view == 'catalog') { ?>
+            <?php if( $current_view == 'catalog' ) { ?>
                 runIstitope();
                 <?php if ( $is_mobile == 1 ){ ?>
                     lightbox();
@@ -93,6 +93,12 @@
             <?php if($current_view == 'view_video') { ?>
                 videoPost('<?php echo $video_url ?>');
             <?php } ?>
+
+            <?php if($current_view == 'view_coupon') { ?>
+                send_coupon_email();
+            <?php } ?>
+
+            
 
             <?php if($current_view == 'new_exchange_group') { ?>
                 formValidation('.j_group_form');

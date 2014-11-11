@@ -178,7 +178,6 @@ class Dashboard extends CI_Controller {
 	function send_coupon_by_email()
 	{
 		$email = $_POST['email'];
-
 		$this->load->library('My_PHPMailer');
 
 		$current_fb_user = $this->facebook->get_user();
@@ -196,8 +195,8 @@ class Dashboard extends CI_Controller {
         $mail->AddReplyTo("aeomexico@ae.com","American Eagle Outfitters");  
         $mail->Subject    	= "Tu cupón AEO está aquí";
         $mail->Body      	= "<img src='".base_url()."/assets/images/cupon.jpg' width='600' height='1000' />";
-        $mail->AltBody    	= "Tu cupón AEO está aquí";
-        $destino = $current_fb_user['email']; // Who is addressed the email to
+        $mail->AltBody    	= utf8_encode("Tu cupón AEO está aquí");
+        $destino = $email; // Who is addressed the email to
         $mail->AddAddress($destino, $current_fb_user['first_name'].' '.$current_fb_user['last_name']);
 
         if(!$mail->Send()) {
@@ -205,8 +204,6 @@ class Dashboard extends CI_Controller {
         } else {
             $data["message"] = "Message sent correctly!";
         }
-
-        echo 'Correo enviado';
 
 	}// create_exchange_group
 
@@ -283,6 +280,8 @@ class Dashboard extends CI_Controller {
 		$this->load->model('secret_friend');
 		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
+		$data['secret_friend'] = $this->secret_friend->get_group_secret_friends_by_user($current_fb_user['id'], $group_id);
+
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['fb_user_id']);
@@ -352,7 +351,6 @@ class Dashboard extends CI_Controller {
 			$perfect_fit_data['Largo jeans'] = $_POST['Largo_jeans'];
 		$user_data['fb_user'] = $current_fb_user;
 
-		var_dump($user_data);
 		$this->user_perfect_fit->create_perfect_fit($perfect_fit_data, $user_data);
 
 

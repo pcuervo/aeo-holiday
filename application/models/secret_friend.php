@@ -110,7 +110,41 @@ class Secret_friend extends CI_Model {
 			);
 
 		return $secret_friends;
-	}// get_secret_friends_by_user
+	}// get_secret_friend_by_user
+
+	/**
+	 * Returns a user's secret friend
+	 *
+	 * @param string $fb_user_id, int $group_id
+	 * @return mixed $secret_friend or 0
+	 * @author Miguel Cabral
+	 **/
+	function get_group_secret_friends_by_user($fb_user_id, $group_id)
+	{
+		$this->db->select('to_group_friend_id');
+		$this->db->from('group_friends');
+		$this->db->join('secret_friends', 'group_friends.id = secret_friends.from_group_friend_id');
+		$this->db->where('facebook_users_id', $fb_user_id);
+		$this->db->where('group_id', $group_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$row = $query->row();
+
+		$this->load->model('group_friend');
+		$secret_friend = array();
+
+		$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
+		$secret_friend = array(
+			'fb_user_id'		=> $group_friend['fb_user_id'],
+			'name'				=> $group_friend['name'],
+			'friend_picture'	=> $group_friend['friend_picture'],
+			);
+
+		return $secret_friend;
+	}// get_group_secret_friends_by_user
 
 	/**
 	 * Checks if the user has added a video for its secret friend.

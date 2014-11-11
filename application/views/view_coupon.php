@@ -13,13 +13,14 @@
             <h3 class="[ text-center ]">Compartir</h3>
             <div class="[ text-center ] [ margin-bottom ]">
                 <div class="fb-share-button" onclick="ga('send', 'event', 'intercambio', 'click', 'creadoCompartir');" data-href="<?php echo base_url(); ?>" data-layout="button"></div>
+
             </div>
         <?php } ?>
         <?php if ( $exchange_groups != 0 ){ ?>
             <div class="[ text-center ] [ margin-bottom ]">
                 <form action="" class="[ text-center ] [ j-send-email ]">
-                    <input type="text" name="email" value="<?php echo $email ?>">
-                    <a href="<?php echo base_url().'dashboard/send_coupon_by_email' ?>" class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'cupón', 'click', 'enviarCorreo');"><span>enviar al correo</span></a>
+                    <input type="text" name="email" value="<?php echo utf8_encode($email) ?>">
+                    <a href="#" class="[ btn btn-primary btn-go ]"><span>enviar al correo</span></a>
                 </form>
             </div>
             <div class="[ text-center ] [ margin-bottom ]">

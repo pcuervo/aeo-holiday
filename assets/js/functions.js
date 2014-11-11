@@ -155,11 +155,11 @@ function quitarOption(){
  */
 function send_coupon_email(){
 
-    $('.j-send-email a').on('click', function(){
-        var email_data = $('.j-send-email').serialize();
+    $('.j-send-email a').on('click', function(e){
+        e.preventDefault();
+        var email_data = {};
+        email_data['email'] = $('.j-send-email input').val();
         var url = '/dashboard/send_coupon_by_email';
-
-        console.log(email_data);
         
         $.post(
             url,
