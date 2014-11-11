@@ -83,10 +83,10 @@
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
             <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
-
+                <img src="<?php echo base_url() ?>assets/images/loader.svg">
             </div>
             <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
-
+                <img src="<?php echo base_url() ?>assets/images/loader.svg">
             </div>
         </div>
     </div><!-- actividad -->

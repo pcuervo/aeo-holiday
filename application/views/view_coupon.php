@@ -12,7 +12,7 @@
             <h3 class="[ text-center ]">¡Acabas de crear un grupo!</h3>
             <h3 class="[ text-center ]">Compartir</h3>
             <div class="[ text-center ] [ margin-bottom ]">
-                <div class="fb-share-button" data-href="<?php echo base_url(); ?>" data-layout="button"></div>
+                <div class="fb-share-button"  data-href="<?php echo base_url(); ?>" data-layout="button"></div>
             </div>
         <?php } ?>
         <?php if ( $exchange_groups != 0 ){ ?>
