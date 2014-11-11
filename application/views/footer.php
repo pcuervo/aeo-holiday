@@ -121,18 +121,7 @@
             <?php } ?>
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
-                $(document).ready(function() {
-                    $("#webcam").scriptcam({
-                        fileName: 'uservideo',
-                        connected: enableRecord,
-                        path: '<?php echo base_url()."/assets/scriptcam/" ?>',
-                    });
-
-                    function enableRecord() {
-                        $('#recordButton').show();
-                        $.scriptcam.startRecording();
-                    }
-                });
+                initWebCam();
 
                 $('input[name=file-mobile]').nicefileinput({
                     label: 'Graba tu video'

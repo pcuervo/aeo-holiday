@@ -4,6 +4,9 @@
     <h4 class="[ text-center ]">(<?php echo $secret_friend['group'] ?>)</h4>
     <div class="[ row ]">
         <div id="webcam"></div>
+        <button id="recordStartButton" class="btn btn-small" disabled>Start Recording</button>
+        <button id="recordStopButton" class="btn btn-small" onclick="closeCamera()" disabled>Stop Recording</button>
+
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
             <div class="[ text-center ] [ margin-bottom ]">
                 <p class="[ uppercase ]">Se le mandará una notificación del video a <?php echo $secret_friend['name'] ?>  después del intercambio.</p>

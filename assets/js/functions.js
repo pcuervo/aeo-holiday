@@ -426,5 +426,74 @@ function getInvitedFriendPic(fb_id){
     });
 }// getInvitedFriendName
 
+// 
+function initWebCam(){
+    $("#webcam").scriptcam({ 
+        path:  localStorage.getItem('base_url') + 'assets/scriptcam/',
+        fileReady:fileReady,
+        cornerRadius:20,
+        cornerColor:'e3e5e2',
+        onError:onError,
+        showMicrophoneErrors:false,
+        showDebug:true,
+        onWebcamReady:onWebcamReady,
+        fileName:'demo549066',
+        connected:showRecord
+    });
+
+    function showRecord() {
+        $( "#recordStartButton" ).attr( "disabled", false );
+    }
+    function startRecording() {
+        $( "#recordStartButton" ).attr( "disabled", true );
+        $( "#recordStopButton" ).attr( "disabled", false );
+        $( "#recordPauseResumeButton" ).attr( "disabled", false );
+        $.scriptcam.startRecording();
+    }
+    function closeCamera() {
+        $("#slider").slider( "option", "disabled", true );
+        $("#recordPauseResumeButton" ).attr( "disabled", true );
+        $("#recordStopButton" ).attr( "disabled", true );
+        $.scriptcam.closeCamera();
+        $('#message').html('Please wait for the file conversion to finish...');
+    }
+    function fileReady(fileName) {
+        $('#recorder').hide();
+        fileName2=fileName.replace('mp4','gif');
+        $('#message').html('The MP4 file is now dowloadable for five minutes over <a href="'+fileName+'">here</a>. The animated GIF can be downloaded <a href="'+fileName2+'">here</a>.');
+        var fileNameNoExtension=fileName.replace(".mp4", "");
+        jwplayer("mediaplayer").setup({
+            width:320,
+            height:240,
+            file: fileName,
+            image: fileNameNoExtension+'_0000.jpg',
+            tracks: [{ 
+                file: fileNameNoExtension+'.vtt', 
+                kind: 'thumbnails'
+            }]
+        });
+        $('#mediaplayer').show();
+    }
+    function onError(errorId,errorMsg) {
+        alert(errorMsg);
+    }
+    function onWebcamReady(cameraNames,camera,microphoneNames,microphone,volume) {
+        $( "#slider" ).slider( "option", "disabled", false );
+        $( "#slider" ).slider( "option", "value", volume );
+        $.each(cameraNames, function(index, text) {
+            $('#cameraNames').append( $('<option></option>').val(index).html(text) )
+        }); 
+        $('#cameraNames').val(camera);
+        $.each(microphoneNames, function(index, text) {
+            $('#microphoneNames').append( $('<option></option>').val(index).html(text) )
+        }); 
+        $('#microphoneNames').val(microphone);
+    }
+
+    $('#recordStartButton').click(function(){
+        console.log('starting camera...');
+        startRecording();
+    });
+}
 
 
