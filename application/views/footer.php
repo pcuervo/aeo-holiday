@@ -81,7 +81,7 @@
                 });
             <?php } ?>
 
-            <?php if($current_view == 'catalog') { ?>
+            <?php if( $current_view == 'catalog' ) { ?>
                 runIstitope();
                 <?php if ( $is_mobile == 1 ){ ?>
                     lightbox();
