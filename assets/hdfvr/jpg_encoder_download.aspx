@@ -1,1 +1,0 @@
-<%@ Page Language="C#" CodeFile="jpg_encoder_download.aspx.cs" Inherits="HDFVR.JpegEncoder" AutoEventWireup="true" %>

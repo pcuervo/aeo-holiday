@@ -1,1 +1,0 @@
-<%@ Page Language="C#" CodeFile="uploadFromMobile.aspx.cs" Inherits="HDFVR.uploadFromMobile" AutoEventWireup="true" %>
