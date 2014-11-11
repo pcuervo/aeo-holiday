@@ -66,6 +66,31 @@ class Perfect_fit_quiz extends CI_Model {
 	}// get_male_quiz
 
 	/**
+	 * Returns a male's quiz
+	 *
+	 * @return array $questions
+	 * @author Miguel Cabral
+	 **/
+	function get_female_quiz()
+	{
+		$query = $this->db->get_where('questions', array('question_type' => 'f') );
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$questions = array();
+
+		foreach ($query->result() as $key => $row){
+			$answers = $this->perfect_fit_question->get_question_answers($row->id);
+			$questions[$key]['question_id'] = $row->id;
+			$questions[$key]['question'] = $row->question;
+			$questions[$key]['answers'] = $answers;
+		}
+
+		return $questions;
+	}// get_female_quiz
+
+	/**
 	 * Creates a quiz depending if the user is male or female
 	 *
 	 * @param char $gender
