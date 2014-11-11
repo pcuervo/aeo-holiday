@@ -165,7 +165,7 @@ class Dashboard extends CI_Controller {
 		$data['is_mobile'] = FALSE;
 		if($this->agent->is_mobile())
 			$data['is_mobile'] = TRUE;
-		
+
 		$this->load->model('exchange_group');
 
 		$current_fb_user = $this->facebook->get_user();
@@ -399,7 +399,7 @@ class Dashboard extends CI_Controller {
 		echo json_encode($user_activity);
 	}// get_user_activity
 
-	/**
+		/**
 	 * Gets the last entries of user's activity
 	 *
 	 * @return void
@@ -407,8 +407,8 @@ class Dashboard extends CI_Controller {
 	 **/
 	function post_video_to_secret_friends()
 	{
-		// check groups past the exchange date
-		// notify users via FB about their video
+		$this->load->model('exchange_group');
+		$this->exchange_group->post_video_to_secret_friends();
 	}// post_video_to_secret_friends
 
 }// class Dashboard

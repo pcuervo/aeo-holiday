@@ -117,4 +117,24 @@ class User_activity extends CI_Model {
 		return $user_activity;
 	}// get_user_activity_by_fb_id
 
+	/**
+	 * Saves the activity that a user has a video from his/her secret friend
+	 *
+	 * @param int $fb_user_id, int $group_id, int $friend_fb_id, int $activity_type
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function secret_friend_video($fb_user_id, $group_id, $friend_fb_id, $activity_type)
+	{
+		$insert_data = array(
+			'fb_user_id' 	=> $fb_user_id,
+			'group_id' 		=> $group_id,
+			'friend_fb_id' 	=> $friend_fb_id,
+			'created_at' 	=> date("Y-m-d H:i:s"),
+			'activity_type'	=> $activity_type,
+			);
+
+		$this->db->insert('user_activity', $insert_data);
+	}// secret_friend_video
+
 }// clase User_activity
