@@ -4,7 +4,7 @@
 //desc: the rtmp connection string to the hdfvr application on your media server
 //values: 'rtmp://localhost/hdfvr/_definst_', 'rtmp://myfmsserver.com/hdfvr/_definst_', etc...
 //$config['connectionstring']='rtmp://127.0.0.1:8888/hdfvr/_definst_';
-$config['connectionstring']='rtmp://localhost:8888/hdfvr/_definst_';
+$config['connectionstring']='rtmp://dev-aeo-holiday.flockos.com/hdfvr/_definst_';
 
 
 //This variable is sent to videorecorder.swf via flash vars and sent to this Php script via GET/query string. 

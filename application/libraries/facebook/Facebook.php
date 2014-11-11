@@ -161,7 +161,21 @@ class Facebook {
                 ) ) )->execute();
         }
         return $response;
-    }// get_user
+    }// send_video_notification
+
+    /**
+    * Send Facebook notification to a user with a video url
+    * @param string $fb_user_id, int $to_group_friend_id
+    */
+    public function send_message_notification($fb_user_id) {
+        if ( $this->session ) {
+            $response = ( new FacebookRequest($this->session, 'POST', '/'.$fb_user_id.'/notifications',  array(
+                    'template' => 'Tu amigo secreto te ha enviado un mensaje.',
+                    'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
+                ) ) )->execute();
+        }
+        return $response;
+    }// send_message_notification
 
     public function get_signed_request(){
         $session = FacebookSession::newAppSession();

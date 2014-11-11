@@ -172,9 +172,10 @@ class Secret_friend extends CI_Model {
 	 **/
 	function get_secret_friend($secret_friend_id)
 	{
-		$this->db->select('*');
+		$this->db->select('facebook_users_id, from_group_friend_id, to_group_friend_id');
 		$this->db->from('secret_friends');
-		$this->db->where('id', $secret_friend_id);
+		$this->db->join('group_friends', 'group_friends.id = secret_friends.to_group_friend_id');
+		$this->db->where('secret_friends.id', $secret_friend_id);
 		$query = $this->db->get();
 
 		if ($query->num_rows() < 1)
@@ -182,8 +183,9 @@ class Secret_friend extends CI_Model {
 
 		$row = $query->row();
 		$secret_friend_data = array(
-			'from_group_friend_id' => $row->from_group_friend_id,
-			'to_group_friend_id' => $row->to_group_friend_id,
+			'facebook_users_id'		=> $row->facebook_users_id,
+			'from_group_friend_id' 	=> $row->from_group_friend_id,
+			'to_group_friend_id' 	=> $row->to_group_friend_id,
 			);
 
 		return $secret_friend_data;

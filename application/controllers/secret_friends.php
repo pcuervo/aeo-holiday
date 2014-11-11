@@ -267,6 +267,8 @@ class Secret_friends extends CI_Controller {
 			$message
 			);
 
+		$this->facebook->send_message_notification($secret_friend_data['facebook_users_id']);
+
 		$this->view($secret_friend_data['to_group_friend_id']);
 	}// send_message
 
