@@ -335,16 +335,13 @@ function removeGroupFriend(){
         group_friend_data['friend_id'] = $(this).data('friend');
 
         console.log(group_friend_data);
-        /*$.post(
+        $.post(
             url,
-            perfect_fit_data,
+            group_friend_data,
             function(response){
-                // TODO: Mostrar mensaje de que se guardó el grupo que reemplace alerta
-                console.log(response);
-                var dashboard_url = localStorage.getItem('base_url') + 'dashboard/index/';
-                window.location = dashboard_url;
+                // borrar <li> de listado
             }// response
-        );*/
+        );
     });
 }// removeGroupFriend
 

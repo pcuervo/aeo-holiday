@@ -30,6 +30,7 @@
                 <label for="">Descripción</label>
                 <p><?php echo $group_details['description'] ?></p>
             </div><!-- form-group -->
+            
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Agregar a mi calendario</label>
                 <br />

@@ -498,5 +498,16 @@ class Exchange_group extends CI_Model {
 		
 		return $group_ids;
 	}// get_finished_groups
-		
+
+	/**
+	 * Remove a friend from a group
+	 *
+	 * @return int $group_friend_id
+	 * @author Miguel Cabral
+	 **/
+	function remove_friend($group_friend_id){
+		$delete_data = array('id' => $group_friend_id);
+		$this->db->delete('group_friends', $delete_data);
+	}// remove_friend
+
 }// clase Exchange_group
