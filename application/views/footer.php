@@ -98,6 +98,7 @@
                 addGroupToCalendar();
                 inviteFriends('.j_edit_group_form');
                 formValidation('.j_edit_group_form');
+                removeGroupFriend();
             <?php } ?>
 
             <?php if($current_view == 'perfect_fit') { ?>

@@ -30,6 +30,7 @@
                 <label for="">Descripción</label>
                 <p><?php echo $group_details['description'] ?></p>
             </div><!-- form-group -->
+            
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Agregar a mi calendario</label>
                 <br />
@@ -52,7 +53,7 @@
             <ul class="list-unstyled">
                 <?php foreach($group_friends as $key => $friend) { ?>
                     <li>
-                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?></p>
+                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?><a href="#" class="[ j-remove-friend ]" data-group="<?php echo $friend['group_id'] ?>" data-friend="<?php echo $friend['id'] ?>">Eliminar</a></p>
                     </li>
                 <?php } ?>
             </ul>

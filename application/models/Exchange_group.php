@@ -91,6 +91,7 @@ class Exchange_group extends CI_Model {
 		    
 		    $group_friends[$key] = array(
 		    	'id'				=> $row->id,
+		    	'group_id'			=> $row->group_id,
 				'friend_name'		=> $friend_info['first_name'].' '.$friend_info['last_name'],
 				'friend_picture'	=> $friend_picture,
 				'is_admin' 			=> $row->is_admin,
@@ -252,7 +253,7 @@ class Exchange_group extends CI_Model {
 	 **/
 	function get_pending_invitation_by_user($fb_user_id)
 	{
-		$this->db->select('*');
+		$this->db->select('group_id, name, group_invitations.id');
 		$this->db->from('exchange_groups');
 		$this->db->join('group_invitations', 'group_invitations.group_id = exchange_groups.id');
 		$this->db->where('invited_fb_user_id', $fb_user_id);
@@ -265,6 +266,7 @@ class Exchange_group extends CI_Model {
 		{
 			$group_admin = $this->get_group_admin($row->group_id);
 		    $pending_invitations[$key] = array(
+		    	'invitation_id'			=> $row->id,
 				'group_id'				=> $row->group_id,
 				'name' 					=> $row->name,
 				'admin_first_name' 		=> $group_admin['first_name'],
@@ -496,5 +498,16 @@ class Exchange_group extends CI_Model {
 		
 		return $group_ids;
 	}// get_finished_groups
-		
+
+	/**
+	 * Remove a friend from a group
+	 *
+	 * @return int $group_friend_id
+	 * @author Miguel Cabral
+	 **/
+	function remove_friend($group_friend_id){
+		$delete_data = array('id' => $group_friend_id);
+		$this->db->delete('group_friends', $delete_data);
+	}// remove_friend
+
 }// clase Exchange_group

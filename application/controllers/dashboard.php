@@ -123,6 +123,23 @@ class Dashboard extends CI_Controller {
 	}// create_exchange_group
 
 	/**
+	 * Remove a friend from a group
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function remove_group_friend()
+	{
+		$this->load->model('exchange_group');
+
+		$group_friend_id = $_POST['friend_id'];
+		$this->exchange_group->remove_friend($group_friend_id);
+
+		echo 'success';
+
+	}// remove_group_friend
+
+	/**
 	 * Displays the user's coupon
 	 *
 	 * @return void
@@ -442,7 +459,7 @@ class Dashboard extends CI_Controller {
 		echo json_encode($user_activity);
 	}// get_user_activity
 
-		/**
+	/**
 	 * Gets the last entries of user's activity
 	 *
 	 * @return void
@@ -453,5 +470,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('exchange_group');
 		$this->exchange_group->post_video_to_secret_friends();
 	}// post_video_to_secret_friends
+
+
 
 }// class Dashboard

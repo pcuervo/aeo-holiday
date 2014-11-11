@@ -304,7 +304,7 @@ function getUserActiviy(){
                     case '3':
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
-                        html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
+                        html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' ha rechazado la invitactión al grupo: ' + activity.group_name + '</p>';
                         html_activity += '</div>'
                         break;
                     case '5':
@@ -320,9 +320,30 @@ function getUserActiviy(){
     );
 }// getUserActiviy
 
-function add_hidden_input(form, name, value){
-	$(form).append('<input type="hidden" name="' + name + '" value="' + value + '"');
-}// add_hidden_input
+/**
+ * Remove a friend from group
+ * @return void
+ */
+function removeGroupFriend(){
+    $('.j-remove-friend').on('click', function(e){
+        e.preventDefault();
+
+        var group_friend_data = {};
+        var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
+        
+        group_friend_data['group_id'] = $(this).data('group');
+        group_friend_data['friend_id'] = $(this).data('friend');
+
+        console.log(group_friend_data);
+        $.post(
+            url,
+            group_friend_data,
+            function(response){
+                // borrar <li> de listado
+            }// response
+        );
+    });
+}// removeGroupFriend
 
 /*****************************
 	Facebook API functions
