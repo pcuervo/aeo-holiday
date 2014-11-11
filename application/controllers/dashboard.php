@@ -154,6 +154,8 @@ class Dashboard extends CI_Controller {
 		if($current_fb_user == NULL)
 			redirect('/login');
 
+		$data['email'] = $current_fb_user['email'];
+
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
@@ -175,6 +177,8 @@ class Dashboard extends CI_Controller {
 	 **/
 	function send_coupon_by_email()
 	{
+		$email = $_POST['email'];
+
 		$this->load->library('My_PHPMailer');
 
 		$current_fb_user = $this->facebook->get_user();
@@ -182,22 +186,19 @@ class Dashboard extends CI_Controller {
 			redirect('/login');
 
 		$mail = new PHPMailer();
-        $mail->IsSMTP(); // we are going to use SMTP
-        $mail->SMTPAuth   = true; // enabled SMTP authentication
-        //$mail->SMTPSecure = "ssl";  // prefix for secure protocol to connect to the server
-        $mail->Host       = "smtp.mandrillapp.com";      // setting GMail as our SMTP server
-        $mail->Port       = 587;                   // SMTP port to connect to GMail
-        $mail->Username   = "ti@wannaflock.com";  // user email address
-        $mail->Password   = "Ipq7HVO-FAELQsgPyeovhQ";            // password in GMail
-        $mail->SetFrom('miguel@pcuervo.com', 'AEO Holiday');  //Who is sending the email
-        $mail->AddReplyTo("response@yourdomain.com","Firstname Lastname");  //email address that receives the response
-        $mail->Subject    = "Email subject";
-        $mail->Body      = "HTML message
-";
-        $mail->AltBody    = "Plain text message";
+        $mail->IsSMTP();
+        $mail->SMTPAuth 	= true; 
+        $mail->Host       	= "smtp.mandrillapp.com";     
+        $mail->Port       	= 587;                  
+        $mail->Username   	= "ti@wannaflock.com"; 
+        $mail->Password   	= "Ipq7HVO-FAELQsgPyeovhQ";           
+        $mail->SetFrom('aeomexico@ae.com', 'American Eagle Outfitters'); 
+        $mail->AddReplyTo("aeomexico@ae.com","American Eagle Outfitters");  
+        $mail->Subject    	= "Tu cupón AEO está aquí";
+        $mail->Body      	= "<img src='".base_url()."/assets/images/cupon.jpg' width='600' height='1000' />";
+        $mail->AltBody    	= "Tu cupón AEO está aquí";
         $destino = $current_fb_user['email']; // Who is addressed the email to
-        $mail->AddAddress($destino, "John Doe");
-        $mail->AddAttachment("./assets/images/cupon.jpg");
+        $mail->AddAddress($destino, $current_fb_user['first_name'].' '.$current_fb_user['last_name']);
 
         if(!$mail->Send()) {
             $data["message"] = "Error: " . $mail->ErrorInfo;
@@ -205,7 +206,7 @@ class Dashboard extends CI_Controller {
             $data["message"] = "Message sent correctly!";
         }
 
-        $this->view_coupon('m');
+        echo 'Correo enviado';
 
 	}// create_exchange_group
 
@@ -347,12 +348,13 @@ class Dashboard extends CI_Controller {
 		$perfect_fit_data['Talla top'] = $_POST['Talla_top'];
 		$perfect_fit_data['Talla jeans'] = $_POST['Talla_jeans'];
 		$perfect_fit_data['Color'] = $_POST['Color'];
-		$perfect_fit_data['Largo jeans'] = '';
 		if($current_fb_user['gender'] == 'male')
 			$perfect_fit_data['Largo jeans'] = $_POST['Largo_jeans'];
 		$user_data['fb_user'] = $current_fb_user;
 
+		var_dump($user_data);
 		$this->user_perfect_fit->create_perfect_fit($perfect_fit_data, $user_data);
+
 
 	}// update_perfect_fit
 

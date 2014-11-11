@@ -17,7 +17,10 @@
         <?php } ?>
         <?php if ( $exchange_groups != 0 ){ ?>
             <div class="[ text-center ] [ margin-bottom ]">
-                <a href="<?php echo base_url().'dashboard/send_coupon_by_email' ?>" class="[ btn btn-primary btn-go ]"><span>enviar al correo</span></a>
+                <form action="" class="[ text-center ] [ j-send-email ]">
+                    <input type="text" name="email" value="<?php echo $email ?>">
+                    <a href="<?php echo base_url().'dashboard/send_coupon_by_email' ?>" class="[ btn btn-primary btn-go ]"><span>enviar al correo</span></a>
+                </form>
             </div>
             <div class="[ text-center ] [ margin-bottom ]">
                 <a href="<?php echo base_url().'assets/images/cupon.jpg' ?>" class="[ btn btn-primary btn-go ]" download><span>guardar imagen</span></a>
