@@ -60,7 +60,7 @@ class Secret_friend extends CI_Model {
 		$this->load->model('group_friend');
 		foreach ($query->result() as $key => $row) {
 			$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
-			
+
 			$secret_friends[$key] = array(
 				'group_friend_id'	=> $row->to_group_friend_id,
 				'fb_user_id'		=> $group_friend['fb_user_id'],
@@ -132,7 +132,7 @@ class Secret_friend extends CI_Model {
 		if ($query->num_rows() < 1)
 			return 0;
 
-		$row = $query->row(); 
+		$row = $query->row();
 		$video_data = array(
 				'secret_friend_id'	=> $row->id,
 				'video_url'			=> $row->video_url,
@@ -150,6 +150,7 @@ class Secret_friend extends CI_Model {
 	 **/
 	function get_video($secret_friend_id)
 	{
+		echo "get_video";
 		$this->db->select('video_url');
 		$this->db->from('secret_friend_videos');
 		$this->db->where('secret_friend_id', $secret_friend_id);
@@ -158,7 +159,7 @@ class Secret_friend extends CI_Model {
 		if ($query->num_rows() < 1)
 			return 0;
 
-		$row = $query->row(); 
+		$row = $query->row();
 		return $row->video_url;
 	}// get_video
 
@@ -184,7 +185,7 @@ class Secret_friend extends CI_Model {
 			'from_group_friend_id' => $row->from_group_friend_id,
 			'to_group_friend_id' => $row->to_group_friend_id,
 			);
-		
+
 		return $secret_friend_data;
 	}// get_secret_friend
 

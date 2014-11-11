@@ -193,12 +193,12 @@ function showSecretFriends(){
  * Send Zencoder POST
  * @return void
  */
-function videoPost(){
+function videoPost(url){
 
     console.log("videoPost");
 
     var request = {
-        input: 's3://zencodertesting/test.mov'
+        input: url
     }
 
     $.ajax({
@@ -209,12 +209,16 @@ function videoPost(){
         data: JSON.stringify(request),
         success: function(response) {
             console.log(response);
+            console.log(response.outputs[0]);
+
+            $("#j-video").attr("src", response.outputs[0].url);
         },
         error: function(response){
             console.log(response);
         }
     });
 }// videoPost
+
 
 /**
  * Get unread messages for current user
