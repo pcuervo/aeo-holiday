@@ -84,16 +84,15 @@
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
             <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
                 <div class="[ loader ] [ center-block ]">
-                    <img src="<?php echo base_url() ?>assets/images/loader.svg">
-                    <p class="[ text-center ]">cargando…</p>
+                    <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.svg">
+                    <p class="[ text-center ]">cargando actividad…</p>
                 </div><!-- loader -->
             </div>
             <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
                 <div class="[ loader ] [ center-block ]">
-                    <img src="<?php echo base_url() ?>assets/images/loader.svg">
-                    <p class="[ text-center ]">cargando…</p>
+                    <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.svg">
+                    <p class="[ text-center ]">cargando mensajes…</p>
                 </div><!-- loader -->
-
             </div>
         </div>
     </div><!-- actividad -->
