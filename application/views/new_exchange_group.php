@@ -15,7 +15,7 @@
                 <?php } ?>
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
-                <label class="center-block" for="join_deadline">Fecha límite de inscripción</label>
+                <label class="center-block" for="join_deadline">Fecha límite para participar</label>
                 <?php if ( $browser == 'Firefox' OR $is_mobile != 1 ){ ?>
                     <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-limite" name="join_deadline">
                 <?php } else { ?>

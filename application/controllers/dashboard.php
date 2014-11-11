@@ -94,7 +94,7 @@ class Dashboard extends CI_Controller {
 		$this->load->view('header', $data);
 		$this->load->view('new_exchange_group', $data);
 		$this->load->view('footer', $data);
-		
+
 	}// new_exchange_group
 
 	/**
@@ -131,6 +131,7 @@ class Dashboard extends CI_Controller {
 	function view_coupon($view)
 	{
 		$data['current_view'] = 'view_coupon';
+		$data['origin'] = $view;
 
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
@@ -143,7 +144,7 @@ class Dashboard extends CI_Controller {
 		// Get user's secret friends
 		$this->load->model('secret_friend');
 		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
-		
+
 		$this->load->view('header', $data);
 		$this->load->view('view_coupon', $data);
 		$this->load->view('footer', $data);
@@ -165,7 +166,7 @@ class Dashboard extends CI_Controller {
 		$data['is_mobile'] = FALSE;
 		if($this->agent->is_mobile())
 			$data['is_mobile'] = TRUE;
-		
+
 		$this->load->model('exchange_group');
 
 		$current_fb_user = $this->facebook->get_user();
@@ -193,7 +194,7 @@ class Dashboard extends CI_Controller {
 			$group_data['invited_friends'] = $_POST['invited_friends'];
 
 		$this->exchange_group->edit_group($group_data);
-		
+
 	}// edit_exchange_group
 
 	/**
@@ -265,10 +266,10 @@ class Dashboard extends CI_Controller {
 		$data['perfect_fit_quiz'] = $this->perfect_fit_quiz->get_quiz($data['current_fb_user']['gender']);
 
 		// load views
-		$this->load->view('header', $data);			
+		$this->load->view('header', $data);
 		$this->load->view('perfect_fit', $data);
 		$this->load->view('footer', $data);
-		
+
 	}// complete_perfect_fit
 
 	/**
@@ -287,13 +288,13 @@ class Dashboard extends CI_Controller {
 		$perfect_fit_data['Talla top'] = $_POST['Talla_top'];
 		$perfect_fit_data['Talla jeans'] = $_POST['Talla_jeans'];
 		$perfect_fit_data['Color'] = $_POST['Color'];
-		$perfect_fit_data['Largo jeans'] = ''; 
+		$perfect_fit_data['Largo jeans'] = '';
 		if($current_fb_user['gender'] == 'male')
 			$perfect_fit_data['Largo jeans'] = $_POST['Largo_jeans'];
 		$user_data['fb_user'] = $current_fb_user;
 
 		$this->user_perfect_fit->create_perfect_fit($perfect_fit_data, $user_data);
-		
+
 	}// update_perfect_fit
 
 	/**
@@ -309,14 +310,14 @@ class Dashboard extends CI_Controller {
 
 		$this->load->model('group_invitation');
 		$invitation_data = array(
-			'invited_fb_user_id' 	=> $current_fb_user['id'], 
+			'invited_fb_user_id' 	=> $current_fb_user['id'],
 			'group_id' 				=> $group_id,
 			);
 		$this->group_invitation->remove_invitation($invitation_data);
 
 		$this->load->model('group_friend');
 		$friend_data = array(
-			'facebook_users_id' => $current_fb_user['id'], 
+			'facebook_users_id' => $current_fb_user['id'],
 			'group_id' 			=> $group_id,
 			'is_admin'			=> FAlSE,
 			);
@@ -328,7 +329,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('user_activity');
 		$this->user_activity->invitation_accepted($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 2);
 
-		$this->index();	
+		$this->index();
 	}// accept_invitation
 
 	/**
@@ -344,7 +345,7 @@ class Dashboard extends CI_Controller {
 
 		$this->load->model('group_invitation');
 		$invitation_data = array(
-			'invited_fb_user_id' 	=> $current_fb_user['id'], 
+			'invited_fb_user_id' 	=> $current_fb_user['id'],
 			'group_id' 				=> $group_id,
 			);
 		$this->group_invitation->remove_invitation($invitation_data);

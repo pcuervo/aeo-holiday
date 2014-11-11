@@ -46,7 +46,7 @@ function toggleButton(){
 **/
 function footerBottom(){
     var footerHeight = $('footer').outerHeight();
-    $('.wrapper').css('padding-bottom', footerHeight );
+    $('body').css('padding-bottom', footerHeight );
 }
 
 /**
@@ -56,19 +56,19 @@ function footerBottom(){
 function formValidation(forma){
     $(forma).validate({
         invalidHandler: function(event, validator) {
-        // 'this' refers to the form
-        var errors = validator.numberOfInvalids();
-        console.log(errors);
-        if (errors) {
-          var message = errors == 1
-            ? 'You missed 1 field. It has been highlighted'
-            : 'You missed ' + errors + ' fields. They have been highlighted';
-          $("div.error span").html(message);
-          $("div.error").show();
-        } else {
-          $("div.error").hide();
-        }
-      },
+            // 'this' refers to the form
+            var errors = validator.numberOfInvalids();
+            console.log(errors);
+            if (errors) {
+              var message = errors == 1
+                ? 'You missed 1 field. It has been highlighted'
+                : 'You missed ' + errors + ' fields. They have been highlighted';
+              $("div.error span").html(message);
+              $("div.error").show();
+            } else {
+              $("div.error").hide();
+            }
+        },
         submitHandler:function(){
             switch(forma){
                 case '.j_group_form':
@@ -84,19 +84,58 @@ function formValidation(forma){
 
 function setLimitDate(){
     $('#fecha-intercambio').on('change', function(){
-        var val = $(this).val();
-        var date = new Date(val);
-        var newdate = new Date(date);
-        newdate.setDate(newdate.getDate() - 1);
-        var nd = new Date(newdate);
-        //console.log(nd);
-        $('#fecha-limite').attr('max', nd);
+        var date = $(this).val();
+        var date = date.split('-');
+        var year = date[0];
+        var month = date[1];
+        var day = date[2];
+        var day = day-1;
+        var fechaLimite = year+'-'+month+'-'+day;
+        $('#fecha-limite').attr('max', fechaLimite);
     });
 }
 
 //Datepicker
 function runDatepicker(){
     $('.j-datepicker').datepicker();
+}
+
+//Isotope filtering
+// init Isotope
+function runIstitope(){
+    var $container = $('.isotope').imagesLoaded( function() {
+        $container.isotope({
+            itemSelector: '.j-item'
+        });
+    });
+
+    // store filter for each group
+    var filters = {};
+
+    $('#filters').on( 'click', '.btn', function() {
+        var $this = $(this);
+        // get group key
+        var $buttonGroup = $this.parents('.button-group');
+        var filterGroup = $buttonGroup.attr('data-filter-group');
+        // set filter for group
+        filters[ filterGroup ] = $this.attr('data-filter');
+        // combine filters
+        var filterValue = '';
+        for ( var prop in filters ) {
+          filterValue += filters[ prop ];
+        }
+        // set filter for Isotope
+        $container.isotope({ filter: filterValue });
+    });
+
+    // change is-checked class on buttons
+    $('.button-group').each( function( i, buttonGroup ) {
+        var $buttonGroup = $( buttonGroup );
+        $buttonGroup.on( 'click', 'button', function() {
+          $buttonGroup.find('.is-checked').removeClass('is-checked');
+          $( this ).addClass('is-checked');
+        });
+    });
 }
 
 

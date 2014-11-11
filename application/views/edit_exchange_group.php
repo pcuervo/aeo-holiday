@@ -11,7 +11,7 @@
                 <input type="date" class="form-control" id="fecha-intercambio" name="exchange_date" value="<?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?>">
             </div>
             <div class="[ form-group ]">
-                <label for="join_deadline">Fecha límite de inscripción</label>
+                <label for="join_deadline">Fecha límite para participar</label>
                 <input type="date" class="form-control" id="fecha-limite" name="join_deadline" min="2014-11-09" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
             </div>
             <div class="[ form-group ]">

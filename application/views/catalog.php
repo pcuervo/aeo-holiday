@@ -1,11 +1,11 @@
 <div class="[ container ] [ contenido home ] [ margin-bottom ] [ clearfix ]">
     <h2 class="[ text-center ]">Catálogo</h2>
     <div class="[ margin-bottom ]">
-    	<form action="#">
+    	<!-- <form action="#">
     		<fieldset class="[ col-xs-6 ] [ margin-bottom ]">
     			<label class="[ text-center ]" for="">HOMBRE</label><br/>
 	    		<select class="[ form-control ]" name="catalogo" id="">
-	    			<option value="">Tops</option>
+	    			<option value="">Tops (Partes de arriba)</option>
 	    			<option value="">Pantalones</option>
 	    			<option value="">Accesorios</option>
 	    		</select>
@@ -18,26 +18,45 @@
 	    			<option value="">Accesorios</option>
 	    		</select>
     		</fieldset>
-    	</form>
+    	</form> -->
+        <div id="filters">
+          <div class="ui-group">
+            <h3 class="[ text-center margin-bottom ]">Genero</h3>
+            <div class="[ button-group js-radio-button-group ] [ text-center ]" data-filter-group="color">
+              <button class="[ btn btn-primary btn-go ] [ margin-bottom ] [ is-checked ]" data-filter=""><span>todo</span></button>
+              <button class="[ btn btn-primary btn-go ] [ margin-bottom ]" data-filter=".hombre"><span>hombre</span></button>
+              <button class="[ btn btn-primary btn-go ] [ margin-bottom ]" data-filter=".mujer"><span>mujer</span></button>
+            </div>
+          </div>
+          <div class="ui-group">
+            <h3 class="[ text-center margin-bottom ]">Categoría</h3>
+            <div class="[ button-group js-radio-button-group ] [ text-center ]" data-filter-group="size">
+              <button class="[ btn btn-primary btn-go ] [ margin-bottom ] [ is-checked ]" data-filter=""><span>todos</span></button>
+              <button class="[ btn btn-primary btn-go ] [ margin-bottom ]" data-filter=".accesorios"><span>accesorios</span></button>
+              <button class="[ btn btn-primary btn-go ] [ margin-bottom ]" data-filter=".top"><span>tops</span></button>
+              <button class="[ btn btn-primary btn-go ] [ margin-bottom ]" data-filter=".pantalones"><span>pantalones</span></button>
+            </div>
+          </div>
+        </div>
     </div>
-    <div class="[ row ] [ margin-bottom ]">
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="hombre" data-categoria="top">
+    <div class="[ row ] [ margin-bottom ] [ isotope ]">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ j-item hombre top ]">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/camisa-de-franela-con-grecas-aeo.png">
 			<p>Camisa de Franela con Grecas AEO</p>
     	</div>
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="hombre" data-categoria="top">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ color-shape small round blue ]" data-genero="hombre" data-categoria="top">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/camisa-de-franela-roja-aeo.png">
 			<p>Camisa de Franela Roja AEO</p>
     	</div>
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="hombre" data-categoria="top">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]  [ j-item hombre top ]" data-genero="hombre" data-categoria="top">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/camisa-de-ranela-osos-aeo.png">
 			<p>Camisa de Franela Osos AEO</p>
     	</div>
-    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="hombre" data-categoria="top">
+    	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]  [ j-item hombre top ]" data-genero="hombre" data-categoria="top">
 			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/camisa-gris-de-franela-aeo.png">
 			<p>Camisa Gris de Franela AEO</p>
     	</div>
-        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]" data-genero="hombre" data-categoria="top">
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ]  [ j-item hombre top ]" data-genero="hombre" data-categoria="top">
             <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/cardigan-estampado-aeo.png">
             <p>Cárdigan Estampado AEO</p>
         </div>
