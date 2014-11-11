@@ -17,11 +17,11 @@ function addGroupToCalendar(){
         license   : "al7dliedlzlnbpbh0mbm",
         mouse     : false,
         css       : false,
-        outlook   : {show:false, text:"Outlook Calendar"},
+        outlook   : {show:true, text:"Outlook Calendar"},
         google    : {show:true, text:"Google Calendar"},
         ical      : {show:true, text:"iCal Calendar"},
         facebook  : {show:false, text:"Facebook Event"},
-        dropdown  : {order:"google,ical"},
+        dropdown  : {order:"google,ical,outlook"},
         callback  : ""
     });
 }
@@ -136,7 +136,7 @@ function createExchangeGroup(){
 
     var hidden_guests = $('.hidden_guest').length;
     if(hidden_guests == 0){
-        $('.j_invite_friends').after('<p class="error">Debes invitar al menos a un amigo para crear un grupo</p>');
+        $('.j_invite_friends').after('<p class="[ j_invite_friends error ]">Debes invitar al menos a un amigo para crear un grupo</p>');
         return;
     }
     var group_data = $('.j_group_form').serialize();
@@ -266,7 +266,10 @@ function getUnreadMessages(){
             var mensajes_json = $.parseJSON(response);
             var url_mensajes = localStorage.getItem('base_url') + 'secret_friends/view_messages/';
             $.each(mensajes_json, function(i, val){
-                var html_mensaje = '<p>Tienes un <a href="' + url_mensajes + '"> mensaje</a> de tu amigo secreto del grupo ' + val.group_name + '</p>';
+                var html_mensaje = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
+                    html_mensaje += '<p class="[ text-center ]">Tienes un mensaje de tu amigo secreto del grupo ' + val.group_name + '</p>';
+                    html_mensaje += '<a class="[ btn btn-primary btn-go ]" href="' + url_mensajes + '"><span>Ver mensaje</span></a>';
+                    html_mensaje += '</div>';
                 $(html_mensaje).appendTo('.actividad-mensajes');
             });
         }// response
@@ -354,8 +357,6 @@ function loadFacebookSdk(){
  * @return void
  */
 function inviteFriends(form){
-
-	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
             message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.'
@@ -364,6 +365,7 @@ function inviteFriends(form){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
                 getInvitedFriendData(friend_id);
             });
+            $('.j_invite_friends.error').remove();
         });
     });
 }// inviteFriends
@@ -371,7 +373,6 @@ function inviteFriends(form){
 function getInvitedFriendData(fb_id){
     var user_data = {};
     FB.api('/'+ fb_id + '?access_token=CAAELAFhjJXoBANJxcwb0RxZAOgkni7WNhvT6qpxSmFG4vntMnI5H8ese9whs8SkgYzGt9jA1Wlt3YnhO6PjPaA67oLM3WBXVSFWSNHfHgsHXQaqPXCVgcHyCoY52ssKJ7QLinGicNyA2SPZBr1EtrnrbQizZAm4hMeCeyNeB4ICFlI4FJZBVFpWDMh5pC6AYJ0JAsAWtCPyOiTk9HZC5L', function(response) {
-
         console.log(response);
         if(response.id){
             var name = response.first_name + ' ' + response.last_name;
