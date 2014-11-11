@@ -75,13 +75,17 @@
                 getUserActiviy();
             <?php } ?>
 
+            <?php if($current_view == 'catalog') { ?>
+                runIstitope();
+            <?php } ?>
+
             <?php if($current_view == 'view_video') { ?>
                 videoPost('<?php echo $video_url ?>');
             <?php } ?>
 
             <?php if($current_view == 'new_exchange_group') { ?>
                 formValidation('.j_group_form');
-                //setLimitDate();
+                setLimitDate();
                 runDatepicker();
                 inviteFriends('.j_group_form');
             <?php } ?>
