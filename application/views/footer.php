@@ -68,10 +68,15 @@
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
             toggleMainMenu();
             footerBottom();
+            loadFacebookSdk();
 
             <?php if($current_view == 'dashboard') { ?>
                 getUnreadMessages();
                 getUserActiviy();
+                $('#myTab a').click(function (e) {
+                  e.preventDefault()
+                  $(this).tab('show')
+                });
             <?php } ?>
 
             <?php if($current_view == 'catalog') { ?>
