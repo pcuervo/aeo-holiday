@@ -56,6 +56,8 @@
         </div>
 
         <script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+        <script language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="<?php echo base_url().'assets/js/jquery.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/bootstrap.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/plugins.min.js' ?>"></script>
@@ -114,7 +116,14 @@
             <?php } ?>
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
-                console.log('create_secret_friend_video');
+                $(document).ready(function() {
+                    $("#webcam").scriptcam();
+
+                    function enableRecord() {
+                        $('#recordButton').show();
+                    }
+                });
+
                 $('input[name=file-mobile]').nicefileinput({
                     label: 'Graba tu video'
                 });

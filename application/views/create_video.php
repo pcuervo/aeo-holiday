@@ -3,6 +3,7 @@
     <h4 class="[ text-center ]">Para <?php echo $secret_friend['name'] ?></h4>
     <h4 class="[ text-center ]">(<?php echo $secret_friend['group'] ?>)</h4>
     <div class="[ row ]">
+        <div id="webcam"></div>
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
             <div class="[ text-center ] [ margin-bottom ]">
                 <p class="[ uppercase ]">Se le mandará una notificación del video a <?php echo $secret_friend['name'] ?>  después del intercambio.</p>
