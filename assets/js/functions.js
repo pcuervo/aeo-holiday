@@ -194,7 +194,7 @@ function showSecretFriends(){
  * @return void
  */
 function videoPost(url){
-    
+
     var request = {
         input: url
     }
@@ -318,7 +318,7 @@ function inviteFriends(form){
 	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
-            message: 'te invitó a formar parte del intercambio navideño y recibir un descuento en tus compras.'
+            message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.'
         }, function(response){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');

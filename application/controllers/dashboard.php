@@ -67,6 +67,15 @@ class Dashboard extends CI_Controller {
 	 **/
 	function new_exchange_group()
 	{
+		$this->load->library('user_agent');
+		$data['browser'] = '';
+		if ($this->agent->is_browser())
+			$data['browser'] = $this->agent->browser();
+
+		$data['is_mobile'] = FALSE;
+		if($this->agent->is_mobile())
+			$data['is_mobile'] = TRUE;
+
 		// Set up general variables for view
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'new_exchange_group';
@@ -148,6 +157,15 @@ class Dashboard extends CI_Controller {
 	 **/
 	function edit_exchange_group()
 	{
+		$this->load->library('user_agent');
+		$data['browser'] = '';
+		if ($this->agent->is_browser())
+			$data['browser'] = $this->agent->browser();
+
+		$data['is_mobile'] = FALSE;
+		if($this->agent->is_mobile())
+			$data['is_mobile'] = TRUE;
+		
 		$this->load->model('exchange_group');
 
 		$current_fb_user = $this->facebook->get_user();
@@ -380,5 +398,17 @@ class Dashboard extends CI_Controller {
 
 		echo json_encode($user_activity);
 	}// get_user_activity
+
+	/**
+	 * Gets the last entries of user's activity
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function post_video_to_secret_friends()
+	{
+		// check groups past the exchange date
+		// notify users via FB about their video
+	}// post_video_to_secret_friends
 
 }// class Dashboard
