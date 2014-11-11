@@ -59,7 +59,6 @@ class Facebook {
                 // When validation fails or other local issues
             }// try
         }
-        
 
         if ( $this->session ) {
             $this->ci->session->set_userdata( 'fb_token', $this->session->getToken() );
