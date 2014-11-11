@@ -83,10 +83,17 @@
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
             <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
-                <img src="<?php echo base_url() ?>assets/images/loader.svg">
+                <div class="[ loader ] [ center-block ]">
+                    <img src="<?php echo base_url() ?>assets/images/loader.svg">
+                    <p class="[ text-center ]">cargando…</p>
+                </div><!-- loader -->
             </div>
             <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
-                <img src="<?php echo base_url() ?>assets/images/loader.svg">
+                <div class="[ loader ] [ center-block ]">
+                    <img src="<?php echo base_url() ?>assets/images/loader.svg">
+                    <p class="[ text-center ]">cargando…</p>
+                </div><!-- loader -->
+
             </div>
         </div>
     </div><!-- actividad -->
