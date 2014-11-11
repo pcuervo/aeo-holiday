@@ -15,7 +15,7 @@
                 </div>
             <?php } else { ?>
                 <div class="[ text-center ] [ margin-bottom ]">
-                    <a href="<?php echo base_url().'uploads/'.$video['video_url'] ?>" target="_blank" class="btn btn-primary btn-go"><span>Ver dedicatoria</span></a>
+                    <a href="<?php echo base_url().'secret_friends/view_video/'.$secret_friend['group_friend_id'] ?>" class="btn btn-primary btn-go"><span>Ver dedicatoria</span></a>
                 </div>
             <?php } ?>
 

@@ -75,7 +75,7 @@
             <?php } ?>
 
             <?php if($current_view == 'view_video') { ?>
-                videoPost(<?php echo $video_url ?>);
+                videoPost('<?php echo $video_url ?>');
             <?php } ?>
 
             <?php if($current_view == 'new_exchange_group') { ?>

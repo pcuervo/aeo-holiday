@@ -201,8 +201,6 @@ function showSecretFriends(){
  */
 function videoPost(url){
 
-    console.log("videoPost");
-
     var request = {
         input: url
     }
@@ -214,10 +212,9 @@ function videoPost(url){
         dataType: 'json',
         data: JSON.stringify(request),
         success: function(response) {
-            console.log(response);
             console.log(response.outputs[0]);
-
-            $("#j-video").attr("src", response.outputs[0].url);
+            var html_video = '<video controls><source src="' + response.outputs[0].url + '" type="video/mp4"></video>';
+            $(html_video).appendTo('.j-video');
         },
         error: function(response){
             console.log(response);
@@ -317,7 +314,7 @@ function inviteFriends(form){
 
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '297868607079106',
+            appId      : '293571087508858',
             cookie     : true,
             xfbml      : true,
             version    : 'v2.1'
@@ -327,7 +324,7 @@ function inviteFriends(form){
 	//console.log('invite friends ready');
     $(form + ' .j_invite_friends').on('click', function(){
         FB.ui({method: 'apprequests',
-            message: 'te invitó a formar parte del intercambio navideño y recibir un descuento en tus compras.'
+            message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.'
         }, function(response){
             $.each(response.to, function(i, friend_id){
                 $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
