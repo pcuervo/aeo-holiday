@@ -81,6 +81,7 @@
 
             <?php if($current_view == 'catalog') { ?>
                 runIstitope();
+                lightbox();
             <?php } ?>
 
             <?php if($current_view == 'view_video') { ?>

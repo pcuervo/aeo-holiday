@@ -94,10 +94,7 @@ function runIstitope(){
             itemSelector: '.j-item'
         });
     });
-
-    // store filter for each group
     var filters = {};
-
     $('#filters').on( 'click', '.btn', function() {
         var $this = $(this);
         // get group key
@@ -121,6 +118,14 @@ function runIstitope(){
           $buttonGroup.find('.is-checked').removeClass('is-checked');
           $( this ).addClass('is-checked');
         });
+    });
+}
+
+//Bootstrap Lightbox
+function lightbox(){
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
     });
 }
 
