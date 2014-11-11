@@ -20,7 +20,7 @@
 							<a href="#menu-toggle" id="menu-toggle">
 								<img class="[ right ]" src="<?php echo base_url() ?>assets/images/icon-hamburger-rojo.png">
 							</a>
-							<h4 href="#">MENU</h4>
+							<h4 href="#">MENÚ</h4>
 						</li>
 						<li>
 							<a class="[ text-center ]" href="<?php echo base_url().'dashboard' ?>">Inicio</a>
@@ -57,7 +57,9 @@
 		            <a href="#menu-toggle" class="[ hidden-sm hidden-md hidden-lg ]" id="menu-toggle">
 		            	<img src="<?php echo base_url() ?>assets/images/icon-hamburger.png">
 		            </a>
-		            <a href="#menu-toggle" class="[ hidden-xs ] [ right ]" id="menu-toggle2">Menú</a>
+		            <a href="#menu-toggle" class="[ hidden-xs ] [ right ]" id="menu-toggle2">
+						<img src="<?php echo base_url() ?>assets/images/icon-hamburger.png">
+		            </a>
 		        </div><!-- #menu-principal -->
 			</header>
 		<?php } ?>

@@ -13,6 +13,7 @@
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="center-block" for="join_deadline">Fecha límite de inscripción</label>
                 <input type="date" class="[ form-control ] [ required ]" id="fecha-limite" name="join_deadline">
+                <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-limite" name="join_deadline">
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="place">Lugar</label>

@@ -94,6 +94,12 @@ function setLimitDate(){
     });
 }
 
+//Datepicker
+function runDatepicker(){
+    $('.j-datepicker').datepicker();
+}
+
+
 /*****************************
 	AJAX functions
  *****************************/
