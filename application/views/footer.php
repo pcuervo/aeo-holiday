@@ -123,7 +123,6 @@
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
                 initWebCam();
-
                 $('input[name=file-mobile]').nicefileinput({
                     label: 'Graba tu video'
                 });
