@@ -105,6 +105,11 @@ class Secret_friends extends CI_Controller {
 		if($current_fb_user == NULL)
 			redirect('/login');
 
+		$this->load->library('user_agent');
+		$data['is_mobile'] = FALSE;
+		if($this->agent->is_mobile())
+			$data['is_mobile'] = TRUE;
+
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);

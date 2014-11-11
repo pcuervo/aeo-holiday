@@ -115,10 +115,10 @@
             <?php if($current_view == 'create_secret_friend_video') { ?>
                 console.log('create_secret_friend_video');
                 $('input[name=file-mobile]').nicefileinput({
-                    label: 'Graba tu video'
+                    label: 'GRABA TU VIDEO '
                 });
                 $('input[name=file-desktop]').nicefileinput({
-                    label: 'Seleccionar archivo'
+                    label: 'SELECCIONA TU VIDEO '
                 });
             <?php } ?>
 
