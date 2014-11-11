@@ -142,7 +142,7 @@ function quitarOption(){
         console.log('change');
         if ( $(this).val() == '18' ){
             console.log('18');
-            $('select.largo-jeans option[value"21"]').remove();
+            $('select.largo-jeans option[value="21"]').remove();
         }
     });
 }
