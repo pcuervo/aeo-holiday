@@ -37,6 +37,18 @@ class Secret_friend_video extends CI_Model {
 		return $this->db->insert_id();
 	}// save_video
 
-	
+	/**
+	 * Set a video as posted
+	 *
+	 * @param string $video_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function set_was_posted($video_id)
+	{
+		$video_data = array('was_posted' => TRUE);
+		$this->db->where('id', $video_id);
+		$this->db->update('secret_friend_videos', $video_data);
+	}// save_video
 
 }// clase Secret_friend_video

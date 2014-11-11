@@ -116,6 +116,7 @@ class Exchange_group extends CI_Model {
 			'join_deadline' => $group_data['join_deadline'],
 			'place'			=> $group_data['place'],
 			'budget'		=> $group_data['budget'],
+			'status'		=> 0,
 			'created_at' 	=> date("Y-m-d H:i:s")
 			);
 		$this->db->insert('exchange_groups', $insert_data);
@@ -124,10 +125,8 @@ class Exchange_group extends CI_Model {
 		$this->set_group_admin($group_data['admin_id']);
 		$this->create_pending_invitations($group_data['invited_friends']);
 
-		echo 'cargando model user activiy';
 		$this->load->model('user_activity');
 		$this->user_activity->group_created($group_data['admin_id'], $this->group_id, 1);
-		echo 'despues de insertar...';
 
 		$respuesta = array(
 				'error' 	=> '0',
@@ -383,10 +382,8 @@ class Exchange_group extends CI_Model {
 
 		foreach ($user_groups as $group)
 		{
-
 			if($this->has_secret_friends($group['id']))
 				continue;
-
 			array_push($pending_groups, $group['id']);
 		}
 
@@ -445,5 +442,59 @@ class Exchange_group extends CI_Model {
 		$this->secret_friend->add_secret_friends($from_friends, $to_friends);
 	}// has_secret_friends
 
+	/**
+	 * Check groups that are passed the exchange date and notify group friends if they have a video by their secret friend.
+	 *
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function post_video_to_secret_friends(){
+		$group_ids = $this->get_finished_groups();
+		
+		if ($group_ids == 0) return 0;
+
+		$this->db->select('facebook_users_id, group_id, to_group_friend_id, secret_friend_videos.id');
+		$this->db->from('group_friends');
+		$this->db->join('secret_friends', 'secret_friends.from_group_friend_id = group_friends.id');
+		$this->db->join('secret_friend_videos', 'secret_friend_videos.secret_friend_id = secret_friends.id');
+		$this->db->where('was_posted', 0);
+		$this->db->where_in('group_id', $group_ids);
+		$query = $this->db->get();
+
+		$this->load->model('user_activity');
+		$this->load->model('group_friend');
+		$this->load->model('secret_friend_video');
+		foreach ($query->result() as $key => $row){
+			$video = $this->facebook->send_video_notification($row->facebook_users_id, $row->to_group_friend_id);
+			$friend_fb_id = $this->group_friend->get_fb_id($row->to_group_friend_id);
+			$this->secret_friend_video->set_was_posted($row->id);
+			$this->user_activity->secret_friend_video($row->facebook_users_id, $row->group_id, $friend_fb_id, 5);
+		}
+
+		$this->mark_groups_as_finished($group_ids);
+		
+		return 1;
+	}// post_video_to_secret_friends
+
+	/**
+	 * Returns the ids of the groups that have finished the exchange
+	 *
+	 * @return array $group_ids or 0
+	 * @author Miguel Cabral
+	 **/
+	function get_finished_groups(){
+		$this->db->select('id');
+		$this->db->where('exchange_date <', date('Y-m-d'));
+		$this->db->where('status', 0);
+		$query = $this->db->get('exchange_groups');
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$group_ids = array();
+		foreach ($query->result() as $row) array_push($group_ids, $row->id);
+		
+		return $group_ids;
+	}// get_finished_groups
 		
 }// clase Exchange_group

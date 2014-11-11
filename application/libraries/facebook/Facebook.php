@@ -149,14 +149,15 @@ class Facebook {
         return FALSE;
     }// get_user
 
-
-    // THIS IS A TEST
-    public function send_notification($video_id, $fb_user_id) {
+    /**
+    * Send Facebook notification to a user with a video url
+    * @param string $fb_user_id, int $to_group_friend_id
+    */
+    public function send_video_notification($fb_user_id, $to_group_friend_id) {
         if ( $this->session ) {
             $response = ( new FacebookRequest($this->session, 'POST', '/'.$fb_user_id.'/notifications',  array(
-                    'template' => 'Tu amigo secreto te acaba de enviar un video.',
-                    'href' => 'https://dev-aeo-holiday.flockos.com/secret_friends/view_video/'.$video_id,
-                    'access_token' => '297868607079106|bd99a4f0c5adec6cb3adb06db6e950e1'
+                    'template' => 'Tu amigo secreto te envió un video.',
+                    'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
                 ) ) )->execute();
         }
         return $response;

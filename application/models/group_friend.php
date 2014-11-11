@@ -40,6 +40,28 @@ class Group_friend extends CI_Model {
 	}// add_group_friend
 
 	/**
+	 * Returns a group friend's facebook id
+	 *
+	 * @param $group_friend_id
+	 * @return string $fb_user_id
+	 * @author Miguel Cabral
+	 **/
+	function get_fb_id($group_friend_id)
+	{
+		$this->db->select('facebook_users_id');
+		$this->db->from('group_friends');
+		$this->db->where('id', $group_friend_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$row = $query->row(); 
+
+		return $row->facebook_users_id;
+	}// get_fb_id
+
+	/**
 	 * Returns a group friend
 	 *
 	 * @param $group_friend_id
