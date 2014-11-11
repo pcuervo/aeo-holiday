@@ -1,7 +1,7 @@
 <div class="[ container ] [ contenido home ] [ margin-bottom ] [ clearfix ]">
     <h2 class="[ text-center ]">Best gift ever</h2>
     <div class="[ row ] [ margin-bottom ]">
-        <div class="[ col-xs-12 col-md-6 ] [ center-block ]">
+        <div class="[ col-xs-12 col-sm-6 ] [ center-block ]">
             <div class="margin-bottom">
                 <img class="[ half-width ] [ inline-block middle ] [ user-photo ] [ img-circle ]"src="<?php echo $fb_user_pic ?>" alt="Usuario"><h4 class="[ half-width margin-bottom ] [ inline-block middle ]"><?php echo $fb_user['first_name'].' '.$fb_user['last_name'] ?></h4>
             </div>
@@ -20,7 +20,7 @@
     </div><!-- row -->
     <hr class="[ center-block ]" >
     <div class="[ row ] [ margin-bottom ]">
-        <div class="[ col-xs-12 col-md-6 ] [ center-block ]">
+        <div class="[ col-xs-12 col-sm-8 ] [ center-block ]">
             <ul id="myTab" class="nav nav-tabs" role="tablist">
                 <li role="presentation" class="[ active ]"><a href="#solicitudes-pendientes" id="solicitudes-pendientes-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">SOLICITUDES</a></li>
                 <?php if($secret_friends != '') { ?>

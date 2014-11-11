@@ -197,14 +197,14 @@ class Dashboard extends CI_Controller {
         $mail->AltBody    = "Plain text message";
         $destino = $current_fb_user['email']; // Who is addressed the email to
         $mail->AddAddress($destino, "John Doe");
-        $mail->AddAttachment("./assets/images/cupon.jpg"); 
+        $mail->AddAttachment("./assets/images/cupon.jpg");
 
         if(!$mail->Send()) {
             $data["message"] = "Error: " . $mail->ErrorInfo;
         } else {
             $data["message"] = "Message sent correctly!";
         }
-        
+
         $this->view_coupon('m');
 
 	}// create_exchange_group

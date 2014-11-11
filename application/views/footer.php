@@ -110,6 +110,7 @@
 
             <?php if($current_view == 'perfect_fit') { ?>
                 updatePerfectFit();
+                quitarOption();
             <?php } ?>
 
             <?php if($current_view == 'view_messages') { ?>

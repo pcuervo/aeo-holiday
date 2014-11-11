@@ -21,14 +21,14 @@
             <div class="[ form-group ]">
                 <label for="budget">Monto del regalo</label>
                 <select class="[ form-control ]" id="precio-intercambio" name="budget">
-                    <option value="50">$50</option>
-                    <option value="100">$100</option>
-                    <option value="200">$200</option>
-                    <option value="300">$300</option>
-                    <option value="400">$400</option>
-                    <option value="500">$500</option>
-                    <option value="600">$600</option>
-                    <option value="">Sin límite</option>
+                    <option <?php if ( $group_details['budget'] == 50 ){ echo 'selected'; } ?> value="50">$50</option>
+                    <option <?php if ( $group_details['budget'] == 100 ){ echo 'selected'; } ?> value="100">$100</option>
+                    <option <?php if ( $group_details['budget'] == 200 ){ echo 'selected'; } ?> value="200">$200</option>
+                    <option <?php if ( $group_details['budget'] == 300 ){ echo 'selected'; } ?> value="300">$300</option>
+                    <option <?php if ( $group_details['budget'] == 400 ){ echo 'selected'; } ?> value="400">$400</option>
+                    <option <?php if ( $group_details['budget'] == 500 ){ echo 'selected'; } ?> value="500">$500</option>
+                    <option <?php if ( $group_details['budget'] == 600){ echo 'selected'; } ?> value="600">$600</option>
+                    <option <?php if ( $group_details['budget'] == 'sin-limite'){ echo 'selected'; } ?> value="sin-limite">Sin límite</option>
                 </select>
             </div>
             <div class="[ form-group ]">

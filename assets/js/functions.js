@@ -136,6 +136,17 @@ function noLightbox(){
     });
 }
 
+//Eliminar talla 34 de largo para hombres si es escogen talla 38 de jeans
+function quitarOption(){
+    $('.male.talla-jeans').on('change', function(){
+        console.log('change');
+        if ( $(this).val() == '18' ){
+            console.log('18');
+            $('select.largo-jeans option[value"21"]').remove();
+        }
+    });
+}
+
 
 /*****************************
 	AJAX functions
@@ -426,9 +437,9 @@ function getInvitedFriendPic(fb_id){
     });
 }// getInvitedFriendName
 
-// 
+//
 function initWebCam(){
-    $("#webcam").scriptcam({ 
+    $("#webcam").scriptcam({
         path:  localStorage.getItem('base_url') + 'assets/scriptcam/',
         fileReady:fileReady,
         cornerRadius:20,
@@ -467,8 +478,8 @@ function initWebCam(){
             height:240,
             file: fileName,
             image: fileNameNoExtension+'_0000.jpg',
-            tracks: [{ 
-                file: fileNameNoExtension+'.vtt', 
+            tracks: [{
+                file: fileNameNoExtension+'.vtt',
                 kind: 'thumbnails'
             }]
         });
@@ -482,11 +493,11 @@ function initWebCam(){
         $( "#slider" ).slider( "option", "value", volume );
         $.each(cameraNames, function(index, text) {
             $('#cameraNames').append( $('<option></option>').val(index).html(text) )
-        }); 
+        });
         $('#cameraNames').val(camera);
         $.each(microphoneNames, function(index, text) {
             $('#microphoneNames').append( $('<option></option>').val(index).html(text) )
-        }); 
+        });
         $('#microphoneNames').val(microphone);
     }
 

@@ -6,7 +6,7 @@
 			<?php foreach ($perfect_fit_quiz as $key => $question) { ?>
 				<div class="[ form-group ] [ margin-bottom ]">
 					<label class="[ center-block ]" for="<?php echo $question['question'] ?>"><?php echo $question['question'] ?></label>
-					<select class="[ form-control ]" name="<?php echo $question['question'] ?>">
+					<select class="[ form-control ] [ <?php echo $current_fb_user['gender'] ?> ] [ <?php if( $question['question'] == 'Talla jeans' ){ echo 'talla-jeans'; } if( $question['question'] == 'Largo jeans' ){ echo 'largo-jeans'; } ?> ]" name="<?php echo $question['question'] ?>">
 						<?php foreach ($question['answers'] as $key => $answer) { ?>
 						<option value="<?php echo $answer['id'] ?>"><?php echo $answer['answer'] ?></option>
 						<?php } ?>
