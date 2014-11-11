@@ -178,13 +178,12 @@ class Dashboard extends CI_Controller {
 	function send_coupon_by_email()
 	{
 		$email = $_POST['email'];
-
 		$this->load->library('My_PHPMailer');
 
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
 			redirect('/login');
-
+		// <img src='".base_url()."/assets/images/cupon.jpg' width='600' height='1000' />
 		$mail = new PHPMailer();
         $mail->IsSMTP();
         $mail->SMTPAuth 	= true; 
@@ -195,9 +194,9 @@ class Dashboard extends CI_Controller {
         $mail->SetFrom('aeomexico@ae.com', 'American Eagle Outfitters'); 
         $mail->AddReplyTo("aeomexico@ae.com","American Eagle Outfitters");  
         $mail->Subject    	= "Tu cupón AEO está aquí";
-        $mail->Body      	= "<img src='".base_url()."/assets/images/cupon.jpg' width='600' height='1000' />";
+        $mail->Body      	= "Esto es el cuerpo del correo.";
         $mail->AltBody    	= "Tu cupón AEO está aquí";
-        $destino = $current_fb_user['email']; // Who is addressed the email to
+        $destino = $email; // Who is addressed the email to
         $mail->AddAddress($destino, $current_fb_user['first_name'].' '.$current_fb_user['last_name']);
 
         if(!$mail->Send()) {
@@ -206,6 +205,7 @@ class Dashboard extends CI_Controller {
             $data["message"] = "Message sent correctly!";
         }
 
+        var_dump($data["message"]);
         echo 'Correo enviado';
 
 	}// create_exchange_group
