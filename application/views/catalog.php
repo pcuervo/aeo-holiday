@@ -24,12 +24,12 @@
     <div class="[ row ] [ margin-bottom ] [ isotope ]">
     	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ j-item hombre top ]">
 			<a href="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png" data-toggle="lightbox" data-gallery="multiimages" data-title="Camisa de Franela con Grecas AEO">
-                <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png" class="img-responsive">
+                <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png">
             </a>
 			<p>Camisa de Franela con Grecas AEO</p>
     	</div>
     	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ j-item hombre top ]">
-			<a href="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png" data-toggle="lightbox" data-gallery="multiimages" data-title="Camisa de Franela con Grecas AEO">
+			<a href="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png" data-toggle="lightbox" data-gallery="multiimages" data-title="Camisa de Franela Roja AEO">
                 <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/camisa-de-franela-roja-aeo.png">
             </a>
 			<p>Camisa de Franela Roja AEO</p>

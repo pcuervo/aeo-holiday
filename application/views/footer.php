@@ -122,18 +122,23 @@
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
                 $(document).ready(function() {
-                    $("#webcam").scriptcam();
+                    $("#webcam").scriptcam({
+                        fileName: 'uservideo',
+                        connected: enableRecord,
+                        path: '<?php echo base_url()."/assets/scriptcam/" ?>',
+                    });
 
                     function enableRecord() {
                         $('#recordButton').show();
+                        $.scriptcam.startRecording();
                     }
                 });
 
                 $('input[name=file-mobile]').nicefileinput({
-                    label: 'GRABA TU VIDEO '
+                    label: 'Graba tu video'
                 });
                 $('input[name=file-desktop]').nicefileinput({
-                    label: 'SELECCIONA TU VIDEO '
+                    label: 'Seleccionar archivo'
                 });
             <?php } ?>
 
