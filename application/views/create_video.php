@@ -20,7 +20,6 @@
                         <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>enviar</span></button>
                     </div>
                 <?php } else { ?>
-                    <label class="[ text-center ] [ center-block ]" for="userfile">Sube tu vídeo</label>
                     <div class="form-group">
                         <input class="[ margin-bottom ] [ center-block ]" type="file" name="file-desktop"  />
                     </div>

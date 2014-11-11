@@ -1,24 +1,6 @@
 <div class="[ container ] [ contenido home ] [ margin-bottom ] [ clearfix ]">
     <h2 class="[ text-center ]">Catálogo</h2>
     <div class="[ margin-bottom ]">
-    	<!-- <form action="#">
-    		<fieldset class="[ col-xs-6 ] [ margin-bottom ]">
-    			<label class="[ text-center ]" for="">HOMBRE</label><br/>
-	    		<select class="[ form-control ]" name="catalogo" id="">
-	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríahombre', 'click', 'tops');">Tops (Partes de arriba)</option>
-	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríahombre', 'click', 'pantalones');">Pantalones</option>
-	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríahombre', 'click', 'accesorios');">Accesorios</option>
-	    		</select>
-    		</fieldset>
-    		<fieldset class="[ col-xs-6 ] [ margin-bottom ]">
-    			<label class="[ text-center ]" for="">MUJER</label><br/>
-	    		<select class="[ form-control ]" name="catalogo" id="">
-	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríamujer', 'click', 'tops');">Tops</option>
-	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríamujer', 'click', 'pantalones');">Pantalones</option>
-	    			<option value="" onclick="ga('send', 'event', 'catálogoCategoríamujer', 'click', 'accesorios');">Accesorios</option>
-	    		</select>
-    		</fieldset>
-    	</form> -->
         <div id="filters">
           <div class="ui-group">
             <h3 class="[ text-center margin-bottom ]">Género</h3>
@@ -41,7 +23,9 @@
     </div>
     <div class="[ row ] [ margin-bottom ] [ isotope ]">
     	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ j-item hombre top ]">
-			<img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/camisa-de-franela-con-grecas-aeo.png">
+			<a class="col-sm-4" href="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png" data-toggle="lightbox" data-gallery="multiimages" data-title="Camisa de Franela con Grecas AEO">
+                <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png" class="img-responsive">
+            </a>
 			<p>Camisa de Franela con Grecas AEO</p>
     	</div>
     	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ j-item hombre top ]">

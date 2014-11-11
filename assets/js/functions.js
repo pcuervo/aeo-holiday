@@ -94,10 +94,7 @@ function runIstitope(){
             itemSelector: '.j-item'
         });
     });
-
-    // store filter for each group
     var filters = {};
-
     $('#filters').on( 'click', '.btn', function() {
         var $this = $(this);
         // get group key
@@ -121,6 +118,14 @@ function runIstitope(){
           $buttonGroup.find('.is-checked').removeClass('is-checked');
           $( this ).addClass('is-checked');
         });
+    });
+}
+
+//Bootstrap Lightbox
+function lightbox(){
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
     });
 }
 
@@ -204,9 +209,7 @@ function updatePerfectFit(){
 function showSecretFriends(){
     $('a.j-secret-friends').on('click', function(e){
         e.preventDefault();
-
         var url = localStorage.getItem('base_url') + 'secret_friends/get_secret_friends/';
-
         $.get(
             url,
             function(response){
@@ -214,13 +217,17 @@ function showSecretFriends(){
                 $.each(secret_friends_json, function(i, friend){
                     console.log(friend);
                     var friend_url = localStorage.getItem('base_url') + 'secret_friends/create_message/' + friend.group_friend_id;
-                    var secret_friend_html = '<a href="' + friend_url + '">';
-                    secret_friend_html += '<img src="' + friend.friend_picture + '" />';
-                    secret_friend_html += '<p>' + friend.name + '</p>';
-                    secret_friend_html += '<p>' + friend.group + '</p>';
-                    secret_friend_html += '</a>';
-                    $(secret_friend_html).appendTo('.j-modal');
+                    var secret_friend_html = '<li>';
+                        secret_friend_html += '<a href="' + friend_url + '">';
+                        secret_friend_html += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="' + friend.friend_picture + '" /><div class="[ three-quarter-width ] [ inline-block middle ]">';
+                        secret_friend_html += '<p>' + friend.name + '</p>';
+                        secret_friend_html += '<p>' + friend.group + '</p>';
+                        secret_friend_html += '</div>';
+                        secret_friend_html += '</a>';
+                        secret_friend_html += '</li>';
+                    $(secret_friend_html).appendTo('.j-modal ul');
                 });
+                $('.j-modal').show();
             }// response
         );
     });
@@ -330,7 +337,7 @@ function removeGroupFriend(){
 
         var group_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
-        
+
         group_friend_data['group_id'] = $(this).data('group');
         group_friend_data['friend_id'] = $(this).data('friend');
 

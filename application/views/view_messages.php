@@ -9,7 +9,13 @@
             </div>
         </div>
     </div>
-    <div class="j-modal"></div>
+    <div class="j-modal">
+        <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
+        <p class="[ center-block ] [ trade ]" for="name">AMIGOS</p>
+        <ul class="list-unstyled">
+
+        </ul>
+    </div>
     <?php if($messages != 0) { ?>
         <?php foreach ($messages as $key => $message) { ?>
             <div class="[ row ]">

@@ -83,6 +83,7 @@
 
             <?php if($current_view == 'catalog') { ?>
                 runIstitope();
+                lightbox();
             <?php } ?>
 
             <?php if($current_view == 'view_video') { ?>
@@ -125,10 +126,10 @@
                 });
 
                 $('input[name=file-mobile]').nicefileinput({
-                    label: 'Graba tu video'
+                    label: 'GRABA TU VIDEO '
                 });
                 $('input[name=file-desktop]').nicefileinput({
-                    label: 'Seleccionar archivo'
+                    label: 'SELECCIONA TU VIDEO '
                 });
             <?php } ?>
 
