@@ -308,7 +308,7 @@ function inviteFriends(form){
 
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '297868607079106',
+            appId      : '293571087508858',
             cookie     : true,
             xfbml      : true,
             version    : 'v2.1'
