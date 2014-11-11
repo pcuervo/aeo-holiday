@@ -83,7 +83,11 @@
 
             <?php if($current_view == 'catalog') { ?>
                 runIstitope();
-                lightbox();
+                <?php if ( $is_mobile == 1 ){ ?>
+                    lightbox();
+                <?php } else { ?>
+                    noLightbox();
+                <?php } ?>
             <?php } ?>
 
             <?php if($current_view == 'view_video') { ?>

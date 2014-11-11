@@ -129,6 +129,13 @@ function lightbox(){
     });
 }
 
+//Eliminar Bootstrap Lightbox para desktop
+function noLightbox(){
+    $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+        event.preventDefault();
+    });
+}
+
 
 /*****************************
 	AJAX functions
