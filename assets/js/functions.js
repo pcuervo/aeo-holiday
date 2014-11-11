@@ -151,6 +151,30 @@ function quitarOption(){
 /*****************************
 	AJAX functions
  *****************************/
+ /**
+ * Send coupon by email to current user using AJAX
+ * @return void
+ */
+function send_coupon_email(){
+
+    $('.j-send-email a').on('click', function(){
+        var email_data = $('.j-send-email').serialize();
+        var url = '/dashboard/send_coupon_by_email';
+
+        console.log(email_data);
+        
+        $.post(
+            url,
+            email_data,
+            function(response){
+                console.log(response);
+                //var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
+                //window.location = coupon_url;
+            }// response
+        );
+    });
+}// send_coupon_email
+
 /**
  * Create exchange group using AJAX
  * @return void
@@ -206,6 +230,7 @@ function updatePerfectFit(){
         var perfect_fit_data = $('.j_update_perfect_fit').serialize();
         var url = localStorage.getItem('base_url') + 'dashboard/create_perfect_fit';
 
+        console.log(perfect_fit_data);
         $.post(
             url,
             perfect_fit_data,
