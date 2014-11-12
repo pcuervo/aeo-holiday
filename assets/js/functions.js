@@ -693,15 +693,16 @@ function getAppReports(){
         dates['start_date'] = $('input[name="start_date"]').val();
         dates['end_date'] = $('input[name="end_date"]').val();
 
+        console.log(dates);
         getAcceptedInvitations(dates);
 
     });
 }// getAppReports
 
 function getAcceptedInvitations(dates){
-
+    var url = localStorage.getItem('base_url') + 'cms/get_accepted_invitations_by_date';
     $.post(
-        '/cms/dashboard/get_accepted_invitations_by_date',
+        url,
         dates,
         function(response){
             console.log(response);
