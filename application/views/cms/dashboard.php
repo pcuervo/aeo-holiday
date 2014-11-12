@@ -1,21 +1,33 @@
 <div class="[ contenido ] [ container ]">
     <div class="[ row ]">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
-            <h3 class="[ text-center ] [ margin-bottom-big ]">Panel de administración</h3>
-            <p><?php echo $_SESSION['username']; ?></p>
-            <h4>Totales</h4>
-                <p>Invitaciones aceptadas: <?php echo $total_accepted_invitations ?></p>
-
-                <p>Invitaciones pendientes: <?php echo $total_pending_invitations ?></p>
-
-                <p>Mensajes enviados: <?php echo $total_sent_messages ?></p>
-
-                <p>Grupos de intercambio: <?php echo $total_exchange_groups ?></p>
-
-                <p>Usuarios: <?php echo $total_fb_users ?></p>
+            <h3 class="[ text-center ] [ margin-bottom-small ]">Panel de administración</h3>
+            <h3 class="[ text-center ] [ margin-bottom-big ]"><small><?php echo $_SESSION['username']; ?></small> </h3>
+            <h3 class="[ text-center ] [ margin-bottom ]">Totales</h4>
+            <div class="[ row ]">
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Invitaciones aceptadas</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_accepted_invitations ?></p>
+                </div>
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Invitaciones pendientes</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_pending_invitations ?></p>
+                </div>
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Mensajes enviados</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_sent_messages ?></p>
+                </div>
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Grupos de intercambio</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_exchange_groups ?></p>
+                </div>
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Usuarios</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_fb_users ?></p>
+                </div>
+            </div><!-- row -->
             <hr>
-
-            <h4>Reportes por fecha</h4>
+            <h3 class="[ text-center ]">Reportes por fecha</h4>
             <div class="[ text-center ]">
                 <form class="[ white ] [ margin-bottom ] [ j-get-reports ]">
                     <div class="[ form-group ] [ margin-bottom ]">
@@ -29,9 +41,7 @@
                     <button class="[ btn btn-primary btn-go ]"><span>Buscar</span></button>
                 </form>
             </div>
-            <h5>Resultados</h5>
-
-            <h5>Resultados</h5>
+            <h4 class="[ text-center ]">Resultados</h5>
             <div class="results">
 
             </div>
