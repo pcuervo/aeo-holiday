@@ -145,14 +145,48 @@ function quitarOption(){
     });
 }
 
-//Ajax loader
-function ajaxLoader(){
-    $(document).ajaxStart(function() {
-        $('.loader').show();
+function dateRange(){
+    $('.j-start_date').datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 1,
+      dateFormat: 'yy-mm-dd',
+      onClose: function( selectedDate ) {
+        $('.j-end_date').datepicker( "option", "minDate", selectedDate );
+      }
     });
-    $(document).ajaxStop(function(){
-        $('.loader').hide();
+    $('.j-end_date').datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      dateFormat: 'yy-mm-dd',
+      onClose: function( selectedDate ) {
+        $('j-start_date').datepicker( "option", "maxDate", selectedDate );
+      }
     });
+}
+
+function total_accepted_invitations(){
+    console.log('total_accepted_invitations');
+    var data = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(162, 43, 56, 1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+            }
+        ]
+    };
+    console.log(data);
+    var ctx = $('#total_accepted_invitations').get(0).getContext('2d');
+    console.log(ctx);
+    new Chart(ctx).Bar(data);
 }
 
 
@@ -174,7 +208,6 @@ function send_coupon_email(){
             url,
             email_data,
             function(response){
-                //console.log(response);
                 $('<p>Se ha enviado tu correo</p>').appendTo('.j-send-email');
                 //var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
                 //window.location = coupon_url;
@@ -318,15 +351,17 @@ function videoPost(url){
  */
 function getUnreadMessages(){
     var url = localStorage.getItem('base_url') + 'dashboard/get_unread_messages/';
+    $('.actividad-grupo .loader').show();
     $.get(
         url,
         function(response){
+            $('.actividad-grupo .loader').hide();
             var mensajes_json = $.parseJSON(response);
             var url_mensajes = localStorage.getItem('base_url') + 'secret_friends/view_messages/';
             $.each(mensajes_json, function(i, val){
                 var html_mensaje = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                     html_mensaje += '<p class="[ text-center ]">Tienes un mensaje de tu amigo secreto del grupo ' + val.group_name + '</p>';
-                    html_mensaje += '<a class="[ btn btn-primary btn-go ]" href="' + url_mensajes + '"><span>Ver mensaje</span></a>';
+                    html_mensaje += '<div class="[ text-center ]"><a class="[ btn btn-primary btn-go ]" href="' + url_mensajes + '"><span>Ver mensaje</span></a></div>';
                     html_mensaje += '</div>';
                 $(html_mensaje).appendTo('.actividad-mensajes');
             });
@@ -340,9 +375,11 @@ function getUnreadMessages(){
  */
 function getUserActiviy(){
     var url = localStorage.getItem('base_url') + 'dashboard/get_user_activity/';
+    $('.actividad-mensajes .loader').show();
     $.get(
         url,
         function(response){
+            $('.actividad-mensajes .loader').hide();
             var activity_json = $.parseJSON(response);
             $.each(activity_json, function(i, activity){
                 var html_activity;
@@ -385,24 +422,51 @@ function getUserActiviy(){
 function acceptGroupInvitation(){
     $('.j-accept-invitation').on('click', function(e){
         e.preventDefault();
-
-        var invited_friend_data = {};
-        var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
-
-        invited_friend_data['group_id'] = $(this).data('group');
-        invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
-
-        console.log(invited_friend_data);
+        var invitacion = $(this).closest('.invitacion-intercambio');
+        var loader = $(this).closest('.invitacion-intercambio').find('.loader');
+        loader.show();
+        var group_data = {};
+        var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
+        group_data['group_id'] = $(this).data('group');
+        //console.log(group_data);
         $.post(
             url,
-            invited_friend_data,
+            group_data,
             function(response){
-                console.log(response);
+                // Agregar feedback
+                $(invitacion).after('<p class="[ text-center ]">Has aceptado la invitación.</p>');
+                invitacion.remove();
             }// response
         );
         ga('send', 'event', 'solicitudes', 'click', 'aceptarIntercambio');
     });
 }// acceptGroupInvitation
+
+/**
+ * Declines a group invitation
+ * @return void
+ */
+function declineGroupInvitation(){
+    $('.j-decline-invitation').on('click', function(e){
+        e.preventDefault();
+        var invitacion = $(this).closest('.invitacion-intercambio');
+        var loader = $(this).closest('.invitacion-intercambio').find('.loader');
+        var group_data = {};
+        var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
+        group_data['group_id'] = $(this).data('group');
+        $.post(
+            url,
+            group_data,
+            function(response){
+                // Agregar feedback
+                console.log(response);
+                $(invitacion).after('<p class="[ text-center ]">Has rechazado la invitación.</p>');
+                invitacion.remove();
+            }// response
+        );
+        ga('send', 'event', 'solicitudes', 'click', 'rechazarIntercambio');
+    });
+}// declineGroupInvitation
 
 /**
  * Remove a friend from group
@@ -536,6 +600,9 @@ function initWebCam(){
         fileName:'demo549066',
         connected:showRecord
     });
+    function remaining(value) {
+        $('.j-timer').html(value);
+    }
     function showRecord() {
         $( "#recordStartButton" ).attr( "disabled", false );
     }
@@ -544,6 +611,7 @@ function initWebCam(){
         $( "#recordStopButton" ).attr( "disabled", false );
         $( "#recordPauseResumeButton" ).attr( "disabled", false );
         $.scriptcam.startRecording();
+        stopRecording();
     }
     function closeCamera() {
         $("#recordStopButton" ).attr( "disabled", true );
@@ -580,6 +648,22 @@ function initWebCam(){
     $('#recordStopButton').click(function(){
         closeCamera();
     });
+    //Timer para detener el video después de X Segundos
+    function stopRecording(){
+        var myVar = setInterval(function(){timer()}, 1000);
+        var segundos = 15;
+        function timer() {
+            segundos--;
+            $('.j-timer').html(segundos);
+            if ( segundos == 0){
+                closeCamera();
+                myStopFunction();
+            }
+        }
+        function myStopFunction() {
+            clearInterval(myVar);
+        }
+    }
 }
 
 /**
@@ -630,6 +714,48 @@ function saveWebcamVideo(video_url){
     );
 
 }// saveWebcamVideo
+
+
+/*****************************
+    Functions for CMS
+ *****************************/
+
+ /**
+ * Gets reports in a given range of dates
+ * @return void
+ */
+function getAppReports(){
+    console.log('getAppReports ready...');
+
+    $('.j-get-reports button').on('click', function(e){
+        e.preventDefault();
+
+        var dates = {}
+        // TODO: Meter validación fechas
+        dates['start_date'] = $('input[name="start_date"]').val();
+        dates['end_date'] = $('input[name="end_date"]').val();
+
+        console.log(dates);
+        getAcceptedInvitations(dates);
+
+    });
+}// getAppReports
+
+function getAcceptedInvitations(dates){
+    var url = '/cms/get_accepted_invitations_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+           
+            console.log(response);
+                
+        }
+    );
+}// getAcceptedInvitations
+
+
+
 
 
 

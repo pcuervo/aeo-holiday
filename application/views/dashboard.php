@@ -18,7 +18,6 @@
             </div>
         </div>
     </div><!-- row -->
-    <hr class="[ col-xs-12 col-sm-8 ] [ center-block ]" >
     <div class="[ row ] [ margin-bottom ]">
         <div class="[ col-xs-12 col-sm-8 ] [ center-block ]">
             <ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -44,8 +43,11 @@
                                     </div><!-- row -->
                                     <div class="[ text-center ] [ ]">
                                         <a href="#" class="[ btn btn-default btn-go ] [ margin-bottom ] [ j-accept-invitation ]" data-group="<?php echo $invitation['group_id'] ?>"><span>Aceptar</span></a>
-                                        <a href="#" class="[ btn btn-default btn-no ] [ margin-bottom ] [ j-decline-invitation ]" data-group="<?php echo $invitation['group_id'] ?>" onclick="ga('send', 'event', 'solicitudes', 'click', 'rechazarIntercambio');"><span>Rechazar</span></a>
+                                        <a href="#" class="[ btn btn-default btn-no ] [ margin-bottom ] [ j-decline-invitation ]" data-group="<?php echo $invitation['group_id'] ?>" ><span>Rechazar</span></a>
                                     </div>
+                                    <div class="[ loader invitacion ] [ center-block ]">
+                                        <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.gif">
+                                    </div><!-- loader -->
                                 </div><!-- invitacion-intercambio -->
                             <?php } ?>
                         </div><!-- invitaciones-contenedor -->
@@ -78,20 +80,19 @@
             </div>
         </div>
     </div><!-- row -->
-    <hr class="[ col-xs-12 col-sm-8 ] [ center-block ]" >
     <div class="[ col-xs-12 col-sm-8 ] [ center-block ] [ clearfix ] [ actividad ]">
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
-            <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
-                <div class="[ loader ] [ center-block ]">
-                    <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.svg">
-                    <p class="[ text-center ]">buscando actividad…</p>
-                </div><!-- loader -->
-            </div>
             <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
                 <div class="[ loader ] [ center-block ]">
-                    <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.svg">
+                    <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.gif">
                     <p class="[ text-center ]">buscando mensajes…</p>
+                </div><!-- loader -->
+            </div>
+            <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
+                <div class="[ loader ] [ center-block ]">
+                    <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.gif">
+                    <p class="[ text-center ]">buscando actividad…</p>
                 </div><!-- loader -->
             </div>
         </div>

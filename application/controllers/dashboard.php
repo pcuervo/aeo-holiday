@@ -1,4 +1,4 @@
-ƒ<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Dashboard extends CI_Controller {
 
@@ -302,7 +302,6 @@ class Dashboard extends CI_Controller {
 		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
 		$data['secret_friend'] = $this->secret_friend->get_group_secret_friends_by_user($current_fb_user['id'], $group_id);
-		var_dump($data['secret_friend']);
 		// Get user's groups to display in the menu
 		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($data['fb_user_id']);
@@ -380,12 +379,13 @@ class Dashboard extends CI_Controller {
 	/**
 	 * Declines an exchange group request
 	 *
-	 * @param int $group_id
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	function accept_invitation($group_id)
+	function accept_invitation()
 	{
+		$group_id = $_POST['group_id'];
+		
 		$current_fb_user = $this->facebook->get_user();
 
 		$this->load->model('group_invitation');
@@ -409,7 +409,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('user_activity');
 		$this->user_activity->invitation_accepted($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 2);
 
-		$this->index();
+		echo 'success';
 	}// accept_invitation
 
 	/**
@@ -419,8 +419,10 @@ class Dashboard extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	function decline_invitation($group_id)
+	function decline_invitation()
 	{
+		$group_id = $_POST['group_id'];
+		
 		$current_fb_user = $this->facebook->get_user();
 
 		$this->load->model('group_invitation');
@@ -436,7 +438,7 @@ class Dashboard extends CI_Controller {
 		$this->load->model('user_activity');
 		$this->user_activity->invitation_rejected($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 3);
 
-		$this->index();
+		echo 'success';
 	}// decline_invitation
 
 	/**

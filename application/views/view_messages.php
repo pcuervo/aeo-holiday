@@ -4,17 +4,20 @@
         <div class="row">
             <div class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
                 <p class="[ text-center ]">Escribir un mensaje para un amigo secreto</p>
-                <a href="" class="[ btn btn-primary btn-go ] [ margin-bottom ] [ j-secret-friends ]">Mensaje nuevo </a>
+                <div class="[ text-center ]">
+                    <a href="" class="[ btn btn-primary btn-go ] [ margin-bottom ] [ j-secret-friends ]">Mensaje nuevo </a>
+                </div>
                 <hr>
             </div>
         </div>
     </div>
     <div class="j-modal">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
-        <p class="[ center-block ] [ trade ]" for="name">AMIGOS</p>
-        <ul class="list-unstyled">
+            <p class="[ center-block ] [ trade ]" for="name">Selecciona un amigo:</p>
+            <ul class="list-unstyled">
 
-        </ul>
+            </ul>
+        </div>
     </div>
     <?php if($messages != 0) { ?>
         <?php foreach ($messages as $key => $message) { ?>

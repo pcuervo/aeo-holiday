@@ -5,7 +5,10 @@
             <?php if ( $exchange_groups != 0 ){ ?>
                 <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/cupon.jpg" alt="">
             <?php } else { ?>
-                <h3 class="[ text-center ]">Para utilizar tu cupón, primero debes crear un intercambio.</h3>
+                <h3 class="[ text-center margin-bottom ]">Para utilizar tu cupón, primero debes crear un intercambio.</h3>
+                <div class="text-center">
+                    <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary btn-go ] [ margin-bottom ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intenciónCrearIntercambio');"><span>Crear nuevo intercambio</span></a>
+                </div>
             <?php } ?>
         </div>
         <?php if ( $origin == 'ng' ){ ?>
@@ -18,7 +21,7 @@
         <?php if ( $exchange_groups != 0 ){ ?>
             <div class="[ text-center ] [ margin-bottom ]">
                 <div class="row">
-                    <form action="" class="[ text-center block-center ] [ col-xs-12 col-sm-8 ] [ j-send-email ]">
+                    <form action="" class="[ text-center center-block ] [ col-xs-12 col-sm-8 ] [ j-send-email ]">
                         <input class="[ form-control ] [ margin-bottom ]" type="text" name="email" value="<?php echo utf8_encode($email) ?>">
                         <a href="#" class="[ btn btn-primary btn-go ] [ margin-bottom ]"><span>enviar al correo</span></a>
                     </form>
