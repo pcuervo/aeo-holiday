@@ -65,6 +65,7 @@ class Cms extends CI_Controller {
 		$this->load->model('cms_report');
 		$data['total_accepted_invitations'] = $this->cms_report->total_accepted_invitations();
 		$data['total_pending_invitations'] = $this->cms_report->total_pending_invitations();
+		$data['total_rejected_invitations'] = $this->cms_report->total_rejected_invitations();
 		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();
 		$data['total_fb_users'] = $this->cms_report->total_fb_users();	
 		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	
@@ -114,6 +115,25 @@ class Cms extends CI_Controller {
 		$num_pending_invitations = $this->cms_report->pending_invitations_by_date($start_date, $end_date);
 		
 		echo json_encode($num_pending_invitations);
+
+	}// get_accepted_invitations_by_date
+
+
+	/**
+	 * Data report dasbhoard
+	 *
+	 * @return $num_rejected_invitations
+	 * @author Zurol
+	 **/
+	public function get_rejected_invitations_by_date()
+	{
+		$start_date = $_POST['start_date'];
+		$end_date = $_POST['end_date'];
+	
+		$this->load->model('cms_report');
+		$num_rejected_invitations = $this->cms_report->rejected_invitations_by_date($start_date, $end_date);
+		
+		echo json_encode($num_rejected_invitations);
 
 	}// get_accepted_invitations_by_date
 
