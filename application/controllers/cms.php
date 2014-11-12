@@ -20,7 +20,7 @@ class Cms extends CI_Controller {
 	}// constructor
 
 	/**
-	 * 
+	 * Login or redirect CMS users to dashboard
 	 *
 	 * @return void
 	 * @author Miguel Cabral
@@ -50,7 +50,8 @@ class Cms extends CI_Controller {
 	}// index
 
 	/**
-	 * 
+	 * Data report dasbhoard
+	 *
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
@@ -74,5 +75,21 @@ class Cms extends CI_Controller {
 		$this->load->view('cms/dashboard', $data);
 		$this->load->view('footer');
 	}// dashboard
+
+	/**
+	 * Data report dasbhoard
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function get_accepted_invitations_by_date()
+	{
+		$start_date = $_POST['start_date'];
+		$end_date = $_POST['end_date'];
+	
+		$this->load->model('cms_report');
+		$num_accepted_invitations = $this->cms_report->
+
+	}// get_accepted_invitations_by_date
 
 }// class Cms

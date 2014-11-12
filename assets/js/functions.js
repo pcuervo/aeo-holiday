@@ -683,17 +683,15 @@ function getAppReports(){
         getAcceptedInvitations(dates);
 
     });
-
 }// getAppReports
 
 function getAcceptedInvitations(dates){
+
     $.post(
-        url,
-        secret_friend_data,
+        '/cms/dashboard/get_accepted_invitations_by_date',
+        dates,
         function(response){
-            var secret_friend_url = localStorage.getItem('base_url') + 'secret_friends/view/' + secret_friend_data['group_friend_id'] ;
-            var url = '/secret_friends/view/'+secret_friend_data['group_friend_id'];
-            $('#message').html('<div class="[ text-center ]"><a class="[ btn btn-primary btn-no ]" href="'+url+'"><span>regresar</span></a></div>');
+            console.log(response);
         }
     );
 }// getAcceptedInvitations
