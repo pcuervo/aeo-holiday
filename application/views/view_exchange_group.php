@@ -2,7 +2,7 @@
     <h2 class="[ margin-bottom ] [ text-center ] [ center-block ]">Datos del intercambio</h2>
     <div class="row">
         <form role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
-            <?php if ( $secret_friend ){ ?>
+            <?php if ( $secret_friend != 0 ){ ?>
                 <div class="[ form-group ] [ margin-bottom ]">
                     <label for="">Tu amigo secreto</label>
                     <?php
