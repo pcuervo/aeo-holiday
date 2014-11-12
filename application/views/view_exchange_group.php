@@ -49,7 +49,7 @@
             <ul class="list-unstyled">
                 <?php foreach($group_friends as $key => $friend) { ?>
                     <li>
-                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt=""><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?><a href="#" class="[ j-remove-friend ]" data-group="<?php echo $friend['group_id'] ?>" data-friend="<?php echo $friend['id'] ?>">Eliminar</a></p>
+                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt=""><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?></p>
                     </li>
                 <?php } ?>
             </ul>

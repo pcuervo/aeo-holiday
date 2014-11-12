@@ -20,7 +20,7 @@
             <div class="[ text-center ] [ margin-bottom ]">
                 <form action="" class="[ text-center ] [ j-send-email ]">
                     <input type="text" name="email" value="<?php echo utf8_encode($email) ?>">
-                    <a href="#" class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'cupón', 'click', 'enviarCorreo');"><span>enviar al correo</span></a>
+                    <a href="#" class="[ btn btn-primary btn-go ]"><span>enviar al correo</span></a>
                 </form>
             </div>
             <div class="[ text-center ] [ margin-bottom ]">

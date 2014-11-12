@@ -298,8 +298,10 @@ class Exchange_group extends CI_Model {
 			$friend_picture = $this->facebook->get_user_profile_pic_by_id($row->invited_fb_user_id);
 
 		    $pending_friends[$key] = array(
-				'name' 				=> $friend_info['first_name'].' '.$friend_info['last_name'],
-				'profile_picture' 	=> $friend_picture,
+		    	'group_id'				=> $row->group_id,
+		    	'invited_fb_user_id'	=> $row->invited_fb_user_id,
+				'name' 					=> $friend_info['first_name'].' '.$friend_info['last_name'],
+				'profile_picture' 		=> $friend_picture,
 			);
 		}
 

@@ -60,6 +60,7 @@
                     <?php foreach($group_friends as $key => $friend) { ?>
                         <li>
                             <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?></p>
+                            <a href="#" class="[ j-remove-friend ]" data-group="<?php echo $friend['group_id'] ?>" data-friend="<?php echo $friend['id'] ?>">Eliminar</a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -68,16 +69,17 @@
                 <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
                     <p class="[ center-block ] [ trade ]" for="name">PENDIENTES</p>
                     <ul class="list-unstyled">
-                        <?php foreach($pending_friends as $key => $friend) { ?>
+                        <?php foreach($pending_friends as $key => $friend) {  ?>
                             <li>
                                 <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['profile_picture'] ?>" alt=""><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['name'] ?></p>
+                                <a href="#" class="[ j-remove-invitation ]" data-group="<?php echo $friend['group_id'] ?>" data-fb-user="<?php echo $friend['invited_fb_user_id']   ?>">Eliminar</a>
                             </li>
                         <?php } ?>
                     </ul>
                 </div>
             <?php }// if ?>
             <div class="text-center">
-                <a href="#" class="[ btn btn-primary btn-go ] [ j_invite_friends ] [ margin-bottom ]" onclick="ga('send', 'event', 'intercambio', 'click', 'agregarMASInvitados');" ><span>Invitar más amigos</span></a><br/>
+                <a href="#" class="[ btn btn-primary btn-go ] [ j_invite_friends ] [ margin-bottom ]" ><span>Invitar más amigos</span></a><br/>
                 <button class="[ btn btn-primary btn-go ]"><span>Guardar cambios</span></button>
             </div>
         </form>
