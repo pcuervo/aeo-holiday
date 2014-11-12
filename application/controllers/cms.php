@@ -93,7 +93,7 @@ class Cms extends CI_Controller {
 		$this->load->model('cms_report');
 		$num_accepted_invitations = $this->cms_report->accepted_invitations_by_date($start_date, $end_date);
 		
-		return $num_accepted_invitations;
+		echo $num_accepted_invitations;
 
 	}// get_accepted_invitations_by_date
 
