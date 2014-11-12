@@ -3,7 +3,7 @@
     <h4 class="[ text-center ]">Para <?php echo $secret_friend['name'] ?></h4>
     <h4 class="[ text-center ] [ margin-bottom ]">(<?php echo $secret_friend['group'] ?>)</h4>
     <div class="[ text-center ] [ margin-bottom ]">
-        <p class="[ uppercase ]">Se le mandará una notificación del video a <?php echo $secret_friend['name'] ?>  después del intercambio.</p>
+        <p class="[ uppercase ]">Se le mandará una notificación del video a <?php echo $secret_friend['name'] ?> después del intercambio.</p>
     </div>
     <div class="[ row ]">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
@@ -20,6 +20,7 @@
                     </div>
                 <?php } else { ?>
                     <div id="webcam"></div>
+                    <p class="[ text-center uppercase ]"><small>El video debe durar máximo <span class="timer j-timer">15</span> segundos.</small></p>
                     <div class="[ text-center margin-bottom ]">
                         <button id="recordStartButton" class="[ btn btn-primary btn-go ]" disabled><span>Comenzar a grabar</span></button>
                         <button id="recordStopButton" class="[ btn btn-primary btn-go ]" disabled><span>Detener grabación</span></button>

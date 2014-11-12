@@ -20,7 +20,7 @@ class Cms extends CI_Controller {
 	}// constructor
 
 	/**
-	 * 
+	 *
 	 *
 	 * @return void
 	 * @author Miguel Cabral
@@ -43,14 +43,13 @@ class Cms extends CI_Controller {
 				$this->dashboard();
 			}
 		}
-		
-		$this->load->view('header');
+
+		$this->load->view('cms/header');
 		$this->load->view('cms/login', $data);
-		$this->load->view('footer');
+		$this->load->view('cms/footer');
 	}// index
 
 	/**
-	 * 
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
@@ -59,7 +58,7 @@ class Cms extends CI_Controller {
 
 		if(! isset($_SESSION['username']))
 			$this->index();
-	
+
 		// Cargar todos los datos totales
 		$this->load->model('cms_report');
 		$data['total_accepted_invitations'] = $this->cms_report->total_accepted_invitations();
@@ -74,9 +73,10 @@ class Cms extends CI_Controller {
 
 		// Cargar busqueda (si existe) con datos por fecha
 
-		$this->load->view('header');
+		// Cargar vista login
+		$this->load->view('cms/header');
 		$this->load->view('cms/dashboard', $data);
-		$this->load->view('footer');
+		$this->load->view('cms/footer');
 	}// dashboard
 
 }// class Cms
