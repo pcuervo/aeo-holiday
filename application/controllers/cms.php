@@ -74,6 +74,8 @@ class Cms extends CI_Controller {
 		// Cargar el numero total de usuarios de facebook
 		$data['total_fb_users'] = $this->cms_report->total_fb_users();		
 
+		// Cargar el numero total de mensajes
+		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();		
 
 
 

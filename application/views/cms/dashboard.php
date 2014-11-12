@@ -8,6 +8,8 @@
 
                 <p>Invitaciones pendientes: <?php echo $total_pending_invitations ?></p>
 
+                <p>Mensajes enviados: <?php echo $total_sent_messages ?></p>
+                
                 <p>Grupos de intercambio: <?php echo $total_exchange_groups ?></p>
 
                 <p>Usuarios: <?php echo $total_fb_users ?></p>

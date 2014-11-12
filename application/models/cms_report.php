@@ -83,4 +83,23 @@ class Cms_report extends CI_Model {
 	}// total_fb_users
 
 
+
+	/**
+	 * Returns the total number of users of the site overall
+	 *
+	 * @return int $total_sent_messages;
+	 * @author Zurol
+	 **/
+	function total_sent_messages()
+	{
+		// SELECT COUNT(*) FROM `messages`;
+		$this->db->select('id');
+		$this->db->from('messages');
+
+		return $this->db->count_all_results();
+	}// total_sent_messages
+
+
+
+
 }// clase Cms_report
