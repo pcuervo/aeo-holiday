@@ -68,7 +68,7 @@ class Cms extends CI_Controller {
 		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	
 		
 		// Cargar el numero total de intercambios cerrados
-		$data['total_closed_exchanges'] = $this->cms_report->total_closed_exchanges();		
+		//$data['total_closed_exchanges'] = $this->cms_report->total_closed_exchanges();		
 
 
 		// Cargar busqueda (si existe) con datos por fecha
