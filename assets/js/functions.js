@@ -317,9 +317,11 @@ function videoPost(url){
  */
 function getUnreadMessages(){
     var url = localStorage.getItem('base_url') + 'dashboard/get_unread_messages/';
+    $('.actividad-grupo .loader').show();
     $.get(
         url,
         function(response){
+            $('.actividad-grupo .loader').hide();
             var mensajes_json = $.parseJSON(response);
             var url_mensajes = localStorage.getItem('base_url') + 'secret_friends/view_messages/';
             $.each(mensajes_json, function(i, val){
@@ -386,18 +388,20 @@ function getUserActiviy(){
 function acceptGroupInvitation(){
     $('.j-accept-invitation').on('click', function(e){
         e.preventDefault();
-
+        var invitacion = $(this).closest('.invitacion-intercambio');
+        var loader = $(this).closest('.invitacion-intercambio').find('.loader');
+        loader.show();
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
-
         group_data['group_id'] = $(this).data('group');
-        console.log(group_data);
+        //console.log(group_data);
         $.post(
             url,
             group_data,
             function(response){
                 // Agregar feedback
-                console.log(response);
+                $(invitacion).after('<p class="[ text-center ]">Has aceptado la invitación.</p>');
+                invitacion.remove();
             }// response
         );
         ga('send', 'event', 'solicitudes', 'click', 'aceptarIntercambio');
@@ -411,18 +415,19 @@ function acceptGroupInvitation(){
 function declineGroupInvitation(){
     $('.j-decline-invitation').on('click', function(e){
         e.preventDefault();
-
+        var invitacion = $(this).closest('.invitacion-intercambio');
+        var loader = $(this).closest('.invitacion-intercambio').find('.loader');
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
-
         group_data['group_id'] = $(this).data('group');
-        console.log(group_data);
         $.post(
             url,
             group_data,
             function(response){
                 // Agregar feedback
                 console.log(response);
+                $(invitacion).after('<p class="[ text-center ]">Has rechazado la invitación.</p>');
+                invitacion.remove();
             }// response
         );
         ga('send', 'event', 'solicitudes', 'click', 'rechazarIntercambio');

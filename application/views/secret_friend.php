@@ -1,7 +1,7 @@
 <div class="[ contenido ] [ container ]">
     <h2 class="text-center">Mi amigo secreto</h2>
     <div class="[ row ] [ margin-bottom ]">
-        <div class="[ col-xs-8 col-sm-4 ] [ center-block ] [  ]">
+        <div class="[ col-xs-6 col-sm-4 ] [ center-block ] [  ]">
             <img class="[ img-responsive img-circle user-photo ]" src="<?php echo $secret_friend['friend_picture'] ?>" alt="">
         </div>
     </div><!-- row -->
