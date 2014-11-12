@@ -380,6 +380,56 @@ function getUserActiviy(){
 }// getUserActiviy
 
 /**
+ * Accepts a group invitation
+ * @return void
+ */
+function acceptGroupInvitation(){
+    $('.j-accept-invitation').on('click', function(e){
+        e.preventDefault();
+
+        var group_data = {};
+        var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
+
+        group_data['group_id'] = $(this).data('group');
+        console.log(group_data);
+        $.post(
+            url,
+            group_data,
+            function(response){
+                // Agregar feedback
+                console.log(response);
+            }// response
+        );
+        ga('send', 'event', 'solicitudes', 'click', 'aceptarIntercambio');
+    });
+}// acceptGroupInvitation
+
+/**
+ * Declines a group invitation
+ * @return void
+ */
+function declineGroupInvitation(){
+    $('.j-decline-invitation').on('click', function(e){
+        e.preventDefault();
+
+        var group_data = {};
+        var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
+
+        group_data['group_id'] = $(this).data('group');
+        console.log(group_data);
+        $.post(
+            url,
+            group_data,
+            function(response){
+                // Agregar feedback
+                console.log(response);
+            }// response
+        );
+        ga('send', 'event', 'solicitudes', 'click', 'rechazarIntercambio');
+    });
+}// declineGroupInvitation
+
+/**
  * Remove a friend from group
  * @return void
  */

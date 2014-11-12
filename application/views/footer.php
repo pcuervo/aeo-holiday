@@ -74,6 +74,8 @@
             ajaxLoader();
 
             <?php if($current_view == 'dashboard') { ?>
+                acceptGroupInvitation();
+                declineGroupInvitation()
                 getUnreadMessages();
                 getUserActiviy();
                 $('#myTab a').click(function (e) {
@@ -98,8 +100,6 @@
             <?php if($current_view == 'view_coupon') { ?>
                 send_coupon_email();
             <?php } ?>
-
-
 
             <?php if($current_view == 'new_exchange_group') { ?>
                 formValidation('.j_group_form');
