@@ -5,13 +5,8 @@
             <?php if ( $secret_friend != 0 ){ ?>
                 <div class="[ form-group ] [ margin-bottom ]">
                     <label for="">Tu amigo secreto</label>
-                    <div class="row">
-                         <div class="[ col-xs-4 col-sm-2 ]">
-                            <img class="[ img-responsive img-circle ] [ user-photo ]" src="<?php echo $secret_friend['friend_picture']  ?>" alt="">
-                        </div>
-                        <div class="[ col-xs-8 col-sm-10 ]">
-                            <p><?php echo $secret_friend['name']; ?></p>
-                        </div>
+                    <div class="[ margin-bottom ] [ actividad-aviso ]">
+                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $secret_friend['friend_picture']  ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $secret_friend['name']; ?></p>
                     </div>
                 </div><!-- form-group -->
             <?php } ?>
@@ -39,7 +34,6 @@
                 <label for="">Descripción</label>
                 <p><?php echo $group_details['description'] ?></p>
             </div><!-- form-group -->
-
             <div class="[ form-group ] [ margin-bottom ]">
                 <label for="">Agregar a mi calendario</label>
                 <br />
