@@ -61,7 +61,7 @@
                     <div class="[ col-xs-6 ]">
                         <canvas id="total_accepted_invitations"></canvas>
                     </div>
-                    <!-- <div class="[ col-xs-6 ]">
+                    <div class="[ col-xs-6 ]">
                         <canvas id="total_pending_invitations"></canvas>
                     </div>
                     <div class="[ col-xs-6 ]">
@@ -75,7 +75,7 @@
                     </div>
                     <div class="[ col-xs-6 ]">
                         <canvas id="total_closed_exchange_groups"></canvas>
-                    </div> -->
+                    </div>
                 </div><!-- row -->
             </div><!-- results -->
         </div>

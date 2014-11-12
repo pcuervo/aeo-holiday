@@ -167,7 +167,6 @@ function dateRange(){
 }
 
 function total_accepted_invitations(){
-    console.log('total_accepted_invitations');
     var data = {
         labels: ["January", "February", "March", "April", "May", "June", "July"],
         datasets: [
