@@ -18,7 +18,7 @@
             </div>
         </div>
     </div><!-- row -->
-    <hr class="[ center-block ]" >
+    <hr class="[ col-xs-12 col-sm-8 ] [ center-block ]" >
     <div class="[ row ] [ margin-bottom ]">
         <div class="[ col-xs-12 col-sm-8 ] [ center-block ]">
             <ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -78,8 +78,8 @@
             </div>
         </div>
     </div><!-- row -->
-    <hr class="[ center-block ]">
-    <div class="[ col-xs-12 ] [ clearfix ] [ actividad ]">
+    <hr class="[ col-xs-12 col-sm-8 ] [ center-block ]" >
+    <div class="[ col-xs-12 col-sm-8 ] [ center-block ] [ clearfix ] [ actividad ]">
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
             <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
@@ -96,5 +96,4 @@
             </div>
         </div>
     </div><!-- actividad -->
-
 </div><!-- CONTENIDO -->
