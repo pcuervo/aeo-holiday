@@ -747,9 +747,9 @@ function getAcceptedInvitations(dates){
         url,
         dates,
         function(response){
-           
+
             console.log(response);
-                
+
         }
     );
 }// getAcceptedInvitations
