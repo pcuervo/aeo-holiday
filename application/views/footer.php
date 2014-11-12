@@ -113,6 +113,7 @@
                 inviteFriends('.j_edit_group_form');
                 formValidation('.j_edit_group_form');
                 removeGroupFriend();
+                removeInvitedFriend();
             <?php } ?>
 
             <?php if($current_view == 'perfect_fit') { ?>
