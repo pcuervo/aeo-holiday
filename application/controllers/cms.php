@@ -99,7 +99,6 @@ class Cms extends CI_Controller {
 
 	}// get_accepted_invitations_by_date
 
-
 	/**
 	 * Data report dasbhoard
 	 *
