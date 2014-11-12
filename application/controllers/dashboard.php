@@ -140,6 +140,26 @@ class Dashboard extends CI_Controller {
 	}// remove_group_friend
 
 	/**
+	 * Remove an invited friend from a group
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function remove_invited_friend()
+	{
+		$this->load->model('exchange_group');
+
+		$fb_friend_id = $_POST['fb_friend_id'];
+		$group_id = $_POST['group_id'];
+		$this->exchange_group->remove_invited_friend($fb_friend_id, $group_id);
+
+		echo 'success';
+
+	}// remove_invited_friend
+
+	
+
+	/**
 	 * Displays the user's coupon
 	 *
 	 * @return void
@@ -188,6 +208,7 @@ class Dashboard extends CI_Controller {
         $mail->IsSMTP();
         $mail->SMTPAuth 	= true; 
         $mail->Host       	= "smtp.mandrillapp.com";     
+        $mail->CharSet = 'UTF-8';
         $mail->Port       	= 587;                  
         $mail->Username   	= "ti@wannaflock.com"; 
         $mail->Password   	= "Ipq7HVO-FAELQsgPyeovhQ";           
@@ -195,7 +216,7 @@ class Dashboard extends CI_Controller {
         $mail->AddReplyTo("aeomexico@ae.com","American Eagle Outfitters");  
         $mail->Subject    	= "Tu cupón AEO está aquí";
         $mail->Body      	= "<img src='".base_url()."/assets/images/cupon.jpg' width='600' height='1000' />";
-        $mail->AltBody    	= utf8_encode("Tu cupón AEO está aquí");
+        $mail->AltBody    	= utf8_decode("Tu cupón AEO está aquí");
         $destino = $email; // Who is addressed the email to
         $mail->AddAddress($destino, $current_fb_user['first_name'].' '.$current_fb_user['last_name']);
 

@@ -171,6 +171,8 @@ function send_coupon_email(){
         email_data['email'] = $('.j-send-email input').val();
         var url = '/dashboard/send_coupon_by_email';
 
+        console.log(email_data);
+
         $.post(
             url,
             email_data,
@@ -392,7 +394,7 @@ function removeGroupFriend(){
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
 
         group_friend_data['group_id'] = $(this).data('group');
-        group_friend_data['friend_id'] = $(this).data('friend');
+        group_friend_data['fb_friend_id'] = $(this).data('fb-friend');
 
         console.log(group_friend_data);
         $.post(
@@ -404,6 +406,31 @@ function removeGroupFriend(){
         );
     });
 }// removeGroupFriend
+
+/**
+ * Remove an invited friend from group
+ * @return void
+ */
+function removeInvitedFriend(){
+    $('.j-remove-invitation').on('click', function(e){
+        e.preventDefault();
+
+        var invited_friend_data = {};
+        var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
+
+        invited_friend_data['group_id'] = $(this).data('group');
+        invited_friend_data['invited_fb_user_id'] = $(this).data('friend');
+
+        console.log(invited_friend_data);
+        $.post(
+            url,
+            invited_friend_data,
+            function(response){
+                console.log(response);
+            }// response
+        );
+    });
+}// removeInvitedFriend
 
 /*****************************
 	Facebook API functions
