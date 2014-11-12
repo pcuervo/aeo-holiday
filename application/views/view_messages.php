@@ -4,7 +4,9 @@
         <div class="row">
             <div class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
                 <p class="[ text-center ]">Escribir un mensaje para un amigo secreto</p>
-                <a href="" class="[ btn btn-primary btn-go ] [ margin-bottom ] [ j-secret-friends ]">Mensaje nuevo </a>
+                <div class="[ text-center ]">
+                    <a href="" class="[ btn btn-primary btn-go ] [ margin-bottom ] [ j-secret-friends ]">Mensaje nuevo </a>
+                </div>
                 <hr>
             </div>
         </div>

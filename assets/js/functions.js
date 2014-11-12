@@ -174,7 +174,6 @@ function send_coupon_email(){
             url,
             email_data,
             function(response){
-                //console.log(response);
                 $('<p>Se ha enviado tu correo</p>').appendTo('.j-send-email');
                 //var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
                 //window.location = coupon_url;
@@ -377,32 +376,6 @@ function getUserActiviy(){
         }// response
     );
 }// getUserActiviy
-
-/**
- * Accepts a group invitation
- * @return void
- */
-function acceptGroupInvitation(){
-    $('.j-accept-invitation').on('click', function(e){
-        e.preventDefault();
-
-        var invited_friend_data = {};
-        var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
-
-        invited_friend_data['group_id'] = $(this).data('group');
-        invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
-
-        console.log(invited_friend_data);
-        $.post(
-            url,
-            invited_friend_data,
-            function(response){
-                console.log(response);
-            }// response
-        );
-        ga('send', 'event', 'solicitudes', 'click', 'aceptarIntercambio');
-    });
-}// acceptGroupInvitation
 
 /**
  * Remove a friend from group

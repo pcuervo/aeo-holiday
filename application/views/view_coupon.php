@@ -18,7 +18,7 @@
         <?php if ( $exchange_groups != 0 ){ ?>
             <div class="[ text-center ] [ margin-bottom ]">
                 <div class="row">
-                    <form action="" class="[ text-center block-center ] [ col-xs-12 col-sm-8 ] [ j-send-email ]">
+                    <form action="" class="[ text-center center-block ] [ col-xs-12 col-sm-8 ] [ j-send-email ]">
                         <input class="[ form-control ] [ margin-bottom ]" type="text" name="email" value="<?php echo utf8_encode($email) ?>">
                         <a href="#" class="[ btn btn-primary btn-go ] [ margin-bottom ]"><span>enviar al correo</span></a>
                     </form>
