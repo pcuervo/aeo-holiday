@@ -103,7 +103,7 @@ class Cms_report extends CI_Model {
 		$this->db->select('id');
 		$this->db->where('exchange_date >=', date('Y-m-d'));
 		$this->db->from('exchange_groups');
-		
+
 		return $this->db->count_all_results();
 	}// total_closed_exchanges
 
@@ -127,9 +127,9 @@ class Cms_report extends CI_Model {
 	}// average_users_per_group
 
 	/**
-	 * Returns the total number of users of the site overall
+	 * Returns the total number of accepted invitations in a date range
 	 *
-	 * @return int $accepted_invitations;
+	 * @return mixed $accepted_invitations or 0
 	 * @author Miguel Cabral
 	 **/
 	function accepted_invitations_by_date($start_date, $end_date)
@@ -150,5 +150,33 @@ class Cms_report extends CI_Model {
 
 		return $accepted_invitations;
 	}// accepted_invitations_by_date
+
+
+	/**
+	 * Returns the total number of pending invitations in a date range
+	 *
+	 * @return mixed $pending_invitations or 0
+	 * @author Zurol
+	 **/
+	function pending_invitations_by_date($start_date, $end_date)
+	{
+		$sql_query = 'select DATE(created_at) AS date, COUNT( * ) AS num_invitations FROM group_invitations WHERE created_at BETWEEN "'. $start_date .'" AND  "'. $end_date .'" GROUP BY DATE( created_at );';
+		$query = $this->db->query($sql_query);
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$pending_invitations = array();
+		foreach ($query->result() as $key => $row) {
+			$pending_invitations[$key] = array(
+				'date'				=> $row->date,
+				'num_invitations'	=> $row->num_invitations,
+				);
+		}
+
+		return $pending_invitations;
+	}// pending_invitations_by_date
+
+
 
 }// clase Cms_report
