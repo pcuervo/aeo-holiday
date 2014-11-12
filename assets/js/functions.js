@@ -674,4 +674,44 @@ function saveWebcamVideo(video_url){
 }// saveWebcamVideo
 
 
+/*****************************
+    Functions for CMS
+ *****************************/
+
+ /**
+ * Gets reports in a given range of dates
+ * @return void
+ */
+function getAppReports(){
+    console.log('getAppReports ready...');
+
+    $('.j-get-reports button').on('click', function(e){
+        e.preventDefault();
+
+        var dates = {}
+        dates['start_date'] = $('input[name="start_date"]').val();
+        dates['end_date'] = $('input[name="end_date"]').val();
+
+        getAcceptedInvitations(dates);
+
+    });
+
+}// getAppReports
+
+function getAcceptedInvitations(dates){
+    $.post(
+        url,
+        secret_friend_data,
+        function(response){
+            var secret_friend_url = localStorage.getItem('base_url') + 'secret_friends/view/' + secret_friend_data['group_friend_id'] ;
+            var url = '/secret_friends/view/'+secret_friend_data['group_friend_id'];
+            $('#message').html('<div class="[ text-center ]"><a class="[ btn btn-primary btn-no ]" href="'+url+'"><span>regresar</span></a></div>');
+        }
+    );
+}// getAcceptedInvitations
+
+
+
+
+
 

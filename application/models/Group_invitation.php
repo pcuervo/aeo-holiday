@@ -80,6 +80,8 @@ class Group_invitation extends CI_Model {
 			);
 
 		$this->db->delete('group_invitations', $delete_data);
+		$this->load->model('rejected_invitation');
+		$this->rejected_invitation->save_rejected_invitation($delete_data);
 	}// remove_invitation
 
 	/**

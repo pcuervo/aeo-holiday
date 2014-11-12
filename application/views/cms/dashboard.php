@@ -5,14 +5,22 @@
             <p><?php echo $_SESSION['username']; ?></p>
             <h4>Totales</h4>
                 <p>Invitaciones aceptadas: <?php echo $total_accepted_invitations ?></p>
+
+                <p>Invitaciones pendientes: <?php echo $total_pending_invitations ?></p>
+
+                <p>Mensajes enviados: <?php echo $total_sent_messages ?></p>
+                
+                <p>Grupos de intercambio: <?php echo $total_exchange_groups ?></p>
+
+                <p>Usuarios: <?php echo $total_fb_users ?></p>
             <hr>
 
             <h4>Reportes por fecha</h4>
             <div class="[ text-center ]">
-                <form class="[ white ] [ margin-bottom ] [ j-search- ]">
+                <form class="[ white ] [ margin-bottom ] [ j-get-reports ]">
                     <div class="[ form-group ] [ margin-bottom ]">
-                        <label class="[ center-block ]" for="beginning_date">Fecha inicial</label>
-                        <input type="text" class="[ form-control ]" name="beginning_date">
+                        <label class="[ center-block ]" for="start_date">Fecha inicial</label>
+                        <input type="text" class="[ form-control ]" name="start_date">
                     </div>
                     <div class="[ form-group ] [ margin-bottom ]">
                         <label class="[ center-block ]" for="end_date">Fecha final</label>
@@ -21,6 +29,8 @@
                     <button class="[ btn btn-primary btn-go ]"><span>Buscar</span></button>
                 </form>
             </div>
+            <h5>Resultados</h5>
+
             <h5>Resultados</h5>
             <div class="results">
                 
