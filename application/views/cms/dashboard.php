@@ -30,7 +30,7 @@
                     <p class="[ text-large text-center ]"><?php echo $total_closed_exchange_groups ?></p>
                 </div>
             </div><!-- row -->
-            <hr class="[ center-block margin-bottom ]" >
+            <hr class="[ center-block margin-bottom ]">
             <h3 class="[ text-center margin-bottom ]">Reportes por fecha</h4>
             <div class="[ text-center ]">
                 <form class="[ white ] [ margin-bottom ] [ j-get-reports ]">
