@@ -345,7 +345,6 @@ function getUserActiviy(){
     $.get(
         url,
         function(response){
-            console.log(response);
             var activity_json = $.parseJSON(response);
             $.each(activity_json, function(i, activity){
                 var html_activity;
