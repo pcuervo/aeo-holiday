@@ -13,7 +13,7 @@
             <div class="[ text-center ]">
                 <form class="[ white ] [ margin-bottom ]" action="#">
                     <fieldset>
-                        <input class="js-acepto" type="checkbox"> <a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones" onclick="ga('send', 'event', 'fbconnect', 'click', 'connect');">Acepto términos y condiciones</a>
+                        <input class="js-acepto" type="checkbox" onclick="ga('send', 'event', 'fbconnect', 'click', 'connect');"> <a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Acepto términos y condiciones</a>
                     </fieldset>
                 </form>
                 <a href="<?php echo $fb_login_url; ?>" class="[ btn btn-primary btn-fb ] [ js-login js-disabled ]" disabled target="_top"><span>Conecta con tu facebook</span></a>

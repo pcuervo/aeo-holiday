@@ -145,6 +145,16 @@ function quitarOption(){
     });
 }
 
+//Ajax loader
+function ajaxLoader(){
+    $(document).ajaxStart(function() {
+        $('.loader').show();
+    });
+    $(document).ajaxStop(function(){
+        $('.loader').hide();
+    });
+}
+
 
 /*****************************
 	AJAX functions
@@ -160,7 +170,7 @@ function send_coupon_email(){
         var email_data = {};
         email_data['email'] = $('.j-send-email input').val();
         var url = '/dashboard/send_coupon_by_email';
-        console.log(email_data);
+
         $.post(
             url,
             email_data,

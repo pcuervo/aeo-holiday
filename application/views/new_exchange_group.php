@@ -53,3 +53,9 @@
         </form>
     </div><!-- container -->
 </div><!-- CONTENIDO -->
+<div class="loader-lightbox">
+    <div class="[ loader ] [ center-block ]">
+        <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.svg">
+        <p class="[ text-center ]">buscando actividad…</p>
+    </div><!-- loader -->
+</div><!-- loader-lightbox -->
