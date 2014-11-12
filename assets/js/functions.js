@@ -145,7 +145,24 @@ function quitarOption(){
     });
 }
 
-
+function dateRange(){
+    $('.j-start_date').datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $('.j-end_date').datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $('.j-end_date').datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $('j-start_date').datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+}
 
 
 /*****************************
