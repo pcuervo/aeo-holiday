@@ -145,7 +145,24 @@ function quitarOption(){
     });
 }
 
-
+function dateRange(){
+    $('.j-start_date').datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $('.j-end_date').datepicker( "option", "minDate", selectedDate );
+      }
+    });
+    $('.j-end_date').datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      onClose: function( selectedDate ) {
+        $('j-start_date').datepicker( "option", "maxDate", selectedDate );
+      }
+    });
+}
 
 
 /*****************************
@@ -689,23 +706,25 @@ function getAppReports(){
         e.preventDefault();
 
         var dates = {}
+        // TODO: Meter validación fechas
         dates['start_date'] = $('input[name="start_date"]').val();
         dates['end_date'] = $('input[name="end_date"]').val();
 
+        console.log(dates);
         getAcceptedInvitations(dates);
 
     });
-
 }// getAppReports
 
 function getAcceptedInvitations(dates){
+    var url = '/cms/get_accepted_invitations_by_date';
     $.post(
         url,
-        secret_friend_data,
+        dates,
         function(response){
-            var secret_friend_url = localStorage.getItem('base_url') + 'secret_friends/view/' + secret_friend_data['group_friend_id'] ;
-            var url = '/secret_friends/view/'+secret_friend_data['group_friend_id'];
-            $('#message').html('<div class="[ text-center ]"><a class="[ btn btn-primary btn-no ]" href="'+url+'"><span>regresar</span></a></div>');
+           
+            console.log(response);
+                
         }
     );
 }// getAcceptedInvitations

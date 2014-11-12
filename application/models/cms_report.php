@@ -26,7 +26,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_accepted_invitations()
 	{
-		// SELECT COUNT(*) FROM `group_friends` WHERE `is_admin` = 0;
 		$this->db->select('id');
 		$this->db->where('is_admin', 0);
 		$this->db->from('group_friends');
@@ -43,7 +42,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_pending_invitations()
 	{
-		// SELECT COUNT(*) FROM `group_invitations;
 		$this->db->select('id');
 		$this->db->from('group_invitations');
 
@@ -59,7 +57,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_exchange_groups()
 	{
-		// SELECT COUNT(*) FROM `exchange_groups`;
 		$this->db->select('id');
 		$this->db->from('exchange_groups');
 
@@ -75,7 +72,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_fb_users()
 	{
-		// SELECT COUNT(*) FROM `facebook_users`;
 		$this->db->select('id');
 		$this->db->from('facebook_users');
 
@@ -90,7 +86,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_sent_messages()
 	{
-		// SELECT COUNT(*) FROM `messages`;
 		$this->db->select('id');
 		$this->db->from('messages');
 
@@ -103,14 +98,38 @@ class Cms_report extends CI_Model {
 	 * @return int $total_closed_exchanges;
 	 * @author Zurol
 	 **/
-	function total_closed_exchanges($current_date)
+	function total_closed_exchanges()
 	{
-		// SELECT COUNT(*) FROM `exchange_groups` WHERE `exchange_date` < curdate();
 		$this->db->select('id');
+		$this->db->where('exchange_date >=', date('Y-m-d'));
 		$this->db->from('exchange_groups');
-		$this->db->where(`exchange_date <`, $current_date);
 
 		return $this->db->count_all_results();
 	}// total_closed_exchanges
+
+	/**
+	 * Returns the total number of users of the site overall
+	 *
+	 * @return int $accepted_invitations;
+	 * @author Zurol
+	 **/
+	function accepted_invitations_by_date($start_date, $end_date)
+	{
+		$sql_query = 'select DATE(created_at) AS date, COUNT( * ) AS num_invitations FROM group_friends WHERE  is_admin=0 AND  created_at BETWEEN "'. $start_date .'" AND  "'. $end_date .'" GROUP BY DATE( created_at );';
+		$query = $this->db->query($sql_query);
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$accepted_invitations = array();
+		foreach ($query->result() as $key => $row) {
+			$accepted_invitations[$key] = array(
+				'date'				=> $row->date,
+				'num_invitations'	=> $row->num_invitations,
+				);
+		}
+
+		return $accepted_invitations;
+	}// accepted_invitations_by_date
 
 }// clase Cms_report
