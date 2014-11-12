@@ -149,7 +149,7 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->model('exchange_group');
 
-		$fb_friend_id = $_POST['fb_friend_id'];
+		$fb_friend_id = $_POST['invited_fb_user_id'];
 		$group_id = $_POST['group_id'];
 		$this->exchange_group->remove_invited_friend($fb_friend_id, $group_id);
 

@@ -417,7 +417,7 @@ function removeInvitedFriend(){
         var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
 
         invited_friend_data['group_id'] = $(this).data('group');
-        invited_friend_data['invited_fb_user_id'] = $(this).data('fb-friend');
+        invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
 
         console.log(invited_friend_data);
         $.post(
