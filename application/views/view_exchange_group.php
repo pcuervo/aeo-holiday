@@ -5,6 +5,10 @@
             <?php if ( $secret_friend != 0 ){ ?>
                 <div class="[ form-group ] [ margin-bottom ]">
                     <label for="">Tu amigo secreto</label>
+                    <?php
+                        echo $secret_friend['name'];
+                        echo $secret_friend['friend_picture'];
+                    ?>
                 </div><!-- form-group -->
             <?php } ?>
             <div class="[ form-group ] [ margin-bottom ]">

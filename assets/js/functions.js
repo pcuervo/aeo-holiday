@@ -170,14 +170,12 @@ function send_coupon_email(){
         var email_data = {};
         email_data['email'] = $('.j-send-email input').val();
         var url = '/dashboard/send_coupon_by_email';
-
-        console.log(email_data);
-
         $.post(
             url,
             email_data,
             function(response){
-                console.log(response);
+                //console.log(response);
+                $('<p>Se ha enviado tu correo</p>').appendTo('.j-send-email');
                 //var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
                 //window.location = coupon_url;
             }// response
@@ -345,7 +343,6 @@ function getUserActiviy(){
     $.get(
         url,
         function(response){
-            console.log(response);
             var activity_json = $.parseJSON(response);
             $.each(activity_json, function(i, activity){
                 var html_activity;
