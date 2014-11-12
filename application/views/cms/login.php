@@ -1,5 +1,5 @@
 <div class="[ contenido ] [ container ]">
-    <div class="[ row ] [ login ]">
+    <div class="[ row ]">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
             <div class="[ margin-bottom-big ]">
                 <h1>

@@ -43,10 +43,10 @@ class Cms extends CI_Controller {
 				$this->dashboard();
 			}
 		}
-		
-		$this->load->view('header');
+
+		$this->load->view('cms/header');
 		$this->load->view('cms/login', $data);
-		$this->load->view('footer');
+		$this->load->view('cms/footer');
 	}// index
 
 	/**
@@ -60,7 +60,7 @@ class Cms extends CI_Controller {
 
 		if(! isset($_SESSION['username']))
 			$this->index();
-	
+
 		// Cargar todos los datos totales
 		$this->load->model('cms_report');
 		$data['total_accepted_invitations'] = $this->cms_report->total_accepted_invitations();
@@ -68,12 +68,15 @@ class Cms extends CI_Controller {
 		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();
 		$data['total_fb_users'] = $this->cms_report->total_fb_users();	
 		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	
+		$data['total_closed_exchanges'] = $this->cms_report->total_closed_exchanges();		
+
 
 		// Cargar busqueda (si existe) con datos por fecha
 
-		$this->load->view('header');
+		// Cargar vista login
+		$this->load->view('cms/header');
 		$this->load->view('cms/dashboard', $data);
-		$this->load->view('footer');
+		$this->load->view('cms/footer');
 	}// dashboard
 
 	/**

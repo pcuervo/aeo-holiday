@@ -26,7 +26,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_accepted_invitations()
 	{
-		// SELECT COUNT(*) FROM `group_friends` WHERE `is_admin` = 0;
 		$this->db->select('id');
 		$this->db->where('is_admin', 0);
 		$this->db->from('group_friends');
@@ -43,7 +42,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_pending_invitations()
 	{
-		// SELECT COUNT(*) FROM `group_invitations;
 		$this->db->select('id');
 		$this->db->from('group_invitations');
 
@@ -59,7 +57,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_exchange_groups()
 	{
-		// SELECT COUNT(*) FROM `exchange_groups`;
 		$this->db->select('id');
 		$this->db->from('exchange_groups');
 
@@ -75,7 +72,6 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_fb_users()
 	{
-		// SELECT COUNT(*) FROM `facebook_users`;
 		$this->db->select('id');
 		$this->db->from('facebook_users');
 
@@ -90,11 +86,25 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_sent_messages()
 	{
-		// SELECT COUNT(*) FROM `messages`;
 		$this->db->select('id');
 		$this->db->from('messages');
 
 		return $this->db->count_all_results();
 	}// total_sent_messages
+
+	/**
+	 * Returns the total number of users of the site overall
+	 *
+	 * @return int $total_closed_exchanges;
+	 * @author Zurol
+	 **/
+	function total_closed_exchanges()
+	{
+		$this->db->select('id');
+		$this->db->where(`exchange_date <`, date('YYYY-mm-dd'));
+		$this->db->from('exchange_groups');
+		
+		return $this->db->count_all_results();
+	}// total_closed_exchanges
 
 }// clase Cms_report

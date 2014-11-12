@@ -71,7 +71,6 @@
             toggleMainMenu();
             footerBottom();
             loadFacebookSdk();
-            ajaxLoader();
 
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
