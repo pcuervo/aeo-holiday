@@ -51,7 +51,50 @@ class Cms_report extends CI_Model {
 	}// total_pending_invitations
 
 
+	/**
+	 * Returns the total number of exchange groups
+	 *
+	 * @return int $total_exchange_groups;
+	 * @author Zurol
+	 **/
+	function total_exchange_groups()
+	{
+		// SELECT COUNT(*) FROM `exchange_groups`;
+		$this->db->select('id');
+		$this->db->from('exchange_groups');
+
+		return $this->db->count_all_results();
+	}// total_exchange_groups
 
 
+	/**
+	 * Returns the total number of users of the site overall
+	 *
+	 * @return int $total_fb_users;
+	 * @author Zurol
+	 **/
+	function total_fb_users()
+	{
+		// SELECT COUNT(*) FROM `facebook_users`;
+		$this->db->select('id');
+		$this->db->from('facebook_users');
+
+		return $this->db->count_all_results();
+	}// total_fb_users
+
+	/**
+	 * Returns the total number of users of the site overall
+	 *
+	 * @return int $total_sent_messages;
+	 * @author Zurol
+	 **/
+	function total_sent_messages()
+	{
+		// SELECT COUNT(*) FROM `messages`;
+		$this->db->select('id');
+		$this->db->from('messages');
+
+		return $this->db->count_all_results();
+	}// total_sent_messages
 
 }// clase Cms_report
