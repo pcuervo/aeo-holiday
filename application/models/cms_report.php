@@ -100,6 +100,24 @@ class Cms_report extends CI_Model {
 	}// total_sent_messages
 
 
+	/**
+	 * Returns the total number of users of the site overall
+	 *
+	 * @return int $total_closed_exchanges;
+	 * @author Zurol
+	 **/
+	function total_closed_exchanges($current_date)
+	{
+		// SELECT COUNT(*) FROM `exchange_groups` WHERE `exchange_date` < curdate();
+		$this->db->select('id');
+		$this->db->from('exchange_groups');
+		$this->db->where(`exchange_date <`, $current_date);
+
+
+		return $this->db->count_all_results();
+	}// total_closed_exchanges
+
+
 
 
 }// clase Cms_report

@@ -76,6 +76,9 @@ class Cms extends CI_Controller {
 
 		// Cargar el numero total de mensajes
 		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();		
+		
+		// Cargar el numero total de intercambios cerrados
+		$data['total_closed_exchanges'] = $this->cms_report->total_closed_exchanges();		
 
 
 
