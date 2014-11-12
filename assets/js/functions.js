@@ -323,7 +323,6 @@ function getUnreadMessages(){
     $.get(
         url,
         function(response){
-            console.log(response);
             var mensajes_json = $.parseJSON(response);
             var url_mensajes = localStorage.getItem('base_url') + 'secret_friends/view_messages/';
             $.each(mensajes_json, function(i, val){
