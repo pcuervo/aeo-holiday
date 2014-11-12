@@ -191,7 +191,6 @@ function send_coupon_email(){
  * @return void
  */
 function createExchangeGroup(){
-
     var hidden_guests = $('.hidden_guest').length;
     if(hidden_guests == 0){
         $('.j_invite_friends').after('<p class="[ j_invite_friends error ]">Debes invitar al menos a un amigo para crear un grupo</p>');
@@ -199,7 +198,7 @@ function createExchangeGroup(){
     }
     var group_data = $('.j_group_form').serialize();
     var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
-
+    $('.loader-lightbox, .loader').show();
     $.post(
         url,
         group_data,
@@ -267,7 +266,6 @@ function showSecretFriends(){
             function(response){
                 var secret_friends_json = $.parseJSON(response);
                 $.each(secret_friends_json, function(i, friend){
-
                     var friend_url = localStorage.getItem('base_url') + 'secret_friends/create_message/' + friend.group_friend_id;
                     var secret_friend_html = '<li>';
                         secret_friend_html += '<a href="' + friend_url + '">';
