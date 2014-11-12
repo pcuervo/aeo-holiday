@@ -147,12 +147,12 @@ function quitarOption(){
 
 //Ajax loader
 function ajaxLoader(){
-    $(document).ajaxStart(function() {
-        $('.loader').show();
-    });
-    $(document).ajaxStop(function(){
-        $('.loader').hide();
-    });
+    // $(document).ajaxStart(function() {
+    //     $('.loader').show();
+    // });
+    // $(document).ajaxStop(function(){
+    //     $('.loader').show();
+    // });
 }
 
 
@@ -339,9 +339,11 @@ function getUnreadMessages(){
  */
 function getUserActiviy(){
     var url = localStorage.getItem('base_url') + 'dashboard/get_user_activity/';
+    $('.actividad-mensajes .loader').show();
     $.get(
         url,
         function(response){
+            $('.actividad-mensajes .loader').hide();
             var activity_json = $.parseJSON(response);
             $.each(activity_json, function(i, activity){
                 var html_activity;

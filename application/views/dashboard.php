@@ -18,7 +18,6 @@
             </div>
         </div>
     </div><!-- row -->
-    <hr class="[ col-xs-12 col-sm-8 ] [ center-block ]" >
     <div class="[ row ] [ margin-bottom ]">
         <div class="[ col-xs-12 col-sm-8 ] [ center-block ]">
             <ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -78,7 +77,6 @@
             </div>
         </div>
     </div><!-- row -->
-    <hr class="[ col-xs-12 col-sm-8 ] [ center-block ]" >
     <div class="[ col-xs-12 col-sm-8 ] [ center-block ] [ clearfix ] [ actividad ]">
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
