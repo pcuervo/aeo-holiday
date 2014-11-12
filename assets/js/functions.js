@@ -705,7 +705,8 @@ function getAcceptedInvitations(dates){
         url,
         dates,
         function(response){
-            console.log(response);
+            if(response == '0')
+                
         }
     );
 }// getAcceptedInvitations
