@@ -218,4 +218,55 @@ class Cms_report extends CI_Model {
 		return $rejected_invitations;
 	}// rejected_invitations_by_date
 
+	/**
+	 * Returns the total number of sent messages by date
+	 *
+	 * @return mixed $sent_messages_by_date or 0
+	 * @author Zurol
+	 **/
+	function sent_messages_by_date($start_date, $end_date)
+	{
+		$sql_query = 'select DATE(created_at) AS date, COUNT( * ) AS sent_messages FROM messages WHERE created_at BETWEEN "'. $start_date .'" AND  "'. $end_date .'" GROUP BY DATE( created_at );';
+		$query = $this->db->query($sql_query);
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$sent_messages_by_date = array();
+		foreach ($query->result() as $key => $row) {
+			$sent_messages_by_date[$key] = array(
+				'date'				=> $row->date,
+				'sent_messages'	=> $row->sent_messages,
+				);
+		}
+
+		return $sent_messages_by_date;
+	}// sent_messages_by_date
+
+
+	/**
+	 * Returns the total number of users by date
+	 *
+	 * @return mixed $users_number_by_date or 0
+	 * @author Zurol
+	 **/
+	function users_number_by_date($start_date, $end_date)
+	{
+		$sql_query = 'select DATE(created_at) AS date, COUNT( * ) AS users_number FROM facebook_users WHERE created_at BETWEEN "'. $start_date .'" AND  "'. $end_date .'" GROUP BY DATE( created_at );';
+		$query = $this->db->query($sql_query);
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$users_number_by_date = array();
+		foreach ($query->result() as $key => $row) {
+			$users_number_by_date[$key] = array(
+				'date'				=> $row->date,
+				'users_number'	=> $row->users_number,
+				);
+		}
+
+		return $users_number_by_date;
+	}// users_number_by_date
+
 }// clase Cms_report

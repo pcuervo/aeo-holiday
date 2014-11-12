@@ -137,5 +137,42 @@ class Cms extends CI_Controller {
 
 	}// get_accepted_invitations_by_date
 
+	/**
+	 * Data report dasbhoard
+	 *
+	 * @return $num_sent_messages
+	 * @author Zurol
+	 **/
+	public function get_sent_messages_by_date()
+	{
+		$start_date = $_POST['start_date'];
+		$end_date = $_POST['end_date'];
+	
+		$this->load->model('cms_report');
+		$num_sent_messages = $this->cms_report->sent_messages_by_date($start_date, $end_date);
+		
+		echo json_encode($num_sent_messages);
+
+	}// get_accepted_invitations_by_date
+
+	/**
+	 * Data report dasbhoard
+	 *
+	 * @return $users_number_by_date
+	 * @author Zurol
+	 **/
+	public function get_users_number_by_date()
+	{
+		$start_date = $_POST['start_date'];
+		$end_date = $_POST['end_date'];
+	
+		$this->load->model('cms_report');
+		$users_number_by_date = $this->cms_report->users_number_by_date($start_date, $end_date);
+		
+		echo json_encode($users_number_by_date);
+
+	}// get_accepted_invitations_by_date
+
+
 }// class Cms
 
