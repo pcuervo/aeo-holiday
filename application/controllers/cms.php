@@ -97,4 +97,25 @@ class Cms extends CI_Controller {
 
 	}// get_accepted_invitations_by_date
 
+
+	/**
+	 * Data report dasbhoard
+	 *
+	 * @return $num_pending_invitations
+	 * @author Miguel Cabral
+	 **/
+	public function get_pending_invitations_by_date()
+	{
+		$start_date = $_POST['start_date'];
+		$end_date = $_POST['end_date'];
+	
+		$this->load->model('cms_report');
+		$num_pending_invitations = $this->cms_report->pending_invitations_by_date($start_date, $end_date);
+		
+		echo json_encode($num_pending_invitations);
+
+	}// get_accepted_invitations_by_date
+
+
 }// class Cms
+
