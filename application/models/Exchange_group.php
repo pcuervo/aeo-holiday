@@ -343,7 +343,7 @@ class Exchange_group extends CI_Model {
 	}// get_group_admin
 
 	/**
-	 * Checks the status of a user's groups and takes action accordingly.
+	 * Checks the status of a user's groups and takes action adordingly.
 	 *
 	 * @param int $fb_user_id
 	 * @author Miguel Cabral
