@@ -72,9 +72,9 @@ class Dashboard extends CI_Controller {
 		if ($this->agent->is_browser())
 			$data['browser'] = $this->agent->browser();
 
-		$data['is_mobile'] = FALSE;
+		$data['is_mobile'] = 0;
 		if($this->agent->is_mobile())
-			$data['is_mobile'] = TRUE;
+			$data['is_mobile'] = 1;
 
 		// Set up general variables for view
 		$data['base_url'] = base_url();
@@ -157,7 +157,7 @@ class Dashboard extends CI_Controller {
 
 	}// remove_invited_friend
 
-	
+
 
 	/**
 	 * Displays the user's coupon
@@ -206,14 +206,14 @@ class Dashboard extends CI_Controller {
 
 		$mail = new PHPMailer();
         $mail->IsSMTP();
-        $mail->SMTPAuth 	= true; 
-        $mail->Host       	= "smtp.mandrillapp.com";     
+        $mail->SMTPAuth 	= true;
+        $mail->Host       	= "smtp.mandrillapp.com";
         $mail->CharSet = 'UTF-8';
-        $mail->Port       	= 587;                  
-        $mail->Username   	= "ti@wannaflock.com"; 
-        $mail->Password   	= "Ipq7HVO-FAELQsgPyeovhQ";           
-        $mail->SetFrom('aeomexico@ae.com', 'American Eagle Outfitters'); 
-        $mail->AddReplyTo("aeomexico@ae.com","American Eagle Outfitters");  
+        $mail->Port       	= 587;
+        $mail->Username   	= "ti@wannaflock.com";
+        $mail->Password   	= "Ipq7HVO-FAELQsgPyeovhQ";
+        $mail->SetFrom('aeomexico@ae.com', 'American Eagle Outfitters');
+        $mail->AddReplyTo("aeomexico@ae.com","American Eagle Outfitters");
         $mail->Subject    	= "Tu cupón AEO está aquí";
         $mail->Body      	= "<img src='".base_url()."/assets/images/cupon.jpg' width='600' height='1000' />";
         $mail->AltBody    	= utf8_decode("Tu cupón AEO está aquí");
