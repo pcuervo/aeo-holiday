@@ -43,8 +43,8 @@
                                         </div>
                                     </div><!-- row -->
                                     <div class="[ text-center ] [ ]">
-                                        <a href="<?php echo base_url().'dashboard/accept_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-go ] [ margin-bottom ]" onclick="ga('send', 'event', 'solicitudes', 'click', 'aceptarIntercambio');"><span>Aceptar</span></a>
-                                        <a href="<?php echo base_url().'dashboard/decline_invitation/'.$invitation['group_id'] ?>" class="[ btn btn-default btn-no ] [ margin-bottom ]" onclick="ga('send', 'event', 'solicitudes', 'click', 'rechazarIntercambio');"><span>Rechazar</span></a>
+                                        <a href="#" class="[ btn btn-default btn-go ] [ margin-bottom ] [ j-accept-invitation ]" data-group="<?php echo $invitation['group_id'] ?>"><span>Aceptar</span></a>
+                                        <a href="#" class="[ btn btn-default btn-no ] [ margin-bottom ] [ j-decline-invitation ]" data-group="<?php echo $invitation['group_id'] ?>" onclick="ga('send', 'event', 'solicitudes', 'click', 'rechazarIntercambio');"><span>Rechazar</span></a>
                                     </div>
                                 </div><!-- invitacion-intercambio -->
                             <?php } ?>
