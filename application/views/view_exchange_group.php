@@ -5,9 +5,9 @@
             <?php if ( $secret_friend ){ ?>
                 <div class="[ form-group ] [ margin-bottom ]">
                     <label for="">Tu amigo secreto</label>
-                    <p><?php echo $secret_friend; ?></p>
                     <?php
-                        var_dump($secret_friend);
+                        echo $secret_friend['name'];
+                        echo $secret_friend['friend_picture'];
                     ?>
                 </div><!-- form-group -->
             <?php } ?>
