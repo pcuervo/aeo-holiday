@@ -1,5 +1,5 @@
 <div class="[ contenido ] [ container ]">
-    <div class="[ row ] [ login ]">
+    <div class="[ row ]">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
             <h3 class="[ text-center ] [ margin-bottom-big ]">Panel de administración</h3>
             <p><?php echo $_SESSION['username']; ?></p>
@@ -9,7 +9,7 @@
                 <p>Invitaciones pendientes: <?php echo $total_pending_invitations ?></p>
 
                 <p>Mensajes enviados: <?php echo $total_sent_messages ?></p>
-                
+
                 <p>Grupos de intercambio: <?php echo $total_exchange_groups ?></p>
 
                 <p>Usuarios: <?php echo $total_fb_users ?></p>
@@ -33,7 +33,7 @@
 
             <h5>Resultados</h5>
             <div class="results">
-                
+
             </div>
         </div>
     </div>
