@@ -65,6 +65,11 @@ class Cms extends CI_Controller {
 		$this->load->model('cms_report');
 		$data['total_accepted_invitations'] = $this->cms_report->total_accepted_invitations();
 
+		// Cargar el numero de invitaciones pendientes
+		$data['total_pending_invitations'] = $this->cms_report->total_pending_invitations();
+
+
+
 
 		// Cargar busqueda (si existe) con datos por fecha
 

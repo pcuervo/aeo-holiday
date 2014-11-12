@@ -19,7 +19,7 @@ class Cms_report extends CI_Model {
 	}// constructor
 
 	/**
-	 * Returns the group's details
+	 * Returns the total of accepted invitations
 	 *
 	 * @return int $accepted_invitations;
 	 * @author Miguel Cabral
@@ -32,6 +32,26 @@ class Cms_report extends CI_Model {
 		$this->db->from('group_friends');
 
 		return $this->db->count_all_results();
-	}// get_group_details
+	}// total_accepted_invitations
+
+
+	/**
+	 * Returns the total of pending invitations
+	 *
+	 * @return int $pending_invitations;
+	 * @author Zurol
+	 **/
+	function total_accepted_invitations()
+	{
+		// SELECT COUNT(*) FROM `group_invitations;
+		$this->db->select('*');
+		$this->db->from('group_invitations');
+
+		return $this->db->count_all_results();
+	}// total_pending_invitations
+
+
+
+
 
 }// clase Cms_report

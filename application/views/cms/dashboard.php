@@ -5,6 +5,8 @@
             <p><?php echo $_SESSION['username']; ?></p>
             <h4>Totales</h4>
                 <p>Invitaciones aceptadas: <?php echo $total_accepted_invitations ?></p>
+
+                <p>Invitaciones pendientes: <?php echo $total_pending_invitations ?></p>
             <hr>
 
             <h4>Reportes por fecha</h4>
