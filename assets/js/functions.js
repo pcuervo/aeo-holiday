@@ -149,7 +149,8 @@ function dateRange(){
     $('.j-start_date').datepicker({
       defaultDate: "+1w",
       changeMonth: true,
-      numberOfMonths: 3,
+      numberOfMonths: 1,
+      dateFormat: 'yy-mm-dd',
       onClose: function( selectedDate ) {
         $('.j-end_date').datepicker( "option", "minDate", selectedDate );
       }
@@ -158,10 +159,34 @@ function dateRange(){
       defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
+      dateFormat: 'yy-mm-dd',
       onClose: function( selectedDate ) {
         $('j-start_date').datepicker( "option", "maxDate", selectedDate );
       }
     });
+}
+
+function total_accepted_invitations(){
+    console.log('total_accepted_invitations');
+    var data = {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(162, 43, 56, 1)",
+                data: [65, 59, 80, 81, 56, 55, 40]
+            }
+        ]
+    };
+    console.log(data);
+    var ctx = $('#total_accepted_invitations').get(0).getContext('2d');
+    console.log(ctx);
+    new Chart(ctx).Bar(data);
 }
 
 
