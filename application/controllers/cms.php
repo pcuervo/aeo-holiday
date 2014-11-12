@@ -68,6 +68,10 @@ class Cms extends CI_Controller {
 		// Cargar el numero de invitaciones pendientes
 		$data['total_pending_invitations'] = $this->cms_report->total_pending_invitations();
 
+		// Cargar el numero total de grupos de intercambio
+		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();		
+		
+
 
 
 

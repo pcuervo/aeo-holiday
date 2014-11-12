@@ -7,6 +7,8 @@
                 <p>Invitaciones aceptadas: <?php echo $total_accepted_invitations ?></p>
 
                 <p>Invitaciones pendientes: <?php echo $total_pending_invitations ?></p>
+
+                <p>Grupos de intercambio: <?php echo $total_exchange_groups ?></p>
             <hr>
 
             <h4>Reportes por fecha</h4>
