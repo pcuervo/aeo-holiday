@@ -5,14 +5,11 @@
             <p><?php echo $_SESSION['username']; ?></p>
             <h4>Totales</h4>
                 <p>Invitaciones aceptadas: <?php echo $total_accepted_invitations ?></p>
-
                 <p>Invitaciones pendientes: <?php echo $total_pending_invitations ?></p>
-
                 <p>Mensajes enviados: <?php echo $total_sent_messages ?></p>
-                
                 <p>Grupos de intercambio: <?php echo $total_exchange_groups ?></p>
-
                 <p>Usuarios: <?php echo $total_fb_users ?></p>
+                <p>Grupos de intercambio terminados: <?php echo $total_closed_exchange_groups ?></p>
             <hr>
 
             <h4>Reportes por fecha</h4>

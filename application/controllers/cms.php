@@ -68,7 +68,7 @@ class Cms extends CI_Controller {
 		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();
 		$data['total_fb_users'] = $this->cms_report->total_fb_users();	
 		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	
-		$data['total_closed_exchanges'] = $this->cms_report->total_closed_exchanges();		
+		$data['total_closed_exchange_groups'] = $this->cms_report->total_closed_exchanges();		
 
 
 		// Cargar busqueda (si existe) con datos por fecha
@@ -82,7 +82,7 @@ class Cms extends CI_Controller {
 	/**
 	 * Data report dasbhoard
 	 *
-	 * @return void
+	 * @return $num_accepted_invitations
 	 * @author Miguel Cabral
 	 **/
 	public function get_accepted_invitations_by_date()
@@ -91,7 +91,9 @@ class Cms extends CI_Controller {
 		$end_date = $_POST['end_date'];
 	
 		$this->load->model('cms_report');
-		$num_accepted_invitations = $this->cms_report->
+		$num_accepted_invitations = $this->cms_report->accepted_invitations_by_date($start_date, $end_date);
+		
+		return $num_accepted_invitations;
 
 	}// get_accepted_invitations_by_date
 

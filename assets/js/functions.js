@@ -689,6 +689,7 @@ function getAppReports(){
         e.preventDefault();
 
         var dates = {}
+        // TODO: Meter validación fechas
         dates['start_date'] = $('input[name="start_date"]').val();
         dates['end_date'] = $('input[name="end_date"]').val();
 
