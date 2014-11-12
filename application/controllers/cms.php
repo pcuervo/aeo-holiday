@@ -65,6 +65,7 @@ class Cms extends CI_Controller {
 		$this->load->model('cms_report');
 		$data['total_accepted_invitations'] = $this->cms_report->total_accepted_invitations();
 		$data['total_pending_invitations'] = $this->cms_report->total_pending_invitations();
+		$data['total_rejected_invitations'] = $this->cms_report->total_rejected_invitations();
 		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();
 		$data['total_fb_users'] = $this->cms_report->total_fb_users();	
 		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	

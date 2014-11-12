@@ -14,6 +14,10 @@
                     <p class="[ text-large text-center ]"><?php echo $total_pending_invitations ?></p>
                 </div>
                 <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Invitaciones rechazadas</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_rejected_invitations ?></p>
+                </div>
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Mensajes enviados</p>
                     <p class="[ text-large text-center ]"><?php echo $total_sent_messages ?></p>
                 </div>

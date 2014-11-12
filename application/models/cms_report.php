@@ -50,6 +50,21 @@ class Cms_report extends CI_Model {
 
 
 	/**
+	 * Returns the total of pending invitations
+	 *
+	 * @return int $rejected_invitations;
+	 * @author Zurol
+	 **/
+	function total_rejected_invitations()
+	{
+		$this->db->select('id');
+		$this->db->from('rejected_invitations');
+
+		return $this->db->count_all_results();
+	}// total_rejected_invitations
+
+
+	/**
 	 * Returns the total number of exchange groups
 	 *
 	 * @return int $total_exchange_groups;
