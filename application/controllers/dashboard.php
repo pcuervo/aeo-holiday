@@ -380,12 +380,13 @@ class Dashboard extends CI_Controller {
 	/**
 	 * Declines an exchange group request
 	 *
-	 * @param int $group_id
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	function accept_invitation($group_id)
+	function accept_invitation()
 	{
+		$group_id = $_POST['group_id'];
+		
 		$current_fb_user = $this->facebook->get_user();
 
 		$this->load->model('group_invitation');

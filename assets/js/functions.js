@@ -388,17 +388,17 @@ function acceptGroupInvitation(){
     $('.j-accept-invitation').on('click', function(e){
         e.preventDefault();
 
-        var invited_friend_data = {};
-        var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
+        var group_data = {};
+        var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
 
-        invited_friend_data['group_id'] = $(this).data('group');
-        invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
+        group_data['group_id'] = $(this).data('group');
 
-        console.log(invited_friend_data);
+        console.log(group_data);
         $.post(
             url,
-            invited_friend_data,
+            group_data,
             function(response){
+                // Agregar feedback
                 console.log(response);
             }// response
         );
