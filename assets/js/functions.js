@@ -742,12 +742,14 @@ function getAppReports(){
 }// getAppReports
 
 function getAcceptedInvitations(dates){
-    var url = localStorage.getItem('base_url') + 'cms/get_accepted_invitations_by_date';
+    var url = '/cms/get_accepted_invitations_by_date';
     $.post(
         url,
         dates,
         function(response){
+           
             console.log(response);
+                
         }
     );
 }// getAcceptedInvitations
