@@ -51,7 +51,6 @@ class Cms extends CI_Controller {
 
 	/**
 	 * 
-	 *
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
@@ -64,31 +63,20 @@ class Cms extends CI_Controller {
 		// Cargar todos los datos totales
 		$this->load->model('cms_report');
 		$data['total_accepted_invitations'] = $this->cms_report->total_accepted_invitations();
-
-		// Cargar el numero de invitaciones pendientes
 		$data['total_pending_invitations'] = $this->cms_report->total_pending_invitations();
-
-		// Cargar el numero total de grupos de intercambio
-		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();		
-		
-		// Cargar el numero total de usuarios de facebook
-		$data['total_fb_users'] = $this->cms_report->total_fb_users();		
-
-		// Cargar el numero total de mensajes
-		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();		
+		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();
+		$data['total_fb_users'] = $this->cms_report->total_fb_users();	
+		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	
 		
 		// Cargar el numero total de intercambios cerrados
 		$data['total_closed_exchanges'] = $this->cms_report->total_closed_exchanges();		
 
 
-
 		// Cargar busqueda (si existe) con datos por fecha
 
-		// Cargar vista login
 		$this->load->view('header');
 		$this->load->view('cms/dashboard', $data);
 		$this->load->view('footer');
-	}// index
-
+	}// dashboard
 
 }// class Cms

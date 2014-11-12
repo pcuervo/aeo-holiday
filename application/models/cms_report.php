@@ -43,7 +43,7 @@ class Cms_report extends CI_Model {
 	 **/
 	function total_pending_invitations()
 	{
-		// SELECT COUNT(*) FROM `group_invitations`;
+		// SELECT COUNT(*) FROM `group_invitations;
 		$this->db->select('id');
 		$this->db->from('group_invitations');
 
@@ -82,8 +82,6 @@ class Cms_report extends CI_Model {
 		return $this->db->count_all_results();
 	}// total_fb_users
 
-
-
 	/**
 	 * Returns the total number of users of the site overall
 	 *
@@ -98,7 +96,6 @@ class Cms_report extends CI_Model {
 
 		return $this->db->count_all_results();
 	}// total_sent_messages
-
 
 	/**
 	 * Returns the total number of users of the site overall
@@ -116,8 +113,5 @@ class Cms_report extends CI_Model {
 
 		return $this->db->count_all_results();
 	}// total_closed_exchanges
-
-
-
 
 }// clase Cms_report
