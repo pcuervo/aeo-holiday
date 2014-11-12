@@ -11,10 +11,10 @@
 
             <h4>Reportes por fecha</h4>
             <div class="[ text-center ]">
-                <form class="[ white ] [ margin-bottom ] [ j-search- ]">
+                <form class="[ white ] [ margin-bottom ] [ j-get-reports ]">
                     <div class="[ form-group ] [ margin-bottom ]">
-                        <label class="[ center-block ]" for="beginning_date">Fecha inicial</label>
-                        <input type="text" class="[ form-control ]" name="beginning_date">
+                        <label class="[ center-block ]" for="start_date">Fecha inicial</label>
+                        <input type="text" class="[ form-control ]" name="start_date">
                     </div>
                     <div class="[ form-group ] [ margin-bottom ]">
                         <label class="[ center-block ]" for="end_date">Fecha final</label>

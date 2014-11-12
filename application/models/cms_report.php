@@ -27,7 +27,7 @@ class Cms_report extends CI_Model {
 	function total_accepted_invitations()
 	{
 		// SELECT COUNT(*) FROM `group_friends` WHERE `is_admin` = 0;
-		$this->db->select('*');
+		$this->db->select('id');
 		$this->db->where('is_admin', 0);
 		$this->db->from('group_friends');
 
@@ -41,10 +41,10 @@ class Cms_report extends CI_Model {
 	 * @return int $pending_invitations;
 	 * @author Zurol
 	 **/
-	function total_accepted_invitations()
+	function total_pending_invitations()
 	{
 		// SELECT COUNT(*) FROM `group_invitations;
-		$this->db->select('*');
+		$this->db->select('id');
 		$this->db->from('group_invitations');
 
 		return $this->db->count_all_results();
