@@ -1,5 +1,5 @@
 <div class="[ contenido ] [ container ]">
-    <div class="[ row ] [ login ]">
+    <div class="[ row ]">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
             <h3 class="[ text-center ] [ margin-bottom-big ]">Panel de administración</h3>
             <p><?php echo $_SESSION['username']; ?></p>
@@ -30,7 +30,7 @@
 
             <h5>Resultados</h5>
             <div class="results">
-                
+
             </div>
         </div>
     </div>
