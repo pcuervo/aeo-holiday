@@ -110,7 +110,6 @@ class Cms_report extends CI_Model {
 		$this->db->from('exchange_groups');
 		$this->db->where(`exchange_date <`, $current_date);
 
-
 		return $this->db->count_all_results();
 	}// total_closed_exchanges
 
