@@ -108,10 +108,29 @@ class Cms_report extends CI_Model {
 	}// total_closed_exchanges
 
 	/**
+	 * Returns the average number of users per group
+	 *
+	 * @return int $num_average_users_per_group;
+	 * @author Miguel Cabral
+	 **/
+	function average_users_per_group()
+	{
+		$sql_query = 'select ROUND(AVG(number_of_members)) as average_users from (SELECT COUNT(id) as number_of_members FROM group_friends GROUP BY group_id) as average';
+		$query = $this->db->query($sql_query);
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$row = $query->row();
+		return round($row->average_users);
+		
+	}// average_users_per_group
+
+	/**
 	 * Returns the total number of users of the site overall
 	 *
 	 * @return int $accepted_invitations;
-	 * @author Zurol
+	 * @author Miguel Cabral
 	 **/
 	function accepted_invitations_by_date($start_date, $end_date)
 	{

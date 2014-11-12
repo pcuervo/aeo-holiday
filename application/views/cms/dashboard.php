@@ -29,6 +29,10 @@
                     <p class="[ text-center ]">Intercambio terminados</p>
                     <p class="[ text-large text-center ]"><?php echo $total_closed_exchange_groups ?></p>
                 </div>
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Usuarios promedio por grupo</p>
+                    <p class="[ text-large text-center ]"><?php echo $average_users_per_group ?></p>
+                </div>
             </div><!-- row -->
             <hr class="[ center-block margin-bottom ]">
             <h3 class="[ text-center margin-bottom ]">Reportes por fecha</h4>
