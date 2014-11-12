@@ -118,5 +118,24 @@ class Cms extends CI_Controller {
 
 	}// get_accepted_invitations_by_date
 
+
+	/**
+	 * Data report dasbhoard
+	 *
+	 * @return $num_rejected_invitations
+	 * @author Zurol
+	 **/
+	public function get_rejected_invitations_by_date()
+	{
+		$start_date = $_POST['start_date'];
+		$end_date = $_POST['end_date'];
+	
+		$this->load->model('cms_report');
+		$num_rejected_invitations = $this->cms_report->rejected_invitations_by_date($start_date, $end_date);
+		
+		echo json_encode($num_rejected_invitations);
+
+	}// get_accepted_invitations_by_date
+
 }// class Cms
 
