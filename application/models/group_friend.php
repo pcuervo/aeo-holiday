@@ -29,6 +29,9 @@ class Group_friend extends CI_Model {
 	function add_group_friend($friend_data)
 	{
 		// TODO: validar si ya existe ese amigo en el grupo.
+		if($this->is_friend_in_group($friend_data['facebook_users_id'], $friend_data['group_id']))
+			return;
+
 		$insert_data = array(
 			'group_id' 			=> $friend_data['group_id'],
 			'facebook_users_id' => $friend_data['facebook_users_id'],
@@ -216,6 +219,7 @@ class Group_friend extends CI_Model {
 	{
 		if ( count($message_senders) == 0)
 			return 0;
+
 		$this->db->select('id, facebook_users_id');
 		$this->db->from('group_friends');
 		$this->db->where_in('id', $message_senders);
@@ -255,5 +259,25 @@ class Group_friend extends CI_Model {
 		$this->db->where_in('to_group_friend_id', $group_friend_ids);
 		$this->db->update('messages', $update_data);
 	}// set_messages_as_read
+
+	/**
+	 * Check if a user already exists in a group
+	 *
+	 * @param string $fb_friend_id, int $group_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	private function is_friend_in_group($fb_friend_id, $group_id){
+		$this->db->select('id');
+		$this->db->from('group_friends');
+		$this->db->where('facebook_users_id', $fb_friend_id);
+		$this->db->where('group_id', $group_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		return 1;
+	}// is_friend_in_group
 
 }// clase Group_friend
