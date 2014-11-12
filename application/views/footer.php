@@ -74,6 +74,8 @@
             ajaxLoader();
 
             <?php if($current_view == 'dashboard') { ?>
+                acceptGroupInvitation();
+                declineGroupInvitation()
                 getUnreadMessages();
                 getUserActiviy();
                 $('#myTab a').click(function (e) {
