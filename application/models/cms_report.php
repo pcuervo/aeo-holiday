@@ -101,10 +101,29 @@ class Cms_report extends CI_Model {
 	function total_closed_exchanges()
 	{
 		$this->db->select('id');
-		$this->db->where(`exchange_date <`, date('YYYY-mm-dd'));
+		$this->db->where('exchange_date >=', date('Y-m-d'));
 		$this->db->from('exchange_groups');
 		
 		return $this->db->count_all_results();
 	}// total_closed_exchanges
+
+	/**
+	 * Returns the total number of users of the site overall
+	 *
+	 * @return int $num_accepted_invitations;
+	 * @author Zurol
+	 **/
+	function accepted_invitations_by_date($start_date, $end_date)
+	{
+		$this->db->select('id');
+		$this->db->where('is_admin', 0);
+		$this->db->where('created_at >=', $start_date);
+		$this->db->where('created_at <=', $end_date);
+		$this->db->from('group_friends');
+
+		return $this->db->count_all_results();
+	}// accepted_invitations_by_date
+
+	
 
 }// clase Cms_report

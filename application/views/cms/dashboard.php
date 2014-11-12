@@ -1,6 +1,6 @@
 <div class="[ contenido ] [ container ]">
     <div class="[ row ]">
-        <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
+        <div class="[ col-xs-12 col-md-10 ] [ center-block margin-bottom ]">
             <h3 class="[ text-center ] [ margin-bottom-small ]">Panel de administración</h3>
             <h3 class="[ text-center ] [ margin-bottom-big ]"><small><?php echo $_SESSION['username']; ?></small> </h3>
             <h3 class="[ text-center ] [ margin-bottom ]">Totales</h4>
@@ -25,19 +25,25 @@
                     <p class="[ text-center ]">Usuarios</p>
                     <p class="[ text-large text-center ]"><?php echo $total_fb_users ?></p>
                 </div>
+                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Intercambio terminados</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_closed_exchange_groups ?></p>
+                </div>
             </div><!-- row -->
-            <hr>
-            <h3 class="[ text-center ]">Reportes por fecha</h4>
+            <hr class="[ center-block margin-bottom ]" >
+            <h3 class="[ text-center margin-bottom ]">Reportes por fecha</h4>
             <div class="[ text-center ]">
                 <form class="[ white ] [ margin-bottom ] [ j-get-reports ]">
-                    <div class="[ form-group ] [ margin-bottom ]">
-                        <label class="[ center-block ]" for="start_date">Fecha inicial</label>
-                        <input type="text" class="[ form-control ]" name="start_date">
-                    </div>
-                    <div class="[ form-group ] [ margin-bottom ]">
-                        <label class="[ center-block ]" for="end_date">Fecha final</label>
-                        <input type="text" class="[ form-control ]" name="end_date">
-                    </div>
+                    <div class="[ row ]">
+                        <div class="[ col-xs-6 ] [ form-group ] [ margin-bottom ]">
+                            <label class="[ center-block ]" for="start_date">Fecha inicial</label>
+                            <input type="text" class="[ form-control ] [ j-datepicker j-start_date ]" name="start_date">
+                        </div>
+                        <div class="[ col-xs-6 ] [ form-group ] [ margin-bottom ]">
+                            <label class="[ center-block ]" for="end_date">Fecha final</label>
+                            <input type="text" class="[ form-control ] [ j-datepicker j-end_date ]" name="end_date">
+                        </div>
+                    </div><!-- row -->
                     <button class="[ btn btn-primary btn-go ]"><span>Buscar</span></button>
                 </form>
             </div>
