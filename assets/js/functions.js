@@ -183,9 +183,7 @@ function total_accepted_invitations(){
             }
         ]
     };
-    console.log(data);
     var ctx = $('#total_accepted_invitations').get(0).getContext('2d');
-    console.log(ctx);
     new Chart(ctx).Bar(data);
 }
 
@@ -747,9 +745,7 @@ function getAcceptedInvitations(dates){
         url,
         dates,
         function(response){
-           
             console.log(response);
-                
         }
     );
 }// getAcceptedInvitations
