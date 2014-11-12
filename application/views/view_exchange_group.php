@@ -5,10 +5,14 @@
             <?php if ( $secret_friend != 0 ){ ?>
                 <div class="[ form-group ] [ margin-bottom ]">
                     <label for="">Tu amigo secreto</label>
-                    <?php
-                        echo $secret_friend['name'];
-                        echo $secret_friend['friend_picture'];
-                    ?>
+                    <div class="row">
+                         <div class="[ col-xs-4 col-sm-2 ]">
+                            <img class="[ img-responsive img-circle ] [ user-photo ]" src="<?php echo $secret_friend['friend_picture']  ?>" alt="">
+                        </div>
+                        <div class="[ col-xs-8 col-sm-10 ]">
+                            <p><?php echo $secret_friend['name']; ?></p>
+                        </div>
+                    </div>
                 </div><!-- form-group -->
             <?php } ?>
             <div class="[ form-group ] [ margin-bottom ]">
