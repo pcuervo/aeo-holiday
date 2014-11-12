@@ -145,15 +145,7 @@ function quitarOption(){
     });
 }
 
-//Ajax loader
-function ajaxLoader(){
-    // $(document).ajaxStart(function() {
-    //     $('.loader').show();
-    // });
-    // $(document).ajaxStop(function(){
-    //     $('.loader').show();
-    // });
-}
+
 
 
 /*****************************
@@ -327,7 +319,7 @@ function getUnreadMessages(){
             $.each(mensajes_json, function(i, val){
                 var html_mensaje = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                     html_mensaje += '<p class="[ text-center ]">Tienes un mensaje de tu amigo secreto del grupo ' + val.group_name + '</p>';
-                    html_mensaje += '<a class="[ btn btn-primary btn-go ]" href="' + url_mensajes + '"><span>Ver mensaje</span></a>';
+                    html_mensaje += '<div class="[ text-center ]"><a class="[ btn btn-primary btn-go ]" href="' + url_mensajes + '"><span>Ver mensaje</span></a></div>';
                     html_mensaje += '</div>';
                 $(html_mensaje).appendTo('.actividad-mensajes');
             });
@@ -566,6 +558,9 @@ function initWebCam(){
         fileName:'demo549066',
         connected:showRecord
     });
+    function remaining(value) {
+        $('.j-timer').html(value);
+    }
     function showRecord() {
         $( "#recordStartButton" ).attr( "disabled", false );
     }
@@ -574,6 +569,7 @@ function initWebCam(){
         $( "#recordStopButton" ).attr( "disabled", false );
         $( "#recordPauseResumeButton" ).attr( "disabled", false );
         $.scriptcam.startRecording();
+        stopRecording();
     }
     function closeCamera() {
         $("#recordStopButton" ).attr( "disabled", true );
@@ -610,6 +606,22 @@ function initWebCam(){
     $('#recordStopButton').click(function(){
         closeCamera();
     });
+    //Timer para detener el video después de X Segundos
+    function stopRecording(){
+        var myVar = setInterval(function(){timer()}, 1000);
+        var segundos = 15;
+        function timer() {
+            segundos--;
+            $('.j-timer').html(segundos);
+            if ( segundos == 0){
+                closeCamera();
+                myStopFunction();
+            }
+        }
+        function myStopFunction() {
+            clearInterval(myVar);
+        }
+    }
 }
 
 /**
