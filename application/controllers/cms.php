@@ -71,6 +71,8 @@ class Cms extends CI_Controller {
 		// Cargar el numero total de grupos de intercambio
 		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();		
 		
+		// Cargar el numero total de usuarios de facebook
+		$data['total_fb_users'] = $this->cms_report->total_fb_users();		
 
 
 
