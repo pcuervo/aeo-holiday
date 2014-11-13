@@ -584,12 +584,21 @@ function getInvitedFriendData(fb_id){
         //console.log(response);
         if(response.id){
             var name = response.first_name + ' ' + response.last_name;
-            $('.j_invite_friends').after('<p>Se agregó: ' + name + ' al intercambio.</p>');
-            $('.j_invite_friends-notice').html('');
+            var flag = false;
+            if ( $('.agregado').length > 0 ){
+                $.each($('.agregado'), function(index, val) {
+                    console.log(val);
+                    if (val.indexOf(name) >= 0){
+                        flag = true;
+                    }
+                });
+            }
+            if ( ! flag ){
+                $('.j_invite_friends').after('<p class="[ agregado ]">Se agregó: ' + name + ' al intercambio.</p>');
+                $('.j_invite_friends-notice').html('');
+            }
         }
-
     });
-
 }// getInvitedFriendName
 
 function getInvitedFriendPic(fb_id){
