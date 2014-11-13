@@ -322,6 +322,8 @@ class Dashboard extends CI_Controller {
 			$is_admin = TRUE;
 
 		$group_closed = FALSE;
+		echo $this->exchange_group->is_after_exchange($data['group_details']['group_id']);
+		echo $this->exchange_group->is_group_closed($data['group_details']['group_id']);
 		if($this->exchange_group->is_after_exchange($data['group_details']['group_id']) || $this->exchange_group->is_group_closed($data['group_details']['group_id']) )
 			$group_closed = TRUE;
 
