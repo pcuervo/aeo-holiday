@@ -328,7 +328,7 @@ function getUnreadMessages(){
  * Get user's activity
  * @return void
  */
-function getUserActiviy(){
+function getUserActivity(){
     var url = localStorage.getItem('base_url') + 'dashboard/get_user_activity/';
     $('.actividad-mensajes .loader').show();
     $.get(
