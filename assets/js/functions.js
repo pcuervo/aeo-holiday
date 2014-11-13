@@ -358,7 +358,7 @@ function getUserActiviy(){
                         html_activity += '</div>'
                         break;
                     case '5':
-                        //console.log(activity);
+                        console.log(activity);
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';
