@@ -130,12 +130,12 @@
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
                 initWebCam();
-                $('input[name=file-mobile]').nicefileinput({
-                    label: 'Graba tu video'
-                });
-                $('input[name=file-desktop]').nicefileinput({
-                    label: 'Seleccionar archivo'
-                });
+                // $('input[name=file-mobile]').nicefileinput({
+                //     label: 'Graba tu video'
+                // });
+                // $('input[name=file-desktop]').nicefileinput({
+                //     label: 'Seleccionar archivo'
+                // });
             <?php } ?>
 
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
