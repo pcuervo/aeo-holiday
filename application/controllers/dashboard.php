@@ -545,4 +545,10 @@ class Dashboard extends CI_Controller {
 
 	}// post_video_to_secret_friends
 
+	function ejemplo_borrar(){
+		$this->load->model('exchange_group');
+		$this->exchange_group->cron_job_log_register('check_groups_status', '1');
+	}
+
+
 }// class Dashboard
