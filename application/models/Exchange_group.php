@@ -429,10 +429,11 @@ class Exchange_group extends CI_Model {
 		// METER QUE EL GRUPO YA NO ESTE ACTIVO
 		$this->db->select('id');
 		$this->db->where('join_deadline <', date('Y-m-d'));
+		$this->db->where('status', 0);
 		$query = $this->db->get('exchange_groups');
 
 		if ($query->num_rows() < 1)
-			return;
+			return 0;
 
 		$this->load->model('group_invitation');
 		foreach ($query->result() as $key => $row)
@@ -440,6 +441,8 @@ class Exchange_group extends CI_Model {
 			$this->group_invitation->remove_pending_invitation_by_group($row->id);
 			$this->randomize_secret_friends($row->id);
 		}
+
+		return 1;
 	}// check_groups_status
 
 	/**
@@ -519,6 +522,8 @@ class Exchange_group extends CI_Model {
 		// Add secret friends
 		$this->load->model('secret_friend');
 		$this->secret_friend->add_secret_friends($from_friends, $to_friends);
+
+
 	}// has_secret_friends
 
 	/**
