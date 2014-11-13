@@ -142,9 +142,17 @@ class Dashboard extends CI_Controller {
 		$this->load->model('exchange_group');
 
 		$group_friend_id = $_POST['friend_id'];
+		$group_id = $_POST['group_id'];
 		$this->exchange_group->remove_friend($group_friend_id);
 
-		echo 'success';
+		$msg = array('redirect' => "0");
+		if( ! $this->exchange_group->has_pending_invitations($group_id)){
+			$this->exchange_group->randomize_secret_friends($group_id);
+			echo 'group id: '.$group_id;
+			$msg = array('redirect' => $group_id);
+		}
+
+		echo json_encode($msg);
 
 	}// remove_group_friend
 
@@ -162,13 +170,14 @@ class Dashboard extends CI_Controller {
 		$group_id = $_POST['group_id'];
 		$this->exchange_group->remove_invited_friend($fb_friend_id, $group_id);
 
+		$msg = array('redirect' => "0");
 		if( ! $this->exchange_group->has_pending_invitations($group_id)){
 			$this->exchange_group->randomize_secret_friends($group_id);
-			$this->view_group($group_id);
+			echo 'group id: '.$group_id;
+			$msg = array('redirect' => $group_id);
 		}
 
-		echo 'success';
-
+		echo json_encode($msg);
 	}// remove_invited_friend
 
 
@@ -444,8 +453,10 @@ class Dashboard extends CI_Controller {
 		$this->user_activity->invitation_accepted($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 2);
 
 		// Check if there are no pending invitations
-		if( ! $this->exchange_group->has_pending_invitations($group_id))
+		if( ! $this->exchange_group->has_pending_invitations($group_id)){
 			$this->exchange_group->randomize_secret_friends($group_id);
+			$this->view_group($group_id);
+		}
 
 	}// accept_invitation
 
@@ -476,8 +487,11 @@ class Dashboard extends CI_Controller {
 		$this->user_activity->invitation_rejected($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 3);
 
 		// Check if there are no pending invitations
-		if( ! $this->exchange_group->has_pending_invitations($group_id))
+		// Check if there are no pending invitations
+		if( ! $this->exchange_group->has_pending_invitations($group_id)){
 			$this->exchange_group->randomize_secret_friends($group_id);
+			$this->view_group($group_id);
+		}
 
 		echo 'success';
 	}// decline_invitation

@@ -503,6 +503,12 @@ function removeGroupFriend(){
             url,
             group_friend_data,
             function(response){
+                 var msg = response;
+                console.log(msg);
+
+                if(msg.redirect != "0")
+                    window.location = '/dashboard/view_group/'+invited_friend_data['group_id'];
+                
                 este.closest('li').after('<p>Se eliminó del intercambio.</p>');
                 este.closest('li').remove();
             }// response
@@ -528,7 +534,11 @@ function removeInvitedFriend(){
             url,
             invited_friend_data,
             function(response){
-                console.log(response);
+                var msg = response;
+
+                if(msg.redirect != "0")
+                    window.location = '/dashboard/view_group/'+invited_friend_data['group_id'];
+                
                 este.closest('li').after('<p>Se eliminó del intercambio.</p>');
                 este.closest('li').remove();
             }// response

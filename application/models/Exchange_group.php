@@ -416,7 +416,7 @@ class Exchange_group extends CI_Model {
 			return 0;
 
 		return 1;
-	}// check_groups_status
+	}// has_pending_invitations
 
 	/**
 	 * Checks the status of a user's groups and takes action adordingly.
@@ -545,8 +545,8 @@ class Exchange_group extends CI_Model {
 		$this->load->model('secret_friend_video');
 		foreach ($query->result() as $key => $row){
 			$friend_fb_id = $this->group_friend->get_fb_id($row->to_group_friend_id);
-			$video = $this->facebook->send_video_notification($friend_fb_id, $row->to_group_friend_id);
 			$this->secret_friend_video->set_was_posted($row->id);
+			$video = $this->facebook->send_video_notification($friend_fb_id, $row->to_group_friend_id);
 			$this->user_activity->secret_friend_video($row->facebook_users_id, $row->group_id, $friend_fb_id, 5, $row->to_group_friend_id);
 		}
 
