@@ -431,19 +431,18 @@ function declineGroupInvitation(){
 function removeGroupFriend(){
     $('.j-remove-friend').on('click', function(e){
         e.preventDefault();
-
         var group_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
-
         group_friend_data['group_id'] = $(this).data('group');
         group_friend_data['fb_friend_id'] = $(this).data('friend_id');
-
         console.log(group_friend_data);
         $.post(
             url,
             group_friend_data,
             function(response){
                 console.log(response);
+                $(this).closest('.list-unstyled').find('li').after('<p>Se eliminó del al intercambio.</p>');
+                $(this).closest('.list-unstyled').find('li').remove();
             }// response
         );
     });
