@@ -454,6 +454,10 @@ class Dashboard extends CI_Controller {
 		$this->load->model('user_activity');
 		$this->user_activity->invitation_rejected($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 3);
 
+		// Check if there are no pending invitations
+		if( ! $this->exchange_group->has_pending_invitations($group_id))
+			$this->exchange_group->randomize_secret_friends($group_id);
+
 		echo 'success';
 	}// decline_invitation
 
