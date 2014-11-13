@@ -87,9 +87,10 @@ function setLimitDate(){
         $('#fecha-limite').attr('max', fechaLimite);
     });
     var now = new Date();
-    var date= ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
-    $('#fecha-limite').attr('min', date);
-    $('#fecha-intercambio').attr('min', date);
+    var hoy = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
+    var manana = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+(now.getDate()+1) );
+    $('#fecha-limite').attr('min', hoy);
+    $('#fecha-intercambio').attr('min', manana);
 }
 
 //Datepicker
@@ -226,7 +227,8 @@ function send_message_form(){
 function createExchangeGroup(){
     var hidden_guests = $('.hidden_guest').length;
     if(hidden_guests == 0){
-        $('.j_invite_friends').after('<p class="[ j_invite_friends error ]">Debes invitar al menos a un amigo para crear un grupo</p>');
+        $('.j_invite_friends-notice').html('');
+        $('.j_invite_friends-notice').html('Debes invitar al menos a un amigo para crear un grupo');
         return;
     }
     var group_data = $('.j_group_form').serialize();
@@ -484,7 +486,6 @@ function removeGroupFriend(){
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
         group_friend_data['group_id'] = $(this).data('group');
         group_friend_data['friend_id'] = $(this).data('friend');
-
         $.post(
             url,
             group_friend_data,
@@ -574,6 +575,7 @@ function getInvitedFriendData(fb_id){
         if(response.id){
             var name = response.first_name + ' ' + response.last_name;
             $('.j_invite_friends').after('<p>Se agregó: ' + name + ' al intercambio.</p>');
+            $('.j_invite_friends-notice').html('');
         }
 
     });
