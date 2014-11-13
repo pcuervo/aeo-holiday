@@ -162,7 +162,15 @@ function showSubmit(){
         event.preventDefault();
         if ( $(this).val() != '' ){
             $('.j-mobile-video-button').show();
+            showLoaderSubmitVideo();
         }
+    });
+}
+
+function showLoaderSubmitVideo(){
+    $('.j-mobile-video-button').on('click', function(event) {
+        $('.loader-lightbox, .loader').show();
+        console.log('loading...');
     });
 }
 
