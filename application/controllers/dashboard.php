@@ -38,8 +38,7 @@ class Dashboard extends CI_Controller {
 		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
 		// Redirect to messages if you have pending videos or messages
-		$video = $this->secret_friend->get_unseen_video_by_fb_user($current_fb_user['id']);
-		if($video)
+		if($this->secret_friend->has_unseen_video($current_fb_user['id']))
 			redirect('secret_friends/view_messages');
 
 		$messages = $this->get_unread_messages();
@@ -324,7 +323,7 @@ class Dashboard extends CI_Controller {
 
 		// load views
 		$this->load->view('header', $data);
-		if($is_admin)
+		if($is_admin && $this->exchange_group->is_after_exchange($data['group_details']['group_id']))
 			$this->load->view('edit_exchange_group', $data);
 		else
 			$this->load->view('view_exchange_group', $data);
@@ -494,6 +493,8 @@ class Dashboard extends CI_Controller {
 	{
 		$this->load->model('exchange_group');
 		$this->exchange_group->post_video_to_secret_friends();
+
+		$this->exchange_group->check_groups_status();
 	}// post_video_to_secret_friends
 
 

@@ -221,8 +221,6 @@ class Secret_friends extends CI_Controller {
 		$this->load->model('secret_friend');
 		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
-		// Get secret friend's data
-		$this->load->model('secret_friend');
 		// $secret_friend = $this->secret_friend->get_unseen_video_by_fb_user($current_fb_user['id']);
 		$secret_friend = $this->secret_friend->get_video_by_fb_user($current_fb_user['id'], $group_friend_id);
 
@@ -365,6 +363,7 @@ class Secret_friends extends CI_Controller {
 		}
 
 		$data['videos'] = $this->secret_friend->get_videos_by_fb_user($current_fb_user['id']);
+		$this->secret_friend->mark_videos_as_seen($current_fb_user['id']);
 
 		$this->load->view('header', $data);
 		$this->load->view('view_messages', $data);
