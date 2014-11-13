@@ -463,8 +463,9 @@ function declineGroupInvitation(){
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
         group_data['group_id'] = $(this).data('group');
+        group_data['invited_fb_user_id'] = $(this).data('friend');
+
         console.log('group_data');
-        console.log(group_data['group_id']);
 
         $.post(
             url,
@@ -491,7 +492,8 @@ function removeGroupFriend(){
         var group_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
         group_friend_data['group_id'] = $(this).data('group');
-        group_friend_data['friend_id'] = $(this).data('friend');
+        group_friend_data['invited_fb_user_id'] = $(this).data('friend');
+        console.log(group_friend_data);
         $.post(
             url,
             group_friend_data,
@@ -515,11 +517,13 @@ function removeInvitedFriend(){
         var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
 
         invited_friend_data['group_id'] = $(this).data('group');
-        invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
+        invited_friend_data['invited_fb_user_id'] = $(this).data('friend');
+        console.log(invited_friend_data);
         $.post(
             url,
             invited_friend_data,
             function(response){
+                console.log(response);
                 este.closest('li').after('<p>Se eliminó del intercambio.</p>');
                 este.closest('li').remove();
             }// response

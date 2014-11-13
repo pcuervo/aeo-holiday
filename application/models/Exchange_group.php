@@ -356,8 +356,10 @@ class Exchange_group extends CI_Model {
 		$this->db->where('exchange_date >', date('Y-m-d'));
 		$query = $this->db->get('exchange_groups');
 
-		if ($query->num_rows() < 1)
+		if ($query->num_rows() < 1){
+			$this->close_group($group_id);
 			return 1;
+		}
 
 		return 0;
 	}// is_after_exchange
@@ -391,9 +393,10 @@ class Exchange_group extends CI_Model {
 	 **/
 	function close_group($group_id)
 	{
-		$update_data = array('status', 1);
+		$update_data = array('status' => 1);
 		$this->db->where('id', $group_id);
 		$this->db->update('exchange_groups', $update_data);
+
 	}// is_after_exchange
 
 	/**
@@ -589,9 +592,9 @@ class Exchange_group extends CI_Model {
 	 * @return int $group_friend_id
 	 * @author Miguel Cabral
 	 **/
-	function remove_invited_friend($group_friend_id){
-		$delete_data = array('id' => $group_friend_id);
-		$this->db->delete('group_friends', $delete_data);
+	function remove_invited_friend($fb_user_id, $group_id){
+		$delete_data = array('invited_fb_user_id' => $fb_user_id, 'group_id' => $group_id);
+		$this->db->delete('group_invitations', $delete_data);
 	}// remove_invited_friend
 
 }// clase Exchange_group

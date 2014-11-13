@@ -162,6 +162,11 @@ class Dashboard extends CI_Controller {
 		$group_id = $_POST['group_id'];
 		$this->exchange_group->remove_invited_friend($fb_friend_id, $group_id);
 
+		if( ! $this->exchange_group->has_pending_invitations($group_id)){
+			$this->exchange_group->randomize_secret_friends($group_id);
+			$this->view_group($group_id);
+		}
+
 		echo 'success';
 
 	}// remove_invited_friend
@@ -294,8 +299,6 @@ class Dashboard extends CI_Controller {
 	 **/
 	function view_group($group_id)
 	{
-		$data['base_url'] = base_url();
-		$data['current_view'] = 'view_exchange_group';
 
 		$this->load->library('user_agent');
 		$data['browser'] = '';
@@ -305,6 +308,9 @@ class Dashboard extends CI_Controller {
 		$data['is_mobile'] = FALSE;
 		if($this->agent->is_mobile())
 			$data['is_mobile'] = TRUE;
+
+		$data['base_url'] = base_url();
+		$data['current_view'] = 'view_exchange_group';
 
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
@@ -331,6 +337,10 @@ class Dashboard extends CI_Controller {
 		$data['current_fb_user'] = $this->facebook->get_user();
 		if($data['current_fb_user']['id'] == $data['group_details']['admin_id'])
 			$is_admin = TRUE;
+
+		if(! $this->exchange_group->has_pending_invitations($data['group_details']['group_id'])){
+			$this->exchange_group->close_group($data['group_details']['group_id']);
+		}
 
 		$group_closed = FALSE;
 		if($this->exchange_group->is_after_exchange($data['group_details']['group_id']) || $this->exchange_group->is_group_closed($data['group_details']['group_id']) )
