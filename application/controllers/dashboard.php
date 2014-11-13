@@ -444,8 +444,10 @@ class Dashboard extends CI_Controller {
 		$this->user_activity->invitation_accepted($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 2);
 
 		// Check if there are no pending invitations
-		if( ! $this->exchange_group->has_pending_invitations($group_id))
+		if( ! $this->exchange_group->has_pending_invitations($group_id)){
 			$this->exchange_group->randomize_secret_friends($group_id);
+			$this->view_group($group_id);
+		}
 
 	}// accept_invitation
 
@@ -476,8 +478,11 @@ class Dashboard extends CI_Controller {
 		$this->user_activity->invitation_rejected($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 3);
 
 		// Check if there are no pending invitations
-		if( ! $this->exchange_group->has_pending_invitations($group_id))
+		// Check if there are no pending invitations
+		if( ! $this->exchange_group->has_pending_invitations($group_id)){
 			$this->exchange_group->randomize_secret_friends($group_id);
+			$this->view_group($group_id);
+		}
 
 		echo 'success';
 	}// decline_invitation
