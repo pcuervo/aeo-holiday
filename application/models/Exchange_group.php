@@ -603,4 +603,21 @@ class Exchange_group extends CI_Model {
 		$this->db->delete('group_invitations', $delete_data);
 	}// remove_invited_friend
 
+	/**
+	 * Insert in db's table cron_job_log
+	 *
+	 * @return void
+	 * @author Zurol
+	 **/
+	function cron_job_log_register($function_name, $returned_value){
+		$insert_data = array(
+			'function_name' 	=> $function_name,
+			'returned_value' 	=> $returned_value,
+			'created_at' 		=> date("Y-m-d H:i:s")
+		);
+
+		$this->db->insert_string('cron_job_log', $insert_data);
+
+	}// cron_job_log_register
+
 }// clase Exchange_group

@@ -138,6 +138,7 @@ class Secret_friend extends CI_Model {
 
 		$group_friend = $this->group_friend->get_group_friend($row->to_group_friend_id);
 		$secret_friend = array(
+			'group_friend_id'  	=> $row->to_group_friend_id,
 			'fb_user_id'		=> $group_friend['fb_user_id'],
 			'name'				=> $group_friend['name'],
 			'friend_picture'	=> $group_friend['friend_picture'],
