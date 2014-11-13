@@ -697,6 +697,11 @@ function getAppReports(){
     });
 }// getAppReports
 
+ /**
+ * Displays accepted invitations by date
+ * array dates
+ * @return void
+ */
 function getAcceptedInvitations(dates){
     var url = '/cms/get_accepted_invitations_by_date';
     $.post(
@@ -716,13 +721,13 @@ function getAcceptedInvitations(dates){
                 num_invitations.push(val.num_invitations);
             });
 
-            accepted_invitations_per_date(dates, num_invitations);
+            display_accepted_invitations_per_date(dates, num_invitations);
             
         }
     );
 }// getAcceptedInvitations
 
-function accepted_invitations_per_date(dates, invitations){
+function display_accepted_invitations_per_date(dates, invitations){
     console.log('accepted_invitations_per_date');
     var data = {
         labels: dates,
