@@ -359,10 +359,11 @@ function getUserActivity(){
                         break;
                     case '5':
                         console.log(activity);
+                        var url_video = localStorage.getItem('base_url') + 'secret_friends/view_secret_video/'+activity.group_friend_id;
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';
-                        html_activity += '<div class="[ text-center ]"><a class="[ btn btn-primary btn-go ]" href="' + activity.group_friend_id + '"><span>Ver video</span></a></div>';
+                        html_activity += '<div class="[ text-center ]"><a class="[ btn btn-primary btn-go ]" href="' +url_video+ '"><span>Ver video</span></a></div>';
                         html_activity += '</div>';
                         break;
                 }
@@ -370,7 +371,7 @@ function getUserActivity(){
             });
         }// response
     );
-}// getUserActiviy
+}// getUserActivity
 
 /**
  * Accepts a group invitation
@@ -583,6 +584,11 @@ function initWebCam(){
         alert(errorMsg);
     }
     function onWebcamReady(cameraNames,camera,microphoneNames,microphone,volume) {
+        console.log(cameraNames);
+        console.log(camera);
+        console.log(microphoneNames);
+        console.log(microphone);
+        console.log(volume);
         $( "#slider" ).slider( "option", "disabled", false );
         $( "#slider" ).slider( "option", "value", volume );
         $.each(cameraNames, function(index, text) {

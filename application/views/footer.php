@@ -76,7 +76,7 @@
                 acceptGroupInvitation();
                 declineGroupInvitation()
                 getUnreadMessages();
-                getUserActiviy();
+                getUserActivity();
                 $('#myTab a').click(function (e) {
                   e.preventDefault()
                   $(this).tab('show')
