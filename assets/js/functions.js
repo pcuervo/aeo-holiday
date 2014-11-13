@@ -56,12 +56,16 @@ function footerBottom(){
 function formValidation(forma){
     $(forma).validate({
         submitHandler:function(){
+            console.log('validacion');
             switch(forma){
                 case '.j_group_form':
                     createExchangeGroup();
                     break;
                 case '.j_edit_group_form':
                     editExchangeGroup();
+                    break;
+                case '.j-send-email':
+                    send_coupon_email();
                     break;
             }
         }
@@ -79,6 +83,10 @@ function setLimitDate(){
         var fechaLimite = year+'-'+month+'-'+day;
         $('#fecha-limite').attr('max', fechaLimite);
     });
+    var now = new Date();
+    var date= ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
+    $('#fecha-limite').attr('min', date);
+    $('#fecha-intercambio').attr('min', date);
 }
 
 //Datepicker
@@ -154,23 +162,22 @@ function quitarOption(){
  * @return void
  */
 function send_coupon_email(){
-
-    $('.j-send-email a').on('click', function(e){
-        e.preventDefault();
-        var email_data = {};
-        email_data['email'] = $('.j-send-email input').val();
-        var url = '/dashboard/send_coupon_by_email';
-        $.post(
-            url,
-            email_data,
-            function(response){
-                $('<p>Se ha enviado tu correo</p>').appendTo('.j-send-email');
-                //var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
-                //window.location = coupon_url;
-            }// response
-        );
-        ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
+    $('.j-send-email').submit(function(e){
+        return false;
     });
+    send_coupon_email('send_coupon_email');
+    var email_data = {};
+    email_data['email'] = $('.j-send-email input').val();
+    var url = '/dashboard/send_coupon_by_email';
+    $.post(
+        url,
+        email_data,
+        function(response){
+            console.log('s');
+            $('<p>Se ha enviado tu correo</p>').appendTo('.j-send-email');
+        }// response
+    );
+    ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
 }// send_coupon_email
 
 /**

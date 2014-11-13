@@ -97,7 +97,7 @@
             <?php } ?>
 
             <?php if($current_view == 'view_coupon') { ?>
-                send_coupon_email();
+                formValidation('.j-send-email');
             <?php } ?>
 
             <?php if($current_view == 'new_exchange_group') { ?>

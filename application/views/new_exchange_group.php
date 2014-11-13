@@ -4,7 +4,7 @@
         <form role="form" class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ j_group_form ]">
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ] [ ]" for="name">Nombre del intercambio</label>
-                <input type="text" class="[ form-control ] [ required ]" id="nombre-intercambio" name="name">
+                <input type="text" class="[ form-control ] [ required ]" id="nombre-intercambio" name="name" maxlength="50">
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="center-block" for="exchange_date">Fecha del intercambio</label>
@@ -24,7 +24,7 @@
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="place">Lugar</label>
-                <input type="text" class="[ form-control ]" id="lugar-intercambio" name="place">
+                <input type="text" class="[ form-control ]" id="lugar-intercambio" maxlength="50" name="place">
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="budget">Monto del regalo</label>
@@ -41,7 +41,7 @@
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="[ center-block ]" for="description">Descripción</label>
-                <textarea class="form-control" rows="6" id="descripcion-intercambio" name="description"></textarea>
+                <textarea class="form-control" rows="6" id="descripcion-intercambio"  maxlength="140" name="description"></textarea>
             </div>
             <input type="hidden" name="admin_id" value="<?php echo $fb_user_id ?>">
             <div class="text-center">
