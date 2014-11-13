@@ -82,7 +82,7 @@
                     <ul class="list-unstyled">
                         <?php foreach($pending_friends as $key => $friend) {  ?>
                             <li>
-                                <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['profile_picture'] ?>" alt=""><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['name'] ?><br/><a href="#" class="[ j-remove-friend ]" data-group="<?php echo $friend['group_id'] ?>" data-friend="<?php echo $friend['invited_fb_user_id'] ?>"><small><span class='glyphicon glyphicon-remove-circle'></span> Eliminar</small></a></p>
+                                <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['profile_picture'] ?>" alt=""><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['name'] ?><br/><a href="#" class="[ j-remove-invitation ]" data-group="<?php echo $friend['group_id'] ?>" data-friend="<?php echo $friend['invited_fb_user_id'] ?>"><small><span class='glyphicon glyphicon-remove-circle'></span> Eliminar</small></a></p>
                             </li>
                         <?php } ?>
                     </ul>

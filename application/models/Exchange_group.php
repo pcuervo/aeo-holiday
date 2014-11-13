@@ -589,9 +589,9 @@ class Exchange_group extends CI_Model {
 	 * @return int $group_friend_id
 	 * @author Miguel Cabral
 	 **/
-	function remove_invited_friend($group_friend_id){
-		$delete_data = array('id' => $group_friend_id);
-		$this->db->delete('group_friends', $delete_data);
+	function remove_invited_friend($fb_user_id, $group_id){
+		$delete_data = array('invited_fb_user_id' => $fb_user_id, 'group_id' => $group_id);
+		$this->db->delete('group_invitations', $delete_data);
 	}// remove_invited_friend
 
 }// clase Exchange_group

@@ -294,8 +294,6 @@ class Dashboard extends CI_Controller {
 	 **/
 	function view_group($group_id)
 	{
-		$data['base_url'] = base_url();
-		$data['current_view'] = 'view_exchange_group';
 
 		$this->load->library('user_agent');
 		$data['browser'] = '';
@@ -305,6 +303,9 @@ class Dashboard extends CI_Controller {
 		$data['is_mobile'] = FALSE;
 		if($this->agent->is_mobile())
 			$data['is_mobile'] = TRUE;
+
+		$data['base_url'] = base_url();
+		$data['current_view'] = 'view_exchange_group';
 
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
@@ -459,7 +460,7 @@ class Dashboard extends CI_Controller {
 			);
 		$this->group_invitation->remove_invitation($invitation_data);
 
-		/*// Add to user's activity
+		// Add to user's activity
 		$this->load->model('exchange_group');
 		$group_admin = $this->exchange_group->get_group_admin($group_id);
 		$this->load->model('user_activity');
@@ -467,7 +468,7 @@ class Dashboard extends CI_Controller {
 
 		// Check if there are no pending invitations
 		if( ! $this->exchange_group->has_pending_invitations($group_id))
-			$this->exchange_group->randomize_secret_friends($group_id);*/
+			$this->exchange_group->randomize_secret_friends($group_id);
 
 		echo 'success';
 	}// decline_invitation
