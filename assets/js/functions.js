@@ -469,6 +469,7 @@ function declineGroupInvitation(){
             group_data,
             function(response){
                 // Agregar feedback
+                console.log(response);
                 $(invitacion).after('<p class="[ text-center ]">Has rechazado la invitación.</p>');
                 invitacion.remove();
             }// response
