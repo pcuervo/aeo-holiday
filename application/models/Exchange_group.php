@@ -424,8 +424,9 @@ class Exchange_group extends CI_Model {
 	 * @param int $fb_user_id
 	 * @author Miguel Cabral
 	 **/
-	private function check_groups_status()
+	function check_groups_status()
 	{
+		// METER QUE EL GRUPO YA NO ESTE ACTIVO
 		$this->db->select('id');
 		$this->db->where('join_deadline <', date('Y-m-d'));
 		$query = $this->db->get('exchange_groups');
