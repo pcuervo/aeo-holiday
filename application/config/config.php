@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= 'http://localhost:8888/aeo-holiday/';
-$config['base_url']	= 'https://www.aeobestgiftever.com/';
+$config['base_url']	= 'https://aeobestgiftever.com/';
 
 /*
 |--------------------------------------------------------------------------
