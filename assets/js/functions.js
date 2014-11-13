@@ -694,6 +694,7 @@ function getAppReports(){
         getAcceptedInvitations(dates);
         getPendingInvitations(dates);
         getRejectedInvitations(dates);
+        getSentMessages(dates);
 
     });
 }// getAppReports
@@ -752,7 +753,6 @@ function getPendingInvitations(dates){
                 num_invitations.push(val.num_invitations);
             });
 
-            console.log(invitationsJson);
             display_pending_invitations_per_date(dates, num_invitations);
             
         }
@@ -789,6 +789,37 @@ function getRejectedInvitations(dates){
         }
     );
 }// getRejectedInvitations
+
+/**
+ * Fetch sent messages by date
+ * array dates
+ * @return void  
+ */
+function getSentMessages(dates){
+    var url = '/cms/get_sent_messages_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE SENT MESSAGES VACIO');
+                return;
+            }
+
+            var messagesJson = $.parseJSON(response);
+            var dates = [];
+            var sent_messages = []
+            $.each(messagesJson, function(i, val){
+                dates.push(val.date);
+                sent_messages.push(val.sent_messages);
+            });
+
+            console.log(messagesJson);
+            display_sent_messages_per_date(dates, sent_messages);
+            
+        }
+    );
+}// getSentMessages
 
  /**
  * Displays accepted invitations by date
