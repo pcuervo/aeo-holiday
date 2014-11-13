@@ -42,7 +42,9 @@ class Dashboard extends CI_Controller {
 		if($video)
 			redirect('secret_friends/view_messages');
 
-		
+		$messages = $this->get_unread_messages();
+		if($messages != 0)
+			redirect('secret_friends/view_messages');
 
 
 		// Get user's information
@@ -463,7 +465,7 @@ class Dashboard extends CI_Controller {
 		$group_friend_ids = $this->group_friend->get_group_friend_ids_by_fb_id($current_fb_user['id']);
 		$messages = $this->group_friend->get_unread_messages_by_group_friends($group_friend_ids);
 
-		echo json_encode($messages);
+		return $messages;
 	}// get_unread_messages
 
 	/**

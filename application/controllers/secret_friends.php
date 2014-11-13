@@ -363,6 +363,8 @@ class Secret_friends extends CI_Controller {
 			$this->group_friend->set_messages_as_read($group_friend_data);
 		}
 
+		$videos = $this->secret_friend->get_video_by_fb_user($current_fb_user['id']);
+
 		$this->load->view('header', $data);
 		$this->load->view('view_messages', $data);
 		$this->load->view('footer', $data);
