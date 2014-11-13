@@ -246,6 +246,8 @@ function createExchangeGroup(){
     );
 }// createExchangeGroup
 
+
+
 /**
  * Edit exchange group using AJAX
  * @return void
@@ -569,11 +571,14 @@ function inviteFriends(form){
         FB.ui({method: 'apprequests',
             message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.'
         }, function(response){
-            $.each(response.to, function(i, friend_id){
-                $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
-                getInvitedFriendData(friend_id);
-            });
             $('.j_invite_friends.error').remove();
+            $.each(response.to, function(i, friend_id){
+                var friend = $('input[value="'+friend_id+'"]');
+                if ( $(friend).length == 0 ){
+                    $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
+                    getInvitedFriendData(friend_id);
+                }
+            })
         });
     });
 }// inviteFriends
