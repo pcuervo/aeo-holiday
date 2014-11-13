@@ -440,7 +440,7 @@ function removeGroupFriend(){
             url,
             group_friend_data,
             function(response){
-                console.log(response);
+                //console.log(response);
                 $(this).closest('.list-unstyled').find('li').after('<p>Se eliminó del al intercambio.</p>');
                 $(this).closest('.list-unstyled').find('li').remove();
             }// response
