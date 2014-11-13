@@ -170,7 +170,27 @@ class Cms extends CI_Controller {
 		
 		echo json_encode($users_by_date);
 
-	}// get_accepted_invitations_by_date
+	}// get_users_by_date
+
+
+	/**
+	 * Data report dasbhoard
+	 *
+	 * @return $users_per_exchange_by_date
+	 * @author Zurol
+	 **/
+	public function get_users_per_exchange_by_date()
+	{
+		$start_date = $_POST['start_date'];
+		$end_date = $_POST['end_date'];
+	
+		$this->load->model('cms_report');
+		$users_per_exchange_by_date = $this->cms_report->members_per_exchange_by_date($start_date, $end_date);
+		
+		echo json_encode($users_per_exchange_by_date);
+
+	}// get_users_per_exchange_by_date
+
 
 
 }// class Cms

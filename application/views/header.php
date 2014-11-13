@@ -66,6 +66,42 @@
         <?php } ?>
 	</head>
 	<body>
+		<?php if($current_view == 'login') { ?>
+			<script type='text/javascript'>
+			var ebRand = Math.random()+'';
+			ebRand = ebRand * 1000000;
+			//<![CDATA[ 
+			document.write('<scr'+'ipt src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563081&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
+			//]]>
+			</script>
+			<noscript>
+			<img width="1" height="1" style="border:0" src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563081&amp;ns=1"/>
+			</noscript>
+		<?php } ?>
+		<?php if($current_view == 'new_exchange_group') { ?>
+			<script type='text/javascript'>
+			var ebRand = Math.random()+'';
+			ebRand = ebRand * 1000000;
+			//<![CDATA[ 
+			document.write('<scr'+'ipt src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563082&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
+			//]]>
+			</script>
+			<noscript>
+			<img width="1" height="1" style="border:0" src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563082&amp;ns=1"/>
+			</noscript>
+		<?php } ?>
+		<?php if($current_view == 'complete_perfect_fit') { ?>
+			<script type='text/javascript'>
+			var ebRand = Math.random()+'';
+			ebRand = ebRand * 1000000;
+			//<![CDATA[ 
+			document.write('<scr'+'ipt src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563083&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
+			//]]>
+			</script>
+			<noscript>
+			<img width="1" height="1" style="border:0" src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563083&amp;ns=1"/>
+			</noscript>
+		<?php } ?>
 		<?php if($current_view != 'login') { ?>
 			<header class="">
 	        	<div id="sidebar-wrapper" class="[ clearfix ]">

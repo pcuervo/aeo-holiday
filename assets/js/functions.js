@@ -428,6 +428,7 @@ function declineGroupInvitation(){
  */
 function removeGroupFriend(){
     $('.j-remove-friend').on('click', function(e){
+        var este = $(this);
         e.preventDefault();
         var group_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
@@ -438,11 +439,8 @@ function removeGroupFriend(){
             url,
             group_friend_data,
             function(response){
-                console.log(response);
-                console.log($(this));
-                console.log($(this).closest('li'));
-                $(this).closest('li').after('<p>Se eliminó del al intercambio.</p>');
-                $(this).closest('li').remove();
+                este.closest('li').after('<p>Se eliminó del intercambio.</p>');
+                este.closest('li').remove();
             }// response
         );
     });
@@ -455,18 +453,18 @@ function removeGroupFriend(){
 function removeInvitedFriend(){
     $('.j-remove-invitation').on('click', function(e){
         e.preventDefault();
-
+        var este = $(this);
         var invited_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
 
         invited_friend_data['group_id'] = $(this).data('group');
         invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
-
         $.post(
             url,
             invited_friend_data,
             function(response){
-                console.log(response);
+                este.closest('li').after('<p>Se eliminó del intercambio.</p>');
+                este.closest('li').remove();
             }// response
         );
     });
