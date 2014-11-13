@@ -616,8 +616,7 @@ class Exchange_group extends CI_Model {
 			'created_at' 		=> date("Y-m-d H:i:s")
 		);
 
-		$this->db->insert('cron_job_log', $insert_data);
-		$this->group_id = $this->db->insert_id();
+		$this->db->insert_string('cron_job_log', $insert_data);
 
 	}// cron_job_log_register
 
