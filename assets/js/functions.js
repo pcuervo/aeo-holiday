@@ -17,12 +17,12 @@ function addGroupToCalendar(){
         license   : "al7dliedlzlnbpbh0mbm",
         mouse     : false,
         css       : false,
-        outlook   : {show:true, text:"Outlook Calendar"},
-        google    : {show:true, text:"Google Calendar"},
-        ical      : {show:true, text:"iCal Calendar"},
-        facebook  : {show:false, text:"Facebook Event"},
-        dropdown  : {order:"google,ical,outlook"},
-        callback  : ""
+        outlook     : {show:true, text:"Outlook Calendar"},
+        google      : {show:true, text:"Google Calendar"},
+        yahoo       : {show:false, text:"Yahoo Calendar"},
+        ical        : {show:true, text:"iCal Calendar"},
+        hotmail     : {show:false, text:"Hotmail Calendar"},
+        facebook    : {show:false, text:"Facebook Calendar"}
     });
 }
 
@@ -156,6 +156,14 @@ function quitarOption(){
     });
 }
 
+function showSubmit(){
+    $('.j-mobile-video-input').on('change', function(event) {
+        event.preventDefault();
+        if ( $(this).val() != '' ){
+            $('.j-mobile-video-button').show();
+        }
+    });
+}
 
 /*****************************
 	AJAX functions
@@ -279,6 +287,7 @@ function showSecretFriends(){
                 var secret_friends_json = $.parseJSON(response);
                 $.each(secret_friends_json, function(i, friend){
                     var friend_url = localStorage.getItem('base_url') + 'secret_friends/create_message/' + friend.group_friend_id;
+                    $('.j-modal ul').empty();
                     var secret_friend_html = '<li>';
                         secret_friend_html += '<a href="' + friend_url + '">';
                         secret_friend_html += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="' + friend.friend_picture + '" /><div class="[ three-quarter-width ] [ inline-block middle ]">';
@@ -412,7 +421,6 @@ function acceptGroupInvitation(){
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
         group_data['group_id'] = $(this).data('group');
-
         $.post(
             url,
             group_data,
@@ -567,6 +575,16 @@ function getInvitedFriendPic(fb_id){
     });
 }// getInvitedFriendName
 
+function shareFB(){
+    $('.share-button').on('click', function(event) {
+        event.preventDefault();
+        FB.ui({
+          method: 'share',
+          href:'https://dev-aeo-holiday.flockos.com/',
+        }, function(response){});
+    });
+}
+
 //
 function initWebCam(){
     $("#webcam").scriptcam({
@@ -592,7 +610,7 @@ function initWebCam(){
         $( "#recordStopButton" ).attr( "disabled", false );
         $( "#recordPauseResumeButton" ).attr( "disabled", false );
         $.scriptcam.startRecording();
-        stopRecording();
+        //stopRecording();
     }
     function closeCamera() {
         $("#recordStopButton" ).attr( "disabled", true );

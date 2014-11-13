@@ -8,15 +8,15 @@
     <div class="[ row ]">
         <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block margin-bottom ]">
             <?php
-            $attributes = array('class' => 'add-class-here');
+            $attributes = array('class' => '[ j-mobile-video-form ]');
             echo form_open_multipart('secret_friends/upload_video/'.$secret_friend['group_id'], $attributes);
             ?>
                 <?php if ( $is_mobile == 1 ) {?>
-                    <div class="[ form-group] ">
-                        <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" accept="video/*" name="userfile"  />
+                    <div class="[ form-group ]">
+                        <input class="[ j-mobile-video-input ] [ margin-bottom ] [ center-block ] [ form-control ]" type="file" accept="video/*" name="userfile"  />
                     </div>
                     <div class="[ text-center ]">
-                        <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>enviar</span></button>
+                        <button type="submit" value="" class="[ btn btn-primary btn-go ] [ j-mobile-video-button ]"><span>enviar</span></button>
                     </div>
                 <?php } else { ?>
                     <div id="webcam"></div>
