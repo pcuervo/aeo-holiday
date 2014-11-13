@@ -533,8 +533,9 @@ class Exchange_group extends CI_Model {
 	 * @author Miguel Cabral
 	 **/
 	function post_video_to_secret_friends(){
+
 		$group_ids = $this->get_finished_groups();
-		
+
 		if ($group_ids == 0) return 0;
 
 		$this->db->select('facebook_users_id, group_id, to_group_friend_id, secret_friend_videos.id');
@@ -545,10 +546,15 @@ class Exchange_group extends CI_Model {
 		$this->db->where_in('group_id', $group_ids);
 		$query = $this->db->get();
 
+		if ($query->num_rows() < 1)
+			return 0;
+
 		$this->load->model('user_activity');
 		$this->load->model('group_friend');
 		$this->load->model('secret_friend_video');
+
 		foreach ($query->result() as $key => $row){
+			var_dump($row);
 			$friend_fb_id = $this->group_friend->get_fb_id($row->to_group_friend_id);
 			$this->secret_friend_video->set_was_posted($row->id);
 			$video = $this->facebook->send_video_notification($friend_fb_id, $row->to_group_friend_id);
