@@ -76,21 +76,25 @@ function formValidation(forma){
 }
 
 function setLimitDate(){
-    $('#fecha-intercambio').on('change', function(){
-        var today = new Date( $(this).val() );
-        var limitDate = new Date(today);
-        limitDate.setDate(limitDate.getDate() - 1);
-        $('#fecha-limite').attr('max', fechaLimite);
-        $('#fecha-limite').datepicker( "option", "maxDate", new Date( dateDesktop ) );
-    });
-    var now = new Date();
-    //var hoy = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
-    //var manana = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+(now.getDate()+1) );
-     $('#fecha-limite').attr('min', hoy);
-     $('#fecha-intercambio').attr('min', manana);
-
-    $('#fecha-limite').datepicker({minDate: '0'});
+    var today = new Date();
+    var tomorrow = new Date(today);
+    tomorrow.setDate(tomorrow.getDate() + 1);
     $('#fecha-intercambio').datepicker({minDate: '+1d'});
+    $('#fecha-limite').datepicker({minDate: '0'});
+    $('#fecha-intercambio').on('change', function(){
+        var intercambioDate = new Date( $(this).val() );
+        var limitDate = new Date(intercambioDate);
+        limitDate.setDate(limitDate.getDate() - 1);
+        $('#fecha-limite').attr('max', limitDate);
+        $('#fecha-limite').datepicker( "option", "maxDate", new Date( limitDate ) );
+    });
+
+    //var manana = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+(now.getDate()+1) );
+    //$('#fecha-limite').attr('min', hoy);
+    //$('#fecha-intercambio').attr('min', manana);
+
+    //$('#fecha-limite').datepicker({minDate: '0'});
+    //$('#fecha-intercambio').datepicker({minDate: '+1d'});
 }
 
 //Datepicker
