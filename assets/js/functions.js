@@ -368,29 +368,6 @@ function videoPost(url){
 }// videoPost
 
 
-/**
- * Get unread messages for current user
- * @return void
- */
-/*function getUnreadMessages(){
-    var url = localStorage.getItem('base_url') + 'dashboard/get_unread_messages/';
-    $('.actividad-grupo .loader').show();
-    $.get(
-        url,
-        function(response){
-            $('.actividad-grupo .loader').hide();
-            var mensajes_json = $.parseJSON(response);
-            var url_mensajes = localStorage.getItem('base_url') + 'secret_friends/view_messages/';
-            $.each(mensajes_json, function(i, val){
-                var html_mensaje = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
-                    html_mensaje += '<p class="[ text-center ]">Tienes un mensaje de tu amigo secreto del grupo ' + val.group_name + '</p>';
-                    html_mensaje += '<div class="[ text-center ]"><a class="[ btn btn-primary btn-go ]" href="' + url_mensajes + '"><span>Ver mensaje</span></a></div>';
-                    html_mensaje += '</div>';
-                $(html_mensaje).appendTo('.actividad-mensajes');
-            });
-        }// response
-    );
-}// getUnreadMessages*/
 
 /**
  * Get user's activity
