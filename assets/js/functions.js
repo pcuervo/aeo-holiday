@@ -359,7 +359,7 @@ function getUserActivity(){
                         break;
                     case '5':
                         console.log(activity);
-                        var url_video = localStorage.getItem('base_url') + 'secret_friends/view_secret_video/'+activity.group_friend_id;
+                        var url_video = localStorage.getItem('base_url') + 'secret_friends/view_video/'+activity.group_friend_id;
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';

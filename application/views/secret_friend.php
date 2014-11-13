@@ -14,9 +14,9 @@
                     <a href="<?php echo base_url().'secret_friends/create_video/'.$secret_friend['group_friend_id'] ?>" class="btn btn-primary btn-go" onclick="ga('send', 'event', 'amigosSecretos', 'click', 'grabarDedicatoria');"><span>Grabar dedicatoria</span></a>
                 </div>
             <?php } else { ?>
-                <div class="[ text-center ] [ margin-bottom ]">
+                <!-- <div class="[ text-center ] [ margin-bottom ]">
                     <a href="<?php echo base_url().'secret_friends/view_video/'.$secret_friend['group_friend_id'] ?>" class="btn btn-primary btn-go"><span>Ver dedicatoria</span></a>
-                </div>
+                </div> -->
             <?php } ?>
 
             <?php if($has_perfect_fit) { ?>
