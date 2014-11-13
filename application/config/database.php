@@ -49,9 +49,9 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'aeobestgift';
-$db['default']['password'] = '67__AOUqcuIeSPoN';
-$db['default']['database'] = 'aeobestgift_sitio';
+$db['default']['username'] = 'aeoholiday';
+$db['default']['password'] = '_rhxHCCKQ20Biy6O';
+$db['default']['database'] = 'aeoholiday_sitio';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
