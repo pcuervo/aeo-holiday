@@ -185,10 +185,11 @@ class Secret_friend extends CI_Model {
 	 **/
 	function get_videos_by_fb_user($fb_user_id)
 	{
-		$this->db->select('secret_friends.id, video_url, to_group_friend_id as group_friend_id');
+		$this->db->select('secret_friends.id, video_url, to_group_friend_id as group_friend_id, name');
 		$this->db->from('group_friends');
 		$this->db->join('secret_friends', 'group_friends.id = secret_friends.to_group_friend_id');
 		$this->db->join('secret_friend_videos', 'secret_friends.id = secret_friend_videos.secret_friend_id');
+		$this->db->join('exchange_groups', 'exchange_groups.id = group_friends.group_id');
 		$this->db->where('facebook_users_id', $fb_user_id);
 		$query = $this->db->get();
 
@@ -197,6 +198,7 @@ class Secret_friend extends CI_Model {
 
 		foreach ($query->result() as $key => $row) {
 			$video_data[$key] = array(
+				'name'				=> $row->name,
 				'group_friend_id'	=> $row->group_friend_id,
 				'secret_friend_id'	=> $row->id,
 				'video_url'			=> $row->video_url,
@@ -209,18 +211,18 @@ class Secret_friend extends CI_Model {
 	/**
 	 * Get unseen videos by Facebook user
 	 *
-	 * @param string $fb_user_id
+	 * @param string $fb_user_id, int $group_friend_id
 	 * @return mixed $video_data or 0
 	 * @author Miguel Cabral
 	 **/
-	function get_unseen_video_by_fb_user($fb_user_id)
+	function get_video_by_fb_user($fb_user_id, $group_friend_id)
 	{
 		$this->db->select('secret_friends.id, video_url, to_group_friend_id as group_friend_id');
 		$this->db->from('group_friends');
 		$this->db->join('secret_friends', 'group_friends.id = secret_friends.to_group_friend_id');
 		$this->db->join('secret_friend_videos', 'secret_friends.id = secret_friend_videos.secret_friend_id');
 		$this->db->where('facebook_users_id', $fb_user_id);
-		$this->db->where('was_seen', 0);
+		$this->db->where('to_group_friend_id', $group_friend_id);
 		$query = $this->db->get();
 
 		if ($query->num_rows() < 1)
@@ -234,7 +236,7 @@ class Secret_friend extends CI_Model {
 				);
 
 		return $video_data;
-	}// get_unseen_video_by_fb_user
+	}// get_video_by_fb_user
 
 	/**
 	 * Get the video for a secret friend
