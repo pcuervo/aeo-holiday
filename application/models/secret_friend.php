@@ -201,6 +201,20 @@ class Secret_friend extends CI_Model {
 	}// get_video
 
 	/**
+	 * Mark video as seen
+	 *
+	 * @param int $secret_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function mark_as_seen($secret_friend_id)
+	{
+		$update_data = array('was_seen' => 1);
+		$this->db->where('secret_friend_id', $secret_friend_id);
+		$this->db->update('secret_friend_videos', $update_data);
+	}// mark_as_seen
+
+	/**
 	 * Returns secret friend
 	 *
 	 * @param int $secret_friend_id

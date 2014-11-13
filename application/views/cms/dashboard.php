@@ -77,9 +77,6 @@
                     <div class="[ col-xs-6 ]">
                         <canvas id="users_per_date"></canvas>
                     </div>
-                    <!--<div class="[ col-xs-6 ]">
-                        <canvas id="total_closed_exchange_groups"></canvas>
-                    </div> -->
                 </div><!-- row -->
             </div><!-- results -->
         </div>

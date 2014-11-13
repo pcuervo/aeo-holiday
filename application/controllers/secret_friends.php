@@ -217,6 +217,10 @@ class Secret_friends extends CI_Controller {
 		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
 
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
 		// Get secret friend's data
 		$this->load->model('secret_friend');
 		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
@@ -228,6 +232,43 @@ class Secret_friends extends CI_Controller {
 		$this->load->view('view_video', $data);
 		$this->load->view('footer', $data);
 	}// view_video
+
+	/**
+	 * View a secret friend's video
+	 *
+	 * @param string $group_friend_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function view_secret_video($group_friend_id)
+	{
+		// Set up general variables for view
+		$data['current_view'] = 'view_secret_video';
+
+		$current_fb_user = $this->facebook->get_user();
+		if($current_fb_user == NULL)
+			redirect('/login');
+
+		// Get user's groups to display in the menu
+		$this->load->model('exchange_group');
+		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
+
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		// Get secret friend's data
+		$this->load->model('secret_friend');
+		$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
+
+		// Get secret friend video
+		$data['video_url'] = $this->secret_friend->get_video($data['secret_friend']['secret_friend_id']);
+		$this->secret_friend->mark_as_seen($data['secret_friend']['secret_friend_id']);
+
+		$this->load->view('header', $data);
+		$this->load->view('view_secret_video', $data);
+		$this->load->view('footer', $data);
+	}// view_secret_video
 
 	/**
 	 * Creates a message for a secret friend.

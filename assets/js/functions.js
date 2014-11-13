@@ -304,7 +304,7 @@ function videoPost(url){
  * Get unread messages for current user
  * @return void
  */
-function getUnreadMessages(){
+/*function getUnreadMessages(){
     var url = localStorage.getItem('base_url') + 'dashboard/get_unread_messages/';
     $('.actividad-grupo .loader').show();
     $.get(
@@ -322,7 +322,7 @@ function getUnreadMessages(){
             });
         }// response
     );
-}// getUnreadMessages
+}// getUnreadMessages*/
 
 /**
  * Get user's activity
@@ -358,6 +358,7 @@ function getUserActiviy(){
                         html_activity += '</div>'
                         break;
                     case '5':
+                        console.log(activity);
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';
