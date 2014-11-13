@@ -112,8 +112,8 @@
                     setLimitDateMobile();
                 <?php } else { ?>
                     setLimitDateDesktop();
+                    runDatepicker();
                 <?php } ?>
-                runDatepicker();
                 inviteFriends('.j_group_form');
             <?php } ?>
 
@@ -124,8 +124,8 @@
                     setLimitDateMobile();
                 <?php } else { ?>
                     setLimitDateDesktop();
+                    runDatepicker();
                 <?php } ?>
-                runDatepicker();
                 removeGroupFriend();
                 removeInvitedFriend();
             <?php } ?>

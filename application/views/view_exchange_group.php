@@ -6,7 +6,7 @@
                 <div class="[ form-group ] [ margin-bottom ]">
                     <label for="">Tu amigo secreto</label>
                     <div class="[ margin-bottom ] [ actividad-aviso ]">
-                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $secret_friend['friend_picture']  ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $secret_friend['name']; ?></p>
+                        <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $secret_friend['friend_picture']  ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><a class="[ btn btn-primary btn-go ]" href="<?php echo '/secret_friends/view/'.$secret_friend['group_friend_id']; ?>"><span><?php echo $secret_friend['name']; ?></span></a></p>
                     </div>
                 </div><!-- form-group -->
             <?php } ?>
