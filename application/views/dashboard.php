@@ -83,6 +83,12 @@
     <div class="[ col-xs-12 col-sm-8 ] [ center-block ] [ clearfix ] [ actividad ]">
         <h3 class="[ text-center ] [ margin-bottom ]">Actividad reciente</h3>
         <div class="[ actividad-contenedor ] [ margin-bottom clearfix ]">
+            <div class="[ actividad-mensajes ] [ margin-bottom clearfix ]">
+                <div class="[ loader ] [ center-block ]">
+                    <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.gif">
+                    <p class="[ text-center ]">buscando mensajes…</p>
+                </div><!-- loader -->
+            </div>
             <div class="[ actividad-grupo ] [ margin-bottom clearfix ]">
                 <div class="[ loader ] [ center-block ]">
                     <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.gif">
@@ -90,5 +96,6 @@
                 </div><!-- loader -->
             </div>
         </div>
+
     </div><!-- actividad -->
 </div><!-- CONTENIDO -->
