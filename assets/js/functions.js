@@ -343,26 +343,27 @@ function getUserActiviy(){
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Has creado el grupo: ' + activity.group_name + '</p>';
-                        html_activity += '</div>'
+                        html_activity += '</div>';
                         break;
                     case '2':
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' se ha unido a tu grupo: ' + activity.group_name + '</p>';
-                        html_activity += '</div>'
+                        html_activity += '</div>';
                         break;
                     case '3':
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="'+activity.friend_pic+'" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]">' + activity.friend_name + ' ha rechazado la invitactión al grupo: ' + activity.group_name + '</p>';
-                        html_activity += '</div>'
+                        html_activity += '</div>';
                         break;
                     case '5':
                         //console.log(activity);
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';
-                        html_activity += '</div>'
+                        html_activity += '<div class="[ text-center ]"><a class="[ btn btn-primary btn-go ]" href="' + activity.group_friend_id + '"><span>Ver video</span></a></div>';
+                        html_activity += '</div>';
                         break;
                 }
                 $(html_activity).appendTo('.actividad-grupo');
