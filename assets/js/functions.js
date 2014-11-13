@@ -294,7 +294,7 @@ function videoPost(url){
             $(html_video).appendTo('.j-video');
         },
         error: function(response){
-            console.log(response);
+            //console.log(response);
         }
     });
 }// videoPost
@@ -358,7 +358,7 @@ function getUserActiviy(){
                         html_activity += '</div>'
                         break;
                     case '5':
-                        console.log(activity);
+                        //console.log(activity);
                         html_activity = '<div class="[ margin-bottom ] [ actividad-aviso ]">';
                         html_activity += '<h4 class="[ text-center ]">' + activity.action + '</h4>';
                         html_activity += '<p class="[ text-center ]">Tienes un video de tu amigo secreto.</p>';
@@ -479,7 +479,7 @@ function removeInvitedFriend(){
  * @return void
  */
 function loadFacebookSdk(){
-	console.log('loading FB SDK async...');
+	//console.log('loading FB SDK async...');
 	(function(d, s, id) {
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) return;
@@ -521,7 +521,7 @@ function inviteFriends(form){
 function getInvitedFriendData(fb_id){
     var user_data = {};
     FB.api('/'+ fb_id + '?access_token=293571087508858|21d0205237f8a0afec65c14533565773', function(response) {
-        console.log(response);
+        //console.log(response);
         if(response.id){
             var name = response.first_name + ' ' + response.last_name;
             $('.j_invite_friends').after('<p>Se agregó: ' + name + ' al intercambio.</p>');
@@ -640,7 +640,7 @@ function convertWebcamVideo(url){
 
         },
         error: function(response){
-            console.log(response);
+            //console.log(response);
         }
     });
 }// convertWebcamVideo

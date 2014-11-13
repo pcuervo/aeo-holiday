@@ -90,5 +90,6 @@
                 </div><!-- loader -->
             </div>
         </div>
+
     </div><!-- actividad -->
 </div><!-- CONTENIDO -->
