@@ -321,9 +321,13 @@ class Dashboard extends CI_Controller {
 		if($data['current_fb_user']['id'] == $data['group_details']['admin_id'])
 			$is_admin = TRUE;
 
+		$group_closed = FALSE;
+		if($this->exchange_group->is_after_exchange($data['group_details']['group_id']) || $this->exchange_group->is_group_closed($data['group_details']['group_id']) )
+			$group_closed = TRUE;
+
 		// load views
 		$this->load->view('header', $data);
-		if($is_admin && $this->exchange_group->is_after_exchange($data['group_details']['group_id']))
+		if($is_admin && ! $group_closed)
 			$this->load->view('edit_exchange_group', $data);
 		else
 			$this->load->view('view_exchange_group', $data);
@@ -418,7 +422,10 @@ class Dashboard extends CI_Controller {
 		$this->load->model('user_activity');
 		$this->user_activity->invitation_accepted($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 2);
 
-		echo 'success';
+		// Check if there are no pending invitations
+		if( ! $this->exchange_group->has_pending_invitations($group_id))
+			$this->exchange_group->randomize_secret_friends($group_id);
+
 	}// accept_invitation
 
 	/**

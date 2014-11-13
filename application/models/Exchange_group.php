@@ -363,6 +363,59 @@ class Exchange_group extends CI_Model {
 	}// is_after_exchange
 
 	/**
+	 * Checks if the group has been closed
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function is_group_closed($group_id)
+	{
+		$this->db->select('id');
+		$this->db->where('id', $group_id);
+		$this->db->where('status', 1);
+		$query = $this->db->get('exchange_groups');
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		return 1;
+	}// is_after_exchange
+
+	/**
+	 * Sets a group as closed
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function close_group($group_id)
+	{
+		$update_data = array('status', 1);
+		$this->db->where('id', $group_id);
+		$this->db->update('exchange_groups', $update_data);
+	}// is_after_exchange
+
+	/**
+	 * Checks if group has pending invitations.
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function has_pending_invitations($group_id)
+	{
+		$this->db->select('id');
+		$this->db->where('group_id', $group_id);
+		$query = $this->db->get('group_invitations');
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		return 1;
+	}// check_groups_status
+
+	/**
 	 * Checks the status of a user's groups and takes action adordingly.
 	 *
 	 * @param int $fb_user_id
@@ -440,8 +493,10 @@ class Exchange_group extends CI_Model {
 	 * @param int $group_id
 	 * @author Miguel Cabral
 	 **/
-	private function randomize_secret_friends($group_id)
+	function randomize_secret_friends($group_id)
 	{
+		$this->close_group($group_id);
+		
 		$group_friends = $this->get_group_friends($group_id);
 		$from_friends = array();
 		$to_friends = array();
