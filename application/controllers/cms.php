@@ -71,7 +71,7 @@ class Cms extends CI_Controller {
 		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	
 		$data['total_closed_exchange_groups'] = $this->cms_report->total_closed_exchanges();	
 		$data['average_users_per_group'] = $this->cms_report->average_users_per_group();		
-
+		$data['total_invitations'] = $data['total_accepted_invitations'] + $data['total_pending_invitations'] + $data['total_rejected_invitations'];
 
 		// Cargar busqueda (si existe) con datos por fecha
 
@@ -174,4 +174,3 @@ class Cms extends CI_Controller {
 
 
 }// class Cms
-
