@@ -541,7 +541,7 @@ class Dashboard extends CI_Controller {
 		$post = $this->exchange_group->post_video_to_secret_friends();
 		$this->exchange_group->cron_job_log_register('post_video_to_secret_friends', '1');	
 		$status = $this->exchange_group->check_groups_status();
-		$this->exchange_group->cron_job_log_register('check_groups_status', '0');
+		$this->exchange_group->cron_job_log_register('check_groups_status', $status);
 
 	}// post_video_to_secret_friends
 

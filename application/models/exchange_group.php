@@ -610,10 +610,12 @@ class Exchange_group extends CI_Model {
 	 * @author Zurol
 	 **/
 	function cron_job_log_register($function_name, $returned_value){
-		$sql_query = 'insert into cron_job_log (function_name, returned_value, created_at) VALUES (\''.$function_name.'\', \''.$returned_value.'\', \''.date("Y-m-d H:i:s").'\')';
+		$sql_query = 'insert into cron_job_log (function_name, returned_value, created_at) VALUES (\''.$function_name.'\', \''.$returned_value.'\', \''.date("Y-m-d H:i:s").'\');';
+
 		$this->db->query($sql_query);
 
 	}// cron_job_log_register
+
 
 	/**
 	 * Insert in db's table cron_job_log
