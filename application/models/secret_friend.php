@@ -155,7 +155,7 @@ class Secret_friend extends CI_Model {
 	 **/
 	function has_video($fb_user_id, $to_group_friend_id)
 	{
-		$this->db->select('secret_friends.id, video_url');
+		$this->db->select('secret_friends.id, video_url, group_friends.id as group_friend_id');
 		$this->db->from('group_friends');
 		$this->db->join('secret_friends', 'group_friends.id = secret_friends.from_group_friend_id');
 		$this->db->join('secret_friend_videos', 'secret_friends.id = secret_friend_videos.secret_friend_id');
@@ -168,6 +168,7 @@ class Secret_friend extends CI_Model {
 
 		$row = $query->row();
 		$video_data = array(
+				'group_friend_id'	=> $row->group_friend_id,
 				'secret_friend_id'	=> $row->id,
 				'video_url'			=> $row->video_url,
 				);
