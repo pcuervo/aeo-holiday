@@ -589,19 +589,18 @@ function getInvitedFriendData(fb_id){
     var user_data = {};
     FB.api('/'+ fb_id + '?access_token=723683944395366|2961c8a6e6af8194d36a8c9b56825b49', function(response) {
         //console.log(response);
+        var invited_friends = [];
+        var flag = false;
         if(response.id){
+    
             var name = response.first_name + ' ' + response.last_name;
-            var flag = false;
-            if ( $('.agregado').length > 0 ){
-                console.log( $('.agregado').length );
-                console.log( $('.agregado') );
-                $.each($('.agregado'), function(index, val) {
-                    console.log(val);
-                    if (val.indexOf(name) >= 0){
-                        flag = true;
-                    }
-                });
+
+            if(invited_friends.indexOf(name) > -1){
+                flag = true;
+            } else {
+                invited_friends.push(name);
             }
+
             if ( ! flag ){
                 $('.j_invite_friends').after('<p class="[ agregado ]">Se agregó: ' + name + ' al intercambio.</p>');
                 $('.j_invite_friends-notice').html('');
