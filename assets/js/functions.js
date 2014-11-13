@@ -255,7 +255,7 @@ function createExchangeGroup(){
 function editExchangeGroup(){
     var group_data = $('.j_edit_group_form').serialize();
     var url = localStorage.getItem('base_url') + 'dashboard/edit_exchange_group';
-
+    $('.loader-lightbox, .loader-lightbox .loader').show();
     $.post(
         url,
         group_data,
