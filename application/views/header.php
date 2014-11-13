@@ -19,7 +19,7 @@
 		?>
 		<meta property="og:description" content="<?php //echo $current_fb_user[]; ?> ya organizó su intercambio y recibió 30% de descuento en AEO. Hazlo tu también con Best Gift Ever" />
 		<meta property="og:image" content="<?php echo base_url(); ?>assets/images/aeo_logo_share.png" />
-		<meta property="fb:app_id" content="293571087508858" />
+		<meta property="fb:app_id" content="723683944395366" />
 
 		<?php if($current_view == 'new_exchange_group') { ?>
             <!-- Facebook Conversion Code for Crear Intercambio -->

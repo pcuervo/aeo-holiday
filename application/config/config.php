@@ -15,7 +15,7 @@
 |
 */
 //$config['base_url']	= 'http://localhost:8888/aeo-holiday/';
-$config['base_url']	= 'https://www.aeobestgiftever.com/';
+$config['base_url']	= 'https://dev-aeo-holiday.flockos.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -369,9 +369,9 @@ $config['proxy_ips'] = '';
 | Comma-delimited, e.g. '10.0.1.200,10.0.1.201'
 |
 */
-$config['app_url'] = 'https://www.facebook.com/TestingVis/app_293571087508858';
-$config['facebook']['api_id'] = '293571087508858';
-$config['facebook']['app_secret'] = '21d0205237f8a0afec65c14533565773';
+$config['app_url'] = 'https://www.facebook.com/TestingVis/app_723683944395366';
+$config['facebook']['api_id'] = '723683944395366';
+$config['facebook']['app_secret'] = '2961c8a6e6af8194d36a8c9b56825b49';
 $config['facebook']['redirect_url'] = $config['base_url'].'redirect/login';
 $config['facebook']['permissions'] = array(
 	'email',

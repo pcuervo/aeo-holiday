@@ -1,20 +1,20 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
+
 if ( session_status() == PHP_SESSION_NONE ) {
   session_start();
 }
- 
+
 // Autoload the required files
 require_once( APPPATH . 'libraries/facebook/vendor/autoload.php' );
- 
+
 use Facebook\FacebookRedirectLoginHelper;
 use Facebook\FacebookCanvasLoginHelper;
 use Facebook\FacebookSession;
 use Facebook\FacebookRequest;
 use Facebook\FacebookResponse;
 use Facebook\GraphUser;
- 
- 
+
+
 class Facebook {
     var $ci;
     var $helper;
@@ -33,7 +33,7 @@ class Facebook {
 
         // Create the login helper and replace REDIRECT_URI with your URL
         $this->helper = new FacebookRedirectLoginHelper( $this->ci->config->item('redirect_url', 'facebook') );
-        //$this->helper = new FacebookCanvasLoginHelper();  
+        //$this->helper = new FacebookCanvasLoginHelper();
 
         //var_dump($this->helper);
         if ( $this->ci->session->userdata('fb_token') ) {
@@ -155,12 +155,12 @@ class Facebook {
         if ( $session ) {
             $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te envió un video.',
-                    'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
+                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
                 ) ) )->execute();
 
             return $response;
         }
-        
+
     }// send_video_notification
 
     /**
@@ -172,12 +172,12 @@ class Facebook {
         if ( $session ) {
             $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te ha enviado un mensaje.',
-                    'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
+                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
                 ) ) )->execute();
 
             return $response;
         }
-        
+
     }// send_message_notification
 
     public function get_signed_request(){

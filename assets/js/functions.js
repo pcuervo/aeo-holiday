@@ -552,7 +552,7 @@ function loadFacebookSdk(){
 
     window.fbAsyncInit = function() {
         FB.init({
-            appId      : '293571087508858',
+            appId      : '723683944395366',
             cookie     : true,
             xfbml      : true,
             version    : 'v2.1'
@@ -585,7 +585,7 @@ function inviteFriends(form){
 
 function getInvitedFriendData(fb_id){
     var user_data = {};
-    FB.api('/'+ fb_id + '?access_token=293571087508858|21d0205237f8a0afec65c14533565773', function(response) {
+    FB.api('/'+ fb_id + '?access_token=723683944395366|2961c8a6e6af8194d36a8c9b56825b49', function(response) {
         //console.log(response);
         if(response.id){
             var name = response.first_name + ' ' + response.last_name;
@@ -607,7 +607,7 @@ function getInvitedFriendData(fb_id){
 }// getInvitedFriendName
 
 function getInvitedFriendPic(fb_id){
-    FB.api('/'+ fb_id + '/picture?access_token=293571087508858|21d0205237f8a0afec65c14533565773', function(response) {
+    FB.api('/'+ fb_id + '/picture?access_token=723683944395366|2961c8a6e6af8194d36a8c9b56825b49', function(response) {
         if(response){
             return response.url;
         }
