@@ -8,7 +8,7 @@
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
                 <label class="center-block" for="exchange_date">Fecha del intercambio</label>
-                <?php if ( $browser == 'Firefox' OR $browser == 'IE' ){ ?>
+                <?php if ( $browser == 'Firefox' OR $browser == 'Internet Explorer' ){ ?>
                     <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-intercambio" name="exchange_date">
                 <?php } else { ?>
                     <input type="date" class="[ form-control ] [ required ]" id="fecha-intercambio" name="exchange_date" >

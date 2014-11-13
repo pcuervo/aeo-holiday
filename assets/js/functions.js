@@ -170,7 +170,7 @@ function showSubmit(){
 
 function showLoaderSubmitVideo(){
     $('.j-mobile-video-button').on('click', function(event) {
-        $('.loader-lightbox, .loader').show();
+        $('.loader-lightbox, .loader-lightbox .loader').show();
         console.log('loading...');
     });
 }
@@ -233,7 +233,7 @@ function createExchangeGroup(){
     }
     var group_data = $('.j_group_form').serialize();
     var url = localStorage.getItem('base_url') + 'dashboard/create_exchange_group';
-    $('.loader-lightbox, .loader').show();
+    $('.loader-lightbox, .loader-lightbox .loader').show();
     $.post(
         url,
         group_data,
@@ -461,6 +461,8 @@ function declineGroupInvitation(){
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
         group_data['group_id'] = $(this).data('group');
+        console.log('group_data');
+        console.log(group_data['group_id']);
         $.post(
             url,
             group_data,
