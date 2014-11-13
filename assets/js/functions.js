@@ -75,7 +75,7 @@ function formValidation(forma){
     });
 }
 
-function setLimitDate(){
+function setLimitDateDesktop(){
     var today = new Date();
     var tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
@@ -88,6 +88,24 @@ function setLimitDate(){
         $('#fecha-limite').attr('max', limitDate);
         $('#fecha-limite.j-datepicker').datepicker( "option", "maxDate", new Date( limitDate ) );
     });
+}
+
+function setLimitDateMobile(){
+    $('#fecha-intercambio').on('change', function(){
+        var date = $(this).val();
+        var date = date.split('-');
+        var year = date[0];
+        var month = date[1];
+        var day = date[2];
+        var day = day-1;
+        var fechaLimite = year+'-'+month+'-'+day;
+        $('#fecha-limite').attr('max', fechaLimite);
+    });
+    var now = new Date();
+    var hoy = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
+    var manana = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+(now.getDate()+1) );
+    $('#fecha-limite').attr('min', hoy);
+    $('#fecha-intercambio').attr('min', manana);
 }
 
 //Datepicker

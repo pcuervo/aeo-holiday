@@ -108,7 +108,11 @@
 
             <?php if($current_view == 'new_exchange_group') { ?>
                 formValidation('.j_group_form');
-                setLimitDate();
+                <?php if ( $is_mobile ){ ?>
+                    setLimitDateMobile();
+                <?php } else { ?>
+                    setLimitDateDesktop();
+                <?php } ?>
                 runDatepicker();
                 inviteFriends('.j_group_form');
             <?php } ?>
@@ -116,7 +120,11 @@
             <?php if($current_view == 'view_exchange_group') { ?>
                 inviteFriends('.j_edit_group_form');
                 formValidation('.j_edit_group_form');
-                setLimitDate();
+                <?php if ( $is_mobile ){ ?>
+                    setLimitDateMobile();
+                <?php } else { ?>
+                    setLimitDateDesktop();
+                <?php } ?>
                 runDatepicker();
                 removeGroupFriend();
                 removeInvitedFriend();
