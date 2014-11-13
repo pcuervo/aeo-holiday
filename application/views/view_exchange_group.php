@@ -50,7 +50,7 @@
                 </a>
             </div><!-- form-group -->
         </form>
-        <div class="[ col-xs-12 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
+        <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
             <p class="[ center-block ] [ trade ]" for="name">INVITADOS</p>
             <ul class="list-unstyled">
                 <?php foreach($group_friends as $key => $friend) { ?>
