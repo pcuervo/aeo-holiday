@@ -177,6 +177,36 @@ class Secret_friend extends CI_Model {
 	}// has_video
 
 	/**
+	 * Get videos by Facebook user
+	 *
+	 * @param string $fb_user_id
+	 * @return mixed $video_data or 0
+	 * @author Miguel Cabral
+	 **/
+	function get_videos_by_fb_user($fb_user_id)
+	{
+		$this->db->select('secret_friends.id, video_url, to_group_friend_id as group_friend_id');
+		$this->db->from('group_friends');
+		$this->db->join('secret_friends', 'group_friends.id = secret_friends.to_group_friend_id');
+		$this->db->join('secret_friend_videos', 'secret_friends.id = secret_friend_videos.secret_friend_id');
+		$this->db->where('facebook_users_id', $fb_user_id);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		foreach ($query->result() as $key => $row) {
+			$video_data[$key] = array(
+				'group_friend_id'	=> $row->group_friend_id,
+				'secret_friend_id'	=> $row->id,
+				'video_url'			=> $row->video_url,
+				);
+		}
+		
+		return $video_data;
+	}// get_video_by_fb_user
+
+	/**
 	 * Get unseen videos by Facebook user
 	 *
 	 * @param string $fb_user_id

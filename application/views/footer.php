@@ -75,7 +75,7 @@
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
                 declineGroupInvitation()
-                getUnreadMessages();
+                //getUnreadMessages();
                 getUserActivity();
                 $('#myTab a').click(function (e) {
                   e.preventDefault()
