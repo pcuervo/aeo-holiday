@@ -48,7 +48,6 @@ class Cms_report extends CI_Model {
 		return $this->db->count_all_results();
 	}// total_pending_invitations
 
-
 	/**
 	 * Returns the total of pending invitations
 	 *
@@ -166,7 +165,6 @@ class Cms_report extends CI_Model {
 		return $accepted_invitations;
 	}// accepted_invitations_by_date
 
-
 	/**
 	 * Returns the total number of pending invitations in a date range
 	 *
@@ -191,7 +189,6 @@ class Cms_report extends CI_Model {
 
 		return $pending_invitations;
 	}// pending_invitations_by_date
-
 
 	/**
 	 * Returns the total number of rejected invitations in a date range

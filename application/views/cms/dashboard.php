@@ -59,7 +59,7 @@
             <div class="[ results ]">
                 <div class="[ row ]">
                     <div class="[ col-xs-6 ]">
-                        <canvas id="total_accepted_invitations"></canvas>
+                        <canvas id="accepted_invitations_per_date"></canvas>
                     </div>
                     <!-- <div class="[ col-xs-6 ]">
                         <canvas id="total_pending_invitations"></canvas>

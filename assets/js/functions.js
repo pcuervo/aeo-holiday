@@ -702,10 +702,42 @@ function getAcceptedInvitations(dates){
         url,
         dates,
         function(response){
-            console.log(response);
+            if(response == 0){
+                console.log('AVISAR QUE ESTA VACIO');
+                return;
+            }
+
+            var invitationsJson = $.parseJSON(response);
+            var dates = [];
+            var num_invitations = []
+            $.each(invitationsJson, function(i, val){
+                dates.push(val.date);
+                num_invitations.push(val.num_invitations);
+            });
+
+            accepted_invitations_per_date(dates, num_invitations);
+            
         }
     );
 }// getAcceptedInvitations
+
+function accepted_invitations_per_date(dates, invitations){
+    console.log('accepted_invitations_per_date');
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#accepted_invitations_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// accepted_invitations_per_date
 
 function dateRange(){
     $('.j-start_date').datepicker({
@@ -726,25 +758,7 @@ function dateRange(){
         $('j-start_date').datepicker( "option", "maxDate", selectedDate );
       }
     });
-}
-
-function total_accepted_invitations(){
-    console.log('total_accepted_invitations');
-    var data = {
-        labels: ["January", "February"],
-        datasets: [
-            {
-                label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
-                data: [65]
-            }
-        ]
-    };
-    var ctx = $('#total_accepted_invitations').get(0).getContext('2d');
-    new Chart(ctx).Bar(data);
-}
+}// dateRange
 
 
 
