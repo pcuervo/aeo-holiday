@@ -609,10 +609,10 @@ class Exchange_group extends CI_Model {
 	 * @return void
 	 * @author Zurol
 	 **/
-	function cron_job_log_register($function_data = array()){
+	function cron_job_log_register($function_name, $returned_value){
 		$insert_data = array(
-			'function_name' 	=> $function_data['function_name'],
-			'returned_value' 	=> $function_data['returned_value'],
+			'function_name' 	=> $function_name,
+			'returned_value' 	=> $returned_value,
 			'created_at' 		=> date("Y-m-d H:i:s")
 		);
 
