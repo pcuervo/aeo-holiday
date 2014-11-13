@@ -357,9 +357,9 @@ class Exchange_group extends CI_Model {
 		$query = $this->db->get('exchange_groups');
 
 		if ($query->num_rows() < 1)
-			return 0;
+			return 1;
 
-		return 1;
+		return 0;
 	}// is_after_exchange
 
 	/**

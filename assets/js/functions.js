@@ -196,11 +196,14 @@ function send_message_form(){
     var data = {};
     data['secret_friend_id'] = $('.j-secret_friend_id').val();
     data['message'] = $('.j-send-message-form textarea').val();
+    data['group_friend_id'] = $('.j-group_friend_id').val();
+
     var url = '/secret_friends/send_message';
     $.post(
         url,
         data,
         function(response){
+            window.location = '/secret_friends/view/' + data['group_friend_id'];
             $('.j-send-message-notice').html('');
             $('.j-send-message-notice').html('Se ha enviado tu mensaje');
         }// response
