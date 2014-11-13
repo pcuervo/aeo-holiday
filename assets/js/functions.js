@@ -691,14 +691,15 @@ function getAppReports(){
         dates['start_date'] = $('input[name="start_date"]').val();
         dates['end_date'] = $('input[name="end_date"]').val();
 
-        console.log(dates);
         getAcceptedInvitations(dates);
+        getPendingInvitations(dates);
+        getRejectedInvitations(dates);
 
     });
 }// getAppReports
 
  /**
- * Displays accepted invitations by date
+ * Fetch accepted invitations by date
  * array dates
  * @return void
  */
@@ -709,7 +710,7 @@ function getAcceptedInvitations(dates){
         dates,
         function(response){
             if(response == 0){
-                console.log('AVISAR QUE ESTA VACIO');
+                console.log('AVISAR QUE ACCEPTED INVITATION VACIO');
                 return;
             }
 
@@ -727,8 +728,74 @@ function getAcceptedInvitations(dates){
     );
 }// getAcceptedInvitations
 
+/**
+ * Fetch pending invitations by date
+ * array dates
+ * @return void
+ */
+function getPendingInvitations(dates){
+    var url = '/cms/get_pending_invitations_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE PENDING INVITATION VACIO');
+                return;
+            }
+
+            var invitationsJson = $.parseJSON(response);
+            var dates = [];
+            var num_invitations = []
+            $.each(invitationsJson, function(i, val){
+                dates.push(val.date);
+                num_invitations.push(val.num_invitations);
+            });
+
+            console.log(invitationsJson);
+            display_pending_invitations_per_date(dates, num_invitations);
+            
+        }
+    );
+}// getPendingInvitations
+
+/**
+ * Fetch rejected invitations by date
+ * array dates
+ * @return void  
+ */
+function getRejectedInvitations(dates){
+    var url = '/cms/get_rejected_invitations_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE REJECTED INVITATION VACIO');
+                return;
+            }
+
+            var invitationsJson = $.parseJSON(response);
+            var dates = [];
+            var num_invitations = []
+            $.each(invitationsJson, function(i, val){
+                dates.push(val.date);
+                num_invitations.push(val.num_invitations);
+            });
+
+            console.log(invitationsJson);
+            display_rejected_invitations_per_date(dates, num_invitations);
+            
+        }
+    );
+}// getRejectedInvitations
+
+ /**
+ * Displays accepted invitations by date
+ * array dates
+ * @return void
+ */
 function display_accepted_invitations_per_date(dates, invitations){
-    console.log('accepted_invitations_per_date');
     var data = {
         labels: dates,
         datasets: [
@@ -743,7 +810,73 @@ function display_accepted_invitations_per_date(dates, invitations){
     };
     var ctx = $('#accepted_invitations_per_date').get(0).getContext('2d');
     new Chart(ctx).Bar(data);
-}// accepted_invitations_per_date
+}// display_accepted_invitations_per_date
+
+ /**
+ * Displays pending invitations by date
+ * array dates
+ * @return void
+ */
+function display_pending_invitations_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#pending_invitations_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_pending_invitations_per_date
+
+ /**
+ * Displays rejected invitations by date
+ * array dates
+ * @return void
+ */
+function display_rejected_invitations_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#rejected_invitations_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_rejected_invitations_per_date
+
+ /**
+ * Displays sent messages by date
+ * array dates
+ * @return void
+ */
+function display_sent_messages_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#sent_messages_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_sent_messages_per_date
 
 function dateRange(){
     $('.j-start_date').datepicker({

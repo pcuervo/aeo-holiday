@@ -61,16 +61,16 @@
                     <div class="[ col-xs-6 ]">
                         <canvas id="accepted_invitations_per_date"></canvas>
                     </div>
+                    <div class="[ col-xs-6 ]">
+                        <canvas id="pending_invitations_per_date"></canvas>
+                    </div>
+                    <div class="[ col-xs-6 ]">
+                        <canvas id="rejected_invitations_per_date"></canvas>
+                    </div>
+                    <div class="[ col-xs-6 ]">
+                        <canvas id="sent_messages_per_date"></canvas>
+                    </div>
                     <!-- <div class="[ col-xs-6 ]">
-                        <canvas id="total_pending_invitations"></canvas>
-                    </div>
-                    <div class="[ col-xs-6 ]">
-                        <canvas id="total_sent_messages"></canvas>
-                    </div>
-                    <div class="[ col-xs-6 ]">
-                        <canvas id="total_exchange_groups"></canvas>
-                    </div>
-                    <div class="[ col-xs-6 ]">
                         <canvas id="total_fb_users"></canvas>
                     </div>
                     <div class="[ col-xs-6 ]">
