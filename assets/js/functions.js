@@ -77,23 +77,20 @@ function formValidation(forma){
 
 function setLimitDate(){
     $('#fecha-intercambio').on('change', function(){
-        var date = $(this).val();
-        var date = date.split('-');
-        var year = date[0];
-        var month = date[1];
-        var day = date[2];
-        var day = day-1;
-        var fechaLimite = year+'-'+month+'-'+day;
+        var today = new Date( $(this).val() );
+        var limitDate = new Date(today);
+        limitDate.setDate(limitDate.getDate() - 1);
         $('#fecha-limite').attr('max', fechaLimite);
-        $('#fecha-limite').attr('maxDate', fechaLimite);
+        $('#fecha-limite').datepicker( "option", "maxDate", new Date( dateDesktop ) );
     });
     var now = new Date();
-    var hoy = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
-    var manana = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+(now.getDate()+1) );
-    $('#fecha-limite').attr('min', hoy);
-    $('#fecha-intercambio').attr('min', manana);
-    $('#fecha-limite').attr('minDate', hoy);
-    $('#fecha-intercambio').attr('minDate', manana);
+    //var hoy = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
+    //var manana = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+(now.getDate()+1) );
+     $('#fecha-limite').attr('min', hoy);
+     $('#fecha-intercambio').attr('min', manana);
+
+    $('#fecha-limite').datepicker({minDate: '0'});
+    $('#fecha-intercambio').datepicker({minDate: '+1d'});
 }
 
 //Datepicker
@@ -508,7 +505,7 @@ function removeGroupFriend(){
 
                 if(msg.redirect != "0")
                     window.location = '/dashboard/view_group/'+invited_friend_data['group_id'];
-                
+
                 este.closest('li').after('<p>Se eliminó del intercambio.</p>');
                 este.closest('li').remove();
             }// response
@@ -538,7 +535,7 @@ function removeInvitedFriend(){
 
                 if(msg.redirect != "0")
                     window.location = '/dashboard/view_group/'+invited_friend_data['group_id'];
-                
+
                 este.closest('li').after('<p>Se eliminó del intercambio.</p>');
                 este.closest('li').remove();
             }// response
