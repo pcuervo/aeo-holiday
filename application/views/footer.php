@@ -100,6 +100,10 @@
                 formValidation('.j-send-email');
             <?php } ?>
 
+            <?php if($current_view == 'send_message') { ?>
+                formValidation('.j-send-message-form');
+            <?php } ?>
+
             <?php if($current_view == 'new_exchange_group') { ?>
                 formValidation('.j_group_form');
                 setLimitDate();

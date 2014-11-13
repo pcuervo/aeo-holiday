@@ -26,6 +26,7 @@
                         <br />
                         <button type="submit" class="[ btn btn-primary btn-go ] [ margin-bottom ]"><span>enviar al correo</span></button>
                     </form>
+                    <p class="[ notice ] [ j-send-email-notice ]"></p>
                 </div>
             </div>
             <div class="[ text-center ] [ margin-bottom ]">

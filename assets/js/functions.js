@@ -67,6 +67,9 @@ function formValidation(forma){
                 case '.j-send-email':
                     send_coupon_email();
                     break;
+                case '.j-send-message-form':
+                    send_message_form();
+                    break
             }
         }
     });
@@ -162,10 +165,6 @@ function quitarOption(){
  * @return void
  */
 function send_coupon_email(){
-    $('.j-send-email').submit(function(e){
-        return false;
-    });
-    send_coupon_email('send_coupon_email');
     var email_data = {};
     email_data['email'] = $('.j-send-email input').val();
     var url = '/dashboard/send_coupon_by_email';
@@ -173,11 +172,31 @@ function send_coupon_email(){
         url,
         email_data,
         function(response){
-            console.log('s');
-            $('<p>Se ha enviado tu correo</p>').appendTo('.j-send-email');
+            $('.j-send-email-notice').html('');
+            $('.j-send-email-notice').html('Se ha enviado tu correo');
         }// response
     );
     ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
+}// send_coupon_email
+
+ /**
+ * Send message to secret friend
+ * @return void
+ */
+function send_message_form(){
+    var data = {};
+    data['secret_friend_id'] = $('.j-secret_friend_id').val();
+    data['message'] = $('.j-send-message-form textarea').val();
+    var url = '/secret_friends/send_message';
+    $.post(
+        url,
+        data,
+        function(response){
+            $('.j-send-message-notice').html('');
+            $('.j-send-message-notice').html('Se ha enviado tu mensaje');
+        }// response
+    );
+    //ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
 }// send_coupon_email
 
 /**
