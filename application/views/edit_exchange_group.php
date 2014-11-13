@@ -36,8 +36,8 @@
                 <textarea class="form-control" rows="6" id="descripcion-intercambio" name="description"><?php echo $group_details['description'] ?></textarea>
             </div>
             <div class="[ form-group ] [ margin-bottom ]">
-                <a href="<?php echo base_url(); ?>" title="Add to Calendar" class="addthisevent" data-track="ga('send', 'event', 'solicitudes', 'click', 'ate-calendar');">
-                    Agregar a mi calendario
+                <a class="[ addthisevent ] [ btn btn-primary btn-go ]" href="<?php echo base_url(); ?>" title="Add to Calendar" data-track="ga('send', 'event', 'solicitudes', 'click', 'ate-calendar');">
+                    <span>Agregar a mi calendario</span>
                     <span class="_start"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
                     <span class="_end"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
                     <span class="_zonecode">12</span>
@@ -53,7 +53,7 @@
             <div class="[ form-group] ">
                 <input type="hidden" name="group_id" value="<?php echo $group_details['group_id'] ?>">
             </div>
-            <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
+            <div class="[ col-xs-12 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
                 <p class="[ center-block ] [ trade ]" for="name">INVITADOS</p>
                 <ul class="list-unstyled">
                     <?php foreach($group_friends as $key => $friend) { ?>
@@ -69,7 +69,7 @@
                 </ul>
             </div>
             <?php if($pending_friends != 0) { ?>
-                <div class="[ col-xs-12 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
+                <div class="[ col-xs-12 ] [ center-block ] [ margin-bottom ] [ scroll-box ]">
                     <p class="[ center-block ] [ trade ]" for="name">PENDIENTES</p>
                     <ul class="list-unstyled">
                         <?php foreach($pending_friends as $key => $friend) {  ?>
