@@ -71,6 +71,7 @@
             toggleMainMenu();
             footerBottom();
             loadFacebookSdk();
+            addGroupToCalendar();
 
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
@@ -113,7 +114,6 @@
             <?php } ?>
 
             <?php if($current_view == 'view_exchange_group') { ?>
-                addGroupToCalendar();
                 inviteFriends('.j_edit_group_form');
                 formValidation('.j_edit_group_form');
                 removeGroupFriend();
