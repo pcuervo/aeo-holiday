@@ -266,4 +266,31 @@ class Cms_report extends CI_Model {
 		return $users_by_date;
 	}// users_number_by_date
 
+	/**
+	 * Returns the number of members per exchange in a date range
+	 *
+	 * @return mixed $users_number_by_date or 0
+	 * @author Zurol
+	 **/
+	function members_per_exchange_by_date($start_date, $end_date)
+	{
+		$sql_query = 'select exchange_groups.name AS name, COUNT( * ) AS number_of_members FROM group_friends LEFT JOIN exchange_groups ON group_friends.group_id = exchange_groups.id WHERE created_at BETWEEN "'. $start_date .'" AND  "'. $end_date .'" GROUP BY DATE( created_at );';
+		$query = $this->db->query($sql_query);
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$members_per_exchange = array();
+		foreach ($query->result() as $key => $row) {
+			$members_per_exchange[$key] = array(
+				'date'				=> $row->name,
+				'num_members'		=> $row->number_of_members,
+				);
+		}
+
+		return $members_per_exchange;
+	}// users_number_by_date
+
+
+
 }// clase Cms_report
