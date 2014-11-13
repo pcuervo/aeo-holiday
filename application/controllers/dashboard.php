@@ -538,9 +538,13 @@ class Dashboard extends CI_Controller {
 	function post_video_to_secret_friends()
 	{
 		$this->load->model('exchange_group');
-		$this->exchange_group->post_video_to_secret_friends();
+		$post = $this->exchange_group->post_video_to_secret_friends();
+
+		log_cron_job('post_video_to_secret_friends', $post);
 
 		$this->exchange_group->check_groups_status();
+
+		log_cron_job('check_groups_status', $post);
 	}// post_video_to_secret_friends
 
 
