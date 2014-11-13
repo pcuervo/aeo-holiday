@@ -416,7 +416,7 @@ class Exchange_group extends CI_Model {
 			return 0;
 
 		return 1;
-	}// check_groups_status
+	}// has_pending_invitations
 
 	/**
 	 * Checks the status of a user's groups and takes action adordingly.
