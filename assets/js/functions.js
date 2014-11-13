@@ -433,11 +433,6 @@ function removeGroupFriend(){
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
         group_friend_data['group_id'] = $(this).data('group');
         group_friend_data['fb_friend_id'] = $(this).data('friend_id');
-<<<<<<< HEAD
-        console.log(group_friend_data);
-=======
-
->>>>>>> 04b6459d5521fe4ce166e2d653320ab13b6a1973
         $.post(
             url,
             group_friend_data,
@@ -724,7 +719,7 @@ function getAcceptedInvitations(dates){
             });
 
             display_accepted_invitations_per_date(dates, num_invitations);
-            
+
         }
     );
 }// getAcceptedInvitations
@@ -754,7 +749,7 @@ function getPendingInvitations(dates){
             });
 
             display_pending_invitations_per_date(dates, num_invitations);
-            
+
         }
     );
 }// getPendingInvitations
@@ -762,7 +757,7 @@ function getPendingInvitations(dates){
 /**
  * Fetch rejected invitations by date
  * array dates
- * @return void  
+ * @return void
  */
 function getRejectedInvitations(dates){
     var url = '/cms/get_rejected_invitations_by_date';
@@ -784,7 +779,7 @@ function getRejectedInvitations(dates){
             });
 
             display_rejected_invitations_per_date(dates, num_invitations);
-            
+
         }
     );
 }// getRejectedInvitations
@@ -792,7 +787,7 @@ function getRejectedInvitations(dates){
 /**
  * Fetch sent messages by date
  * array dates
- * @return void  
+ * @return void
  */
 function getSentMessages(dates){
     var url = '/cms/get_sent_messages_by_date';
@@ -814,7 +809,7 @@ function getSentMessages(dates){
             });
 
             display_sent_messages_per_date(dates, sent_messages);
-            
+
         }
     );
 }// getSentMessages
@@ -822,7 +817,7 @@ function getSentMessages(dates){
 /**
  * Fetch users by date
  * array dates
- * @return void  
+ * @return void
  */
 function getUsers(dates){
     var url = '/cms/get_users_by_date';
@@ -844,7 +839,7 @@ function getUsers(dates){
             });
 
             display_users_per_date(dates, num_users);
-            
+
         }
     );
 }// getUsers
