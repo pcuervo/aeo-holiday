@@ -95,7 +95,9 @@ function setLimitDate(){
 
 //Datepicker
 function runDatepicker(){
-    $('.j-datepicker').datepicker();
+    if( $('.j-datepicker').length > 0 ){
+        $('.j-datepicker').datepicker();
+    }
 }
 
 //Isotope filtering

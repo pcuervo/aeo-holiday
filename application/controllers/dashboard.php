@@ -297,6 +297,15 @@ class Dashboard extends CI_Controller {
 		$data['base_url'] = base_url();
 		$data['current_view'] = 'view_exchange_group';
 
+		$this->load->library('user_agent');
+		$data['browser'] = '';
+		if ($this->agent->is_browser())
+			$data['browser'] = $this->agent->browser();
+
+		$data['is_mobile'] = FALSE;
+		if($this->agent->is_mobile())
+			$data['is_mobile'] = TRUE;
+
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)
 			redirect('/login');
