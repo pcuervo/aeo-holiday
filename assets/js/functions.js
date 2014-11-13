@@ -304,7 +304,7 @@ function videoPost(url){
  * Get unread messages for current user
  * @return void
  */
-/*function getUnreadMessages(){
+function getUnreadMessages(){
     var url = localStorage.getItem('base_url') + 'dashboard/get_unread_messages/';
     $('.actividad-grupo .loader').show();
     $.get(
@@ -322,7 +322,7 @@ function videoPost(url){
             });
         }// response
     );
-}// getUnreadMessages*/
+}// getUnreadMessages
 
 /**
  * Get user's activity
