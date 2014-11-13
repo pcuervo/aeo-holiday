@@ -227,7 +227,6 @@ function updatePerfectFit(){
         var perfect_fit_data = $('.j_update_perfect_fit').serialize();
         var url = localStorage.getItem('base_url') + 'dashboard/create_perfect_fit';
 
-        console.log(perfect_fit_data);
         $.post(
             url,
             perfect_fit_data,
@@ -384,7 +383,7 @@ function acceptGroupInvitation(){
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
         group_data['group_id'] = $(this).data('group');
-        //console.log(group_data);
+
         $.post(
             url,
             group_data,
@@ -415,7 +414,6 @@ function declineGroupInvitation(){
             group_data,
             function(response){
                 // Agregar feedback
-                console.log(response);
                 $(invitacion).after('<p class="[ text-center ]">Has rechazado la invitación.</p>');
                 invitacion.remove();
             }// response
@@ -435,7 +433,11 @@ function removeGroupFriend(){
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
         group_friend_data['group_id'] = $(this).data('group');
         group_friend_data['fb_friend_id'] = $(this).data('friend_id');
+<<<<<<< HEAD
         console.log(group_friend_data);
+=======
+
+>>>>>>> 04b6459d5521fe4ce166e2d653320ab13b6a1973
         $.post(
             url,
             group_friend_data,
@@ -462,7 +464,6 @@ function removeInvitedFriend(){
         invited_friend_data['group_id'] = $(this).data('group');
         invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
 
-        console.log(invited_friend_data);
         $.post(
             url,
             invited_friend_data,
@@ -680,7 +681,6 @@ function saveWebcamVideo(video_url){
  * @return void
  */
 function getAppReports(){
-    console.log('getAppReports ready...');
 
     $('.j-get-reports button').on('click', function(e){
         e.preventDefault();
@@ -690,22 +690,274 @@ function getAppReports(){
         dates['start_date'] = $('input[name="start_date"]').val();
         dates['end_date'] = $('input[name="end_date"]').val();
 
-        console.log(dates);
         getAcceptedInvitations(dates);
+        getPendingInvitations(dates);
+        getRejectedInvitations(dates);
+        getSentMessages(dates);
+        getUsers(dates);
 
     });
 }// getAppReports
 
+ /**
+ * Fetch accepted invitations by date
+ * array dates
+ * @return void
+ */
 function getAcceptedInvitations(dates){
     var url = '/cms/get_accepted_invitations_by_date';
     $.post(
         url,
         dates,
         function(response){
-            console.log(response);
+            if(response == 0){
+                console.log('AVISAR QUE ACCEPTED INVITATION VACIO');
+                return;
+            }
+
+            var invitationsJson = $.parseJSON(response);
+            var dates = [];
+            var num_invitations = []
+            $.each(invitationsJson, function(i, val){
+                dates.push(val.date);
+                num_invitations.push(val.num_invitations);
+            });
+
+            display_accepted_invitations_per_date(dates, num_invitations);
+            
         }
     );
 }// getAcceptedInvitations
+
+/**
+ * Fetch pending invitations by date
+ * array dates
+ * @return void
+ */
+function getPendingInvitations(dates){
+    var url = '/cms/get_pending_invitations_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE PENDING INVITATION VACIO');
+                return;
+            }
+
+            var invitationsJson = $.parseJSON(response);
+            var dates = [];
+            var num_invitations = []
+            $.each(invitationsJson, function(i, val){
+                dates.push(val.date);
+                num_invitations.push(val.num_invitations);
+            });
+
+            display_pending_invitations_per_date(dates, num_invitations);
+            
+        }
+    );
+}// getPendingInvitations
+
+/**
+ * Fetch rejected invitations by date
+ * array dates
+ * @return void  
+ */
+function getRejectedInvitations(dates){
+    var url = '/cms/get_rejected_invitations_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE REJECTED INVITATION VACIO');
+                return;
+            }
+
+            var invitationsJson = $.parseJSON(response);
+            var dates = [];
+            var num_invitations = []
+            $.each(invitationsJson, function(i, val){
+                dates.push(val.date);
+                num_invitations.push(val.num_invitations);
+            });
+
+            display_rejected_invitations_per_date(dates, num_invitations);
+            
+        }
+    );
+}// getRejectedInvitations
+
+/**
+ * Fetch sent messages by date
+ * array dates
+ * @return void  
+ */
+function getSentMessages(dates){
+    var url = '/cms/get_sent_messages_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE SENT MESSAGES VACIO');
+                return;
+            }
+
+            var messagesJson = $.parseJSON(response);
+            var dates = [];
+            var sent_messages = []
+            $.each(messagesJson, function(i, val){
+                dates.push(val.date);
+                sent_messages.push(val.sent_messages);
+            });
+
+            display_sent_messages_per_date(dates, sent_messages);
+            
+        }
+    );
+}// getSentMessages
+
+/**
+ * Fetch users by date
+ * array dates
+ * @return void  
+ */
+function getUsers(dates){
+    var url = '/cms/get_users_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE USUARIOS ESTA VACIO');
+                return;
+            }
+
+            var usersJson = $.parseJSON(response);
+            var dates = [];
+            var num_users = []
+            $.each(usersJson, function(i, val){
+                dates.push(val.date);
+                num_users.push(val.num_users);
+            });
+
+            display_users_per_date(dates, num_users);
+            
+        }
+    );
+}// getUsers
+
+ /**
+ * Displays accepted invitations by date
+ * array dates
+ * @return void
+ */
+function display_accepted_invitations_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#accepted_invitations_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_accepted_invitations_per_date
+
+ /**
+ * Displays pending invitations by date
+ * array dates
+ * @return void
+ */
+function display_pending_invitations_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#pending_invitations_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_pending_invitations_per_date
+
+ /**
+ * Displays rejected invitations by date
+ * array dates
+ * @return void
+ */
+function display_rejected_invitations_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#rejected_invitations_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_rejected_invitations_per_date
+
+ /**
+ * Displays sent messages by date
+ * array dates
+ * @return void
+ */
+function display_sent_messages_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#sent_messages_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_sent_messages_per_date
+
+ /**
+ * Displays accepted invitations by date
+ * array dates
+ * @return void
+ */
+function display_users_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#users_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_users_per_date
 
 function dateRange(){
     $('.j-start_date').datepicker({
@@ -726,25 +978,7 @@ function dateRange(){
         $('j-start_date').datepicker( "option", "maxDate", selectedDate );
       }
     });
-}
-
-function total_accepted_invitations(){
-    console.log('total_accepted_invitations');
-    var data = {
-        labels: ["January", "February"],
-        datasets: [
-            {
-                label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
-                data: [65]
-            }
-        ]
-    };
-    var ctx = $('#total_accepted_invitations').get(0).getContext('2d');
-    new Chart(ctx).Bar(data);
-}
+}// dateRange
 
 
 
