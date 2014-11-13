@@ -93,7 +93,7 @@ class Group_invitation extends CI_Model {
 	 **/
 	function remove_pending_invitation_by_group($group_id)
 	{
-		$this->db->delete('group_invitations', array('id' => $group_id));
+		$this->db->delete('group_invitations', array('group_id' => $group_id));
 	}// remove_invitation
 		
 }// clase Group_invitation
