@@ -17,7 +17,7 @@
                 <?php
                 if ( count($user_answers) == 4 ){
                     foreach ($user_answers as $key => $user_answer) { ?>
-                        <div class="[ col-xs-3 ]">
+                        <div class="[ col-xs-6 ]">
                             <p class="[ text-center uppercase ]"><?php echo $user_answer['question']; ?></p>
                             <p class="[ text-center text-large uppercase ]"><?php echo $user_answer['answer'] ?></p>
                         </div>

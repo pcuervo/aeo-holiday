@@ -102,6 +102,7 @@ function runDatepicker(){
 function runIstitope(){
     var $container = $('.isotope').imagesLoaded( function() {
         $container.isotope({
+            layoutMode: 'fitRows',
             itemSelector: '.j-item'
         });
     });
