@@ -227,7 +227,6 @@ function updatePerfectFit(){
         var perfect_fit_data = $('.j_update_perfect_fit').serialize();
         var url = localStorage.getItem('base_url') + 'dashboard/create_perfect_fit';
 
-        console.log(perfect_fit_data);
         $.post(
             url,
             perfect_fit_data,
@@ -384,7 +383,7 @@ function acceptGroupInvitation(){
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
         group_data['group_id'] = $(this).data('group');
-        //console.log(group_data);
+
         $.post(
             url,
             group_data,
@@ -415,7 +414,6 @@ function declineGroupInvitation(){
             group_data,
             function(response){
                 // Agregar feedback
-                console.log(response);
                 $(invitacion).after('<p class="[ text-center ]">Has rechazado la invitación.</p>');
                 invitacion.remove();
             }// response
@@ -438,7 +436,6 @@ function removeGroupFriend(){
         group_friend_data['group_id'] = $(this).data('group');
         group_friend_data['fb_friend_id'] = $(this).data('friend_id');
 
-        console.log(group_friend_data);
         $.post(
             url,
             group_friend_data,
@@ -463,7 +460,6 @@ function removeInvitedFriend(){
         invited_friend_data['group_id'] = $(this).data('group');
         invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
 
-        console.log(invited_friend_data);
         $.post(
             url,
             invited_friend_data,
@@ -681,7 +677,6 @@ function saveWebcamVideo(video_url){
  * @return void
  */
 function getAppReports(){
-    console.log('getAppReports ready...');
 
     $('.j-get-reports button').on('click', function(e){
         e.preventDefault();
@@ -695,6 +690,7 @@ function getAppReports(){
         getPendingInvitations(dates);
         getRejectedInvitations(dates);
         getSentMessages(dates);
+        getUsers(dates);
 
     });
 }// getAppReports
@@ -783,7 +779,6 @@ function getRejectedInvitations(dates){
                 num_invitations.push(val.num_invitations);
             });
 
-            console.log(invitationsJson);
             display_rejected_invitations_per_date(dates, num_invitations);
             
         }
@@ -814,12 +809,41 @@ function getSentMessages(dates){
                 sent_messages.push(val.sent_messages);
             });
 
-            console.log(messagesJson);
             display_sent_messages_per_date(dates, sent_messages);
             
         }
     );
 }// getSentMessages
+
+/**
+ * Fetch users by date
+ * array dates
+ * @return void  
+ */
+function getUsers(dates){
+    var url = '/cms/get_users_by_date';
+    $.post(
+        url,
+        dates,
+        function(response){
+            if(response == 0){
+                console.log('AVISAR QUE USUARIOS ESTA VACIO');
+                return;
+            }
+
+            var usersJson = $.parseJSON(response);
+            var dates = [];
+            var num_users = []
+            $.each(usersJson, function(i, val){
+                dates.push(val.date);
+                num_users.push(val.num_users);
+            });
+
+            display_users_per_date(dates, num_users);
+            
+        }
+    );
+}// getUsers
 
  /**
  * Displays accepted invitations by date
@@ -908,6 +932,28 @@ function display_sent_messages_per_date(dates, invitations){
     var ctx = $('#sent_messages_per_date').get(0).getContext('2d');
     new Chart(ctx).Bar(data);
 }// display_sent_messages_per_date
+
+ /**
+ * Displays accepted invitations by date
+ * array dates
+ * @return void
+ */
+function display_users_per_date(dates, invitations){
+    var data = {
+        labels: dates,
+        datasets: [
+            {
+                label: "Usuarios vs tiempo",
+                fillColor: "rgba(162, 43, 56, 0.2)",
+                strokeColor: "rgba(162, 43, 56, 1)",
+                pointColor: "rgba(162, 43, 56, 1)",
+                data: invitations
+            }
+        ]
+    };
+    var ctx = $('#users_per_date').get(0).getContext('2d');
+    new Chart(ctx).Bar(data);
+}// display_users_per_date
 
 function dateRange(){
     $('.j-start_date').datepicker({
