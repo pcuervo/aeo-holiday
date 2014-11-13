@@ -437,9 +437,11 @@ function removeGroupFriend(){
             url,
             group_friend_data,
             function(response){
-                //console.log(response);
-                $(this).closest('.list-unstyled').find('li').after('<p>Se eliminó del al intercambio.</p>');
-                $(this).closest('.list-unstyled').find('li').remove();
+                console.log(response);
+                console.log($(this));
+                console.log($(this).closest('li'));
+                $(this).closest('li').after('<p>Se eliminó del al intercambio.</p>');
+                $(this).closest('li').remove();
             }// response
         );
     });
