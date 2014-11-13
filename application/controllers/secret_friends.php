@@ -148,7 +148,7 @@ class Secret_friends extends CI_Controller {
 
 		// file upload constraints
 		$config['allowed_types'] = 'mp4|mpeg|mov';
-		$config['max_size']	= '10000';
+		$config['max_size']	= '30000';
 		$config['max_width'] = '';
 		$config['max_height'] = '';
 
@@ -159,7 +159,6 @@ class Secret_friends extends CI_Controller {
 		{
 			// There's been an error
 			$data['error'] = $this->upload->display_errors();
-			var_dump($data['error']);
 		}
 		else
 		{
@@ -173,9 +172,6 @@ class Secret_friends extends CI_Controller {
 			$this->load->model('secret_friend_video');
 			$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
 		}
-		// send TEMPORARY NOTIFICATION
-		/*$current_fb_user = $this->facebook->get_user();
-		$this->facebook->send_notification($video_url[count($video_url)-1], $current_fb_user['id']);*/
 
 		// return to secret friend's home
 		$this->view($group_friend_id);

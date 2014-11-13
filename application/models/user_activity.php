@@ -98,8 +98,13 @@ class User_activity extends CI_Model {
 			$friend_pic = '';
 			if($row->friend_fb_id != ''){
 				$friend_data = $this->facebook->get_user_by_id($row->friend_fb_id);
-				$friend_name = $friend_data['first_name'].' '.$friend_data['last_name'];
-				$friend_pic = $this->facebook->get_user_profile_pic_by_id($row->friend_fb_id);
+				$friend_name = '';
+				$friend_pic = '';
+
+				if($friend_data){
+					$friend_name = $friend_data['first_name'].' '.$friend_data['last_name'];
+					$friend_pic = $this->facebook->get_user_profile_pic_by_id($row->friend_fb_id);
+				}
 			}
 
 			$user_activity[$key] = array(

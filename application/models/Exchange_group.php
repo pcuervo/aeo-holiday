@@ -470,9 +470,8 @@ class Exchange_group extends CI_Model {
 		$this->load->model('secret_friend_video');
 		foreach ($query->result() as $key => $row){
 			$video = $this->facebook->send_video_notification($row->facebook_users_id, $row->to_group_friend_id);
-			$friend_fb_id = $this->group_friend->get_fb_id($row->to_group_friend_id);
 			$this->secret_friend_video->set_was_posted($row->id);
-			$this->user_activity->secret_friend_video($row->facebook_users_id, $row->group_id, $friend_fb_id, 5);
+			$this->user_activity->secret_friend_video($row->facebook_users_id, $row->group_id, $row->to_group_friend_id, 5);
 		}
 
 		$this->mark_groups_as_finished($group_ids);

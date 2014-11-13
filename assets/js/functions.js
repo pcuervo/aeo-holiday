@@ -432,7 +432,7 @@ function removeGroupFriend(){
         var group_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
         group_friend_data['group_id'] = $(this).data('group');
-        group_friend_data['fb_friend_id'] = $(this).data('friend');
+        group_friend_data['friend_id'] = $(this).data('friend');
 
         $.post(
             url,

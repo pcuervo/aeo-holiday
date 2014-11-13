@@ -13,7 +13,7 @@
             ?>
                 <?php if ( $is_mobile == 1 ) {?>
                     <div class="form-group">
-                        <input class="[ margin-bottom ] [ center-block ]" type="file" name="file-mobile"  />
+                        <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" name="userfile"  />
                     </div>
                     <div class="text-center">
                         <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>enviar</span></button>

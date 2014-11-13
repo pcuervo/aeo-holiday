@@ -158,8 +158,10 @@ class Facebook {
                     'template' => 'Tu amigo secreto te envió un video.',
                     'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
                 ) ) )->execute();
+
+            return $response;
         }
-        return $response;
+        
     }// send_video_notification
 
     /**
@@ -172,8 +174,10 @@ class Facebook {
                     'template' => 'Tu amigo secreto te ha enviado un mensaje.',
                     'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
                 ) ) )->execute();
+
+            return $response;
         }
-        return $response;
+        
     }// send_message_notification
 
     public function get_signed_request(){
