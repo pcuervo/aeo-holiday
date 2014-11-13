@@ -5,35 +5,39 @@
             <h3 class="[ text-center ] [ margin-bottom-big ]"><small><?php echo $_SESSION['username']; ?></small> </h3>
             <h3 class="[ text-center ] [ margin-bottom ]">Totales</h4>
             <div class="[ row ]">
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
+                    <p class="[ text-center ]">Total de Invitaciones</p>
+                    <p class="[ text-large text-center ]"><?php echo $total_invitations ?></p>
+                </div>
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Invitaciones aceptadas</p>
                     <p class="[ text-large text-center ]"><?php echo $total_accepted_invitations ?></p>
                 </div>
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Invitaciones pendientes</p>
                     <p class="[ text-large text-center ]"><?php echo $total_pending_invitations ?></p>
                 </div>
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Invitaciones rechazadas</p>
                     <p class="[ text-large text-center ]"><?php echo $total_rejected_invitations ?></p>
                 </div>
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Mensajes enviados</p>
                     <p class="[ text-large text-center ]"><?php echo $total_sent_messages ?></p>
                 </div>
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Grupos de intercambio</p>
                     <p class="[ text-large text-center ]"><?php echo $total_exchange_groups ?></p>
                 </div>
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Usuarios</p>
                     <p class="[ text-large text-center ]"><?php echo $total_fb_users ?></p>
                 </div>
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Intercambio terminados</p>
                     <p class="[ text-large text-center ]"><?php echo $total_closed_exchange_groups ?></p>
                 </div>
-                <div class="[ col-xs-3 ] [ margin-bottom ]">
+                <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Usuarios promedio por grupo</p>
                     <p class="[ text-large text-center ]"><?php echo $average_users_per_group ?></p>
                 </div>
