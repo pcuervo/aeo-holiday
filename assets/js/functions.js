@@ -428,19 +428,19 @@ function declineGroupInvitation(){
  */
 function removeGroupFriend(){
     $('.j-remove-friend').on('click', function(e){
+        var este = $(this);
         e.preventDefault();
-
         var group_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_group_friend';
-
         group_friend_data['group_id'] = $(this).data('group');
-        group_friend_data['fb_friend_id'] = $(this).data('friend_id');
-
+        group_friend_data['friend_id'] = $(this).data('friend');
+        console.log(group_friend_data);
         $.post(
             url,
             group_friend_data,
             function(response){
-                console.log(response);
+                este.closest('li').after('<p>Se eliminó del intercambio.</p>');
+                este.closest('li').remove();
             }// response
         );
     });
@@ -453,18 +453,18 @@ function removeGroupFriend(){
 function removeInvitedFriend(){
     $('.j-remove-invitation').on('click', function(e){
         e.preventDefault();
-
+        var este = $(this);
         var invited_friend_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/remove_invited_friend';
 
         invited_friend_data['group_id'] = $(this).data('group');
         invited_friend_data['invited_fb_user_id'] = $(this).data('fb-user');
-
         $.post(
             url,
             invited_friend_data,
             function(response){
-                console.log(response);
+                este.closest('li').after('<p>Se eliminó del intercambio.</p>');
+                este.closest('li').remove();
             }// response
         );
     });
@@ -720,7 +720,7 @@ function getAcceptedInvitations(dates){
             });
 
             display_accepted_invitations_per_date(dates, num_invitations);
-            
+
         }
     );
 }// getAcceptedInvitations
@@ -750,7 +750,7 @@ function getPendingInvitations(dates){
             });
 
             display_pending_invitations_per_date(dates, num_invitations);
-            
+
         }
     );
 }// getPendingInvitations
@@ -758,7 +758,7 @@ function getPendingInvitations(dates){
 /**
  * Fetch rejected invitations by date
  * array dates
- * @return void  
+ * @return void
  */
 function getRejectedInvitations(dates){
     var url = '/cms/get_rejected_invitations_by_date';
@@ -780,7 +780,7 @@ function getRejectedInvitations(dates){
             });
 
             display_rejected_invitations_per_date(dates, num_invitations);
-            
+
         }
     );
 }// getRejectedInvitations
@@ -788,7 +788,7 @@ function getRejectedInvitations(dates){
 /**
  * Fetch sent messages by date
  * array dates
- * @return void  
+ * @return void
  */
 function getSentMessages(dates){
     var url = '/cms/get_sent_messages_by_date';
@@ -810,7 +810,7 @@ function getSentMessages(dates){
             });
 
             display_sent_messages_per_date(dates, sent_messages);
-            
+
         }
     );
 }// getSentMessages
@@ -818,7 +818,7 @@ function getSentMessages(dates){
 /**
  * Fetch users by date
  * array dates
- * @return void  
+ * @return void
  */
 function getUsers(dates){
     var url = '/cms/get_users_by_date';
@@ -840,7 +840,7 @@ function getUsers(dates){
             });
 
             display_users_per_date(dates, num_users);
-            
+
         }
     );
 }// getUsers
