@@ -76,7 +76,7 @@
                 acceptGroupInvitation();
                 declineGroupInvitation()
                 getUnreadMessages();
-                getUserActiviy();
+                getUserActivity();
                 $('#myTab a').click(function (e) {
                   e.preventDefault()
                   $(this).tab('show')
@@ -92,7 +92,7 @@
                 <?php } ?>
             <?php } ?>
 
-            <?php if($current_view == 'view_video') { ?>
+            <?php if($current_view == 'view_video' || $current_view == 'view_secret_video' ) { ?>
                 videoPost('<?php echo $video_url ?>');
             <?php } ?>
 

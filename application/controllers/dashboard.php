@@ -49,6 +49,10 @@ class Dashboard extends CI_Controller {
 		// Get user's secret friends
 		$this->load->model('secret_friend');
 		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+		/*$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
+		$video = $this->secret_friend->has_video($current_fb_user['id'], $data['secret_friend']['group_friend_id']);
+		if($video)
+			var_dump($video);*/
 
 		// Check if user has completed "Perfect Fit" quiz
 		$this->load->model('user_perfect_fit');

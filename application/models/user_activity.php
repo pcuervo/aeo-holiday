@@ -85,7 +85,7 @@ class User_activity extends CI_Model {
 		$this->db->join('exchange_groups', 'exchange_groups.id = user_activity.group_id');
 		$this->db->where('user_activity.fb_user_id', $fb_user_id);
 		$this->db->limit(5);
-		$this->db->order_by('created_at');
+		$this->db->order_by('created_at', 'desc');
 		$query = $this->db->get();
 
 		if ($query->num_rows() < 1)
