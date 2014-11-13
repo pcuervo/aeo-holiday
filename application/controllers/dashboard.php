@@ -33,7 +33,17 @@ class Dashboard extends CI_Controller {
 		if(!$this->facebook_user->exists($current_fb_user['id']))
 			$this->facebook_user->create_user($current_fb_user);
 
+		// Get user's secret friends
+		$this->load->model('secret_friend');
+		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
+
+		// Redirect to messages if you have pending videos or messages
+		$video = $this->secret_friend->get_unseen_video_by_fb_user($current_fb_user['id']);
+		if($video)
+			redirect('secret_friends/view_messages');
+
 		
+
 
 		// Get user's information
 		$data['fb_user'] = $this->facebook_user->get_by_fb_id($current_fb_user['id']);
@@ -45,14 +55,6 @@ class Dashboard extends CI_Controller {
 
 		// Get user's pending invitations
 		$data['pending_invitations'] = $this->exchange_group->get_pending_invitation_by_user($current_fb_user['id']);
-
-		// Get user's secret friends
-		$this->load->model('secret_friend');
-		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
-		/*$data['secret_friend'] = $this->secret_friend->get_secret_friend_by_user($current_fb_user['id'], $group_friend_id);
-		$video = $this->secret_friend->has_video($current_fb_user['id'], $data['secret_friend']['group_friend_id']);
-		if($video)
-			var_dump($video);*/
 
 		// Check if user has completed "Perfect Fit" quiz
 		$this->load->model('user_perfect_fit');
