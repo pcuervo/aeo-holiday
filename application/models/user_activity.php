@@ -79,7 +79,7 @@ class User_activity extends CI_Model {
 	 **/
 	function get_user_activity_by_fb_id($fb_user_id)
 	{
-		$this->db->select('friend_fb_id, group_id, user_activity.created_at, action, name, activity_type');
+		$this->db->select('friend_fb_id, group_id, user_activity.created_at, action, name, activity_type, group_friend_id');
 		$this->db->from('user_activity');
 		$this->db->join('activity_type', 'activity_type.id = user_activity.activity_type');
 		$this->db->join('exchange_groups', 'exchange_groups.id = user_activity.group_id');
@@ -98,24 +98,20 @@ class User_activity extends CI_Model {
 			$friend_pic = '';
 			if($row->friend_fb_id != ''){
 				$friend_data = $this->facebook->get_user_by_id($row->friend_fb_id);
-				$friend_name = '';
-				$friend_pic = '';
-
-				if($friend_data){
-					$friend_name = $friend_data['first_name'].' '.$friend_data['last_name'];
-					$friend_pic = $this->facebook->get_user_profile_pic_by_id($row->friend_fb_id);
-				}
+				$friend_name = $friend_data['first_name'].' '.$friend_data['last_name'];
+				$friend_pic = $this->facebook->get_user_profile_pic_by_id($row->friend_fb_id);
 			}
 
 			$user_activity[$key] = array(
-				'friend_fb_id'	=> $row->friend_fb_id,
-				'friend_name'	=> $friend_name,
-				'friend_pic'	=> $friend_pic,
-				'group_id'		=> $row->group_id,
-				'created_at'	=> $row->created_at,
-				'action'		=> $row->action,
-				'group_name'	=> $row->name,
-				'activity_type'	=> $row->activity_type,
+				'friend_fb_id'		=> $row->friend_fb_id,
+				'friend_name'		=> $friend_name,
+				'friend_pic'		=> $friend_pic,
+				'group_id'			=> $row->group_id,
+				'created_at'		=> $row->created_at,
+				'action'			=> $row->action,
+				'group_name'		=> $row->name,
+				'activity_type'		=> $row->activity_type,
+				'group_friend_id'	=> $row->group_friend_id
 				);
 		}
 

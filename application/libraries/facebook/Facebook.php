@@ -42,7 +42,6 @@ class Facebook {
             try {
                 if ( ! $this->session->validate() ) {
                   $this->session = null;
-                  echo 'invalid session';
                 }
             } catch ( Exception $e ) {
                 // Catch any exceptions
@@ -89,7 +88,6 @@ class Facebook {
 
             return $user;
         }
-
         return false;
     }// get_user
 
@@ -153,8 +151,9 @@ class Facebook {
     * @param string $fb_user_id, int $to_group_friend_id
     */
     public function send_video_notification($fb_user_id, $to_group_friend_id) {
-        if ( $this->session ) {
-            $response = ( new FacebookRequest($this->session, 'POST', '/'.$fb_user_id.'/notifications',  array(
+        $session = FacebookSession::newAppSession();
+        if ( $session ) {
+            $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te envió un video.',
                     'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
                 ) ) )->execute();
@@ -169,8 +168,9 @@ class Facebook {
     * @param string $fb_user_id, int $to_group_friend_id
     */
     public function send_message_notification($fb_user_id) {
-        if ( $this->session ) {
-            $response = ( new FacebookRequest($this->session, 'POST', '/'.$fb_user_id.'/notifications',  array(
+        $session = FacebookSession::newAppSession();
+        if ( $session ) {
+            $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te ha enviado un mensaje.',
                     'access_token' => '293571087508858|21d0205237f8a0afec65c14533565773'
                 ) ) )->execute();
