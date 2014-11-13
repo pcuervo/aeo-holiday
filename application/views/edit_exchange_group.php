@@ -8,11 +8,19 @@
             </div>
             <div class="[ form-group ]">
                 <label for="exchange_date">Fecha del intercambio</label>
-                <input type="date" class="form-control" id="fecha-intercambio" name="exchange_date" value="<?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?>">
+                <?php if ( $browser == 'Firefox' OR $browser == 'Internet Explorer' ){ ?>
+                    <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-intercambio" name="exchange_date" value="<?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?>">
+                <?php } else { ?>
+                    <input type="date" class="[ form-control ] [ required ]" id="fecha-intercambio" name="exchange_date" value="<?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?>">
+                <?php } ?>
             </div>
             <div class="[ form-group ]">
                 <label for="join_deadline">Fecha límite para participar</label>
-                <input type="date" class="form-control" id="fecha-limite" name="join_deadline" min="2014-11-09" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
+                <?php if ( $browser == 'Firefox' OR $browser == 'IE' ){ ?>
+                    <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-limite" name="join_deadline" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
+                <?php } else { ?>
+                    <input type="date" class="[ form-control ] [ required ]" id="fecha-limite" name="join_deadline" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
+                <?php } ?>
             </div>
             <div class="[ form-group ]">
                 <label for="place">Lugar</label>
