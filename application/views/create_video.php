@@ -13,7 +13,7 @@
             ?>
                 <?php if ( $is_mobile == 1 ) {?>
                     <div class="form-group">
-                        <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" name="userfile"  />
+                        <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" accept="video/*" name="userfile"  />
                     </div>
                     <div class="text-center">
                         <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>enviar</span></button>
@@ -23,7 +23,7 @@
                     <p class="[ text-center uppercase ]"><small>El video debe durar máximo <span class="timer j-timer">15</span> segundos.</small></p>
                     <div class="[ text-center margin-bottom ]">
                         <button id="recordStartButton" class="[ btn btn-primary btn-go ]" disabled><span>Comenzar a grabar</span></button>
-                        <button id="recordStopButton" class="[ btn btn-primary btn-go ]" disabled><span>Detener grabación</span></button>
+                        <button id="recordStopButton" class="[ btn btn-primary btn-go ]" disabled onclick="ga('send', 'event', 'amigosSecretos', 'click', 'grabarDedicatoriaDetener');"><span>Detener grabación</span></button>
                     </div>
                     <div id="message"></div>
                 <?php } ?>
