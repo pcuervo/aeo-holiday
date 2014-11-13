@@ -125,14 +125,15 @@ class User_activity extends CI_Model {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	function secret_friend_video($fb_user_id, $group_id, $friend_fb_id, $activity_type)
+	function secret_friend_video($fb_user_id, $group_id, $friend_fb_id, $activity_type, $group_friend_id)
 	{
 		$insert_data = array(
-			'fb_user_id' 	=> $fb_user_id,
-			'group_id' 		=> $group_id,
-			'friend_fb_id' 	=> $friend_fb_id,
-			'created_at' 	=> date("Y-m-d H:i:s"),
-			'activity_type'	=> $activity_type,
+			'fb_user_id' 		=> $fb_user_id,
+			'group_id' 			=> $group_id,
+			'friend_fb_id' 		=> $friend_fb_id,
+			'group_friend_id' 	=> $group_friend_id,
+			'created_at' 		=> date("Y-m-d H:i:s"),
+			'activity_type'		=> $activity_type,
 			);
 
 		$this->db->insert('user_activity', $insert_data);

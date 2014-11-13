@@ -31,6 +31,7 @@ class Secret_friend_video extends CI_Model {
 				'secret_friend_id' 	=> $secret_friend_id,
 				'video_url' 		=> $video_url,
 				'was_posted' 		=> FALSE,
+				'was_seen'			=> FALSE,
 				'created_at' 		=> date("Y-m-d H:i:s"),
 				);
 		$this->db->insert('secret_friend_videos', $video_data);
