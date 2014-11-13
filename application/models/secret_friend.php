@@ -206,7 +206,7 @@ class Secret_friend extends CI_Model {
 		}
 		
 		return $video_data;
-	}// get_video_by_fb_user
+	}// get_videos_by_fb_user
 
 	/**
 	 * Get unseen videos by Facebook user
@@ -237,6 +237,29 @@ class Secret_friend extends CI_Model {
 
 		return $video_data;
 	}// get_video_by_fb_user
+
+	/**
+	 * Check if facebook user has unseen videos
+	 *
+	 * @param string $fb_user_id, int $group_friend_id
+	 * @return mixed $video_data or 0
+	 * @author Miguel Cabral
+	 **/
+	function has_unseen_video($fb_user_id)
+	{
+		$this->db->select('secret_friends.id');
+		$this->db->from('group_friends');
+		$this->db->join('secret_friends', 'group_friends.id = secret_friends.to_group_friend_id');
+		$this->db->join('secret_friend_videos', 'secret_friends.id = secret_friend_videos.secret_friend_id');
+		$this->db->where('facebook_users_id', $fb_user_id);
+		$this->db->where('was_seen', 0);
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		return 1;
+	}// has_unseen_video
 
 	/**
 	 * Get the video for a secret friend
@@ -276,6 +299,25 @@ class Secret_friend extends CI_Model {
 		$this->db->where('secret_friend_id', $secret_friend_id);
 		$this->db->update('secret_friend_videos', $update_data);
 	}// mark_as_seen
+
+	/**
+	 * Mark Facebook user's videos as seen
+	 *
+	 * @param int $facebook_user_id
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function mark_videos_as_seen($facebook_user_id)
+	{
+		$videos = $this->get_videos_by_fb_user($facebook_user_id);
+
+		if($videos == 0)
+			return;
+
+		foreach ($videos as $key => $video) {
+			$this->mark_as_seen($video['secret_friend_id']);
+		}
+	}// mark_videos_as_seen
 
 	/**
 	 * Returns secret friend

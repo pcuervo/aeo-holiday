@@ -58,7 +58,12 @@
                 <ul class="list-unstyled">
                     <?php foreach($group_friends as $key => $friend) { ?>
                         <li>
-                            <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?><br/><a href="#" class="[ j-remove-friend ]" data-group="<?php echo $friend['group_id'] ?>" data-friend="<?php echo $friend['id'] ?>"><small><span class='glyphicon glyphicon-remove-circle'></span> Eliminar</small></a></p>
+                            <img class="[ one-quarter-width ] [ img-circle user-photo ] [ inline-block middle ]" src="<?php echo $friend['friend_picture'] ?>" alt="" class="[ user-photo ]"><p class="[ three-quarter-width ] [ inline-block middle ]"><?php echo $friend['friend_name'] ?><br/>
+                            <?php if($friend['fb_user_id'] != $group_details['admin_id']) { ?>
+                                <a href="#" class="[ j-remove-friend ]" data-group="<?php echo $friend['group_id'] ?>" data-friend="<?php echo $friend['id'] ?>"><small><span class='glyphicon glyphicon-remove-circle'></span> Eliminar</small></a></p>
+                            <?php } else { ?>
+                                <small>Administrador</small></a></p>
+                            <?php } ?>
                         </li>
                     <?php } ?>
                 </ul>

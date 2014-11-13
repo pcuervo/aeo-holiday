@@ -28,8 +28,7 @@ class Exchange_group extends CI_Model {
 		$this->load->database();
 		$this->load->library('facebook');
 
-		// Check if it's past the deadline of the user's groups
-		$this->check_groups_status();
+		
 	}// constructor
 
 	/**
@@ -92,6 +91,7 @@ class Exchange_group extends CI_Model {
 		    $group_friends[$key] = array(
 		    	'id'				=> $row->id,
 		    	'group_id'			=> $row->group_id,
+		    	'fb_user_id'		=> $row->facebook_users_id,
 				'friend_name'		=> $friend_info['first_name'].' '.$friend_info['last_name'],
 				'friend_picture'	=> $friend_picture,
 				'is_admin' 			=> $row->is_admin,
@@ -343,6 +343,79 @@ class Exchange_group extends CI_Model {
 	}// get_group_admin
 
 	/**
+	 * Checks the group exchange has already happened
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function is_after_exchange($group_id)
+	{
+		$this->db->select('id');
+		$this->db->where('id', $group_id);
+		$this->db->where('exchange_date >', date('Y-m-d'));
+		$query = $this->db->get('exchange_groups');
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		return 1;
+	}// is_after_exchange
+
+	/**
+	 * Checks if the group has been closed
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function is_group_closed($group_id)
+	{
+		$this->db->select('id');
+		$this->db->where('id', $group_id);
+		$this->db->where('status', 1);
+		$query = $this->db->get('exchange_groups');
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		return 1;
+	}// is_after_exchange
+
+	/**
+	 * Sets a group as closed
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function close_group($group_id)
+	{
+		$update_data = array('status', 1);
+		$this->db->where('id', $group_id);
+		$this->db->update('exchange_groups', $update_data);
+	}// is_after_exchange
+
+	/**
+	 * Checks if group has pending invitations.
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	function has_pending_invitations($group_id)
+	{
+		$this->db->select('id');
+		$this->db->where('group_id', $group_id);
+		$query = $this->db->get('group_invitations');
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		return 1;
+	}// check_groups_status
+
+	/**
 	 * Checks the status of a user's groups and takes action adordingly.
 	 *
 	 * @param int $fb_user_id
@@ -350,11 +423,7 @@ class Exchange_group extends CI_Model {
 	 **/
 	private function check_groups_status()
 	{
-		$current_user = $this->facebook->get_user();
-		$pending_groups = $this->get_groups_with_pending_deadline($current_user['id']);
-
 		$this->db->select('id');
-		$this->db->where_in('id', $pending_groups);
 		$this->db->where('join_deadline <', date('Y-m-d'));
 		$query = $this->db->get('exchange_groups');
 
@@ -424,8 +493,10 @@ class Exchange_group extends CI_Model {
 	 * @param int $group_id
 	 * @author Miguel Cabral
 	 **/
-	private function randomize_secret_friends($group_id)
+	function randomize_secret_friends($group_id)
 	{
+		$this->close_group($group_id);
+		
 		$group_friends = $this->get_group_friends($group_id);
 		$from_friends = array();
 		$to_friends = array();
