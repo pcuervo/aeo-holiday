@@ -544,5 +544,20 @@ class Dashboard extends CI_Controller {
 	}// post_video_to_secret_friends
 
 
+	/**
+	 * Insert in the cron_job_log table
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	function insert_cron_job_log()
+	{
+		$this->load->model('exchange_group');
+		$this->exchange_group->cron_job_log_register('post_video_to_secret_friends', $post);				
+		$this->exchange_group->cron_job_log_register('check_groups_status', $post);				
+
+	}// insert in the table cron_job_log
+
+
 
 }// class Dashboard
