@@ -703,12 +703,13 @@ function getAppReports(){
  */
 function getAcceptedInvitations(dates){
     var url = '/cms/get_accepted_invitations_by_date';
+    $('.j-invitaciones-aceptadas').html('');
     $.post(
         url,
         dates,
         function(response){
             if(response == 0){
-                console.log('AVISAR QUE ACCEPTED INVITATION VACIO');
+                $('.j-invitaciones-aceptadas').html('Sin resultados');
                 return;
             }
 
@@ -733,12 +734,13 @@ function getAcceptedInvitations(dates){
  */
 function getPendingInvitations(dates){
     var url = '/cms/get_pending_invitations_by_date';
+    $('.j-invitaciones-pendientes').html('');
     $.post(
         url,
         dates,
         function(response){
             if(response == 0){
-                console.log('AVISAR QUE PENDING INVITATION VACIO');
+                $('.j-invitaciones-pendientes').html('Sin resultados');
                 return;
             }
 
@@ -763,12 +765,13 @@ function getPendingInvitations(dates){
  */
 function getRejectedInvitations(dates){
     var url = '/cms/get_rejected_invitations_by_date';
+    $('.j-invitaciones-rechazadas').html('');
     $.post(
         url,
         dates,
         function(response){
             if(response == 0){
-                console.log('AVISAR QUE REJECTED INVITATION VACIO');
+                $('.j-invitaciones-rechazadas').html('Sin resultados');
                 return;
             }
 
@@ -793,15 +796,15 @@ function getRejectedInvitations(dates){
  */
 function getSentMessages(dates){
     var url = '/cms/get_sent_messages_by_date';
+    $('.j-mensajes-enviados').html('');
     $.post(
         url,
         dates,
         function(response){
             if(response == 0){
-                console.log('AVISAR QUE SENT MESSAGES VACIO');
+                $('.j-mensajes-enviados').html('Sin resultados');
                 return;
             }
-
             var messagesJson = $.parseJSON(response);
             var dates = [];
             var sent_messages = []
@@ -823,12 +826,13 @@ function getSentMessages(dates){
  */
 function getUsers(dates){
     var url = '/cms/get_users_by_date';
+    $('.j-usuarios').html('');
     $.post(
         url,
         dates,
         function(response){
             if(response == 0){
-                console.log('AVISAR QUE USUARIOS ESTA VACIO');
+                $('.j-usuarios').html('Sin resultados');
                 return;
             }
 
@@ -857,9 +861,9 @@ function display_accepted_invitations_per_date(dates, invitations){
         datasets: [
             {
                 label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
+                fillColor: "rgba(255, 255, 255, 0.5)",
+                strokeColor: "rgba(255, 255, 255, 1)",
+                pointColor: "rgba(255, 255, 255, 0.8)",
                 data: invitations
             }
         ]
@@ -879,9 +883,9 @@ function display_pending_invitations_per_date(dates, invitations){
         datasets: [
             {
                 label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
+                fillColor: "rgba(255, 255, 255, 0.5)",
+                strokeColor: "rgba(255, 255, 255, 1)",
+                pointColor: "rgba(255, 255, 255, 0.8)",
                 data: invitations
             }
         ]
@@ -901,9 +905,9 @@ function display_rejected_invitations_per_date(dates, invitations){
         datasets: [
             {
                 label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
+                fillColor: "rgba(255, 255, 255, 0.5)",
+                strokeColor: "rgba(255, 255, 255, 1)",
+                pointColor: "rgba(255, 255, 255, 0.8)",
                 data: invitations
             }
         ]
@@ -923,9 +927,9 @@ function display_sent_messages_per_date(dates, invitations){
         datasets: [
             {
                 label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
+                fillColor: "rgba(255, 255, 255, 0.5)",
+                strokeColor: "rgba(255, 255, 255, 1)",
+                pointColor: "rgba(255, 255, 255, 0.8)",
                 data: invitations
             }
         ]
@@ -945,9 +949,9 @@ function display_users_per_date(dates, invitations){
         datasets: [
             {
                 label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
+                fillColor: "rgba(255, 255, 255, 0.5)",
+                strokeColor: "rgba(255, 255, 255, 1)",
+                pointColor: "rgba(255, 255, 255, 0.8)",
                 data: invitations
             }
         ]
@@ -958,7 +962,6 @@ function display_users_per_date(dates, invitations){
 
 function dateRange(){
     $('.j-start_date').datepicker({
-      defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 1,
       dateFormat: 'yy-mm-dd',
@@ -967,7 +970,6 @@ function dateRange(){
       }
     });
     $('.j-end_date').datepicker({
-      defaultDate: "+1w",
       changeMonth: true,
       numberOfMonths: 3,
       dateFormat: 'yy-mm-dd',
