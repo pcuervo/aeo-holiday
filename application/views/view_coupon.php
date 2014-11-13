@@ -15,11 +15,7 @@
             <h3 class="[ text-center ] [ margin-bottom ]">¡Acabas de crear un grupo!</h3>
             <h3 class="[ text-center ] [ margin-bottom ]">Compartir</h3>
             <div class="[ text-center ] [ margin-bottom ]">
-                <a href="https://www.facebook.com/dialog/feed?
-  app_id=723683944395366
-  &display=popup&caption=An%20example%20caption
-  &link=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F
-  &redirect_uri=https://developers.facebook.com/tools/explorer" class="[ btn btn-primary btn-go ] [ share-button ]" onclick="ga('send', 'event', 'intercambio', 'click', 'creadoCompartir');"><span>Share</span></a>
+                <button class="[ btn btn-primary btn-go ] [ share-button ]" onclick="ga('send', 'event', 'intercambio', 'click', 'creadoCompartir');"><span>Share</span></button>
             </div>
         <?php } ?>
         <?php if ( $exchange_groups != 0 ){ ?>
