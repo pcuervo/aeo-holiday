@@ -13,12 +13,12 @@
 
 		<meta property="og:title" content="AEO Best Gift Ever" />
 		<meta property="og:site_name" content="AEO Best Gift Ever" />
-		<meta property="og:url" content="https://www.aeobestgiftever.com/" />
+		<meta property="og:url" content="<?php echo base_url(); ?>" />
 		<?php
 			// var_dump($current_fb_user);
 		?>
 		<meta property="og:description" content="<?php //echo $current_fb_user[]; ?> ya organizó su intercambio y recibió 30% de descuento en AEO. Hazlo tu también con Best Gift Ever" />
-		<meta property="og:image" content="https://dev-aeo-holiday.flockos.com/assets/images/aeo_logo_share.png" />
+		<meta property="og:image" content="<?php echo base_url(); ?>assets/images/aeo_logo_share.png" />
 		<meta property="fb:app_id" content="293571087508858" />
 
 		<?php if($current_view == 'new_exchange_group') { ?>

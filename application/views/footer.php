@@ -116,6 +116,8 @@
             <?php if($current_view == 'view_exchange_group') { ?>
                 inviteFriends('.j_edit_group_form');
                 formValidation('.j_edit_group_form');
+                setLimitDate();
+                runDatepicker();
                 removeGroupFriend();
                 removeInvitedFriend();
             <?php } ?>
@@ -137,7 +139,7 @@
                 initWebCam();
                 showSubmit();
                 $('.j-mobile-video-input').nicefileinput({
-                    label: 'Graba tu video'
+                    label: 'Presiona aquí para grabar tu video'
                 });
                 // $('input[name=file-desktop]').nicefileinput({
                 //     label: 'Seleccionar archivo'
