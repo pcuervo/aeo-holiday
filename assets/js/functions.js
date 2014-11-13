@@ -85,12 +85,15 @@ function setLimitDate(){
         var day = day-1;
         var fechaLimite = year+'-'+month+'-'+day;
         $('#fecha-limite').attr('max', fechaLimite);
+        $('#fecha-limite').attr('maxDate', fechaLimite);
     });
     var now = new Date();
     var hoy = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+now.getDate() );
     var manana = ( now.getFullYear()+'-'+(now.getMonth()+ 1)+'-'+(now.getDate()+1) );
     $('#fecha-limite').attr('min', hoy);
     $('#fecha-intercambio').attr('min', manana);
+    $('#fecha-limite').attr('minDate', hoy);
+    $('#fecha-intercambio').attr('minDate', manana);
 }
 
 //Datepicker
@@ -591,6 +594,8 @@ function getInvitedFriendData(fb_id){
             var name = response.first_name + ' ' + response.last_name;
             var flag = false;
             if ( $('.agregado').length > 0 ){
+                console.log( $('.agregado').length );
+                console.log( $('.agregado') );
                 $.each($('.agregado'), function(index, val) {
                     console.log(val);
                     if (val.indexOf(name) >= 0){
