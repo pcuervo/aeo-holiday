@@ -19,6 +19,12 @@
             </ul>
         </div>
     </div>
+    <?php if($videos != 0) { ?>
+        <?php foreach ($videos as $key => $video) { ?>
+            <a href="<?php echo base_url().'secret_friends/view_video/'.$video['group_friend_id'] ?>">Ver video de amigos secreto del grupo <?php echo $video['name'] ?></a>
+        <?php } ?>
+    <?php }?>
+
     <?php if($messages != 0) { ?>
         <?php foreach ($messages as $key => $message) { ?>
             <div class="[ row ]">
