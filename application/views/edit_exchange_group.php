@@ -16,7 +16,7 @@
             </div>
             <div class="[ form-group ]">
                 <label for="join_deadline">Fecha límite para participar</label>
-                <?php if ( $browser == 'Firefox' OR $browser == 'IE' ){ ?>
+                <?php if ( $browser == 'Firefox' OR $browser == 'Internet Explorer' ){ ?>
                     <input type="text" class="[ form-control ] [ required ] [ j-datepicker ]" id="fecha-limite" name="join_deadline" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
                 <?php } else { ?>
                     <input type="date" class="[ form-control ] [ required ]" id="fecha-limite" name="join_deadline" value="<?php echo date('Y-m-d', strtotime($group_details['join_deadline'])) ?>">
