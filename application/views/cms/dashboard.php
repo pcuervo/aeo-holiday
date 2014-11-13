@@ -62,24 +62,31 @@
             <h4 class="[ text-center ]">Resultados</h5>
             <div class="[ results ]">
                 <div class="[ row ]">
-                    <div class="[ col-xs-6 ]">
+                    <div class="[ col-xs-6 ] [ margin-bottom-big ]">
+                        <h4 class="[ text-center ]">Invitaciones aceptadas</h4>
+                        <p class="[ notice ] [ text-center ] [ j-invitaciones-aceptadas ]"></p>
                         <canvas id="accepted_invitations_per_date"></canvas>
                     </div>
-                    <div class="[ col-xs-6 ]">
+                    <div class="[ col-xs-6 ] [ margin-bottom-big ]">
+                        <h4 class="[ text-center ]">Invitaciones pendientes</h4>
+                        <p class="[ notice ] [ text-center ] [ j-invitaciones-pendientes ]"></p>
                         <canvas id="pending_invitations_per_date"></canvas>
                     </div>
-                    <div class="[ col-xs-6 ]">
+                    <div class="[ col-xs-6 ] [ margin-bottom-big ]">
+                        <h4 class="[ text-center ]">Invitaciones rechazadas</h4>
+                        <p class="[ notice ] [ text-center ] [ j-invitaciones-rechazadas ]"></p>
                         <canvas id="rejected_invitations_per_date"></canvas>
                     </div>
-                    <div class="[ col-xs-6 ]">
+                    <div class="[ col-xs-6 ] [ margin-bottom-big ]">
+                        <h4 class="[ text-center ]">Mensajes enviados</h4>
+                        <p class="[ notice ] [ text-center ] [ j-mensajes-enviados ]"></p>
                         <canvas id="sent_messages_per_date"></canvas>
                     </div>
-                    <div class="[ col-xs-6 ]">
+                    <div class="[ col-xs-6 ] [ margin-bottom-big ]">
+                        <h4 class="[ text-center ]">Usuarios</h4>
+                        <p class="[ notice ] [ text-center ] [ j-usuarios ]"></p>
                         <canvas id="users_per_date"></canvas>
                     </div>
-                    <!--<div class="[ col-xs-6 ]">
-                        <canvas id="total_closed_exchange_groups"></canvas>
-                    </div> -->
                 </div><!-- row -->
             </div><!-- results -->
         </div>
