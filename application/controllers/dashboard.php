@@ -295,7 +295,7 @@ class Dashboard extends CI_Controller {
 	function view_group($group_id)
 	{
 		$data['base_url'] = base_url();
-		$data['current_view'] = 'view_group';
+		$data['current_view'] = 'view_exchange_group';
 
 		$current_fb_user = $this->facebook->get_user();
 		if($current_fb_user == NULL)

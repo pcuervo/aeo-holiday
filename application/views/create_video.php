@@ -32,4 +32,10 @@
             </form>
         </div>
     </div>
+    <div class="loader-lightbox">
+        <div class="[ loader ] [ center-block ]">
+            <img class="[ img-responsive ]" src="<?php echo base_url() ?>assets/images/loader.svg">
+            <p class="[ text-center ]">…</p>
+        </div><!-- loader -->
+    </div><!-- loader-lightbox -->
 </div><!-- contenido -->
