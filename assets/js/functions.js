@@ -461,6 +461,7 @@ function declineGroupInvitation(){
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
         group_data['group_id'] = $(this).data('group');
+        console.log(group_data);
         $.post(
             url,
             group_data,
