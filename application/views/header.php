@@ -4,12 +4,23 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<title>American Eagle Holiday Exchange</title>
+		<title>AEO Best Gift Ever</title>
 
 		<!-- Bootstrap -->
 		<link href="<?php echo base_url().'assets/css/bootstrap.min.css' ?>" rel="stylesheet">
 		<!--FONT AWESOME-->
 		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<meta property="og:title" content="AEO Best Gift Ever" />
+		<meta property="og:site_name" content="AEO Best Gift Ever" />
+		<meta property="og:url" content="https://www.aeobestgiftever.com/" />
+		<?php
+			// var_dump($current_fb_user);
+		?>
+		<meta property="og:description" content="<?php //echo $current_fb_user[]; ?> ya organizó su intercambio y recibió 30% de descuento en AEO. Hazlo tu también con Best Gift Ever" />
+		<meta property="og:image" content="https://dev-aeo-holiday.flockos.com/assets/images/aeo_logo_share.png" />
+		<meta property="fb:app_id" content="293571087508858" />
+
 		<?php if($current_view == 'new_exchange_group') { ?>
             <!-- Facebook Conversion Code for Crear Intercambio -->
 			<script>(function() {
@@ -70,7 +81,7 @@
 			<script type='text/javascript'>
 			var ebRand = Math.random()+'';
 			ebRand = ebRand * 1000000;
-			//<![CDATA[ 
+			//<![CDATA[
 			document.write('<scr'+'ipt src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563081&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
 			//]]>
 			</script>
@@ -82,7 +93,7 @@
 			<script type='text/javascript'>
 			var ebRand = Math.random()+'';
 			ebRand = ebRand * 1000000;
-			//<![CDATA[ 
+			//<![CDATA[
 			document.write('<scr'+'ipt src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563082&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
 			//]]>
 			</script>
@@ -94,7 +105,7 @@
 			<script type='text/javascript'>
 			var ebRand = Math.random()+'';
 			ebRand = ebRand * 1000000;
-			//<![CDATA[ 
+			//<![CDATA[
 			document.write('<scr'+'ipt src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563083&amp;rnd=' + ebRand + '"></scr' + 'ipt>');
 			//]]>
 			</script>

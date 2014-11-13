@@ -15,7 +15,7 @@
             <h3 class="[ text-center ] [ margin-bottom ]">¡Acabas de crear un grupo!</h3>
             <h3 class="[ text-center ] [ margin-bottom ]">Compartir</h3>
             <div class="[ text-center ] [ margin-bottom ]">
-                <div class="fb-share-button" onclick="ga('send', 'event', 'intercambio', 'click', 'creadoCompartir');" data-href="<?php echo base_url(); ?>" data-layout="button"></div>
+                <button class="[ btn btn-primary btn-go ] [ share-button ]" onclick="ga('send', 'event', 'intercambio', 'click', 'creadoCompartir');"><span>Share</span></button>
             </div>
         <?php } ?>
         <?php if ( $exchange_groups != 0 ){ ?>

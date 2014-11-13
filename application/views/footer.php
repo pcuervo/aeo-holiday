@@ -55,7 +55,7 @@
           </div>
         </div>
 
-        <script type="text/javascript" src="https://addthisevent.com/libs/1.5.8/ate.min.js"></script>
+        <script type="text/javascript" src="https://addthisevent.com/libs/ate-latest.min.js"></script>
         <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
         <script language="JavaScript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <script src="<?php echo base_url().'assets/js/jquery.js' ?>"></script>
@@ -98,6 +98,7 @@
 
             <?php if($current_view == 'view_coupon') { ?>
                 formValidation('.j-send-email');
+                shareFB();
             <?php } ?>
 
             <?php if($current_view == 'send_message') { ?>
@@ -134,6 +135,7 @@
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
                 initWebCam();
+                showSubmit();
                 // $('input[name=file-mobile]').nicefileinput({
                 //     label: 'Graba tu video'
                 // });

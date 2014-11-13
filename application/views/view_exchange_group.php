@@ -35,9 +35,8 @@
                 <p><?php echo $group_details['description'] ?></p>
             </div><!-- form-group -->
             <div class="[ form-group ] [ margin-bottom ]">
-                <label for="">Agregar a mi calendario</label>
-                <br />
                 <a href="<?php echo base_url(); ?>" title="Add to Calendar" class="addthisevent" data-track="ga('send', 'event', 'solicitudes', 'click', 'ate-calendar');">
+                    Agregar a mi calendario
                     <span class="_start"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
                     <span class="_end"><?php echo date('Y-m-d', strtotime($group_details['exchange_date'])) ?></span>
                     <span class="_zonecode">12</span>

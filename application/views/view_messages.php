@@ -20,9 +20,17 @@
         </div>
     </div>
     <?php if($videos != 0) { ?>
-        <?php foreach ($videos as $key => $video) { ?>
-            <a href="<?php echo base_url().'secret_friends/view_video/'.$video['group_friend_id'] ?>">Ver video de amigos secreto del grupo <?php echo $video['name'] ?></a>
-        <?php } ?>
+        <div class="row">
+            <div class="[ col-xs-11 col-sm-8 col-md-6 ] [ center-block ] [ margin-bottom ]">
+                <?php foreach ($videos as $key => $video) { ?>
+                    <p>Tu amigo secreto del grupo  <?php echo $video['name'] ?> te ha enviado un video</p>
+                    <div class="[ text-center ]">
+                        <a class="[ btn btn-primary btn-go ] [ margin-bottom ]" href="<?php echo base_url().'secret_friends/view_video/'.$video['group_friend_id'] ?>" >Ver video</a>
+                    </div>
+                    <hr>
+                <?php } ?>
+            </div>
+        </div>
     <?php }?>
 
     <?php if($messages != 0) { ?>
