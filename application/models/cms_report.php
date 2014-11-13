@@ -48,7 +48,6 @@ class Cms_report extends CI_Model {
 		return $this->db->count_all_results();
 	}// total_pending_invitations
 
-
 	/**
 	 * Returns the total of pending invitations
 	 *
@@ -166,7 +165,6 @@ class Cms_report extends CI_Model {
 		return $accepted_invitations;
 	}// accepted_invitations_by_date
 
-
 	/**
 	 * Returns the total number of pending invitations in a date range
 	 *
@@ -191,7 +189,6 @@ class Cms_report extends CI_Model {
 
 		return $pending_invitations;
 	}// pending_invitations_by_date
-
 
 	/**
 	 * Returns the total number of rejected invitations in a date range
@@ -250,7 +247,7 @@ class Cms_report extends CI_Model {
 	 * @return mixed $users_number_by_date or 0
 	 * @author Zurol
 	 **/
-	function users_number_by_date($start_date, $end_date)
+	function users_by_date($start_date, $end_date)
 	{
 		$sql_query = 'select DATE(created_at) AS date, COUNT( * ) AS users_number FROM facebook_users WHERE created_at BETWEEN "'. $start_date .'" AND  "'. $end_date .'" GROUP BY DATE( created_at );';
 		$query = $this->db->query($sql_query);
@@ -258,15 +255,42 @@ class Cms_report extends CI_Model {
 		if ($query->num_rows() < 1)
 			return 0;
 
-		$users_number_by_date = array();
+		$users_by_date = array();
 		foreach ($query->result() as $key => $row) {
-			$users_number_by_date[$key] = array(
+			$users_by_date[$key] = array(
 				'date'				=> $row->date,
-				'users_number'	=> $row->users_number,
+				'num_users'		=> $row->users_number,
 				);
 		}
 
-		return $users_number_by_date;
+		return $users_by_date;
 	}// users_number_by_date
+
+	/**
+	 * Returns the number of members per exchange in a date range
+	 *
+	 * @return mixed $users_number_by_date or 0
+	 * @author Zurol
+	 **/
+	function members_per_exchange_by_date($start_date, $end_date)
+	{
+		$sql_query = 'select exchange_groups.name AS name, COUNT( * ) AS number_of_members FROM group_friends LEFT JOIN exchange_groups ON group_friends.group_id = exchange_groups.id WHERE created_at BETWEEN "'. $start_date .'" AND  "'. $end_date .'" GROUP BY DATE( created_at );';
+		$query = $this->db->query($sql_query);
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$members_per_exchange = array();
+		foreach ($query->result() as $key => $row) {
+			$members_per_exchange[$key] = array(
+				'date'				=> $row->name,
+				'num_members'		=> $row->number_of_members,
+				);
+		}
+
+		return $members_per_exchange;
+	}// users_number_by_date
+
+
 
 }// clase Cms_report
