@@ -856,9 +856,9 @@ function display_accepted_invitations_per_date(dates, invitations){
         datasets: [
             {
                 label: "Usuarios vs tiempo",
-                fillColor: "rgba(162, 43, 56, 0.2)",
-                strokeColor: "rgba(162, 43, 56, 1)",
-                pointColor: "rgba(162, 43, 56, 1)",
+                fillColor: "rgba(255, 255, 255, 0.5)",
+                strokeColor: "rgba(255, 255, 255, 1)",
+                pointColor: "rgba(255, 255, 255, 0.8)",
                 data: invitations
             }
         ]
