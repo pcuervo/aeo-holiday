@@ -465,11 +465,13 @@ function declineGroupInvitation(){
         group_data['group_id'] = $(this).data('group');
         console.log('group_data');
         console.log(group_data['group_id']);
+
         $.post(
             url,
             group_data,
             function(response){
                 // Agregar feedback
+                console.log(response);
                 $(invitacion).after('<p class="[ text-center ]">Has rechazado la invitación.</p>');
                 invitacion.remove();
             }// response
