@@ -395,7 +395,7 @@ class Dashboard extends CI_Controller {
 	function accept_invitation()
 	{
 		$group_id = $_POST['group_id'];
-		
+
 		$current_fb_user = $this->facebook->get_user();
 
 		$this->load->model('group_invitation');
@@ -432,7 +432,7 @@ class Dashboard extends CI_Controller {
 	function decline_invitation()
 	{
 		$group_id = $_POST['group_id'];
-		
+
 		$current_fb_user = $this->facebook->get_user();
 
 		$this->load->model('group_invitation');

@@ -12,10 +12,10 @@
             echo form_open_multipart('secret_friends/upload_video/'.$secret_friend['group_id'], $attributes);
             ?>
                 <?php if ( $is_mobile == 1 ) {?>
-                    <div class="form-group">
+                    <div class="[ form-group] ">
                         <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" accept="video/*" name="userfile"  />
                     </div>
-                    <div class="text-center">
+                    <div class="[ text-center ]">
                         <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>enviar</span></button>
                     </div>
                 <?php } else { ?>

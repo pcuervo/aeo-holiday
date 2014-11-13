@@ -196,7 +196,7 @@ function send_message_form(){
             $('.j-send-message-notice').html('Se ha enviado tu mensaje');
         }// response
     );
-    //ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
+    ga('send', 'event', 'cupón', 'click', 'enviarMsj');
 }// send_coupon_email
 
 /**
