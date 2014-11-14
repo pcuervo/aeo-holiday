@@ -101,7 +101,7 @@
 			<img width="1" height="1" style="border:0" src="HTTPS://bs.serving-sys.com/Serving/ActivityServer.bs?cn=as&amp;ActivityID=563082&amp;ns=1"/>
 			</noscript>
 		<?php } ?>
-		<?php if($current_view == 'complete_perfect_fit') { ?>
+		<?php if($current_view == 'perfect_fit') { ?>
 			<script type='text/javascript'>
 			var ebRand = Math.random()+'';
 			ebRand = ebRand * 1000000;

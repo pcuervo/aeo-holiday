@@ -40,8 +40,9 @@
                     <p class="[ text-center ]">Usuarios promedio por grupo</p>
                     <p class="[ text-large text-center ]"><?php echo $average_users_per_group ?></p>
                 </div>
-                <a href="/cms/report_by_group" class="[ btn btn-primary btn-go ] [ text-center ]"><span>Ver información por grupo</span></a>
-
+                <div class="[ text-center ] [ margin-bottom ]">
+                    <a href="/cms/report_by_group" class="[ btn btn-primary btn-go ] [ text-center ]"><span>Ver información por grupo</span></a>
+                </div><!-- text-center -->
             </div><!-- row -->
             <hr class="[ center-block margin-bottom ]">
             <h3 class="[ text-center margin-bottom ]">Reportes por fecha</h4>

@@ -5,32 +5,34 @@
             <h3 class="[ text-center ] [ margin-bottom-big ]"><small>Usuario: <?php echo $_SESSION['username']; ?></small> </h3>
             <div class="[ row ]">
                 <?php $current_group = ''; ?>
-                <?php 
-                foreach ($group_info as $key => $info) { 
+                <?php
+                foreach ( $group_info as $key => $info) {
                     if($current_group != $info['exchange_group_name']){
-                        $current_group = $info['exchange_group_name'];
-                        echo '<h4>'.$info['exchange_group_name'].'</h4>';
-                        echo '<p>Descripción: '.$info['description'].'</p>';
-                        echo '<p>Número de participantes: '.$info['number_of_members'].'</p>';
-                        echo '<p>Fecha del intercambio: '.$info['exchange_date'].'</p>';
-                        echo '<p>Último día para unirse: '.$info['join_deadline'].'</p>';
-                        echo '<p>Presupuesto: '.$info['budget'].'</p>';
-                    }
-                    echo '<p>Nombre: '.$info['member_name'].'</p>';
-                    echo '<p>Género: '.$info['gender'].'</p>';
-                    echo '<p>Email: '.$info['email'].'</p>';
-                    echo '<p>¿Es administrador?: '.$info['email'];
-                    if($info['admin'] == 1)
-                        echo 'Si';
-                    else
-                        echo 'No';
-                    echo '</p>';
-                    
-                } ?>
-               
+                        if ( $current_group != '' ){ echo '</table>'; }
+                        $current_group = $info['exchange_group_name']; ?>
+                        <h4>Nombre <?php echo $info['exchange_group_name']; ?> </h4>
+                        <p>Descripción <?php echo $info['description']; ?> </p>
+                        <p>Número de participantes <?php echo $info['number_of_members']; ?> </p>
+                        <p>Fecha del intercambio <?php echo $info['exchange_date']; ?> </p>
+                        <p>Último día para unirse <?php echo $info['join_deadline']; ?> </p>
+                        <p>Presupuesto <?php echo $info['budget']; ?> </p>
+                        <table class="table">
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Género</th>
+                                <th>Email</th>
+                                <th>¿Es administrador?</th>
+                            </tr><!-- fila -->
+                        <?php } ?>
+                        <tr>
+                            <td><?php echo $info['member_name']; ?></td>
+                            <td><?php echo $info['gender']; ?></td>
+                            <td><?php echo $info['email']; ?></td>
+                            <td><?php if( $info['admin'] == 1 ){ echo 'Sí'; } else { echo 'No'; } ?>    </td>
+                        </tr><!-- fila -->
+                <?php } ?>
+                 </table><!-- table -->
             </div><!-- row -->
-            <hr class="[ center-block margin-bottom ]">
-
         </div>
     </div>
 </div><!-- cms-dashboard -->
