@@ -1,9 +1,8 @@
 <div class="[ contenido ] [ container ]">
     <div class="[ row ]">
         <div class="[ col-xs-12 col-md-10 ] [ center-block margin-bottom ]">
-            <h3 class="[ text-center ] [ margin-bottom-small ]">Panel de administración</h3>
-            <h3 class="[ text-center ] [ margin-bottom-big ]"><small><?php echo $_SESSION['username']; ?></small> </h3>
-            <h3 class="[ text-center ] [ margin-bottom ]">Totales</h4>
+            <h2 class="[ text-center ] [ margin-bottom-small ]">Panel de administración</h2>
+            <h3 class="[ text-center ] [ margin-bottom-big ]"><small>Usuario: <?php echo $_SESSION['username']; ?></small> </h3>
             <div class="[ row ]">
                 <div class="[ col-xs-4 ] [ margin-bottom ]">
                     <p class="[ text-center ]">Total de Invitaciones</p>
@@ -41,6 +40,8 @@
                     <p class="[ text-center ]">Usuarios promedio por grupo</p>
                     <p class="[ text-large text-center ]"><?php echo $average_users_per_group ?></p>
                 </div>
+                <a href="/cms/report_by_group" class="[ btn btn-primary btn-go ] [ text-center ]"><span>Ver información por grupo</span></a>
+
             </div><!-- row -->
             <hr class="[ center-block margin-bottom ]">
             <h3 class="[ text-center margin-bottom ]">Reportes por fecha</h4>

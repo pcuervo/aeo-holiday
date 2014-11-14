@@ -289,8 +289,38 @@ class Cms_report extends CI_Model {
 		}
 
 		return $members_per_exchange;
-	}// users_number_by_date
+	}// members_per_exchange_by_date
 
+	/**
+	 * Returns all the groups' information
+	 *
+	 * @return mixed $group_information or 0
+	 * @author Zurol
+	 **/
+	function get_group_information()
+	{
+		$query = $this->db->get('v_group_information');
 
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$group_information = array();
+		foreach ($query->result() as $key => $row) {
+			$group_information[$key] = array (
+				'exchange_group_name'	=> $row->exchange_group_name,
+				'number_of_members'		=> $row->number_of_members,	
+				'exchange_date'			=> $row->exchange_date,
+				'join_deadline'			=> $row->join_deadline,		
+				'budget'				=> $row->budget,			
+				'description'			=> $row->description,		
+				'member_name'			=> $row->member_name,		
+				'email'					=> $row->email,				
+				'gender'				=> $row->gender,			
+				'admin'	=> 				$row->admin,
+				);
+		}
+
+		return $group_information;
+	}// group_information
 
 }// clase Cms_report

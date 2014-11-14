@@ -40,7 +40,7 @@ class Cms extends CI_Controller {
 
 			if($cms_user){
 				$_SESSION['username'] = $cms_user['username'];
-				$this->dashboard();
+				redirect('cms/dashboard');
 			}
 		}
 
@@ -59,7 +59,7 @@ class Cms extends CI_Controller {
 	{
 
 		if(! isset($_SESSION['username']))
-			$this->index();
+			redirect('/cms');
 
 		// Cargar todos los datos totales
 		$this->load->model('cms_report');
@@ -80,6 +80,24 @@ class Cms extends CI_Controller {
 		$this->load->view('cms/dashboard', $data);
 		$this->load->view('cms/footer');
 	}// dashboard
+
+	/**
+	 * Listed reports by group
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function report_by_group()
+	{
+		$data['current_view'] = 'group_reports';
+
+		$this->load->model('cms_report');
+		$data['group_info'] = $this->cms_report->get_group_information();
+
+		$this->load->view('cms/header');
+		$this->load->view('cms/group_reports', $data);
+		$this->load->view('cms/footer');
+	}// report_by_group
 
 	/**
 	 * Data report dasbhoard
