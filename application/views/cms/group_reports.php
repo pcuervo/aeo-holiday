@@ -41,4 +41,4 @@
             </div><!-- row -->
         </div>
     </div>
-</div><!-- cms-dashboard -->
+</div><!-- cms-group-reports -->

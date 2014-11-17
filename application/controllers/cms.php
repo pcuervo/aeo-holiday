@@ -20,7 +20,7 @@ class Cms extends CI_Controller {
 	}// constructor
 
 	/**
-	 * Login or redirect CMS users to dashboard
+	 * Login or redirect CMS users to CMS' home
 	 *
 	 * @return void
 	 * @author Miguel Cabral
@@ -28,7 +28,7 @@ class Cms extends CI_Controller {
 	public function index()
 	{
 		if(isset($_SESSION['username']))
-			redirect('/cms/dashboard');
+			redirect('/cms/home');
 
 		$data['current_view'] = 'cms_login';
 
@@ -40,7 +40,7 @@ class Cms extends CI_Controller {
 
 			if($cms_user){
 				$_SESSION['username'] = $cms_user['username'];
-				redirect('cms/dashboard');
+				redirect('cms/home');
 			}
 		}
 
@@ -50,12 +50,29 @@ class Cms extends CI_Controller {
 	}// index
 
 	/**
+	 * CMS homepage
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function home()
+	{
+
+		if(! isset($_SESSION['username']))
+			redirect('/cms');
+
+		$this->load->view('cms/header');
+		$this->load->view('cms/home', $data);
+		$this->load->view('cms/footer');
+	}// home
+
+	/**
 	 * Data report dasbhoard
 	 *
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	public function dashboard()
+	public function reports()
 	{
 
 		if(! isset($_SESSION['username']))
@@ -77,9 +94,9 @@ class Cms extends CI_Controller {
 
 		// Cargar vista login
 		$this->load->view('cms/header');
-		$this->load->view('cms/dashboard', $data);
+		$this->load->view('cms/reports', $data);
 		$this->load->view('cms/footer');
-	}// dashboard
+	}// reports
 
 	/**
 	 * Listed reports by group
