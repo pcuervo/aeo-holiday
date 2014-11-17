@@ -72,6 +72,7 @@
             footerBottom();
             loadFacebookSdk();
             addGroupToCalendar();
+            runDatepicker();
 
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
@@ -112,7 +113,6 @@
                     setLimitDateMobile();
                 <?php } else { ?>
                     setLimitDateDesktop();
-                    runDatepicker();
                 <?php } ?>
                 inviteFriends('.j_group_form');
             <?php } ?>
@@ -124,7 +124,6 @@
                     setLimitDateMobile();
                 <?php } else { ?>
                     setLimitDateDesktop();
-                    runDatepicker();
                 <?php } ?>
                 removeGroupFriend();
                 removeInvitedFriend();
