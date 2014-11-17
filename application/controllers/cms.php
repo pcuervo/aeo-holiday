@@ -62,7 +62,24 @@ class Cms extends CI_Controller {
 			redirect('/cms');
 
 		$this->load->view('cms/header');
-		$this->load->view('cms/home', $data);
+		$this->load->view('cms/home');
+		$this->load->view('cms/footer');
+	}// home
+
+	/**
+	 * Add a product to the catalog
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function add()
+	{
+
+		if(! isset($_SESSION['username']))
+			redirect('/cms');
+
+		$this->load->view('cms/header');
+		$this->load->view('cms/add');
 		$this->load->view('cms/footer');
 	}// home
 
