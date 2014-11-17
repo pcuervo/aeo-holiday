@@ -79,8 +79,8 @@ function setLimitDateDesktop(){
     var today = new Date();
     var tomorrow = new Date(today);
     tomorrow.setDate(tomorrow.getDate() + 1);
-    $('#fecha-intercambio.j-datepicker').datepicker({minDate: '+1d'});
-    $('#fecha-limite.j-datepicker').datepicker({minDate: '0'});
+    $('#fecha-intercambio.j-datepicker').datepicker({minDate: '+1d', dateFormat: 'yy-mm-dd'});
+    $('#fecha-limite.j-datepicker').datepicker({minDate: '0', dateFormat: 'yy-mm-dd'});
     $('#fecha-intercambio').on('change', function(){
         var intercambioDate = new Date( $(this).val() );
         var limitDate = new Date(intercambioDate);
@@ -111,7 +111,8 @@ function setLimitDateMobile(){
 //Datepicker
 function runDatepicker(){
     if( $('.j-datepicker').length > 0 ){
-        $('.j-datepicker').datepicker();
+        console.log(' datepicker! ');
+        //$('.j-datepicker').datepicker({ dateFormat: 'yy-mm-dd' });
     }
 }
 
@@ -592,7 +593,7 @@ function getInvitedFriendData(fb_id){
         var invited_friends = [];
         var flag = false;
         if(response.id){
-    
+
             var name = response.first_name + ' ' + response.last_name;
 
             if(invited_friends.indexOf(name) > -1){
