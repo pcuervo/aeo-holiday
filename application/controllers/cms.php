@@ -218,7 +218,8 @@ class Cms extends CI_Controller {
 		$name = $_POST['name'];
 		$gender = $_POST['gender'];
 		$category = $_POST['category'];
-		$url_image = $_POST['url_anterior'];
+		$url_small = $_POST['url_anterior'];
+		$url_big = $url_small;
 
 		// CAMBIAR A CONSTANTE
 		$config['upload_path'] = './uploads/catalog';
@@ -233,7 +234,7 @@ class Cms extends CI_Controller {
 		$this->load->library('upload', $config);
 		$this->upload->initialize($config);
 
-		if (isset($_FILES['filename'])){
+		if (isset($_FILES['userfile'])){
 			if ( ! $this->upload->do_upload())
 			{
 				// There's been an error
@@ -246,16 +247,17 @@ class Cms extends CI_Controller {
 				$data['upload'] = $this->upload->data();
 
 				// relative video upload path
-				$url_image = explode('/', $data['upload']['full_path']);
+				$image_url = explode('/', $data['upload']['full_path']);
+				$url_small = $image_url[count($image_url)-1];
+				$url_big = $url_small;
 
 				$_SESSION['upload_success'] = 'Se agregó el producto correctamente.';
 			}
 		}
 
-		var_dump($_POST);
 		// inserta anuncio a bd
 		$this->load->model('catalog_image');
-		$this->catalog_image->update($product_id, $cms_user_id, $name, $gender, $category, $url_image, $url_image);
+		$this->catalog_image->update($product_id, $cms_user_id, $name, $gender, $category, $url_small, $url_big);
 
 		
 		redirect('/cms/edit/'.$product_id);

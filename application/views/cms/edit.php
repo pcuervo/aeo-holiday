@@ -42,10 +42,10 @@
                                 <?php } ?>
                             </select>
                         </div>
-                        <div class="[ col-xs-3 col-md-3 ] [ margin-bottom ]">
+                        <div class="[ col-xs-4 col-md-4 ] [ margin-bottom ]">
                             <img class="[ img-responsive margin-bottom ]" src="../../uploads/catalog/<?php echo $catalog_image['url_big'] ?>">
                         </div>
-                        <div class="[ form-group ] [ col-xs-9 col-md-9 ]">
+                        <div class="[ form-group ] [ col-xs-7 col-md-8 ]">
                             <label class="[ center-block ]" for="userfile">Selecciona otra imagen</label>
                             <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" name="userfile" placeholder="Agregar foto del producto" />
                         </div>
