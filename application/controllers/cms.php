@@ -74,7 +74,7 @@ class Cms extends CI_Controller {
 	 **/
 	public function catalog()
 	{
-
+		
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
 
