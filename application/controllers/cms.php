@@ -74,7 +74,7 @@ class Cms extends CI_Controller {
 	 **/
 	public function catalog()
 	{
-
+		
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
 
@@ -98,7 +98,7 @@ class Cms extends CI_Controller {
 		$this->load->view('cms/header');
 		$this->load->view('cms/view');
 		$this->load->view('cms/footer');
-	}// catalog
+	}// view
 
 	/**
 	 * Form to add a product to the catalog
@@ -144,8 +144,7 @@ class Cms extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			// There's been an error
-			$data['error'] = $this->upload->display_errors();
-			echo $data['error'];
+			$_SESSION['upload_error'] = $this->upload->display_errors();
 		}
 		else
 		{
@@ -164,6 +163,8 @@ class Cms extends CI_Controller {
 			// inserta anuncio a bd
 			$this->load->model('catalog_image');
 			$this->catalog_image->save($cms_user_id, $name, $gender, $category, $url_small[count($url_small)-1], $url_small[count($url_small)-1]);
+
+			$_SESSION['upload_success'] = 'Se agregó el producto correctamente.';
 		}
 
 		redirect('/cms/add');
