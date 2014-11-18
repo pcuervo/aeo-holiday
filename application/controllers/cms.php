@@ -61,9 +61,11 @@ class Cms extends CI_Controller {
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
 
+		$data['current_view'] = 'cms_home';
+
 		$this->load->view('cms/header');
 		$this->load->view('cms/home');
-		$this->load->view('cms/footer');
+		$this->load->view('cms/footer', $data);
 	}// home
 
 	/**
@@ -78,6 +80,8 @@ class Cms extends CI_Controller {
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
 
+		$data['current_view'] = 'catalog';
+
 		$this->load->view('cms/header');
 		$this->load->view('cms/catalog');
 		$this->load->view('cms/footer');
@@ -91,14 +95,16 @@ class Cms extends CI_Controller {
 	 **/
 	public function view()
 	{
-
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
 
 		$data['current_view'] = 'view';
 
+		$this->load->model('catalog_image');
+		$data['catalog_images'] = $this->catalog_image->get_all();
+
 		$this->load->view('cms/header');
-		$this->load->view('cms/view');
+		$this->load->view('cms/view', $data);
 		$this->load->view('cms/footer', $data);
 	}// view
 
@@ -148,6 +154,7 @@ class Cms extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			// There's been an error
+			var_dump($this->upload->display_errors());
 			$_SESSION['upload_error'] = $this->upload->display_errors();
 		}
 		else
@@ -173,6 +180,86 @@ class Cms extends CI_Controller {
 
 		redirect('/cms/add');
 	}// insert_product
+
+	/**
+	 * Form to edit a product in the catalog
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function edit($product_id)
+	{
+		if(! isset($_SESSION['username']))
+			redirect('/cms');
+
+		$data['current_view'] = 'edit';
+
+		$this->load->model('catalog_image');
+		$data['catalog_image'] = $this->catalog_image->get($product_id);
+		$this->load->helper('form');
+
+		$this->load->view('cms/header');
+		$this->load->view('cms/edit', $data);
+		$this->load->view('cms/footer', $data);
+	}// edit
+
+	/**
+	 * Insert a product to database
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function update_product($product_id)
+	{
+		if(! isset($_SESSION['username']))
+			redirect('/cms');
+
+		$cms_user_id = 1;
+		$name = $_POST['name'];
+		$gender = $_POST['gender'];
+		$category = $_POST['category'];
+		$url_image = $_POST['url_anterior'];
+
+		// CAMBIAR A CONSTANTE
+		$config['upload_path'] = './uploads/catalog';
+
+		// file upload constraints
+		$config['allowed_types'] = 'png|jpg';
+		$config['max_size']	= '1000';
+		$config['max_width'] = '800';
+		$config['max_height'] = '600';
+
+		// upload file!
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+
+		if (isset($_FILES['filename'])){
+			if ( ! $this->upload->do_upload())
+			{
+				// There's been an error
+				var_dump($this->upload->display_errors());
+				$_SESSION['upload_error'] = $this->upload->display_errors();
+			}
+			else
+			{
+				// Save video in server
+				$data['upload'] = $this->upload->data();
+
+				// relative video upload path
+				$url_image = explode('/', $data['upload']['full_path']);
+
+				$_SESSION['upload_success'] = 'Se agregó el producto correctamente.';
+			}
+		}
+
+		var_dump($_POST);
+		// inserta anuncio a bd
+		$this->load->model('catalog_image');
+		$this->catalog_image->update($product_id, $cms_user_id, $name, $gender, $category, $url_image, $url_image);
+
+		
+		redirect('/cms/edit/'.$product_id);
+	}// update_product
 
 	/**
 	 * Data report dasbhoard

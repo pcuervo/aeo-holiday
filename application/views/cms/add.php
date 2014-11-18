@@ -3,10 +3,6 @@
         <div class="[ col-xs-12 col-md-10 ] [ center-block margin-bottom ]">
             <h2 class="[ text-center ] [ margin-bottom-small ]">Agregar producto</h2>
             <div class="[ row ]">
-                <?php 
-                if(isset($_SESSION['upload_success']))
-                    echo '<p>'.$_SESSION['upload_success'].'</p>';
-                ?>
                 <div class="[ col-xs-12  col-sm-10 col-md-8 ] [ center-block margin-bottom ]">
                     <?php
                     $attributes = array('class' => '[ text-center ]');
@@ -19,16 +15,16 @@
                         <div class="[ form-group ] [ margin-bottom ]">
                             <label class="[ center-block ]" for="gender">Género</label>
                             <select class="[ form-control ] [ required ]" name="gender">
-                                <option value="m">hombre</option>
-                                <option value="f">mujer</option>
+                                <option value="hombre">hombre</option>
+                                <option value="mujer">mujer</option>
                             </select>
                         </div>
                         <div class="[ form-group ] [ margin-bottom ]">
                             <label class="[ center-block ]" for="category">Categoría</label>
                             <select class="[ form-control ] [ required ]" name="category">
-                                <option value="accesorio">accesorio</option>
+                                <option value="accesorios">accesorio</option>
                                 <option value="top">top</option>
-                                <option value="pantalon">pantalón</option>
+                                <option value="pantalones">pantalón</option>
                             </select>
                         </div>
                         <div class="[ form-group ]">
@@ -36,6 +32,18 @@
                             <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" name="userfile" placeholder="Agregar foto del producto" />
                         </div>
                         <div class="[ text-center ]">
+                            <?php 
+                            if(isset($_SESSION['upload_success'])){
+                                echo '<p class="[ text-center ]">'.$_SESSION['upload_success'].'</p>';
+                                unset($_SESSION['upload_success']);
+                            }
+                            ?>
+                            <?php 
+                            if(isset($_SESSION['upload_error'])){
+                                echo '<p class="[ text-center ]">'.$_SESSION['upload_error'].'</p>';
+                                unset($_SESSION['upload_error']);
+                            }
+                            ?>
                             <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>Agregar producto</span></button>
                         </div>
                     </form>
