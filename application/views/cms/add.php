@@ -3,6 +3,10 @@
         <div class="[ col-xs-12 col-md-10 ] [ center-block margin-bottom ]">
             <h2 class="[ text-center ] [ margin-bottom-small ]">Agregar producto</h2>
             <div class="[ row ]">
+                <?php 
+                if(isset($_SESSION['upload_success']))
+                    echo '<p>'.$_SESSION['upload_success'].'</p>';
+                ?>
                 <div class="[ col-xs-12  col-sm-10 col-md-8 ] [ center-block margin-bottom ]">
                     <?php
                     $attributes = array('class' => '[ text-center ]');
