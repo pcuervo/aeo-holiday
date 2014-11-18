@@ -99,7 +99,7 @@ class Cms extends CI_Controller {
 
 		$this->load->view('cms/header');
 		$this->load->view('cms/view');
-		$this->load->view('cms/footer');
+		$this->load->view('cms/footer', $data);
 	}// view
 
 	/**
@@ -119,7 +119,7 @@ class Cms extends CI_Controller {
 
 		$this->load->view('cms/header');
 		$this->load->view('cms/add');
-		$this->load->view('cms/footer');
+		$this->load->view('cms/footer', $data);
 	}// add
 
 	/**
