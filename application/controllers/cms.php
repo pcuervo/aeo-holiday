@@ -32,13 +32,14 @@ class Cms extends CI_Controller {
 
 		$data['current_view'] = 'cms_login';
 
-		if(isset($_POST['user']) && isset($_POST['user'])){
+		if(isset($_POST['user']) && isset($_POST['password'])){
 			$user = $_POST['user'];
 			$password = $_POST['password'];
 			$this->load->model('cms_user');
 			$cms_user = $this->cms_user->validate($user, $password);
 
 			if($cms_user){
+				$_SESSION['cms_user_id'] = $cms_user['id'];
 				$_SESSION['username'] = $cms_user['username'];
 				redirect('cms/home');
 			}
@@ -55,7 +56,7 @@ class Cms extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	public function home()
+	public function catalog()
 	{
 
 		if(! isset($_SESSION['username']))
@@ -64,24 +65,76 @@ class Cms extends CI_Controller {
 		$this->load->view('cms/header');
 		$this->load->view('cms/home');
 		$this->load->view('cms/footer');
-	}// home
+	}// catalog
 
 	/**
-	 * Add a product to the catalog
+	 * Form to add a product to the catalog
 	 *
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
 	public function add()
 	{
-
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
+
+		$this->load->helper('form');
 
 		$this->load->view('cms/header');
 		$this->load->view('cms/add');
 		$this->load->view('cms/footer');
-	}// home
+	}// add
+
+	/**
+	 * Insert a product to database
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function insert_product()
+	{
+		if(! isset($_SESSION['username']))
+			redirect('/cms');
+
+
+		// CAMBIAR A CONSTANTE
+		$config['upload_path'] =  './uploads/';
+
+		// file upload constraints
+		$config['allowed_types'] = 'mp4|mpeg|mov';
+		$config['max_size']	= '30000';
+		$config['max_width'] = '';
+		$config['max_height'] = '';
+
+		// upload file!
+		$this->load->library('upload', $config);
+		$this->upload->initialize($config);
+		if ( ! $this->upload->do_upload())
+		{
+			// There's been an error
+			$data['error'] = $this->upload->display_errors();
+		}
+		else
+		{
+			// Save video in server
+			$data['upload'] = $this->upload->data();
+
+			// relative video upload path
+			$video_url = explode('/', $data['upload']['full_path']);
+
+			// inserta anuncio a bd
+			$this->load->model('secret_friend_video');
+			$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
+		}
+
+		// return to secret friend's home
+		$this->view($group_friend_id);
+
+
+
+
+		redirect('/add')
+	}// insert_product
 
 	/**
 	 * Data report dasbhoard

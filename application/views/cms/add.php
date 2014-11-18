@@ -5,7 +5,7 @@
             <div class="[ row ]">
                 <div class="[ col-xs-12  col-sm-10 col-md-8 ] [ center-block margin-bottom ]">
                     <?php
-                    $attributes = array('class' => '[ ]');
+                    $attributes = array('class' => '[ text-center ]');
                     echo form_open_multipart('cms/insert_product/', $attributes);
                     ?>
                         <div class="[ form-group ] [ margin-bottom ]">
@@ -28,14 +28,12 @@
                             </select>
                         </div>
                         <div class="[ form-group ]">
-                            <input class="[ j-mobile-video-input ] [ margin-bottom ] [ center-block ] [ form-control ]" type="file" accept="video/*" name="userfile" placeholder="Graba tu video" />
+                            <label class="[ center-block ]" for="userfile">Selecciona una imagen</label>
+                            <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" name="userfile" placeholder="Agregar foto del producto" />
                         </div>
                         <div class="[ text-center ]">
-                            <button type="submit" value="" class="[ btn btn-primary btn-go ] [ j-mobile-video-button ]"><span>enviar</span></button>
+                            <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>Agregar producto</span></button>
                         </div>
-
-                        <input type="hidden" name="secret_friend_id" value="<?php echo $secret_friend['secret_friend_id'] ?>">
-                        <input type="hidden" name="group_friend_id" value="<?php echo $secret_friend['group_friend_id'] ?>">
                     </form>
                 </div>
             </div><!-- row -->
