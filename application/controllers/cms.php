@@ -56,6 +56,22 @@ class Cms extends CI_Controller {
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
+	public function home()
+	{
+		if(! isset($_SESSION['username']))
+			redirect('/cms');
+
+		$this->load->view('cms/header');
+		$this->load->view('cms/home');
+		$this->load->view('cms/footer');
+	}// home
+
+	/**
+	 * Catalog 
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
 	public function catalog()
 	{
 
@@ -63,7 +79,7 @@ class Cms extends CI_Controller {
 			redirect('/cms');
 
 		$this->load->view('cms/header');
-		$this->load->view('cms/home');
+		$this->load->view('cms/catalog');
 		$this->load->view('cms/footer');
 	}// catalog
 
