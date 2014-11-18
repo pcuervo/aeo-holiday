@@ -74,7 +74,7 @@ class Cms extends CI_Controller {
 	 **/
 	public function catalog()
 	{
-		
+
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
 
@@ -94,6 +94,8 @@ class Cms extends CI_Controller {
 
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
+
+		$data['current_view'] = 'view';
 
 		$this->load->view('cms/header');
 		$this->load->view('cms/view');
