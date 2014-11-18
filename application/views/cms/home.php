@@ -1,16 +1,13 @@
 <div class="[ contenido ] [ container ]">
-    <div class="[ row ]">
+    <div class="[ row ] [ login ]">
         <div class="[ col-xs-12 col-md-10 ] [ center-block margin-bottom ]">
-            <h2 class="[ text-center ] [ margin-bottom-small ]">Inicio</h2>
+            <h2 class="[ text-center ] [ margin-bottom-big ]">Inicio</h2>
             <div class="[ row ]">
-                <div class="[ col-xs-4 ] [ margin-bottom ]">
-                    <a href="/cms/add" class="[ text-center ]">Crear producto</a>
-                </div>
-                <div class="[ col-xs-4 ] [ margin-bottom ]">
-                    <a href="/cms/edit" class="[ text-center ]">Editar producto</a>
-                </div>
-                <div class="[ col-xs-4 ] [ margin-bottom ]">
-                    <a href="/cms/view" class="[ text-center ]">Ver productos</a>
+                <div class="[ col-xs-12 ] [ margin-bottom ]">
+                    <div class="text-center">
+                        <a class="[ btn btn-primary btn-lg btn-go ] [ margin-bottom ] [ text-center ]" href="/cms/reports"><span>Ver reportes</span></a>
+                        <a class="[ btn btn-primary btn-lg btn-go ] [ margin-bottom ] [ text-center ]" href="/cms/catalog"><span>Gestionar productos catálogo</span></a>
+                    </div>
                 </div>
             </div><!-- row -->
         </div>
