@@ -26,7 +26,7 @@
                 <ul class="[ margin-bottom ]">
                     <li>Dale like a nuestra página: facebook.com/americaneaglemexico.</li>
                     <li>Ingresa a la aplicación Best Gift Ever y crea tu intercambio.</li>
-                    <li>Recibe un cupón de 30% de descuento en tu compra.</li>
+                    <li>Recibe un cupón de 20% de descuento en tu compra.</li>
                     <li>Presenta el cupón en tu próxima compra. </li>
                 </ul>
                 <h3 class="[ text-center ]">TÉRMINOS Y CONDICIONES</h3>
