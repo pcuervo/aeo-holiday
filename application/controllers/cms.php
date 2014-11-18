@@ -144,14 +144,12 @@ class Cms extends CI_Controller {
 			$url_small = explode('/', $data['upload']['full_path']);
 			$url_big = $url_small;
 
-			echo $video_url
-
 			// inserta anuncio a bd
-			//$this->load->model('catalog_image');
-			//$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
+			$this->load->model('catalog_image');
+			$this->catalog_image->save($cms_user_id, $name, $gender, $category, $url_small[count($url_small)-1], $url_small[count($url_small)-1]);
 		}
 
-		//redirect('/add')
+		redirect('/cms/add');
 	}// insert_product
 
 	/**
