@@ -84,7 +84,7 @@ class Cms extends CI_Controller {
 	}// catalog
 
 	/**
-	 * Catalog
+	 * View catalog
 	 *
 	 * @return void
 	 * @author Miguel Cabral
