@@ -129,15 +129,14 @@ class Cms extends CI_Controller {
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
 
-
 		// CAMBIAR A CONSTANTE
-		$config['upload_path'] =  './uploads/';
+		$config['upload_path'] =  './uploads/catalog';
 
 		// file upload constraints
-		$config['allowed_types'] = 'mp4|mpeg|mov';
-		$config['max_size']	= '30000';
-		$config['max_width'] = '';
-		$config['max_height'] = '';
+		$config['allowed_types'] = 'png|jpg';
+		$config['max_size']	= '1000';
+		$config['max_width'] = '800';
+		$config['max_height'] = '600';
 
 		// upload file!
 		$this->load->library('upload', $config);
@@ -146,27 +145,28 @@ class Cms extends CI_Controller {
 		{
 			// There's been an error
 			$data['error'] = $this->upload->display_errors();
+			echo $data['error'];
 		}
 		else
 		{
+			$cms_user_id = 1;
+			$name = $_POST['name'];
+			$gender = $_POST['gender'];
+			$category = $_POST['category'];
+
 			// Save video in server
 			$data['upload'] = $this->upload->data();
 
 			// relative video upload path
-			$video_url = explode('/', $data['upload']['full_path']);
+			$url_small = explode('/', $data['upload']['full_path']);
+			$url_big = $url_small;
 
 			// inserta anuncio a bd
-			$this->load->model('secret_friend_video');
-			$video_id = $this->secret_friend_video->save_video($video_url[count($video_url)-1], $secret_friend_id);
+			$this->load->model('catalog_image');
+			$this->catalog_image->save($cms_user_id, $name, $gender, $category, $url_small[count($url_small)-1], $url_small[count($url_small)-1]);
 		}
 
-		// return to secret friend's home
-		$this->view($group_friend_id);
-
-
-
-
-		redirect('/add')
+		redirect('/cms/add');
 	}// insert_product
 
 	/**

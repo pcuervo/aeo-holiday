@@ -29,7 +29,7 @@ class Cms_user extends User {
 	 **/
 	function validate($username, $password)
 	{
-		$this->db->select('id, first_name, last_name, username, role');
+		$this->db->select('cms_users.id, first_name, last_name, username, role');
 		$this->db->from('users');
 		$this->db->join('cms_users', 'cms_users.user_id = users.id');
 		$this->db->where('username', $username);
