@@ -22,6 +22,16 @@
         </div>
     </div>
     <div class="[ row ] [ margin-bottom ] [ isotope ]">
+        <?php foreach ($catalog_images as $key => $image) { ?>
+        <div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ j-item <?php echo $image['gender'].' '.$image['category'] ?> ]">
+            <a href="../../uploads/catalog/<?php echo $image['url_big'] ?>" data-toggle="lightbox" data-gallery="multiimages" data-title="<?php echo $image['name'] ?>">
+                <img class="[ img-responsive margin-bottom ]" src="../../uploads/catalog/<?php echo $image['url_big'] ?>">
+            </a>
+            <p><?php echo $image['name'] ?></p>
+            <a href="/cms/edit/<?php echo $image['id'] ?>" class="[ btn btn-primary btn-go ]"><span>editar</span></a>
+        </div>
+        <?php } ?>
+           
     	<div class="[ col-xs-6 col-md-3 ] [ margin-bottom ] [ j-item hombre top ]">
 			<a href="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo-big.jpg" data-toggle="lightbox" data-gallery="multiimages" data-title="Camisa de Franela con Grecas AEO">
                 <img class="[ img-responsive margin-bottom ]" src="<?php echo base_url() ?>assets/images/catalog/hombre/top/chamarra-vintage-aeo.png">

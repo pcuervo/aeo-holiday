@@ -27,7 +27,7 @@ class Dashboard extends CI_Controller {
 		$data['current_view'] = 'dashboard';
 
 		$current_fb_user = $this->facebook->get_user();
-		if($current_fb_user == NULL)
+		if(! $current_fb_user)
 			redirect('/login');
 
 		if(!$this->facebook_user->exists($current_fb_user['id']))
@@ -194,7 +194,7 @@ class Dashboard extends CI_Controller {
 		$data['origin'] = $view;
 
 		$current_fb_user = $this->facebook->get_user();
-		if($current_fb_user == NULL)
+		if(! $current_fb_user)
 			redirect('/login');
 
 		$data['email'] = $current_fb_user['email'];
@@ -224,7 +224,7 @@ class Dashboard extends CI_Controller {
 		$this->load->library('My_PHPMailer');
 
 		$current_fb_user = $this->facebook->get_user();
-		if($current_fb_user == NULL)
+		if(! $current_fb_user)
 			redirect('/login');
 
 		$mail = new PHPMailer();
@@ -322,8 +322,9 @@ class Dashboard extends CI_Controller {
 		$data['current_view'] = 'view_exchange_group';
 
 		$current_fb_user = $this->facebook->get_user();
-		if($current_fb_user == NULL)
+		if(! $current_fb_user)
 			redirect('/login');
+
 		$data['fb_user_id'] = $current_fb_user['id'];
 
 		// Get group data

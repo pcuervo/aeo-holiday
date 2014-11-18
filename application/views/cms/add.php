@@ -15,16 +15,16 @@
                         <div class="[ form-group ] [ margin-bottom ]">
                             <label class="[ center-block ]" for="gender">Género</label>
                             <select class="[ form-control ] [ required ]" name="gender">
-                                <option value="m">hombre</option>
-                                <option value="f">mujer</option>
+                                <option value="hombre">hombre</option>
+                                <option value="mujer">mujer</option>
                             </select>
                         </div>
                         <div class="[ form-group ] [ margin-bottom ]">
                             <label class="[ center-block ]" for="category">Categoría</label>
                             <select class="[ form-control ] [ required ]" name="category">
-                                <option value="accesorio">accesorio</option>
+                                <option value="accesorios">accesorio</option>
                                 <option value="top">top</option>
-                                <option value="pantalon">pantalón</option>
+                                <option value="pantalones">pantalón</option>
                             </select>
                         </div>
                         <div class="[ form-group ]">
