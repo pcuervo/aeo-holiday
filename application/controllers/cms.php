@@ -148,6 +148,7 @@ class Cms extends CI_Controller {
 		if ( ! $this->upload->do_upload())
 		{
 			// There's been an error
+			var_dump($this->upload->display_errors());
 			$_SESSION['upload_error'] = $this->upload->display_errors();
 		}
 		else

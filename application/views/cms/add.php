@@ -3,10 +3,6 @@
         <div class="[ col-xs-12 col-md-10 ] [ center-block margin-bottom ]">
             <h2 class="[ text-center ] [ margin-bottom-small ]">Agregar producto</h2>
             <div class="[ row ]">
-                <?php 
-                if(isset($_SESSION['upload_success']))
-                    echo '<p>'.$_SESSION['upload_success'].'</p>';
-                ?>
                 <div class="[ col-xs-12  col-sm-10 col-md-8 ] [ center-block margin-bottom ]">
                     <?php
                     $attributes = array('class' => '[ text-center ]');
@@ -36,6 +32,18 @@
                             <input class="[ margin-bottom ] [ center-block ] [ form-control ]" type="file" name="userfile" placeholder="Agregar foto del producto" />
                         </div>
                         <div class="[ text-center ]">
+                            <?php 
+                            if(isset($_SESSION['upload_success'])){
+                                echo '<p class="[ text-center ]">'.$_SESSION['upload_success'].'</p>';
+                                unset($_SESSION['upload_success']);
+                            }
+                            ?>
+                            <?php 
+                            if(isset($_SESSION['upload_error'])){
+                                echo '<p class="[ text-center ]">'.$_SESSION['upload_error'].'</p>';
+                                unset($_SESSION['upload_error']);
+                            }
+                            ?>
                             <button type="submit" value="" class="[ btn btn-primary btn-go ]"><span>Agregar producto</span></button>
                         </div>
                     </form>
