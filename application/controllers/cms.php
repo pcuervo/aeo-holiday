@@ -67,7 +67,7 @@ class Cms extends CI_Controller {
 	}// home
 
 	/**
-	 * Catalog 
+	 * Catalog
 	 *
 	 * @return void
 	 * @author Miguel Cabral
@@ -80,6 +80,23 @@ class Cms extends CI_Controller {
 
 		$this->load->view('cms/header');
 		$this->load->view('cms/catalog');
+		$this->load->view('cms/footer');
+	}// catalog
+
+	/**
+	 * Catalog
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function view()
+	{
+
+		if(! isset($_SESSION['username']))
+			redirect('/cms');
+
+		$this->load->view('cms/header');
+		$this->load->view('cms/view');
 		$this->load->view('cms/footer');
 	}// catalog
 
@@ -170,10 +187,10 @@ class Cms extends CI_Controller {
 		$data['total_pending_invitations'] = $this->cms_report->total_pending_invitations();
 		$data['total_rejected_invitations'] = $this->cms_report->total_rejected_invitations();
 		$data['total_exchange_groups'] = $this->cms_report->total_exchange_groups();
-		$data['total_fb_users'] = $this->cms_report->total_fb_users();	
-		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();	
-		$data['total_closed_exchange_groups'] = $this->cms_report->total_closed_exchanges();	
-		$data['average_users_per_group'] = $this->cms_report->average_users_per_group();		
+		$data['total_fb_users'] = $this->cms_report->total_fb_users();
+		$data['total_sent_messages'] = $this->cms_report->total_sent_messages();
+		$data['total_closed_exchange_groups'] = $this->cms_report->total_closed_exchanges();
+		$data['average_users_per_group'] = $this->cms_report->average_users_per_group();
 		$data['total_invitations'] = $data['total_accepted_invitations'] + $data['total_pending_invitations'] + $data['total_rejected_invitations'];
 
 		// Cargar busqueda (si existe) con datos por fecha
@@ -212,10 +229,10 @@ class Cms extends CI_Controller {
 	{
 		$start_date = $_POST['start_date'];
 		$end_date = $_POST['end_date'];
-	
+
 		$this->load->model('cms_report');
 		$num_accepted_invitations = $this->cms_report->accepted_invitations_by_date($start_date, $end_date);
-		
+
 		echo json_encode($num_accepted_invitations);
 
 	}// get_accepted_invitations_by_date
@@ -230,10 +247,10 @@ class Cms extends CI_Controller {
 	{
 		$start_date = $_POST['start_date'];
 		$end_date = $_POST['end_date'];
-	
+
 		$this->load->model('cms_report');
 		$num_pending_invitations = $this->cms_report->pending_invitations_by_date($start_date, $end_date);
-		
+
 		echo json_encode($num_pending_invitations);
 
 	}// get_accepted_invitations_by_date
@@ -249,10 +266,10 @@ class Cms extends CI_Controller {
 	{
 		$start_date = $_POST['start_date'];
 		$end_date = $_POST['end_date'];
-	
+
 		$this->load->model('cms_report');
 		$num_rejected_invitations = $this->cms_report->rejected_invitations_by_date($start_date, $end_date);
-		
+
 		echo json_encode($num_rejected_invitations);
 
 	}// get_accepted_invitations_by_date
@@ -267,10 +284,10 @@ class Cms extends CI_Controller {
 	{
 		$start_date = $_POST['start_date'];
 		$end_date = $_POST['end_date'];
-	
+
 		$this->load->model('cms_report');
 		$num_sent_messages = $this->cms_report->sent_messages_by_date($start_date, $end_date);
-		
+
 		echo json_encode($num_sent_messages);
 
 	}// get_accepted_invitations_by_date
@@ -285,10 +302,10 @@ class Cms extends CI_Controller {
 	{
 		$start_date = $_POST['start_date'];
 		$end_date = $_POST['end_date'];
-	
+
 		$this->load->model('cms_report');
 		$users_by_date = $this->cms_report->users_by_date($start_date, $end_date);
-		
+
 		echo json_encode($users_by_date);
 
 	}// get_users_by_date
@@ -304,10 +321,10 @@ class Cms extends CI_Controller {
 	{
 		$start_date = $_POST['start_date'];
 		$end_date = $_POST['end_date'];
-	
+
 		$this->load->model('cms_report');
 		$users_per_exchange_by_date = $this->cms_report->members_per_exchange_by_date($start_date, $end_date);
-		
+
 		echo json_encode($users_per_exchange_by_date);
 
 	}// get_users_per_exchange_by_date

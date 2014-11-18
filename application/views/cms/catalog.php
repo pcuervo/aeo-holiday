@@ -6,7 +6,7 @@
                 <div class="[ col-xs-12 ] [ margin-bottom ]">
                     <div class="text-center">
                         <a class="[ btn btn-primary btn-lg btn-go ] [ margin-bottom ] [ text-center ]" href="/cms/reports"><span>Agregar producto</span></a>
-                        <a class="[ btn btn-primary btn-lg btn-go ] [ margin-bottom ] [ text-center ]" href="/cms/catalog"><span>Ver productos</span></a>
+                        <a class="[ btn btn-primary btn-lg btn-go ] [ margin-bottom ] [ text-center ]" href="/cms/view"><span>Ver productos</span></a>
                     </div>
                 </div>
             </div><!-- row -->
