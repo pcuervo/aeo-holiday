@@ -17,7 +17,7 @@
 		<?php
 			// var_dump($current_fb_user);
 		?>
-		<meta property="og:description" content="<?php //echo $current_fb_user[]; ?> ya organizó su intercambio y recibió 30% de descuento en AEO. Hazlo tu también con Best Gift Ever" />
+		<meta property="og:description" content="<?php //echo $current_fb_user[]; ?> ya organizó su intercambio y recibió 20% de descuento en AEO. Hazlo tu también con Best Gift Ever" />
 		<meta property="og:image" content="<?php echo base_url(); ?>assets/images/aeo_logo_share.png" />
 		<meta property="fb:app_id" content="723683944395366" />
 
@@ -127,7 +127,7 @@
 							<a class="[ text-center ]" href="<?php echo base_url().'dashboard' ?>">Inicio</a>
 						</li>
 						<li>
-							<a class="[ text-center ]" href="<?php echo base_url() ?>dashboard/view_coupon/m">Cupón 30%</a>
+							<a class="[ text-center ]" href="<?php echo base_url() ?>dashboard/view_coupon/m">Cupón 20%</a>
 						</li>
 						<li>
 							<a class="[ text-center ]" href="<?php echo base_url() ?>catalog">Catálogo</a>
