@@ -180,8 +180,6 @@ class Dashboard extends CI_Controller {
 		echo json_encode($msg);
 	}// remove_invited_friend
 
-
-
 	/**
 	 * Displays the user's coupon
 	 *

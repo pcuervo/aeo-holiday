@@ -68,11 +68,13 @@
 
         <script>
             localStorage.setItem('base_url', '<?php echo base_url() ?>');
+            localStorage.setItem('current_view', '<?php echo $current_view ?>');
             toggleMainMenu();
             footerBottom();
             loadFacebookSdk();
             addGroupToCalendar();
             runDatepicker();
+
 
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
@@ -140,6 +142,7 @@
 
             <?php if($current_view == 'login') { ?>
                 toggleButton();
+                
             <?php } ?>
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
