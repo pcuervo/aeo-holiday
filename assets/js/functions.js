@@ -368,8 +368,6 @@ function videoPost(url){
     });
 }// videoPost
 
-
-
 /**
  * Get user's activity
  * @return void
@@ -437,7 +435,7 @@ function acceptGroupInvitation(){
             group_data,
             function(response){
                 // Agregar feedback
-                console.log(response);
+                window.location = 'dashboard/view_group/'+group_data['group_id'];
                 $(invitacion).after('<p class="[ text-center ]">Has aceptado la invitación.</p>');
                 invitacion.remove();
             }// response
@@ -536,6 +534,21 @@ function removeInvitedFriend(){
     });
 }// removeInvitedFriend
 
+function setAccessToken(access_token){
+    var user = {};
+    user['access_token'] = access_token;
+    var url = '/login/set_access_token';
+    $.post(
+        url,
+        user,
+        function(response){
+           window.location = '/dashboard';
+           console.log(response);
+        }// response
+    );
+    ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
+}// send_coupon_email
+
 /*****************************
 	Facebook API functions
  *****************************/
@@ -544,15 +557,6 @@ function removeInvitedFriend(){
  * @return void
  */
 function loadFacebookSdk(){
-	//console.log('loading FB SDK async...');
-	(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "//connect.facebook.net/en_US/sdk.js";
-		fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-
     window.fbAsyncInit = function() {
         FB.init({
             appId      : '723683944395366',
@@ -562,7 +566,19 @@ function loadFacebookSdk(){
         });
         FB.Canvas.setSize({height:600});
         setTimeout("FB.Canvas.setAutoGrow()",500);
+
+        if(localStorage.getItem('current_view') == 'login')
+            checkLoginStatus();
     };
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/en_US/sdk.js";
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+    
 }
 
 /**
@@ -626,6 +642,36 @@ function shareFB(){
           href:'https://dev-aeo-holiday.flockos.com/',
         }, function(response){});
     });
+}
+
+function checkLoginStatus(){
+    $(document).ready(function(){
+   
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // the user is logged in and has authenticated your
+                // app, and response.authResponse supplies
+                // the user's ID, a valid access token, a signed
+                // request, and the time the access token 
+                // and signed request each expire
+
+                var uid = response.authResponse.userID;
+                var accessToken = response.authResponse.accessToken;
+                setAccessToken(accessToken);
+
+            } else if (response.status === 'not_authorized') {
+                // the user is logged in to Facebook, 
+                // but has not authenticated your app
+
+                
+            } else {
+                // the user isn't logged in to Facebook.
+                
+            }
+            console.log(response);
+        });
+
+    })
 }
 
 //
