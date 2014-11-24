@@ -11,13 +11,16 @@
             <h3 class="[ text-center ] [ margin-bottom-big ]">La primera web app con la que puedes hacer el intercambio desde tu celular</h3>
             <!-- <fb:login-button scope="public_profile,email" onlogin="checkLoginState();" class="btn btn-primary center-block"></fb:login-button> -->
             <div class="[ text-center ]">
-                <form class="[ white ] [ margin-bottom ]" action="#">
-                    <fieldset>
-                        <input class="js-acepto" type="checkbox" onclick="ga('send', 'event', 'fbconnect', 'click', 'connect');"> <a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Acepto términos y condiciones</a>
-                    </fieldset>
-                </form>
-                <a href="<?php echo $fb_login_url; ?>" class="[ btn btn-primary btn-fb ] [ js-login js-disabled ]" disabled target="_top"><span>Conecta con tu facebook</span></a>
-            </div>
+                <p class="[ text-center ] [ j-checking-login-status ]">Revisando estatus…</p>
+                <div class="[ j-login-form ]">
+                    <form class="[ white ] [ margin-bottom ]" action="#">
+                        <fieldset>
+                            <input class="js-acepto" type="checkbox" onclick="ga('send', 'event', 'fbconnect', 'click', 'connect');"> <a href="#" data-toggle="modal" data-target="#modalTerminosYCondiciones">Acepto términos y condiciones</a>
+                        </fieldset>
+                    </form>
+                    <a href="<?php echo $fb_login_url; ?>" class="[ btn btn-primary btn-fb ] [ js-login js-disabled ]" disabled target="_top"><span>Conecta con tu facebook</span></a>
+                </div>
+                </div>
         </div>
     </div>
 </div><!-- login -->

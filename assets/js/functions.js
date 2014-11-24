@@ -546,8 +546,7 @@ function setAccessToken(access_token){
            console.log(response);
         }// response
     );
-    ga('send', 'event', 'cupón', 'click', 'enviarCorreo');
-}// send_coupon_email
+}// setAccessToken
 
 /*****************************
 	Facebook API functions
@@ -578,7 +577,7 @@ function loadFacebookSdk(){
 		js.src = "//connect.facebook.net/en_US/sdk.js";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-    
+
 }
 
 /**
@@ -645,33 +644,31 @@ function shareFB(){
 }
 
 function checkLoginStatus(){
-    $(document).ready(function(){
-   
-        FB.getLoginStatus(function(response) {
-            if (response.status === 'connected') {
-                // the user is logged in and has authenticated your
-                // app, and response.authResponse supplies
-                // the user's ID, a valid access token, a signed
-                // request, and the time the access token 
-                // and signed request each expire
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            // the user is logged in and has authenticated your
+            // app, and response.authResponse supplies
+            // the user's ID, a valid access token, a signed
+            // request, and the time the access token
+            // and signed request each expire
 
-                var uid = response.authResponse.userID;
-                var accessToken = response.authResponse.accessToken;
-                setAccessToken(accessToken);
+            var uid = response.authResponse.userID;
+            var accessToken = response.authResponse.accessToken;
+            setAccessToken(accessToken);
 
-            } else if (response.status === 'not_authorized') {
-                // the user is logged in to Facebook, 
-                // but has not authenticated your app
+        } else if (response.status === 'not_authorized') {
+            // the user is logged in to Facebook,
+            // but has not authenticated your app
+            $('.j-checking-login-status').hide();
+            $('.j-login-form').show();
 
-                
-            } else {
-                // the user isn't logged in to Facebook.
-                
-            }
-            console.log(response);
-        });
-
-    })
+        } else {
+            // the user isn't logged in to Facebook.
+            $('.j-checking-login-status').hide();
+            $('.j-login-form').show();
+        }
+        console.log(response);
+    });
 }
 
 //
