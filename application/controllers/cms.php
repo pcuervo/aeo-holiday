@@ -84,7 +84,7 @@ class Cms extends CI_Controller {
 
 		$this->load->view('cms/header');
 		$this->load->view('cms/catalog');
-		$this->load->view('cms/footer');
+		$this->load->view('cms/footer', $data);
 	}// catalog
 
 	/**

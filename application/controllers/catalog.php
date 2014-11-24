@@ -41,6 +41,9 @@ class Catalog extends CI_Controller {
 		$this->load->model('secret_friend');
 		$data['secret_friends'] = $this->secret_friend->get_secret_friends_by_user($current_fb_user['id']);
 
+		$this->load->model('catalog_image');
+		$data['catalog_images'] = $this->catalog_image->get_all();
+
 		$this->load->view('header', $data);
 		$this->load->view('catalog', $data);
 		$this->load->view('footer', $data);

@@ -61,7 +61,7 @@
         <script src="<?php echo base_url().'assets/js/jquery.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/bootstrap.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/plugins.min.js' ?>"></script>
-        <script src="<?php echo base_url().'assets/js/functions.js' ?>"></script>
+        <script src="<?php echo base_url().'assets/js/functions.min.js' ?>"></script>
         <?php if($current_view == 'new_exchange_group') { ?>
             <script src="<?php echo base_url().'assets/js/jquery-ui.min.js' ?>"></script>
         <?php } ?>
@@ -74,7 +74,6 @@
             loadFacebookSdk();
             addGroupToCalendar();
             runDatepicker();
-
 
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
@@ -142,7 +141,8 @@
 
             <?php if($current_view == 'login') { ?>
                 toggleButton();
-                
+                $('.j-login-form').hide();
+
             <?php } ?>
 
             <?php if($current_view == 'create_secret_friend_video') { ?>
