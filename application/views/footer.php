@@ -75,7 +75,7 @@
             addGroupToCalendar();
             //runDatepicker();
 
-            
+
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
                 declineGroupInvitation()
