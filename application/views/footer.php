@@ -73,8 +73,9 @@
             footerBottom();
             loadFacebookSdk();
             addGroupToCalendar();
-            runDatepicker();
+            //runDatepicker();
 
+            
             <?php if($current_view == 'dashboard') { ?>
                 acceptGroupInvitation();
                 declineGroupInvitation()
@@ -84,6 +85,25 @@
                   e.preventDefault()
                   $(this).tab('show')
                 });
+
+                <?php if ($exchange_groups == 0) { ?>
+                    (function() {
+                     var _fbq = window._fbq || (window._fbq = []);
+                     if (!_fbq.loaded) {
+                       var fbds = document.createElement('script');
+                       fbds.async = true;
+                       fbds.src = '//connect.facebook.net/en_US/fbds.js';
+                       var s = document.getElementsByTagName('script')[0];
+                       s.parentNode.insertBefore(fbds, s);
+                       _fbq.loaded = true;
+                     }
+                     _fbq.push(['addPixelId', '749103118499926']);
+                    })();
+                    window._fbq = window._fbq || [];
+                    window._fbq.push(['track', 'PixelInitialized', {}]);
+                    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=749103118499926&amp;ev=PixelInitialized" /></noscript>
+                <?php } ?>
+
             <?php } ?>
 
             <?php if( $current_view == 'catalog' ) { ?>
