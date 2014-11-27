@@ -180,6 +180,41 @@ class Facebook {
 
     }// send_message_notification
 
+    /**
+    * Send Facebook notification to all members of a closed group
+    * @param mixed $fb_user_ids
+    */
+    public function send_group_notification($fb_user_ids) {
+        $session = FacebookSession::newAppSession();
+        if ( $session ) {
+            foreach ($fb_user_ids as $id) {
+                $response = ( new FacebookRequest($session, 'POST', '/'.$id.'/notifications',  array(
+                    'template' => 'Descubre quién es tu amigo secreto dando click.',
+                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
+                ) ) )->execute();
+            }
+            return 1;
+        }
+        return 0;
+    }// send_group_notification
+
+    /**
+    * Send Facebook notification to remind user about their invitations
+    * @param mixed $fb_user_id
+    */
+    public function send_remainder_notification($fb_user_ids) {
+        $session = FacebookSession::newAppSession();
+        if ( $session ) {
+            $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
+                    'template' => 'Tienes una invitación pendiente para un grupo de intercambio.',
+                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
+                ) ) )->execute();
+
+            return $response;
+        }
+
+    }// send_video_notification
+
     public function get_signed_request(){
         $session = FacebookSession::newAppSession();
 
