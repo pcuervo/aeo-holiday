@@ -54,8 +54,8 @@ class Dashboard extends CI_Controller {
 		$this->load->model('exchange_group');
 		$data['exchange_groups'] = $this->exchange_group->get_groups_by_user($current_fb_user['id']);
 
-		// Get user's pending invitations
-		$data['pending_invitations'] = $this->exchange_group->get_pending_invitation_by_user($current_fb_user['id']);
+		// Get user's pending friends 
+		$data['pending_friends'] = $this->exchange_group->get_pending_group_friends_by_user($current_fb_user['id']);
 
 		// Check if user has completed "Perfect Fit" quiz
 		$this->load->model('user_perfect_fit');

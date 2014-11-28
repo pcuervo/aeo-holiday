@@ -552,7 +552,6 @@ class Exchange_group extends CI_Model {
 		$this->load->model('secret_friend_video');
 
 		foreach ($query->result() as $key => $row){
-			var_dump($row);
 			$friend_fb_id = $this->group_friend->get_fb_id($row->to_group_friend_id);
 			$this->secret_friend_video->set_was_posted($row->id);
 			$video = $this->facebook->send_video_notification($friend_fb_id, $row->to_group_friend_id);
@@ -677,5 +676,30 @@ class Exchange_group extends CI_Model {
 
 		return $facebook_user_ids;
 	}// get_admins_with_pending_friends
+
+	/**
+	 * Get Facebook id of pending invited friends by user.
+	 *
+	 * @return array $facebook_user_ids
+	 * @author Miguel Cabral
+	 **/
+	public function get_pending_group_friends_by_user($fb_user_id)
+	{	
+		$this->db->select('invited_fb_user_id');
+		$this->db->from('exchange_groups');
+		$this->db->join('group_friends', 'exchange_groups.id = group_friends.group_id');
+		$this->db->join('group_invitations', 'exchange_groups.id = group_invitations.group_id');
+		$this->db->where('facebook_users_id', $fb_user_id);
+		$this->db->group_by('invited_fb_user_id');
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$facebook_user_ids = array();
+		foreach ($query->result() as $row) array_push($facebook_user_ids, $row->invited_fb_user_id);
+
+		return implode(',', $facebook_user_ids);
+	}// get_pending_group_friends_by_user
 
 }// clase Exchange_group

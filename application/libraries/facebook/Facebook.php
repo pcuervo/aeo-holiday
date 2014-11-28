@@ -211,8 +211,6 @@ class Facebook {
                         'template' => 'Algunos de tus amigos no han aceptado el intercambio y se están perdiendo el 20% de descuento. ¡Recuérdaselos!',
                         'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
                     ) ) )->execute();
-                var_dump($response);
-                //return $response;
             } catch (FacebookRequestException $ex) {
               // Session not valid, Graph API returned an exception with the reason.
               return 0;

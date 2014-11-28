@@ -341,13 +341,17 @@ function showSecretFriends(){
  * @return void
  */
 function send_reminder(){
-    var url = '/cms/send_invitation_reminder';
-    $.get(
-        url,
-        function(response){
-            console.log(response);
-        }// response
-    );
+    $('.j-send-reminder').on('click', function(e){
+        e.preventDefault();
+        console.log('click');
+        var url = '/cms/send_invitation_reminder';
+        $.get(
+            url,
+            function(response){
+                console.log(response);
+            }// response
+        );
+    });
 }// send_reminder
 
 /**
@@ -609,6 +613,23 @@ function inviteFriends(form){
                     getInvitedFriendData(friend_id);
                 }
             })
+        });
+    });
+}// inviteFriends
+
+/**
+ * Invite friends to the app using Facebook
+ * @return void
+ */
+function inviteFriends(friend_ids){
+    $('.j_remind_friends').on('click', function(e){
+        e.preventDefault();
+        console.log('click');
+        FB.ui({method: 'apprequests',
+            message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.',
+            to: friend_ids, 
+        }, function(response){
+            
         });
     });
 }// inviteFriends

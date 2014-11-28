@@ -8,7 +8,12 @@
             <div class="text-center">
                 <a href="<?php echo base_url() ?>dashboard/new_exchange_group" class="[ btn btn-primary btn-go ] [ margin-bottom ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intenciónCrearIntercambio');"><span>Crear nuevo intercambio</span></a>
             </div>
-             <?php if(!$has_perfect_fit){ ?>
+            <?php if($pending_friends != 0){ ?>
+                <div class="[ text-center ] [ margin-bottom ]">
+                    <a href="#" class="[ btn btn-primary btn-go ] [ j-resend-invitations ]"><span>Reenviar invitaciones</span></a>
+                </div>
+            <?php } ?>
+            <?php if(!$has_perfect_fit){ ?>
                 <div class="[ text-center ] [ margin-bottom ]">
                     <a href="<?php echo base_url() ?>dashboard/complete_perfect_fit" class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'perfil', 'click', 'CompletarPerfil');"><span>Completar mi perfil</span></a>
                 </div>
