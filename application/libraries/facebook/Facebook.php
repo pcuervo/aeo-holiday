@@ -204,7 +204,7 @@ class Facebook {
     */
     public function send_remainder_notification($fb_user_id) {
         $session = FacebookSession::newAppSession();
-        
+
         if ( $session ) {
             try {
                 $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
@@ -221,7 +221,7 @@ class Facebook {
             return $response;
         }
 
-    }// send_video_notification
+    }// send_remainder_notification
 
     public function get_signed_request(){
         $session = FacebookSession::newAppSession();
