@@ -26,7 +26,7 @@
             <?php } ?>
 
             <?php if( $current_view == 'reports' ) { ?>
-                send_reminder();
+                sendReminder();
             <?php } ?>
 
             (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
