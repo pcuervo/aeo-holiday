@@ -340,7 +340,7 @@ function showSecretFriends(){
  * Send notification to group administrators with pending friends
  * @return void
  */
-function send_reminder(){
+function sendReminder(){
     $('.j-send-reminder').on('click', function(e){
         e.preventDefault();
         console.log('click');
@@ -352,7 +352,7 @@ function send_reminder(){
             }// response
         );
     });
-}// send_reminder
+}// sendReminder
 
 /**
  * Send Zencoder POST
@@ -627,9 +627,9 @@ function reinviteFriends(friend_ids){
         console.log('click');
         FB.ui({method: 'apprequests',
             message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.',
-            to: friend_ids, 
+            to: friend_ids,
         }, function(response){
-            
+
         });
     });
 }// inviteFriends
