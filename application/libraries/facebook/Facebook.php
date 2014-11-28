@@ -155,7 +155,7 @@ class Facebook {
         if ( $session ) {
             $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te envió un video.',
-                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
+                    'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
                 ) ) )->execute();
 
             return $response;
@@ -172,7 +172,7 @@ class Facebook {
         if ( $session ) {
             $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
                     'template' => 'Tu amigo secreto te ha enviado un mensaje.',
-                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
+                    'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
                 ) ) )->execute();
 
             return $response;
@@ -190,7 +190,7 @@ class Facebook {
             foreach ($fb_user_ids as $id) {
                 $response = ( new FacebookRequest($session, 'POST', '/'.$id.'/notifications',  array(
                     'template' => 'Descubre quién es tu amigo secreto dando click.',
-                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
+                    'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
                 ) ) )->execute();
             }
             return 1;
@@ -202,14 +202,24 @@ class Facebook {
     * Send Facebook notification to remind user about their invitations
     * @param mixed $fb_user_id
     */
-    public function send_remainder_notification($fb_user_ids) {
+    public function send_remainder_notification($fb_user_id) {
         $session = FacebookSession::newAppSession();
+        
         if ( $session ) {
-            $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
-                    'template' => 'Algunos de tus amigos no han aceptado el intercambio y se están perdiendo el 20% de descuento. ¡Recuérdaselos!.',
-                    'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
-                ) ) )->execute();
-
+            try {
+                $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
+                        'template' => 'Algunos de tus amigos no han aceptado el intercambio y se están perdiendo el 20% de descuento. ¡Recuérdaselos!',
+                        'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
+                    ) ) )->execute();
+                var_dump($response);
+                //return $response;
+            } catch (FacebookRequestException $ex) {
+              // Session not valid, Graph API returned an exception with the reason.
+              return 0;
+            } catch (\Exception $ex) {
+              // Graph API returned info, but it may mismatch the current app or have expired.
+              return 0;
+            }
             return $response;
         }
 

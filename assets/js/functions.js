@@ -262,8 +262,6 @@ function createExchangeGroup(){
     );
 }// createExchangeGroup
 
-
-
 /**
  * Edit exchange group using AJAX
  * @return void
@@ -337,6 +335,20 @@ function showSecretFriends(){
         );
     });
 }// showSecretFriends
+
+ /**
+ * Send notification to group administrators with pending friends
+ * @return void
+ */
+function send_reminder(){
+    var url = '/cms/send_invitation_reminder';
+    $.get(
+        url,
+        function(response){
+            console.log(response);
+        }// response
+    );
+}// send_reminder
 
 /**
  * Send Zencoder POST

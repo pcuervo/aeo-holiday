@@ -641,19 +641,16 @@ class Exchange_group extends CI_Model {
 	/**
 	 * Send reminder to group administrators
 	 *
-	 * @param int $group_id
-	 * @return boolean
+	 * @return void
 	 * @author Miguel Cabral
 	 **/
 	public function send_invitation_reminder()
 	{
 		$group_admins = $this->get_admins_with_pending_friends();
-
+		
 		if($group_admins == 0) return 0;
 
-		foreach ($group_admins as $value) {
-			$this->facebook->
-		}
+		foreach ($group_admins as $id) $fb = $this->facebook->send_remainder_notification($id);
 	}// send_invitation_reminder
 
 	/**
@@ -663,15 +660,13 @@ class Exchange_group extends CI_Model {
 	 * @author Miguel Cabral
 	 **/
 	public function get_admins_with_pending_friends()
-	{
-		$group_admins = $this->get_admins_with_pending_friends();
-		
+	{	
 		$this->db->select('facebook_users_id');
 		$this->db->from('exchange_groups');
 		$this->db->join('group_friends', 'exchange_groups.id = group_friends.group_id');
 		$this->db->join('group_invitations', 'exchange_groups.id = group_invitations.group_id');
 		$this->db->where('is_admin', 1);
-		$this->db->group_by('facebook_users_id')
+		$this->db->group_by('facebook_users_id');
 		$query = $this->db->get();
 
 		if ($query->num_rows() < 1)

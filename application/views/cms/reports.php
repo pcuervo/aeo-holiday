@@ -42,7 +42,7 @@
                 </div>
                 <div class="[ text-center ] [ margin-bottom ]">
                     <a href="/cms/report_by_group" class="[ btn btn-primary btn-go ] [ text-center ]"><span>Ver información por grupo</span></a>
-                    <a href="/cms/send_invitation_reminder" class="[ btn btn-primary btn-go ] [ text-center ]"><span>Recordar a administradores</span></a>
+                    <a href="#" class="[ btn btn-primary btn-go ] [ text-center ] [ j-send-reminder ]"><span>Recordar a administradores</span></a>
                 </div><!-- text-center -->
             </div><!-- row -->
             <hr class="[ center-block margin-bottom ]">

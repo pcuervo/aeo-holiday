@@ -432,7 +432,9 @@ class Cms extends CI_Controller {
 	 **/
 	public function send_invitation_reminder()
 	{
-		echo 1;
+		$this->load->model('exchange_group');
+		$this->exchange_group->send_invitation_reminder();
+		echo 'invitación enviada';
 	}// send_invitation_reminder
 
 }// class Cms
