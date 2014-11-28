@@ -340,7 +340,7 @@ function showSecretFriends(){
  * Send notification to group administrators with pending friends
  * @return void
  */
-function send_reminder(){
+function sendReminder(){
     $('.j-send-reminder').on('click', function(e){
         e.preventDefault();
         console.log('click');
@@ -352,7 +352,7 @@ function send_reminder(){
             }// response
         );
     });
-}// send_reminder
+}// sendReminder
 
 /**
  * Send Zencoder POST
