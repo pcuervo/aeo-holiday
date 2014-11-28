@@ -621,8 +621,8 @@ function inviteFriends(form){
  * Invite friends to the app using Facebook
  * @return void
  */
-function inviteFriends(friend_ids){
-    $('.j_remind_friends').on('click', function(e){
+function reinviteFriends(friend_ids){
+    $('.j-resend-invitations').on('click', function(e){
         e.preventDefault();
         console.log('click');
         FB.ui({method: 'apprequests',

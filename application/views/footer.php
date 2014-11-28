@@ -61,7 +61,7 @@
         <script src="<?php echo base_url().'assets/js/jquery.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/bootstrap.js' ?>"></script>
         <script src="<?php echo base_url().'assets/js/plugins.min.js' ?>"></script>
-        <script src="<?php echo base_url().'assets/js/functions.min.js' ?>"></script>
+        <script src="<?php echo base_url().'assets/js/functions.js' ?>"></script>
         <?php if($current_view == 'new_exchange_group') { ?>
             <script src="<?php echo base_url().'assets/js/jquery-ui.min.js' ?>"></script>
         <?php } ?>
@@ -80,6 +80,7 @@
                 declineGroupInvitation()
                 //getUnreadMessages();
                 getUserActivity();
+                reinviteFriends('<?php echo $pending_friends ?>');
                 $('#myTab a').click(function (e) {
                   e.preventDefault()
                   $(this).tab('show')
