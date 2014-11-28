@@ -206,7 +206,7 @@ class Facebook {
         $session = FacebookSession::newAppSession();
         if ( $session ) {
             $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
-                    'template' => 'Tienes una invitación pendiente para un grupo de intercambio.',
+                    'template' => 'Algunos de tus amigos no han aceptado el intercambio y se están perdiendo el 20% de descuento. ¡Recuérdaselos!.',
                     'access_token' => '293571087508858|2961c8a6e6af8194d36a8c9b56825b49'
                 ) ) )->execute();
 

@@ -271,9 +271,10 @@ class Cms extends CI_Controller {
 	 **/
 	public function reports()
 	{
-
 		if(! isset($_SESSION['username']))
 			redirect('/cms');
+
+		$data['current_view'] = 'reports';
 
 		// Cargar todos los datos totales
 		$this->load->model('cms_report');
@@ -292,7 +293,7 @@ class Cms extends CI_Controller {
 		// Cargar vista login
 		$this->load->view('cms/header');
 		$this->load->view('cms/reports', $data);
-		$this->load->view('cms/footer');
+		$this->load->view('cms/footer', $data);
 	}// reports
 
 	/**
@@ -423,6 +424,15 @@ class Cms extends CI_Controller {
 
 	}// get_users_per_exchange_by_date
 
-
+	/**
+	 * Send an invitation reminder to all group administrators
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function send_invitation_reminder()
+	{
+		echo 1;
+	}// send_invitation_reminder
 
 }// class Cms

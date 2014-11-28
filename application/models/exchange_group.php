@@ -27,8 +27,6 @@ class Exchange_group extends CI_Model {
 	{
 		$this->load->database();
 		$this->load->library('facebook');
-
-		
 	}// constructor
 
 	/**
@@ -622,7 +620,6 @@ class Exchange_group extends CI_Model {
 
 	}// cron_job_log_register
 
-
 	/**
 	 * Insert in db's table cron_job_log
 	 *
@@ -640,5 +637,50 @@ class Exchange_group extends CI_Model {
 		//$this->db->insert_string('cron_job_log', $insert_data);
 
 	}// cron_job_log_register
+
+	/**
+	 * Send reminder to group administrators
+	 *
+	 * @param int $group_id
+	 * @return boolean
+	 * @author Miguel Cabral
+	 **/
+	public function send_invitation_reminder()
+	{
+		$group_admins = $this->get_admins_with_pending_friends();
+
+		if($group_admins == 0) return 0;
+
+		foreach ($group_admins as $value) {
+			$this->facebook->
+		}
+	}// send_invitation_reminder
+
+	/**
+	 * Get id of all administrators with pending invited friends.
+	 *
+	 * @return array $facebook_user_ids
+	 * @author Miguel Cabral
+	 **/
+	public function get_admins_with_pending_friends()
+	{
+		$group_admins = $this->get_admins_with_pending_friends();
+		
+		$this->db->select('facebook_users_id');
+		$this->db->from('exchange_groups');
+		$this->db->join('group_friends', 'exchange_groups.id = group_friends.group_id');
+		$this->db->join('group_invitations', 'exchange_groups.id = group_invitations.group_id');
+		$this->db->where('is_admin', 1);
+		$this->db->group_by('facebook_users_id')
+		$query = $this->db->get();
+
+		if ($query->num_rows() < 1)
+			return 0;
+
+		$facebook_user_ids = array();
+		foreach ($query->result() as $row) array_push($facebook_user_ids, $row->facebook_users_id);
+
+		return $facebook_user_ids;
+	}// get_admins_with_pending_friends
 
 }// clase Exchange_group
