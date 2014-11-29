@@ -655,16 +655,14 @@ class Exchange_group extends CI_Model {
 	/**
 	 * Send reminder to group administrators
 	 *
+	 * @param string $friend_name, int $group_id, string $action
 	 * @return void
 	 * @author Miguel Cabral
 	 **/
-	public function send_invitation_status_to_admin()
+	public function send_invitation_status_to_admin($friend_name, $group_id, $action)
 	{
-		$group_admins = $this->get_admins_with_pending_friends();
-		
-		if($group_admins == 0) return 0;
-
-		foreach ($group_admins as $id) $fb = $this->facebook->send_remainder_notification($id);
+		$group_details = $this->get_group_details($group_id);
+		$this->facebook->send_invitation_status_notification($group_details['admin_id'], $friend_name, $action, $group_details['name']);
 	}// send_invitation_reminder
 
 	/**
