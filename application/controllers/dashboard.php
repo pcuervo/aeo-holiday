@@ -445,6 +445,7 @@ class Dashboard extends CI_Controller {
 			'is_admin'			=> FAlSE,
 			);
 		$this->group_friend->add_group_friend($friend_data);
+		$this->group_friend->send_invitation_status_to_admin($current_fb_user['first_name'].' '.$current_fb_user['last_name'], $group_id, 'aceptado');
 
 		// Add to user's activity
 		$this->load->model('exchange_group');

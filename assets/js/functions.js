@@ -606,6 +606,7 @@ function inviteFriends(form){
         }, function(response){
             $('.j_invite_friends.error').remove();
             $.each(response.to, function(i, friend_id){
+                console.log(response.to);
                 var friend = $('input[value="'+friend_id+'"]');
                 if ( $(friend).length == 0 ){
                     $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');

@@ -182,17 +182,31 @@ class Facebook {
 
     /**
     * Send Facebook notification to all members of a closed group
-    * @param mixed $fb_user_ids
+    * @param array $fb_user_id
     */
-    public function send_group_notification($fb_user_ids) {
+    public function send_group_notification($fb_user_id) {
         $session = FacebookSession::newAppSession();
         if ( $session ) {
-            foreach ($fb_user_ids as $id) {
-                $response = ( new FacebookRequest($session, 'POST', '/'.$id.'/notifications',  array(
-                    'template' => 'Descubre quién es tu amigo secreto dando click.',
-                    'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
-                ) ) )->execute();
-            }
+            $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
+                'template' => 'Descubre quién es tu amigo secreto dando click.',
+                'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
+            ) ) )->execute();
+            return 1;
+        }
+        return 0;
+    }// send_group_notification
+
+    /**
+    * Send Facebook notification to admin when an invited friend accepts/rejects notification.
+    * @param array $fb_user_id
+    */
+    public function send_invitation_status_notification($fb_user_id, $friend, $action, $group) {
+        $session = FacebookSession::newAppSession();
+        if ( $session ) {
+            $response = ( new FacebookRequest($session, 'POST', '/'.$fb_user_id.'/notifications',  array(
+                'template' => $friend.' ha '.$action.' tu invitación al grupo '.$group,
+                'access_token' => '723683944395366|2961c8a6e6af8194d36a8c9b56825b49'
+            ) ) )->execute();
             return 1;
         }
         return 0;
