@@ -66,7 +66,7 @@
       </div>
       <div class="modal-body">
         <div class="text-center">
-            <a class="[ btn btn-primary btn-go ] [ createExchangeGroup ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intercambioCreado');"><span>Crear intercambio</span></a>
+            <a class="[ btn btn-primary btn-go ] [ j-createExchangeGroup ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intercambioCreado');"><span>Crear intercambio</span></a>
         </div><!-- text-center -->
       </div>
     </div>

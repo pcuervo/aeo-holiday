@@ -68,8 +68,7 @@ function formValidation(forma){
                     send_message_form();
                     break
                 case '.j_group_form':
-                    console.log('j_group_form');
-                    createExchangeGroup();
+                    inviteFriends('.j_group_form');
                     break
             }
         },
@@ -249,7 +248,6 @@ function send_message_form(){
  * @return void
  */
 function createExchangeGroup(){
-    console.log('s');
     var hidden_guests = $('.hidden_guest').length;
     if(hidden_guests == 0){
         $('.j_invite_friends-notice').html('');
@@ -607,20 +605,17 @@ function loadFacebookSdk(){
  * @return void
  */
 function inviteFriends(form){
-    $(form + ' .j_invite_friends').on('click', function(){
-        FB.ui({method: 'apprequests',
-            message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.'
-        }, function(response){
-            $('.j_invite_friends.error').remove();
-            $.each(response.to, function(i, friend_id){
-                console.log(response.to);
-                var friend = $('input[value="'+friend_id+'"]');
-                if ( $(friend).length == 0 ){
-                    $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
-                    getInvitedFriendData(friend_id);
-                }
-            })
-        });
+    FB.ui({method: 'apprequests',
+        message: 'Te invito a formar parte del intercambio navideño y recibir un descuento en tus compras.'
+    }, function(response){
+        $('.j_invite_friends.error').remove();
+        $.each(response.to, function(i, friend_id){
+            var friend = $('input[value="'+friend_id+'"]');
+            if ( $(friend).length == 0 ){
+                $(form).append('<input type="hidden" class="hidden_guest" name="invited_friends[]" value="' + friend_id + '">');
+                getInvitedFriendData(friend_id);
+            }
+        })
     });
 }// inviteFriends
 
@@ -648,20 +643,17 @@ function getInvitedFriendData(fb_id){
         var invited_friends = [];
         var flag = false;
         if(response.id){
-
             var name = response.first_name + ' ' + response.last_name;
-
             if(invited_friends.indexOf(name) > -1){
                 flag = true;
             } else {
                 invited_friends.push(name);
             }
-
             if ( ! flag ){
-                $('.j_invite_friends').after('<p class="[ agregado ]">Se agregó: ' + name + ' al intercambio.</p>');
+                $('.j-createExchangeGroup').before('<p class="[ agregado ]">Se agregó: ' + name + ' al intercambio.</p>');
                 $('.j_invite_friends-notice').html('');
-                $('#modalCrearIntercambio').modal('show');
             }
+            $('#modalCrearIntercambio').modal('show');
         }
     });
 }// getInvitedFriendName

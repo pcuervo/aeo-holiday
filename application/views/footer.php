@@ -129,20 +129,24 @@
             <?php } ?>
 
             <?php if($current_view == 'new_exchange_group') { ?>
-                $('body').on('click', '.createExchangeGroup', function(e) {
-                    e.preventDefault();
+                $('.j_invite_friends').on('click', function(){
                     $('.j_group_form').submit();
                 });
+                $('.j-createExchangeGroup').on('click', function(){
+                    createExchangeGroup();
+                });
+                formValidation('.j_group_form');
                 <?php if ( $is_mobile ){ ?>
                     setLimitDateMobile();
                 <?php } else { ?>
                     setLimitDateDesktop();
                 <?php } ?>
-                inviteFriends('.j_group_form');
             <?php } ?>
 
             <?php if($current_view == 'view_exchange_group') { ?>
-                inviteFriends('.j_edit_group_form');
+                $('.j_invite_more_friends').on('click', function(){
+                    inviteFriends('.j_edit_group_form');
+                });
                 formValidation('.j_edit_group_form');
                 <?php if ( $is_mobile ){ ?>
                     setLimitDateMobile();
