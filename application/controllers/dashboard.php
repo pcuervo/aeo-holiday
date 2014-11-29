@@ -445,13 +445,13 @@ class Dashboard extends CI_Controller {
 			'is_admin'			=> FAlSE,
 			);
 		$this->group_friend->add_group_friend($friend_data);
-		$this->group_friend->send_invitation_status_to_admin($current_fb_user['first_name'].' '.$current_fb_user['last_name'], $group_id, 'aceptado');
 
 		// Add to user's activity
 		$this->load->model('exchange_group');
 		$group_admin = $this->exchange_group->get_group_admin($group_id);
 		$this->load->model('user_activity');
 		$this->user_activity->invitation_accepted($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 2);
+		$this->exchange_group->send_invitation_status_to_admin($current_fb_user['first_name'].' '.$current_fb_user['last_name'], $group_id, 'aceptado');
 
 		// Check if there are no pending invitations
 		if( ! $this->exchange_group->has_pending_invitations($group_id)){
@@ -486,6 +486,7 @@ class Dashboard extends CI_Controller {
 		$group_admin = $this->exchange_group->get_group_admin($group_id);
 		$this->load->model('user_activity');
 		$this->user_activity->invitation_rejected($group_admin['fb_user_id'], $group_id, $current_fb_user['id'], 3);
+		$this->exchange_group->send_invitation_status_to_admin($current_fb_user['first_name'].' '.$current_fb_user['last_name'], $group_id, 'rechazado');
 
 		// Check if there are no pending invitations
 		// Check if there are no pending invitations
