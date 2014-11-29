@@ -128,6 +128,8 @@ class Dashboard extends CI_Controller {
 		$group_data['admin_id'] = $_POST['admin_id'];
 		$group_data['invited_friends'] = $_POST['invited_friends'];
 
+		var_dump($group_data);
+
 		$this->exchange_group->create_group($group_data);
 
 	}// create_exchange_group
