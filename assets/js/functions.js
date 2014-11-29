@@ -54,12 +54,10 @@ function footerBottom(){
 * @return void
 **/
 function formValidation(forma){
+    console.log(forma);
     $(forma).validate({
         submitHandler:function(){
             switch(forma){
-                case '.j_group_form':
-                    createExchangeGroup();
-                    break;
                 case '.j_edit_group_form':
                     editExchangeGroup();
                     break;
@@ -69,7 +67,16 @@ function formValidation(forma){
                 case '.j-send-message-form':
                     send_message_form();
                     break
+                case '.j_group_form':
+                    console.log('j_group_form');
+                    createExchangeGroup();
+                    break
             }
+        },
+        invalidHandler: function(event, validator) {
+            console.log('invalid');
+            console.log(event);
+            console.log(validator);
         }
     });
 }
@@ -242,6 +249,7 @@ function send_message_form(){
  * @return void
  */
 function createExchangeGroup(){
+    console.log('s');
     var hidden_guests = $('.hidden_guest').length;
     if(hidden_guests == 0){
         $('.j_invite_friends-notice').html('');
@@ -255,6 +263,7 @@ function createExchangeGroup(){
         url,
         group_data,
         function(response){
+            console.log(response);
             var coupon_url = localStorage.getItem('base_url') + 'dashboard/view_coupon/ng';
             window.location = coupon_url;
         }// response
@@ -472,9 +481,7 @@ function declineGroupInvitation(){
         var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
         group_data['group_id'] = $(this).data('group');
         group_data['invited_fb_user_id'] = $(this).data('friend');
-
         console.log('group_data');
-
         $.post(
             url,
             group_data,
@@ -653,6 +660,7 @@ function getInvitedFriendData(fb_id){
             if ( ! flag ){
                 $('.j_invite_friends').after('<p class="[ agregado ]">Se agregó: ' + name + ' al intercambio.</p>');
                 $('.j_invite_friends-notice').html('');
+                $('#modalCrearIntercambio').modal('show');
             }
         }
     });

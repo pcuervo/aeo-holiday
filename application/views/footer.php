@@ -129,7 +129,10 @@
             <?php } ?>
 
             <?php if($current_view == 'new_exchange_group') { ?>
-                formValidation('.j_group_form');
+                $('body').on('click', '.createExchangeGroup', function(e) {
+                    e.preventDefault();
+                    $('.j_group_form').submit();
+                });
                 <?php if ( $is_mobile ){ ?>
                     setLimitDateMobile();
                 <?php } else { ?>

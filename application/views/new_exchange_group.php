@@ -48,9 +48,6 @@
                 <a href="#" class="[ btn btn-primary btn-go ]  [ margin-bottom ] [ j_invite_friends ]" onclick="ga('send', 'event', 'intercambio', 'click', 'agregarInvitados');"><span>Invitar amigos</span></a>
                 <p class="[ j_invite_friends-notice ] [ text-center ]"></p>
             </div><!-- text-center -->
-            <div class="text-center">
-                <button class="[ btn btn-primary btn-go ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intercambioCreado');"><span>Crear intercambio</span></button>
-            </div><!-- text-center -->
         </form>
     </div><!-- container -->
 </div><!-- CONTENIDO -->
@@ -60,3 +57,18 @@
         <p class="[ text-center ]">…</p>
     </div><!-- loader -->
 </div><!-- loader-lightbox -->
+<!-- Modal -->
+<div class="modal fade" id="modalCrearIntercambio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+      </div>
+      <div class="modal-body">
+        <div class="text-center">
+            <a class="[ btn btn-primary btn-go ] [ createExchangeGroup ]" onclick="ga('send', 'event', 'intercambio', 'click', 'intercambioCreado');"><span>Crear intercambio</span></a>
+        </div><!-- text-center -->
+      </div>
+    </div>
+  </div>
+</div>
