@@ -513,9 +513,9 @@ class Exchange_group extends CI_Model {
 			array_push($from_friends, $friend['id']);
 			if($key == 0) $admin_id = $friend['id'];
 			if($key > 0) array_push($to_friends, $friend['id']);
+			$this->facebook->send_group_notification($friend['fb_user_id']);
 		}
 		array_push($to_friends, $admin_id);
-
 
 		// Add secret friends
 		$this->load->model('secret_friend');
@@ -644,6 +644,21 @@ class Exchange_group extends CI_Model {
 	 * @author Miguel Cabral
 	 **/
 	public function send_invitation_reminder()
+	{
+		$group_admins = $this->get_admins_with_pending_friends();
+		
+		if($group_admins == 0) return 0;
+
+		foreach ($group_admins as $id) $fb = $this->facebook->send_remainder_notification($id);
+	}// send_invitation_reminder
+
+	/**
+	 * Send reminder to group administrators
+	 *
+	 * @return void
+	 * @author Miguel Cabral
+	 **/
+	public function send_invitation_status_to_admin()
 	{
 		$group_admins = $this->get_admins_with_pending_friends();
 		
