@@ -56,7 +56,6 @@ function footerBottom(){
 function formValidation(forma){
     $(forma).validate({
         submitHandler:function(){
-            console.log('validacion');
             switch(forma){
                 case '.j_group_form':
                     createExchangeGroup();
