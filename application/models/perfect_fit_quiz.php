@@ -17,7 +17,7 @@ class Perfect_fit_quiz extends CI_Model {
 	 *
 	 * @param int $group_id, string $invited_fb_user_id
 	 * @return void
-	 * @author 
+	 * @author
 	 **/
 	public function __construct()
 	{
@@ -105,7 +105,7 @@ class Perfect_fit_quiz extends CI_Model {
 		}
 
 		$this->create_male_quiz();
-		
+
 	}// create_quiz
 
 	/**
@@ -131,7 +131,7 @@ class Perfect_fit_quiz extends CI_Model {
 			'question_type' => 'f',
 			'question'		=> 'Talla jeans',
 			);
-		$answer_talla_jeans = array('00', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10');
+		$answer_talla_jeans = array('00', '0', '2', '4', '6', '8', '10', '12');
 		$question_talla_jeans = new Perfect_fit_question();
 		$question_talla_jeans->create_question($question_talla_jeans_data, $answer_talla_jeans);
 
@@ -142,7 +142,7 @@ class Perfect_fit_quiz extends CI_Model {
 		$answer_color = array('azul', 'rojo', 'negro', 'beige', 'gris', 'verde');
 		$question_color = new Perfect_fit_question();
 		$question_color->create_question($question_color_data, $answer_color);
-		
+
 	}// create_female_quiz
 
 	/**
@@ -187,13 +187,13 @@ class Perfect_fit_quiz extends CI_Model {
 		$answer_color = array('azul', 'rojo', 'negro', 'beige', 'gris', 'verde');
 		$question_color = new Perfect_fit_question();
 		$question_color->create_question($question_color_data, $answer_color);
-		
+
 	}// create_male_quiz
 
 	/**
 	 * Checks if the female quiz questions already exists
 	 *
-	 * @return boolean 
+	 * @return boolean
 	 * @author Miguel Cabral
 	 **/
 	function exists_female_quiz()
@@ -204,12 +204,12 @@ class Perfect_fit_quiz extends CI_Model {
 			return 1;
 
 		return 0;
-	}// exists_female_quiz	
+	}// exists_female_quiz
 
 	/**
 	 * Checks if the male quiz questions already exists
 	 *
-	 * @return boolean 
+	 * @return boolean
 	 * @author Miguel Cabral
 	 **/
 	function exists_male_quiz()
@@ -220,6 +220,6 @@ class Perfect_fit_quiz extends CI_Model {
 			return 1;
 
 		return 0;
-	}// exists_male_quiz	
-		
+	}// exists_male_quiz
+
 }// clase Perfect_fit_quiz

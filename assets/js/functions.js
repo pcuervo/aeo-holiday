@@ -54,7 +54,6 @@ function footerBottom(){
 * @return void
 **/
 function formValidation(forma){
-    console.log(forma);
     $(forma).validate({
         submitHandler:function(){
             switch(forma){
@@ -71,11 +70,6 @@ function formValidation(forma){
                     inviteFriends('.j_group_form');
                     break
             }
-        },
-        invalidHandler: function(event, validator) {
-            console.log('invalid');
-            console.log(event);
-            console.log(validator);
         }
     });
 }
@@ -448,6 +442,10 @@ function acceptGroupInvitation(){
         e.preventDefault();
         var invitacion = $(this).closest('.invitacion-intercambio');
         var loader = $(this).closest('.invitacion-intercambio').find('.loader');
+        var declineButton = $(this).closest('.invitacion-intercambio').find('.j-decline-invitation');
+        var acceptButton = $(this).closest('.invitacion-intercambio').find('.j-accept-invitation');
+        declineButton.remove();
+        acceptButton.remove();
         loader.show();
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/accept_invitation';
@@ -475,6 +473,11 @@ function declineGroupInvitation(){
         e.preventDefault();
         var invitacion = $(this).closest('.invitacion-intercambio');
         var loader = $(this).closest('.invitacion-intercambio').find('.loader');
+        var declineButton = $(this).closest('.invitacion-intercambio').find('.j-decline-invitation');
+        var acceptButton = $(this).closest('.invitacion-intercambio').find('.j-accept-invitation');
+        declineButton.remove();
+        acceptButton.remove();
+        loader.show();
         var group_data = {};
         var url = localStorage.getItem('base_url') + 'dashboard/decline_invitation';
         group_data['group_id'] = $(this).data('group');
@@ -1148,10 +1151,3 @@ function dateRange(){
       }
     });
 }// dateRange
-
-
-
-
-
-
-

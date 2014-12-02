@@ -147,14 +147,16 @@
                 $('.j_invite_more_friends').on('click', function(){
                     inviteFriends('.j_edit_group_form');
                 });
-                formValidation('.j_edit_group_form');
-                <?php if ( $is_mobile ){ ?>
-                    setLimitDateMobile();
-                <?php } else { ?>
-                    setLimitDateDesktop();
-                <?php } ?>
-                removeGroupFriend();
-                removeInvitedFriend();
+                if ( $('.j_edit_group_form').length > 0 ){
+                    formValidation('.j_edit_group_form');
+                    <?php if ( $is_mobile ){ ?>
+                        setLimitDateMobile();
+                    <?php } else { ?>
+                        setLimitDateDesktop();
+                    <?php } ?>
+                    removeGroupFriend();
+                    removeInvitedFriend();
+                }
             <?php } ?>
 
             <?php if($current_view == 'perfect_fit') { ?>
